@@ -1,15 +1,18 @@
 # Autorización y alcance
 
-## Instrucciones recibidas
+## 001
 
-- Alex solicitó inicializar la infraestructura con pnpm, React/Vite, Express, TypeScript, tsx, ESLint y Prettier, instalar dependencias y verificar el arranque.
-- Tras revisar 001, Alex indicó: «claro, corrije todo lo que ya está hecho e implementa si falta por hacer algo.»
+Alex solicitó la infraestructura inicial y autorizó completar sus controles y documentación.
+La exclusión de SQLite correspondía a ese alcance.
 
-Esta segunda instrucción autoriza conciliar la documentación y completar las pruebas, el contexto y las evidencias de 001.
-No autoriza funcionalidades de negocio, SQLite, despliegues, commits ni pushes.
-No se han añadido dependencias para completar las pruebas.
+## 002
+
+Alex delegó tecnología, modelo y planes, aceptó histórico EUR y duplicados por país/fiscal, y pidió máximos razonables.
+Aceptó la propuesta documentada y después indicó: «perfecto, desarrolla la spec».
+Esto autoriza implementar 002, instalar sus dependencias y ejecutar migraciones/seed/backup en archivos temporales de validación.
+No autoriza modificar bases preexistentes del usuario, desplegar, hacer commits/pushes ni cambiar remotos.
 
 ## Revisión
 
-La ejecución de controles y el veredicto técnico se registran en la validación de 001.
-No existe todavía una aceptación humana de la entrega terminada; no se registra en nombre de Alex.
+La conformidad técnica se documenta en la validación de cada spec.
+No registrar aceptación humana de una entrega terminada en nombre de Alex.

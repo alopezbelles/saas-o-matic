@@ -1,6 +1,6 @@
 # saas-o-matic
 
-Infraestructura inicial Full-Stack para la prueba técnica de Roams. No incluye funcionalidades de negocio ni configuración de base de datos.
+Infraestructura inicial Full-Stack para la prueba técnica de Roams. Incluye infraestructura y persistencia SQLite; las funcionalidades de negocio todavía no están implementadas.
 
 ## Requisitos
 
@@ -61,16 +61,16 @@ apps/
   web/                 React + TypeScript + Vite
   api/                 Express + TypeScript; desarrollo con tsx
 packages/
-  shared/              Punto de entrada para futuros contratos TypeScript
+  shared/              Planes y límites técnicos compartidos
 ```
 
-La configuración raíz contiene los workspaces, TypeScript estricto, ESLint y Prettier. `shared` emite JavaScript y declaraciones al compilar; todavía no define contratos ni tiene consumidores. `pnpm-lock.yaml` fija las versiones resueltas y debe mantenerse versionado.
+La configuración raíz contiene los workspaces, TypeScript estricto, ESLint y Prettier. `shared` emite JavaScript y declaraciones al compilar; exporta planes y límites usados por la persistencia de API. `pnpm-lock.yaml` fija las versiones resueltas y debe mantenerse versionado.
 
-Las dependencias de ejecución son React y React DOM en web y Express en API. El resto son herramientas de desarrollo y tipos. No se han añadido librerías de UI, Prisma ni SQLite.
+Web utiliza React/React DOM. API utiliza Express, Drizzle y better-sqlite3. No se han añadido librerías de UI ni Prisma.
 
 ## Pruebas y documentación
 
-`pnpm test` ejecuta integración de API, smoke HTTP de web, comprobaciones negativas de los controles y enlaces documentales. Compila las aplicaciones antes de sus pruebas. No instala dependencias nuevas ni usa base de datos.
+`pnpm test` ejecuta integración de API, smoke HTTP de web, comprobaciones negativas de los controles y enlaces documentales. Compila las aplicaciones antes de sus pruebas. Usa bases SQLite temporales aisladas; no abre la base de desarrollo.
 
 También existen `test:integration`, `test:web`, `test:gates` y `test:docs`. No ejecutar `test:gates` en paralelo con lint, tipos o build: introduce errores temporales y comprueba que los controles los rechazan. El smoke web no sustituye pruebas de navegador.
 
@@ -79,3 +79,42 @@ El arranque no carga `.env` automáticamente; [.env.example](.env.example) expli
 ## Git
 
 El repositorio local está vinculado al remoto indicado por Alex. Esta tarea no realiza commits ni pushes. Se ignoran dependencias, cachés, compilaciones, variables de entorno y archivos SQLite (incluidos sus archivos auxiliares).
+
+## Persistencia SQLite (002)
+
+No necesitas instalar un servidor SQLite. El archivo se crea solo mediante un comando explícito.
+Los comandos se ejecutan desde la raíz y compilan shared/API antes de operar.
+
+```sh
+pnpm db:migrate
+pnpm db:generate
+pnpm db:backup --out apps/api/data/backup.sqlite
+```
+
+db:migrate usa apps/api/data/dev.sqlite por defecto. Si ya existe, exige propietario y esquema reconocidos.
+db:generate solo genera SQL para revisión, no abre DB. Nunca modificar una migración ya aplicada.
+El backup exige un destino nuevo. No hay reset ni borrado automático.
+
+Para crear una demo en PowerShell:
+
+```powershell
+$env:DATABASE_KIND = 'demo'
+$env:DATABASE_PATH = 'apps/api/data/demo.sqlite'
+pnpm.cmd db:demo:init
+pnpm.cmd db:seed
+pnpm.cmd db:seed
+pnpm.cmd db:backup --out apps/api/data/demo-backup.sqlite
+Remove-Item Env:DATABASE_KIND
+Remove-Item Env:DATABASE_PATH
+```
+
+En POSIX, anteponer DATABASE_KIND=demo DATABASE_PATH=apps/api/data/demo.sqlite a cada comando de demo.
+demo:init exige archivo nuevo; seed exige base demo marcada, conserva filas ajenas y no duplica.
+El seed contiene solo clientes ficticios; no representa identificadores fiscales válidos ni precios reales.
+
+Las rutas relativas son respecto a la raíz del repo, independientes del directorio de trabajo.
+DB y backups solo pueden situarse bajo apps/api/data o .cache. Nunca en web, código ni fuera del proyecto.
+No hay carga automática de .env: exportar las variables en la terminal.
+No se ha creado una DB persistente de desarrollo durante la implementación: los tests usan .cache/002-tests.
+
+[Modelo y recuperación](docs/data-model.md), [spec 002](specs/002-persistence/spec.md) y [validación](specs/002-persistence/validation.md).

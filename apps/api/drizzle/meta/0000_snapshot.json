@@ -1,0 +1,386 @@
+{
+  "version": "6",
+  "dialect": "sqlite",
+  "id": "043dad8b-6a84-469e-be6d-df2251b177b9",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "tables": {
+    "app_metadata": {
+      "name": "app_metadata",
+      "columns": {
+        "key": {
+          "name": "key",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "value": {
+          "name": "value",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "customers": {
+      "name": "customers",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "company_name": {
+          "name": "company_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "tax_id_original": {
+          "name": "tax_id_original",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "tax_id_normalized": {
+          "name": "tax_id_normalized",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "contact_name": {
+          "name": "contact_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "contact_email": {
+          "name": "contact_email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "country_code": {
+          "name": "country_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "plan_code": {
+          "name": "plan_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "customers_country_tax_unique": {
+          "name": "customers_country_tax_unique",
+          "columns": ["country_code", "tax_id_normalized"],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "customer_name_valid": {
+          "name": "customer_name_valid",
+          "value": "length(\"customers\".\"company_name\") BETWEEN 1 AND 200 AND \"customers\".\"company_name\" = trim(\"customers\".\"company_name\")"
+        },
+        "customer_tax_original_valid": {
+          "name": "customer_tax_original_valid",
+          "value": "length(\"customers\".\"tax_id_original\") BETWEEN 1 AND 64 AND \"customers\".\"tax_id_original\" = trim(\"customers\".\"tax_id_original\")"
+        },
+        "customer_tax_normalized_valid": {
+          "name": "customer_tax_normalized_valid",
+          "value": "length(\"customers\".\"tax_id_normalized\") BETWEEN 1 AND 64 AND \"customers\".\"tax_id_normalized\" = trim(\"customers\".\"tax_id_normalized\")"
+        },
+        "customer_contact_valid": {
+          "name": "customer_contact_valid",
+          "value": "length(\"customers\".\"contact_name\") BETWEEN 1 AND 200 AND \"customers\".\"contact_name\" = trim(\"customers\".\"contact_name\")"
+        },
+        "customer_email_valid": {
+          "name": "customer_email_valid",
+          "value": "length(\"customers\".\"contact_email\") BETWEEN 1 AND 254 AND \"customers\".\"contact_email\" = trim(\"customers\".\"contact_email\")"
+        },
+        "customer_country_valid": {
+          "name": "customer_country_valid",
+          "value": "\"customers\".\"country_code\" GLOB '[A-Z][A-Z]'"
+        },
+        "customer_plan_valid": {
+          "name": "customer_plan_valid",
+          "value": "\"customers\".\"plan_code\" IN ('DEMO_BASIC','DEMO_PRO')"
+        },
+        "customer_date_valid": {
+          "name": "customer_date_valid",
+          "value": "length(\"customers\".\"created_at\") = 24 AND \"customers\".\"created_at\" GLOB '????-??-??T??:??:??.???Z'"
+        }
+      }
+    },
+    "simulations": {
+      "name": "simulations",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "customer_id": {
+          "name": "customer_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "users": {
+          "name": "users",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "storage_gb": {
+          "name": "storage_gb",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "api_calls": {
+          "name": "api_calls",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "currency": {
+          "name": "currency",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "base_cents": {
+          "name": "base_cents",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "tax_cents": {
+          "name": "tax_cents",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "total_cents": {
+          "name": "total_cents",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "customer_name_snapshot": {
+          "name": "customer_name_snapshot",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "tax_id_snapshot": {
+          "name": "tax_id_snapshot",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "country_code_snapshot": {
+          "name": "country_code_snapshot",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "plan_code_snapshot": {
+          "name": "plan_code_snapshot",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "pricing_version": {
+          "name": "pricing_version",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "tax_policy_version": {
+          "name": "tax_policy_version",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "tax_rate_bps": {
+          "name": "tax_rate_bps",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "breakdown_json": {
+          "name": "breakdown_json",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "simulations_history": {
+          "name": "simulations_history",
+          "columns": ["customer_id", "\"created_at\" desc", "\"id\" desc"],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "simulations_customer_id_customers_id_fk": {
+          "name": "simulations_customer_id_customers_id_fk",
+          "tableFrom": "simulations",
+          "tableTo": "customers",
+          "columnsFrom": ["customer_id"],
+          "columnsTo": ["id"],
+          "onDelete": "restrict",
+          "onUpdate": "restrict"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "users_range": {
+          "name": "users_range",
+          "value": "\"simulations\".\"users\" BETWEEN 0 AND 1000"
+        },
+        "storage_range": {
+          "name": "storage_range",
+          "value": "\"simulations\".\"storage_gb\" BETWEEN 0 AND 10000"
+        },
+        "api_calls_range": {
+          "name": "api_calls_range",
+          "value": "\"simulations\".\"api_calls\" BETWEEN 0 AND 10000000"
+        },
+        "currency_eur": {
+          "name": "currency_eur",
+          "value": "\"simulations\".\"currency\" = 'EUR'"
+        },
+        "base_safe": {
+          "name": "base_safe",
+          "value": "\"simulations\".\"base_cents\" BETWEEN 0 AND 9007199254740991"
+        },
+        "tax_safe": {
+          "name": "tax_safe",
+          "value": "\"simulations\".\"tax_cents\" BETWEEN 0 AND 9007199254740991"
+        },
+        "total_safe": {
+          "name": "total_safe",
+          "value": "\"simulations\".\"total_cents\" BETWEEN 0 AND 9007199254740991"
+        },
+        "total_matches": {
+          "name": "total_matches",
+          "value": "\"simulations\".\"total_cents\" = \"simulations\".\"base_cents\" + \"simulations\".\"tax_cents\""
+        },
+        "snapshot_name_valid": {
+          "name": "snapshot_name_valid",
+          "value": "length(\"simulations\".\"customer_name_snapshot\") BETWEEN 1 AND 200 AND \"simulations\".\"customer_name_snapshot\" = trim(\"simulations\".\"customer_name_snapshot\")"
+        },
+        "snapshot_tax_valid": {
+          "name": "snapshot_tax_valid",
+          "value": "length(\"simulations\".\"tax_id_snapshot\") BETWEEN 1 AND 64 AND \"simulations\".\"tax_id_snapshot\" = trim(\"simulations\".\"tax_id_snapshot\")"
+        },
+        "snapshot_country_valid": {
+          "name": "snapshot_country_valid",
+          "value": "\"simulations\".\"country_code_snapshot\" GLOB '[A-Z][A-Z]'"
+        },
+        "snapshot_plan_valid": {
+          "name": "snapshot_plan_valid",
+          "value": "\"simulations\".\"plan_code_snapshot\" IN ('DEMO_BASIC','DEMO_PRO')"
+        },
+        "pricing_version_valid": {
+          "name": "pricing_version_valid",
+          "value": "length(\"simulations\".\"pricing_version\") BETWEEN 1 AND 64 AND \"simulations\".\"pricing_version\" = trim(\"simulations\".\"pricing_version\")"
+        },
+        "tax_version_valid": {
+          "name": "tax_version_valid",
+          "value": "length(\"simulations\".\"tax_policy_version\") BETWEEN 1 AND 64 AND \"simulations\".\"tax_policy_version\" = trim(\"simulations\".\"tax_policy_version\")"
+        },
+        "tax_rate_range": {
+          "name": "tax_rate_range",
+          "value": "\"simulations\".\"tax_rate_bps\" BETWEEN 0 AND 10000"
+        },
+        "breakdown_array": {
+          "name": "breakdown_array",
+          "value": "CASE WHEN json_valid(\"simulations\".\"breakdown_json\") THEN json_type(\"simulations\".\"breakdown_json\") = 'array' ELSE 0 END"
+        },
+        "simulation_date_valid": {
+          "name": "simulation_date_valid",
+          "value": "length(\"simulations\".\"created_at\") = 24 AND \"simulations\".\"created_at\" GLOB '????-??-??T??:??:??.???Z'"
+        }
+      }
+    }
+  },
+  "views": {},
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "indexes": {
+      "simulations_history": {
+        "columns": {
+          "\"created_at\" desc": {
+            "isExpression": true
+          },
+          "\"id\" desc": {
+            "isExpression": true
+          }
+        }
+      }
+    }
+  }
+}

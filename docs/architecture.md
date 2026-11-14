@@ -1,41 +1,32 @@
 # Arquitectura
 
-## Base implementada — spec 001
+Monorepo pnpm 10.33.4: apps/web, apps/api y packages/shared; Node 22, TypeScript estricto y ESM.
+React/Vite para web y Express/tsx para API. ESLint, Prettier y node:test para calidad.
 
-Monorepo pnpm workspaces, monolito modular con dos aplicaciones y un paquete compartido.
+## Persistencia 002
 
-| Área          | Configuración                                                       |
-| ------------- | ------------------------------------------------------------------- |
-| Runtime       | Node 22.13+ dentro de la rama 22; validado inicialmente con 22.19.0 |
-| Gestor        | pnpm 10.33.4; pnpm-lock.yaml; engine-strict                         |
-| Web           | React + TypeScript + Vite, ESM                                      |
-| API           | Express 5 + TypeScript; tsx en desarrollo                           |
-| Compartido    | packages/shared, sin contratos de negocio todavía                   |
-| Calidad       | TypeScript estricto, ESLint, Prettier                               |
-| Tests de base | node:test, fetch y puertos efímeros; Vite preview para smoke web    |
+- apps/api/src/db/schema.ts: definición Drizzle, índices y CHECK.
+- apps/api/drizzle: SQL versionado e historial de generación; tablas STRICT y triggers.
+- db/connection.ts y paths.ts: apertura explícita, propietario, rutas y aislamiento.
+- db/migrate.ts: runner transaccional con hashes de SQL; no confía solo en la fecha de una migración.
+- db/persistence.ts: escritura/lectura mínima, snapshots autoritativos y transacciones; no calcula precios/impuestos.
+- db/validation.ts: validaciones estructurales y aritmética exacta de integridad.
+- db/seed.ts, backup.ts y cli.ts: operaciones explícitas con guardas.
+- packages/shared: planes y límites sin importar Drizzle.
 
-`apps/api/src/app.ts` exporta createApp sin abrir puertos; index.ts valida PORT y ejecuta listen.
-Web usa 127.0.0.1:5173 y API 127.0.0.1:3000. El script raíz dev ejecuta ambas.
-PORT es opcional y se lee del entorno; los archivos .env no se cargan automáticamente.
-[.env.example](../.env.example) documenta su uso sin secretos.
+Se usa drizzle-orm 0.45.4 y better-sqlite3 12.11.1; drizzle-kit 0.31.11 genera SQL. Un finalizador idempotente añade STRICT/triggers a SQL nuevo porque el generador no expresa esas garantías.
+El script de generación no abre bases y no reescribe SQL ya finalizado. Revisar cualquier SQL nuevo antes de aplicarlo.
+Más detalle en [modelo](data-model.md), [decisiones](decisions.md) y [spec 002](../specs/002-persistence/spec.md).
 
-## Evolución del producto
+## Arranque
 
-La separación futura será transporte, validación, servicios, dominio puro y repositorios.
-El backend recalculará importes y no confiará en totales del navegador.
-Los contratos compartidos no expondrán tipos de persistencia.
+createApp está separado de listen. pnpm dev arranca web en 127.0.0.1:5173 y API en 127.0.0.1:3000.
+No requiere DB ni .env. /health conserva su contrato HTTP y no migra archivos.
+Los comandos DB compilan shared/API antes de ejecutar el CLI; las rutas relativas se resuelven contra raíz del repo.
 
-React Router, Zod, CSS Modules, un paquete monetario, Drizzle/better-sqlite3 y herramientas de tests de producto son opciones para fases posteriores. No están instalados ni se requieren en 001.
-No crear packages/contracts o packages/billing sin una necesidad concreta; actualmente existe packages/shared.
+## Evolución
 
-## Datos y despliegue
-
-No hay SQLite, migraciones ni servicios externos configurados.
-Una futura base no debe estar en web root ni en disco efímero sin persistencia.
-No se ha seleccionado proveedor ni se ha autorizado despliegue.
-
-## Referencias
-
-[Decisiones](decisions.md), [contrato actual](api-contracts.md), [testing](testing.md),
-[reglas de producto](business-rules.md) y [plan 001](../specs/001-foundation/plan.md).
-Las reglas de negocio no implican que las funcionalidades estén implementadas.
+No hay endpoints de clientes/simulaciones, motor monetario, políticas fiscales ni FX implementados.
+El futuro dominio permanecerá puro, separado de HTTP/SQL/React; los contratos no expondrán tipos ORM.
+Router, Zod y librerías UI no están instalados por anticipación.
+No se han configurado servicios externos ni despliegue.

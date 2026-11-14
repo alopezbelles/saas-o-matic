@@ -1,2 +1,1 @@
-// Punto de entrada reservado para futuros contratos TypeScript compartidos.
-export {};
+export * from './persistence-contracts.js';

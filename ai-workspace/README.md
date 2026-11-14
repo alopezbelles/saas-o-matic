@@ -12,3 +12,9 @@ La documentación canónica se enlaza, no se duplica como evidencia.
 
 Las reglas de producto describen trabajo futuro, no funcionalidades disponibles.
 No hay capturas de navegador ni revisión humana de aceptación registradas.
+
+## Persistencia 002
+
+[Salida real de pruebas](testing/002-tests.txt).
+
+[Spec activa](../specs/002-persistence/spec.md), [plan](../specs/002-persistence/plan.md), [tareas](../specs/002-persistence/tasks.md), [validación](../specs/002-persistence/validation.md) y [modelo](../docs/data-model.md).

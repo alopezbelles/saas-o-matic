@@ -1,35 +1,26 @@
 # Verificación
 
-Ejecutar desde la raíz con Node compatible y pnpm 10.33.4.
-En PowerShell usar pnpm.cmd y el PATH local explicado en el README si no hay pnpm global.
+Desde raíz con pnpm 10.33.4 y Node 22 compatible. En PowerShell usar pnpm.cmd si es necesario.
 
-| Comando               | Verificación                                                            |
-| --------------------- | ----------------------------------------------------------------------- |
-| pnpm lint             | ESLint sin warnings                                                     |
-| pnpm typecheck        | Tipos de web, API y shared                                              |
-| pnpm format:check     | Formato de archivos versionables                                        |
-| pnpm build            | Compilación de los tres paquetes                                        |
-| pnpm test:integration | Compila API y prueba health, JSON y rutas negativas por HTTP            |
-| pnpm test:web         | Compila web y prueba HTML/bundle mediante Vite preview                  |
-| pnpm test:gates       | Introduce errores temporales de tipos/lint/test y exige salidas no cero |
-| pnpm test:docs        | Comprueba enlaces locales y contexto de 001                             |
-| pnpm test             | Ejecuta secuencialmente todas las suites anteriores                     |
+| Comando               | Control                                                                      |
+| --------------------- | ---------------------------------------------------------------------------- |
+| pnpm lint             | ESLint sin warnings                                                          |
+| pnpm typecheck        | Compila shared y verifica tipos de todo el workspace y configuración Drizzle |
+| pnpm format:check     | Prettier                                                                     |
+| pnpm build            | Compila shared, API y web en orden workspace                                 |
+| pnpm test:integration | Compila shared/API, prueba HTTP y SQLite real                                |
+| pnpm test:web         | Compila web y prueba HTML/bundle HTTP                                        |
+| pnpm test:gates       | Errores deliberados de tipos/lint/test devuelven no cero                     |
+| pnpm test:docs        | Enlaces de ambas specs, contexto activo y scripts                            |
+| pnpm test             | Todas las suites anteriores, secuencialmente                                 |
 
-No ejecutar test:gates a la vez que lint/typecheck/build: sus fixtures erróneos son deliberados.
-Los fixtures se crean en un directorio único dentro de apps/api/src y se eliminan en finally.
-Las suites HTTP usan puertos efímeros y cierran servidores; no abren ni escriben SQLite.
-Los tests fallidos hacen fallar el comando: no se usa passWithNoTests.
+No ejecutar test:gates en paralelo con lint/typecheck/build. No se usa passWithNoTests.
+La integración crea contextos únicos en .cache/002-tests, cierra conexiones y retira únicamente esos directorios.
+Nunca abre datos reales de desarrollo/demo. Los casos demo se ejecutan dentro de la misma área temporal.
+Prueba límites contra shared, SQL directo, concurrencia, snapshots, migración fallida, seed, guardas y backup.
+El CLI se prueba también desde raíz con un destino con espacios.
+Los fixtures monetarios son técnicos; no son políticas fiscales ni pruebas de un motor de cálculo.
 
-## Comprobaciones de entorno
-
-Instalar con pnpm install --frozen-lockfile. Arrancar pnpm dev y verificar web y /health.
-Comprobar también start:api después de build, PORT inválido y puerto ocupado.
-La ausencia de .env es válida para los valores por defecto; no hay carga automática de .env.
-engine-strict rechaza Node fuera del rango de engines.
-
-## Límites
-
-No existen tests unitarios de dominio ni E2E de navegador: no hay dominio implementado ni flujos de negocio.
-El smoke HTTP de web no afirma accesibilidad, renderizado ni interacción en navegador.
-Una reinstalación con caché no demuestra instalación en otro equipo o entorno totalmente limpio.
-Registrar ejecuciones reales y límites en [validación](../specs/001-foundation/validation.md).
+No hay E2E de navegador ni unit tests del futuro dominio. El smoke HTTP web no acredita accesibilidad.
+Instalación con caché no equivale a otra máquina limpia.
+Evidencias: [001](../specs/001-foundation/validation.md), [002](../specs/002-persistence/validation.md).

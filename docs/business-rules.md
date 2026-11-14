@@ -20,7 +20,7 @@ No aplicar el precio del último tramo a todos los usuarios.
 
 ## BR02 — consumo y plan
 
-Guardar usuarios, storageGb y apiCalls. Almacenamiento/API no tienen precio definido: son metadatos, no cero tarifado por un plan inventado. Plan identifica selección comercial sin alterar base. Catálogo y límites D02/D04 pendientes. No convertir “0 usuarios” en “mínimo 1”.
+Guardar usuarios, storageGb y apiCalls. Almacenamiento/API no tienen precio definido: son metadatos, no cero tarifado por un plan inventado. Plan identifica selección comercial sin alterar base. D02/D04 definidos para persistencia en spec 002: DEMO_BASIC/DEMO_PRO; users 0..1000, storageGb 0..10000 y apiCalls 0..10000000, enteros sin cargos adicionales. No convertir “0 usuarios” en “mínimo 1”.
 
 ## BR03 — impuesto
 
@@ -50,7 +50,7 @@ Base e histórico EUR. Conversión de visualización usa tasa EUR→destino vali
 Propuesta usar decimal.js en packages/billing para FX, con precisión configurada y ROUND_HALF_UP. Parsear tasa como decimal, redondear una vez a unidades menores de destino. EUR/USD/GBP usan 2 decimales; admitir otra moneda exige catálogo explícito de exponente, por ejemplo JPY=0, KWD=3. No asumir todas a 2.
 Fuente JSON da números: convertir representación recibida a decimal sin realizar operaciones binarias intermedias.
 Importe principal es conversión de total EUR; si se muestran líneas convertidas, ajustar/exponer diferencia de redondeo para que la suma visible sea coherente.
-D05 propone no persistir FX: indicar “Conversión orientativa al tipo de [fecha]”. Tasa actual jamás modifica cents históricos.
+D05 establece no persistir FX: indicar “Conversión orientativa al tipo de [fecha]”. Tasa actual jamás modifica cents históricos.
 [Proveedor](https://www.exchangerate-api.com/docs/free): endpoint abierto sin clave, actualización diaria, atribución obligatoria, límite de peticiones. “Tiempo real” en UI significa respuesta inmediata al consumo/divisa, no cotización bursátil en directo.
 
 ## BR06 — histórico

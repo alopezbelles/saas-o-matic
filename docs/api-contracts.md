@@ -12,3 +12,5 @@ No hay endpoints de clientes, simulaciones, configuración fiscal ni persistenci
 El formato de errores de negocio se definirá en su spec; no se atribuye al 404 por defecto de Express.
 
 API local: http://127.0.0.1:3000. PORT permite cambiar el puerto.
+
+002 añade persistencia interna y comandos DB, sin rutas HTTP nuevas. /health no requiere una base inicializada.

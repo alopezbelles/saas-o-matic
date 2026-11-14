@@ -1,11 +1,22 @@
 # Decisiones
 
-| ID      | Decisión y alcance                                                                                                                         | Fuente                                                                       |
-| ------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
-| D11     | Conservar pnpm workspaces, Node 22 y packages/shared para 001. La propuesta anterior npm/Node 24 no describe el proyecto actual.           | Stack solicitado por Alex e infraestructura ya creada.                       |
-| D12     | Las fuentes oficiales de producto no están disponibles; no certificar su revisión. Esto no impide verificar la infraestructura solicitada. | Inspección del repositorio; alcance 001.                                     |
-| 001-C01 | Pruebas mínimas con node:test, fetch y Vite preview; sin nuevas dependencias.                                                              | Implementación de 001, autorizada por la petición de completar lo que falta. |
-| 001-C02 | Base de datos y drivers fuera de 001.                                                                                                      | Restricciones iniciales de Alex.                                             |
+| ID      | Decisión                                                                                                 |
+| ------- | -------------------------------------------------------------------------------------------------------- |
+| D11     | Conservar pnpm 10.33.4, Node 22 y packages/shared.                                                       |
+| D12     | Fuentes oficiales de producto no disponibles; no certificar revisión.                                    |
+| 001-C01 | Pruebas con node:test, HTTP y Vite preview.                                                              |
+| 001-C02 | Base de datos fuera de 001; implementada exclusivamente bajo alcance 002.                                |
+| D02     | DEMO_BASIC y DEMO_PRO sin precios/multiplicadores de plan.                                               |
+| D04     | Enteros: users 0..1000, storageGb 0..10000, apiCalls 0..10000000. Guardas técnicas, no cuotas oficiales. |
+| D05     | Histórico EUR; sin persistir FX.                                                                         |
+| D06     | UNIQUE(country_code, tax_id_normalized), nombre/email no únicos.                                         |
+| 002-C01 | Drizzle ORM 0.45.4, better-sqlite3 12.11.1, drizzle-kit 0.31.11 y tipos 9.6.0.                           |
+| 002-C02 | Modelos de 002 en su spec, indexados desde docs/data-model.md.                                           |
+| 002-C03 | SQL STRICT finalizado tras generación; triggers append-only; runner transaccional con hashes.            |
+| 002-C04 | Rutas restringidas a apps/api/data y .cache; tests necesitan contexto temporal propio.                   |
+| 002-C05 | Seed de dos clientes ficticios, solo demo marcada; sin simulaciones ni políticas fiscales ficticias.     |
+| 002-C06 | journal DELETE, timeout 1000 ms, sin retries infinitos. Backup del driver a archivo nuevo.               |
 
-Los D01–D10 citados en reglas de negocio no están resueltos por esta spec.
-No se fija catálogo, límites de consumo, países, tasas fiscales ni nuevas dependencias de producto.
+Fuente de D02/D04/D05/D06: decisiones delegadas y aceptadas por Alex antes de implementar 002; [detalle](../specs/002-persistence/clarifications.md).
+Se eligió 12.11.1 porque tiene binario publicado Windows x64/Node ABI127; 13.2.0 declaraba compatibilidad pero no tenía ese asset.
+Los códigos y tasas de fixtures técnicos no definen reglas fiscales. D01/D03/D10 siguen fuera de 002.

@@ -20,7 +20,7 @@ test('los documentos y el índice enlazan archivos locales existentes', () => {
     'AGENTS.md',
     'MEMORY.md',
     ...markdownFiles('docs'),
-    ...markdownFiles('specs/001-foundation'),
+    ...markdownFiles('specs'),
     ...markdownFiles('ai-workspace'),
   ];
   for (const file of files) {
@@ -37,7 +37,7 @@ test('los documentos y el índice enlazan archivos locales existentes', () => {
 });
 
 test('el contexto identifica la spec activa y los comandos documentados existen', () => {
-  assert.match(readFileSync('MEMORY.md', 'utf8'), /001-foundation/);
+  assert.match(readFileSync('MEMORY.md', 'utf8'), /002-persistence/);
   assert.match(readFileSync('AGENTS.md', 'utf8'), /MEMORY\.md/);
   assert.match(
     readFileSync('ai-workspace/README.md', 'utf8'),
@@ -61,6 +61,11 @@ test('el contexto identifica la spec activa y los comandos documentados existen'
     'test:web',
     'test:gates',
     'test:docs',
+    'db:generate',
+    'db:migrate',
+    'db:demo:init',
+    'db:seed',
+    'db:backup',
   ];
   for (const command of commands) assert.ok(scripts[command], command);
 });

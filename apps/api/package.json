@@ -5,17 +5,27 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "tsc",
+    "build": "tsc && tsc -p tsconfig.config.json",
     "start": "node dist/index.js",
-    "typecheck": "tsc --noEmit",
-    "test": "node --test test/*.test.mjs"
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.config.json",
+    "test": "node --test test/*.test.mjs",
+    "db:generate": "tsc -p tsconfig.config.json && drizzle-kit generate && node scripts/finalize-migrations.mjs",
+    "db:migrate": "node dist/db/cli.js migrate",
+    "db:demo:init": "node dist/db/cli.js demo:init",
+    "db:seed": "node dist/db/cli.js seed",
+    "db:backup": "node dist/db/cli.js backup"
   },
   "dependencies": {
+    "@saas-o-matic/shared": "workspace:*",
+    "better-sqlite3": "12.11.1",
+    "drizzle-orm": "0.45.4",
     "express": "^5.1.0"
   },
   "devDependencies": {
+    "@types/better-sqlite3": "9.6.0",
     "@types/express": "^5.0.5",
     "@types/node": "^22.19.0",
+    "drizzle-kit": "0.31.11",
     "tsx": "^4.20.6"
   }
 }
