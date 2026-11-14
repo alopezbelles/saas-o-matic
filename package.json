@@ -1,0 +1,32 @@
+{
+  "name": "saas-o-matic",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@10.33.4",
+  "engines": {
+    "node": ">=22.13.0 <23",
+    "pnpm": ">=10 <11"
+  },
+  "scripts": {
+    "dev": "pnpm --parallel --filter @saas-o-matic/web --filter @saas-o-matic/api dev",
+    "dev:web": "pnpm --filter @saas-o-matic/web dev",
+    "dev:api": "pnpm --filter @saas-o-matic/api dev",
+    "build": "pnpm -r build",
+    "start:api": "pnpm --filter @saas-o-matic/api start",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "eslint . --max-warnings 0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.15.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.5.7",
+    "globals": "^16.5.0",
+    "prettier": "^3.6.2",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.46.0"
+  }
+}
