@@ -8,3 +8,5 @@
 - T01–T06 completadas técnicamente; 21 pruebas pasan. La aceptación humana de la entrega no está registrada.
 - [Validación 002](specs/002-persistence/validation.md) registra controles y límites.
 - No hay commits/pushes, cambios de remoto ni aceptación humana de la entrega registrados por el agente.
+
+- Documentación del proceso: [índice ai-workspace](ai-workspace/README.md), con retrospectivas de 001/002 redactadas después del desarrollo; instrucciones técnicas reformuladas, identificadas como retrospectivas y no como mensajes literales. No representan nuevas ejecuciones de aplicación ni revisión humana final.

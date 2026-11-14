@@ -73,3 +73,8 @@ Fuentes: [releases del driver](https://github.com/WiseLibs/better-sqlite3/releas
 - No se prueba otro sistema operativo, equipo limpio, UI de negocio ni política fiscal real.
 - No se ha inicializado la base development/demo del usuario; todos los datos de validación eran temporales y se retiraron al cerrar conexiones.
 - No commits/pushes ni cambios de remoto. No se registra aceptación humana.
+
+## Registro retrospectivo del proceso
+
+Añadido el 14 de noviembre de 2026, después del desarrollo: [iteración](../../ai-workspace/iterations/002-persistence-retrospective.md), [instrucciones técnicas reformuladas](../../ai-workspace/prompts/002-persistence.md), [resumen de evidencia](../../ai-workspace/testing/002-persistence.md) y [revisión documental](../../ai-workspace/reviews/002-persistence.md).
+No se reejecutan tests de aplicación por añadir esta documentación. Se conserva la salida original 002-tests.txt sin modificarla; la aceptación humana sigue siendo un estado separado.

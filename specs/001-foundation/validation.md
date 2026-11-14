@@ -1,6 +1,5 @@
 # Validación 001
 
-Fecha: 14 de noviembre de 2026. Entorno: Windows PowerShell, Node 22.19.0, npm 10.9.3, pnpm 10.33.4 y Git 2.51.0.windows.1.
 Alcance: infraestructura y controles; autorización en [approvals](../../docs/approvals.md).
 
 ## Resultados reales
@@ -60,3 +59,8 @@ El rechazo de Node se comprobó mediante la configuración node-version de pnpm;
 
 Veredicto: **CUMPLE TÉCNICAMENTE** para el alcance de 001. T01–T05 completadas técnicamente.
 La aceptación humana de la entrega no está registrada.
+
+## Registro retrospectivo del proceso
+
+Añadido el 14 de noviembre de 2026, después del desarrollo: [iteración](../../ai-workspace/iterations/001-foundation-retrospective.md), [instrucciones técnicas reformuladas](../../ai-workspace/prompts/001-foundation.md), [resumen de evidencia](../../ai-workspace/testing/001-foundation.md) y [revisión documental](../../ai-workspace/reviews/001-foundation.md).
+Esta incorporación no reejecuta pruebas ni cambia los resultados históricos; no hay log íntegro de 001 conservado ni aceptación humana final registrada.

@@ -2,7 +2,6 @@
 
 ## Fuente y estado
 
-Alex delegó tecnología/modelo/planes y aceptó los límites e histórico EUR. Después indicó «perfecto, desarrolla la spec». Resultados de implementación en validation.md.
 
 | ID      | Decisión para 002                                                                                                                          |
 | ------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
