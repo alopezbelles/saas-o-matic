@@ -1,4 +1,5 @@
 # Constitución
+
 1. Mantener un monolito modular con dos apps en un repositorio; complejidad proporcional al reto.
 2. Implementar solo requisitos y tareas aprobados; cambiar primero la spec cuando cambie el comportamiento.
 3. Separar transporte, validación, orquestación, dominio y persistencia.
@@ -9,4 +10,3 @@
 8. Justificar y autorizar dependencias; fijar versiones reproducibles en lockfile.
 9. Mantener trazabilidad requisito → spec → tarea → test → evidencia.
 10. No exponer secretos; datos ficticios en demo. Accesibilidad y errores recuperables forman parte del producto.
-

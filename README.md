@@ -49,6 +49,7 @@ pnpm format:check
 pnpm format
 pnpm build
 pnpm start:api
+pnpm test
 ```
 
 `start:api` requiere ejecutar `build` previamente. El backend acepta la variable de entorno opcional `PORT` y usa 3000 por defecto. No se necesita archivo `.env` para arrancar. Ambos servidores de desarrollo escuchan en la interfaz local.
@@ -63,10 +64,18 @@ packages/
   shared/              Punto de entrada para futuros contratos TypeScript
 ```
 
-La configuración raíz contiene los workspaces, TypeScript estricto, ESLint y Prettier. `shared` emite JavaScript y declaraciones al compilar; todavía no define contratos ni tiene consumidores. `pnpm-lock.yaml` fija las versiones resueltas y debe incluirse en el primer commit.
+La configuración raíz contiene los workspaces, TypeScript estricto, ESLint y Prettier. `shared` emite JavaScript y declaraciones al compilar; todavía no define contratos ni tiene consumidores. `pnpm-lock.yaml` fija las versiones resueltas y debe mantenerse versionado.
 
 Las dependencias de ejecución son React y React DOM en web y Express en API. El resto son herramientas de desarrollo y tipos. No se han añadido librerías de UI, Prisma ni SQLite.
 
+## Pruebas y documentación
+
+`pnpm test` ejecuta integración de API, smoke HTTP de web, comprobaciones negativas de los controles y enlaces documentales. Compila las aplicaciones antes de sus pruebas. No instala dependencias nuevas ni usa base de datos.
+
+También existen `test:integration`, `test:web`, `test:gates` y `test:docs`. No ejecutar `test:gates` en paralelo con lint, tipos o build: introduce errores temporales y comprueba que los controles los rechazan. El smoke web no sustituye pruebas de navegador.
+
+El arranque no carga `.env` automáticamente; [.env.example](.env.example) explica la variable opcional PORT. Contexto y evidencias en [ai-workspace](ai-workspace/README.md), [testing](docs/testing.md) y [validación 001](specs/001-foundation/validation.md).
+
 ## Git
 
-Repositorio local inicializado, sin remoto ni commits. Se ignoran dependencias, cachés, compilaciones, variables de entorno y archivos SQLite (incluidos sus archivos auxiliares).
+El repositorio local está vinculado al remoto indicado por Alex. Esta tarea no realiza commits ni pushes. Se ignoran dependencias, cachés, compilaciones, variables de entorno y archivos SQLite (incluidos sus archivos auxiliares).

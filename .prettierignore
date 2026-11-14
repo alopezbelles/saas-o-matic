@@ -3,3 +3,5 @@ dist
 .cache
 .tools
 pnpm-lock.yaml
+.agents/
+.codex/
