@@ -11,3 +11,8 @@ export type TieredBase = {
   pricingVersion: string;
   breakdown: TierBreakdown[];
 };
+
+export type TaxPolicy = {
+  readonly version: string;
+  readonly ratesByCountry: Readonly<Record<string, number>>;
+};

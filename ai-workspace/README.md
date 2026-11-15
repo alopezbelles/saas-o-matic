@@ -57,3 +57,5 @@ Registros redactados el 15 de noviembre de 2026 por autorización posterior de A
 T01: [instrucción previa](prompts/004-billing.md#t01--instrucción-previa-de-implementación), [iteración](iterations/004-billing.md), [pruebas](testing/004-billing-t01.md) y [revisión técnica](reviews/004-billing-t01.md). Fixtures y runner implementados; motor pendiente. Formato global con incidencia CRLF/LF en archivos ajenos, delimitada en la evidencia.
 
 T02: [instrucción previa](prompts/004-billing.md#t02--instrucción-previa-de-implementación), [pruebas](testing/004-billing-t02.md) y [revisión](reviews/004-billing-t02.md). Base acumulativa y contrato básico implementados; impuestos y presupuesto completo pendientes.
+
+T03: [instrucción previa](prompts/004-billing.md#t03--instrucción-previa-de-implementación), [pruebas](testing/004-billing-t03.md) y [revisión](reviews/004-billing-t03.md). Dinero e impuestos implementados; presupuesto completo pendiente de T04. Los párrafos anteriores describen sus cierres históricos.

@@ -1,5 +1,6 @@
 import { CONSUMPTION_LIMITS } from '../persistence-contracts.js';
 import { BillingError } from './errors.js';
+import { toSafeCents } from './money.js';
 import type { TierBreakdown, TieredBase } from './types.js';
 
 // Keep the version and its rules together; published rules must not be changed.
@@ -29,19 +30,16 @@ export function calculateTieredBase(users: number): TieredBase {
     const quantity = Math.min(users, tier.to ?? users) - tier.from + 1;
     const subtotalCents = BigInt(quantity) * BigInt(tier.unitPriceCents);
     baseCents += subtotalCents;
-    if (baseCents > BigInt(Number.MAX_SAFE_INTEGER)) {
-      throw new BillingError('BILLING_MONEY_OVERFLOW');
-    }
     breakdown.push({
       tierFrom: tier.from,
       tierTo: tier.to,
       quantity,
       unitPriceCents: tier.unitPriceCents,
-      subtotalCents: Number(subtotalCents),
+      subtotalCents: toSafeCents(subtotalCents),
     });
   }
   return {
-    baseCents: Number(baseCents),
+    baseCents: toSafeCents(baseCents),
     pricingVersion: pricing.version,
     breakdown,
   };

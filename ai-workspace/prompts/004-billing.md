@@ -76,3 +76,11 @@ Preparada antes del código por el agente para ejecutar T02, autorizada por Alex
 **Alcance:** tipos TierBreakdown/TieredBase, errores, cálculo puro y exports públicos. Intermediarios monetarios BigInt y salida segura en céntimos. Sin impuestos, política fiscal, presupuesto completo, dependencias ni persistencia.
 **Pruebas:** consumir oráculos independientes de T01, comprobar fronteras/desglose, usuarios inválidos, todos los marginales 1..1000, invariantes, serialización y aislamiento entre llamadas. No replicar el algoritmo como único oráculo.
 **Verificación:** lint, typecheck, test:unit, test:docs, format:check global y acotado; documentar incidencia CRLF/LF ajena sin reformateo masivo. Actualizar evidencias y marcar solo T02 si cumple. No ejecutar commits ni continuar T03.
+
+## T03 — Instrucción previa de implementación
+
+Preparada por el agente antes del código, tras autorización de Alex para T03; no cita literal. Base eb24f0a, T01/T02 disponibles.
+**Objetivo:** implementar dinero exacto, calculateTax y validación/resolución de política explícita, con demo-standard-v1 en configuración API.
+**Alcance:** money.ts, tax.ts, TaxPolicy y exports; centralizar la conversión segura ya presente en tiers.ts para evitar duplicación. Configuración congelada con ES 2100, FR 2000, DE 1900 y GB 2000 bps, sin entorno/red.
+**Restricciones:** no calculateQuote ni integración HTTP/DB/FX, dependencias o commits. Datos inválidos no se coercionan; cero explícito no equivale a ausencia; versiones y tasas se validan antes del uso.
+**Verificación prevista:** oráculos fiscales independientes y sintéticos de T01; half-up alrededor de medio céntimo, cero, valores seguros extremos, intermediarios mayores al rango Number, overflow, tasas/políticas inválidas y países ausentes o heredados. Probar configuración real desde build API y preservar tests anteriores. Lint, typecheck, unitarios, docs y formato global/acotado; registrar resultados reales.

@@ -47,3 +47,10 @@ Lint/typecheck pasan; unitarios 5 shared + 3 API y 2 documentales pasan. Formato
 Se implementaron TierBreakdown/TieredBase, BillingError y calculateTieredBase con versión/reglas agrupadas. Validación de users mediante límite shared, BigInt en operaciones monetarias y resultados nuevos por llamada; sin impuestos ni quote.
 Cinco tests productivos se suman a los cinco fixtures y tres de API: 13 pasan. Se cubren rango completo, marginales, oráculos, errores, JSON y aislamiento. Lint y typecheck pasan; formato global informa 42 archivos ajenos, uno menos al modificar/formatear index.ts en esta tarea.
 RF1 implementado y probado; RF3/RF4 parciales. [Evidencia](../testing/004-billing-t02.md) y [revisión](../reviews/004-billing-t02.md). Sin DB, nuevas dependencias ni commits. Esperar indicación para T03.
+
+## T03 — Dinero e impuestos versionados
+
+15 de noviembre de 2026, base eb24f0a. Alex autoriza T03; [instrucción técnica](../prompts/004-billing.md#t03--instrucción-previa-de-implementación) preparada antes del código.
+Se implementaron money/tax, TaxPolicy, configuración API demo-standard-v1 y pruebas. Se centralizó conversión segura de tramos en toSafeCents para evitar duplicación. Objetos de política planos o sin prototipo, sin tasas heredadas; cero es explícito, nunca fallback.
+Seis tests shared y dos de API nuevos; 21 unitarios pasan junto con lint/typecheck. La configuración se congela en runtime. Formato global con 41 archivos ajenos; se formateó package.json de API al modificar el runner. No cambios masivos.
+[Evidencia](../testing/004-billing-t03.md) y [revisión](../reviews/004-billing-t03.md). Sin quote, DB, HTTP, FX, dependencias ni commits. Esperar indicación para T04.

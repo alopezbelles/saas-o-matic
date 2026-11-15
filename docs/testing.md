@@ -4,7 +4,7 @@ Desde raíz con pnpm 10.33.4 y Node 22 compatible. En PowerShell usar pnpm.cmd s
 
 | Comando               | Control                                                                      |
 | --------------------- | ---------------------------------------------------------------------------- |
-| pnpm test:unit        | Compila shared/API, prueba fixtures/tramos de 004 y contratos/fiscal de 003  |
+| pnpm test:unit        | Compila shared/API; fixtures, tramos, dinero, impuestos y contratos/fiscal   |
 | pnpm lint             | ESLint sin warnings                                                          |
 | pnpm typecheck        | Compila shared y verifica tipos de todo el workspace y configuración Drizzle |
 | pnpm format:check     | Prettier                                                                     |
@@ -22,7 +22,7 @@ Prueba límites contra shared, SQL directo, concurrencia, snapshots, migración 
 El CLI se prueba también desde raíz con un destino con espacios.
 Los fixtures monetarios son técnicos; no son políticas fiscales ni pruebas de un motor de cálculo.
 
-test:unit cubre fiscal/contratos de clientes, fixtures y cálculo de base por tramos de 004. No hay E2E de navegador, impuestos ni presupuesto completo. El smoke HTTP web no acredita accesibilidad.
+test:unit cubre fiscal/contratos de clientes, fixtures, tramos, dinero e impuestos de 004. No hay E2E de navegador ni presupuesto completo. El smoke HTTP web no acredita accesibilidad.
 Instalación con caché no equivale a otra máquina limpia.
 Evidencias: [001](../specs/001-foundation/validation.md), [002](../specs/002-persistence/validation.md).
 
@@ -42,3 +42,8 @@ El gate de contexto comprueba la línea de spec activa 004 y la existencia del d
 
 billing.test.mjs añade cinco tests productivos: oráculos independientes, desglose/JSON para 0..1000, marginales para 1..1000, rechazo runtime sin coerción y determinismo/aislamiento entre llamadas. Usa exports del build de shared; sin DB ni red.
 Con los cinco tests de fixtures y tres de API, test:unit ejecuta 13 pruebas. RF1 queda probado; RF3/RF4 solo en su parte de tramos. No acredita impuestos ni quote. [Evidencia T02](../ai-workspace/testing/004-billing-t02.md).
+
+## 004 — T03
+
+billing-tax.test.mjs añade seis pruebas de dinero/política y API incorpora dos de configuración real. test:unit conserva las anteriores: 16 shared y 5 API, 21 en total.
+UT-MONEY-01 cubre half-up, tipos/rangos, intermediarios BigInt y overflow. UT-TAX-01 cubre cuatro países, versión, tasa cero, ausentes, política inválida y congelación. Sin DB ni HTTP. RF2/RF3 siguen parciales hasta T04. [Evidencia T03](../ai-workspace/testing/004-billing-t03.md).

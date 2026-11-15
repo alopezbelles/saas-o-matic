@@ -1,6 +1,6 @@
 # Plan 004 — Motor monetario puro
 
-Estado: T01/T02 implementadas; fixtures, runner y base por tramos disponibles. Impuestos y presupuesto completo pendientes. [Spec](spec.md) y [decisiones](clarifications.md) canónicas.
+Estado: T01–T03 implementadas; fixtures, runner, base, dinero e impuestos disponibles. Presupuesto completo pendiente. [Spec](spec.md) y [decisiones](clarifications.md) canónicas.
 
 ## Arquitectura
 
@@ -10,6 +10,7 @@ Configuración fiscal en API; shared recibe datos explícitos. No publicar confi
 ## Archivos previstos
 
 Mapa de implementación: T01 creó fixtures/runner; T02 añadió types.ts (tipos básicos), errors.ts, tiers.ts y billing.test.mjs. El resto de rutas son previsiones, no enlaces a archivos existentes.
+T03 añade money.ts, tax.ts, TaxPolicy, configuración API y test. Las pruebas puras fiscales se agrupan en packages/shared/test/billing-tax.test.mjs, separadas de tramos. quote.ts y sus tipos siguen previstos para T04.
 
 | Archivo                                        | Responsabilidad                                                   |
 | ---------------------------------------------- | ----------------------------------------------------------------- |
@@ -31,6 +32,8 @@ Ampliar index.ts de shared y package.json raíz/shared/API al integrar pruebas. 
 
 - calculateTieredBase(users: number): TieredBase (baseCents, pricingVersion, breakdown).
 - calculateTax(baseCents: number, rateBps: number): number (impuesto en céntimos).
+- validateTaxPolicy(policy: unknown): asserts policy is TaxPolicy; resolveTaxRate(countryCode: string, policy: TaxPolicy): number. Política y mapa son objetos planos o sin prototipo; no se aceptan tasas heredadas.
+- assertMoneyCents, toSafeCents y roundHalfUp centralizan guardas, conversión y redondeo. tiers.ts reutiliza conversión segura.
 - calculateQuote(input: BillingInput, policy: TaxPolicy): BillingQuote.
 
 Entrada, salida, errores y versiones definidos en [spec](spec.md). Validar runtime además de tipos strict. No mutar entradas, política ni reglas, ni devolver referencias mutables a configuración interna.

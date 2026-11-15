@@ -25,6 +25,8 @@ Actualización posterior: Alex autoriza implementar T01 (fixtures, runner shared
 
 Actualización tras T01: Alex autoriza T02 (tramos, contrato básico, errores y pruebas). T03–T05 y commits/pushes requieren indicación posterior.
 
+Actualización tras T02: Alex autoriza T03 (dinero exacto, impuestos versionados, configuración y pruebas). No autoriza todavía T04/T05 ni commits/pushes.
+
 ## Revisión de entregas
 
 La conformidad técnica se documenta en la validación de cada spec.

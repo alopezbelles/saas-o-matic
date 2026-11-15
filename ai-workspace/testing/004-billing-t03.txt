@@ -1,0 +1,241 @@
+$ pnpm.cmd lint
+exit_code=0
+
+> saas-o-matic@0.0.0 lint C:\Users\alope\Documents\saas-o-matic
+> eslint . --max-warnings 0
+
+
+$ pnpm.cmd typecheck
+exit_code=0
+
+> saas-o-matic@0.0.0 typecheck C:\Users\alope\Documents\saas-o-matic
+> pnpm --filter @saas-o-matic/shared build && pnpm -r typecheck
+
+
+> @saas-o-matic/shared@0.0.0 build C:\Users\alope\Documents\saas-o-matic\packages\shared
+> tsc
+
+Scope: 3 of 4 workspace projects
+packages/shared typecheck$ tsc --noEmit
+apps/web typecheck$ tsc --noEmit
+packages/shared typecheck: Done
+apps/web typecheck: Done
+apps/api typecheck$ tsc --noEmit && tsc -p tsconfig.config.json
+apps/api typecheck: Done
+
+$ pnpm.cmd test:unit
+exit_code=0
+
+> saas-o-matic@0.0.0 test:unit C:\Users\alope\Documents\saas-o-matic
+> pnpm --filter @saas-o-matic/api... build && pnpm --filter @saas-o-matic/shared test:unit && pnpm --filter @saas-o-matic/api test:unit
+
+Scope: 2 of 4 workspace projects
+packages/shared build$ tsc
+packages/shared build: Done
+apps/api build$ tsc && tsc -p tsconfig.config.json
+apps/api build: Done
+
+> @saas-o-matic/shared@0.0.0 test:unit C:\Users\alope\Documents\saas-o-matic\packages\shared
+> node --test test/*.test.mjs
+
+TAP version 13
+# Subtest: tier fixtures cover agreed boundaries with coherent quantities
+ok 1 - tier fixtures cover agreed boundaries with coherent quantities
+  ---
+  duration_ms: 2.9642
+  type: 'test'
+  ...
+# Subtest: demo quote fixtures cover four countries and preserve totals
+ok 2 - demo quote fixtures cover four countries and preserve totals
+  ---
+  duration_ms: 0.4948
+  type: 'test'
+  ...
+# Subtest: synthetic rounding fixtures straddle half a cent without defining product rates
+ok 3 - synthetic rounding fixtures straddle half a cent without defining product rates
+  ---
+  duration_ms: 0.2748
+  type: 'test'
+  ...
+# Subtest: consumption fixtures match existing shared limits and cover invalid inputs
+ok 4 - consumption fixtures match existing shared limits and cover invalid inputs
+  ---
+  duration_ms: 0.3297
+  type: 'test'
+  ...
+# Subtest: error and policy fixtures have unique cases and the agreed error vocabulary
+ok 5 - error and policy fixtures have unique cases and the agreed error vocabulary
+  ---
+  duration_ms: 0.3801
+  type: 'test'
+  ...
+# Subtest: UT-MONEY-01: tax rounds only once, with half-up around half a cent
+ok 6 - UT-MONEY-01: tax rounds only once, with half-up around half a cent
+  ---
+  duration_ms: 1.4591
+  type: 'test'
+  ...
+# Subtest: UT-MONEY-01: safe boundary and oversized intermediates retain exact cents
+ok 7 - UT-MONEY-01: safe boundary and oversized intermediates retain exact cents
+  ---
+  duration_ms: 0.7826
+  type: 'test'
+  ...
+# Subtest: UT-MONEY-01: invalid helper inputs reject without coercion
+ok 8 - UT-MONEY-01: invalid helper inputs reject without coercion
+  ---
+  duration_ms: 1.1735
+  type: 'test'
+  ...
+# Subtest: UT-TAX-01: versioned policy selects all four explicit rates without mutation
+ok 9 - UT-TAX-01: versioned policy selects all four explicit rates without mutation
+  ---
+  duration_ms: 3.2949
+  type: 'test'
+  ...
+# Subtest: UT-TAX-01: invalid policies and countries fail with stable codes
+ok 10 - UT-TAX-01: invalid policies and countries fail with stable codes
+  ---
+  duration_ms: 2.112
+  type: 'test'
+  ...
+# Subtest: UT-TAX-01: valid version boundary and null-prototype rate maps are supported
+ok 11 - UT-TAX-01: valid version boundary and null-prototype rate maps are supported
+  ---
+  duration_ms: 1.9447
+  type: 'test'
+  ...
+# Subtest: UT-BILL-01: tiered base matches independent boundary oracles
+ok 12 - UT-BILL-01: tiered base matches independent boundary oracles
+  ---
+  duration_ms: 4.3035
+  type: 'test'
+  ...
+# Subtest: UT-BILL-01: every allowed count has a consistent, serializable breakdown
+ok 13 - UT-BILL-01: every allowed count has a consistent, serializable breakdown
+  ---
+  duration_ms: 31.5539
+  type: 'test'
+  ...
+# Subtest: UT-PROP-01: each added user costs only the applicable marginal price
+ok 14 - UT-PROP-01: each added user costs only the applicable marginal price
+  ---
+  duration_ms: 1.7356
+  type: 'test'
+  ...
+# Subtest: UT-INPUT-004: invalid users fail without coercion with a stable field and code
+ok 15 - UT-INPUT-004: invalid users fail without coercion with a stable field and code
+  ---
+  duration_ms: 0.9651
+  type: 'test'
+  ...
+# Subtest: UT-PROP-01: results are deterministic and mutations do not leak between calls
+ok 16 - UT-PROP-01: results are deterministic and mutations do not leak between calls
+  ---
+  duration_ms: 0.3392
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 195.6842
+
+> @saas-o-matic/api@0.0.0 test:unit C:\Users\alope\Documents\saas-o-matic\apps\api
+> node --test test/tax-id.test.mjs test/customers-contract.test.mjs test/tax-policy.test.mjs
+
+TAP version 13
+# Subtest: UT-CONTRACT-01: cinco campos, normalización y longitudes
+ok 1 - UT-CONTRACT-01: cinco campos, normalización y longitudes
+  ---
+  duration_ms: 4.0704
+  type: 'test'
+  ...
+# Subtest: UT-CONTRACT-01: parámetros, UUID y query repetida/estructurada
+ok 2 - UT-CONTRACT-01: parámetros, UUID y query repetida/estructurada
+  ---
+  duration_ms: 1.4971
+  type: 'test'
+  ...
+# Subtest: UT-FISC-01: fixtures independientes de todas las familias y control por prefijo
+ok 3 - UT-FISC-01: fixtures independientes de todas las familias y control por prefijo
+  ---
+  duration_ms: 3.8126
+  type: 'test'
+  ...
+# Subtest: UT-TAX-01: server policy has the agreed version, countries and rates
+ok 4 - UT-TAX-01: server policy has the agreed version, countries and rates
+  ---
+  duration_ms: 3.1959
+  type: 'test'
+  ...
+# Subtest: UT-TAX-01: published policy and rates cannot be mutated
+ok 5 - UT-TAX-01: published policy and rates cannot be mutated
+  ---
+  duration_ms: 0.3283
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 165.1408
+
+$ pnpm.cmd format:check
+exit_code=1
+
+> saas-o-matic@0.0.0 format:check C:\Users\alope\Documents\saas-o-matic
+> prettier --check .
+
+Checking formatting...
+[warn] AGENTS.md
+[warn] ai-workspace/decisions/ADR-004-customers-api.md
+[warn] ai-workspace/iterations/003-customers-api.md
+[warn] ai-workspace/iterations/README.md
+[warn] ai-workspace/prompts/003-customers-api.md
+[warn] ai-workspace/prompts/README.md
+[warn] ai-workspace/reviews/003-customers-api.md
+[warn] ai-workspace/reviews/README.md
+[warn] ai-workspace/testing/003-customers-api.md
+[warn] ai-workspace/testing/README.md
+[warn] apps/api/drizzle/meta/_journal.json
+[warn] apps/api/drizzle/meta/0001_snapshot.json
+[warn] apps/api/src/app.ts
+[warn] apps/api/src/db/migrate.ts
+[warn] apps/api/src/db/persistence.ts
+[warn] apps/api/src/db/provider.ts
+[warn] apps/api/src/db/schema.ts
+[warn] apps/api/src/features/customers/controller.ts
+[warn] apps/api/src/features/customers/domain/tax-id.ts
+[warn] apps/api/src/features/customers/repository.ts
+[warn] apps/api/src/features/customers/routes.ts
+[warn] apps/api/src/features/customers/service.ts
+[warn] apps/api/src/http/errors.ts
+[warn] apps/api/src/index.ts
+[warn] apps/api/test/customers-contract.test.mjs
+[warn] apps/api/test/customers.test.mjs
+[warn] apps/api/test/server-bootstrap.mjs
+[warn] apps/api/test/server-lifecycle.test.mjs
+[warn] apps/api/test/tax-id-fixtures.mjs
+[warn] apps/api/test/tax-id.test.mjs
+[warn] docs/api-contracts.md
+[warn] docs/data-model.md
+[warn] packages/shared/src/customers.ts
+[warn] README.md
+[warn] specs/002-persistence/clarifications.md
+[warn] specs/003-customers-api/clarifications.md
+[warn] specs/003-customers-api/fiscal-rules.md
+[warn] specs/003-customers-api/plan.md
+[warn] specs/003-customers-api/spec.md
+[warn] specs/003-customers-api/tasks.md
+[warn] specs/003-customers-api/validation.md
+[warn] Code style issues found in 41 files. Run Prettier with --write to fix.
+ ELIFECYCLE  Command failed with exit code 1.

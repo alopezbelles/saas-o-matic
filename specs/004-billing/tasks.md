@@ -1,6 +1,6 @@
 # Tareas 004
 
-T01 y T02 completadas técnicamente; T03–T05 pendientes. Cálculo de base implementado; impuestos y presupuesto completo pendientes.
+T01–T03 completadas técnicamente; T04/T05 pendientes. Base, dinero e impuestos disponibles; presupuesto completo pendiente.
 Ejecutar una tarea por indicación de Alex. Informar cambios, controles y propuesta de commit por bloque; no hacer commits/pushes sin autorización específica.
 Alcance común: motor puro, contratos, configuración y pruebas. Sin HTTP, UI, DB, migraciones ni FX.
 
@@ -30,7 +30,7 @@ Alcance común: motor puro, contratos, configuración y pruebas. Sin HTTP, UI, D
 
 ## T03 — Implementar dinero e impuestos versionados
 
-- [ ] Pendiente. RF2, RF3. Depende de T02.
+- [x] Completada técnicamente. RF2/RF3 en su parte de dinero e impuestos; composición pendiente de T04. Depende de T02.
 - Archivos previstos: billing/money.ts, tax.ts, tipos/errores/exports, apps/api/src/config/tax-policy.ts, apps/api/test/tax-policy.test.mjs y apps/api/package.json.
 - Implementar BigInt, half-up, rango seguro, validación de política y país no soportado.
 - Configurar demo-standard-v1: ES 2100, FR 2000, DE 1900, GB 2000 bps; sin entorno ni red.
@@ -38,6 +38,7 @@ Alcance común: motor puro, contratos, configuración y pruebas. Sin HTTP, UI, D
 - Verificar UT-TAX-01 y UT-MONEY-01: tasas sintéticas, cero frente a ausencia, versión inválida y overflow. Controles por tarea.
 - Cierre: dinero exacto y configuración real probada.
 - Commit propuesto: feat(billing): add versioned tax policy and exact rounding.
+- Evidencia: [verificación T03](../../ai-workspace/testing/004-billing-t03.md). Lint/typecheck y 21 unitarios pasan (16 shared, 5 API). Formato global con incidencia en 41 archivos ajenos.
 
 ## T04 — Componer presupuesto y validar todos los consumos
 
