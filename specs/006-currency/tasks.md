@@ -1,6 +1,6 @@
 # Tareas 006
 
-Estado global: T01–T02 completadas técnicamente; T03–T05 pendientes. Cada tarea requiere indicación de Alex. Sin aceptación humana final.
+Estado global: T01–T03 completadas técnicamente; T04–T05 pendientes. Cada tarea requiere indicación de Alex. Sin aceptación humana final.
 
 - [x] **T01 — Contratos, catálogo y fixtures**
   - RF: 006-RF1–RF4.
@@ -17,12 +17,13 @@ Estado global: T01–T02 completadas técnicamente; T03–T05 pendientes. Cada t
   - Hecho cuando pasan oráculos independientes sin operaciones monetarias flotantes ni efectos externos.
   - Evidencia: [validación T02](validation.md#t02--conversión-pura). RF1 conforme en dominio; proveedor y metadatos externos pendientes de T03/T04.
 
-- [ ] **T03 — Validación del proveedor**
+- [x] **T03 — Validación del proveedor**
   - Dependencias: T01/T02. RF: 006-RF2/RF3.
   - Validar unknown, estado lógico, base EUR, EUR=1, USD/GBP y timestamps; normalizar tasas, fechas y atribución.
   - Destinos: apps/web/src/features/currency/exchange-contract.ts y pruebas node:test.
   - Pruebas: éxito, campos extra admitidos, estructura inválida, result:error, tasas ausentes/inválidas y fechas futuras/caducadas/incoherentes.
   - Hecho cuando payload rechazado nunca produce tasas utilizables.
+  - Evidencia real: [validación T03](validation.md#t03--validación-del-proveedor). Ocho pruebas productivas correctas; sin transporte ni comprobación CORS.
 
 - [ ] **T04 — Cliente HTTP y caché**
   - Dependencia: T03. RF: 006-RF2/RF3/RF4.

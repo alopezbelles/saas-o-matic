@@ -1,5 +1,9 @@
 # Verificación
 
+## 006 — T03
+
+test:web compila los módulos currency mediante apps/web/tsconfig.test.json en apps/web/.cache/currency-tests, ignorado por Git, y prueba el JavaScript real con node:test. Conserva el smoke Vite. Total 11 pruebas: 8 del parser, 2 fixtures y 1 smoke. Sin nuevas librerías ni comprobación de CORS. Primera ejecución falló por el default de reloj del helper de pruebas ante undefined; corregido el helper/caso explícito y repetición 11/11 correcta. [Evidencia T03](../specs/006-currency/validation.md#t03--validación-del-proveedor).
+
 ## 006 — T02
 
 Ocho pruebas productivas nuevas de convertCurrency: oráculos USD/GBP, identidad EUR, half-up exacto, notación científica, entradas inválidas, límites de tasa, overflow e independencia. test:unit suma 36 shared y 12 API. [Evidencia T02](../specs/006-currency/validation.md#t02--conversión-pura). Sin validación de proveedor, transporte ni CORS en este alcance.

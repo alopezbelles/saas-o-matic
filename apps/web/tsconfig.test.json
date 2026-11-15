@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "noEmit": false,
+    "rootDir": "src/features/currency",
+    "outDir": ".cache/currency-tests"
+  },
+  "include": ["src/features/currency/**/*.ts"]
+}

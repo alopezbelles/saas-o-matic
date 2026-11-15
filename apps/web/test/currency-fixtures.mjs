@@ -25,7 +25,7 @@ export function normalizedRates() {
   };
 }
 
-// These are test inputs for T03, not payloads already rejected by production.
+// Invalid inputs exercised against the production parser by T03 tests.
 export function invalidProviderCases() {
   const missingGbp = providerSuccess();
   delete missingGbp.rates.GBP;

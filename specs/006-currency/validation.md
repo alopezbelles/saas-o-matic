@@ -1,12 +1,12 @@
 # Validación 006
 
-Estado funcional: T01/T02 completadas técnicamente; RF1 conforme en dominio. Validación del proveedor y cliente pendientes; sin aceptación humana.
+Estado funcional: T01–T03 completadas técnicamente; RF1 conforme en dominio y validación del proveedor probada. Transporte/caché pendientes; sin aceptación humana.
 
 | RF      | Verificación prevista                                      | Resultado funcional real |
 | ------- | ---------------------------------------------------------- | ------------------------ |
 | 006-RF1 | T02: conversión exacta, identidad, redondeo y overflow     | CONFORME EN DOMINIO      |
-| 006-RF2 | T03/T04: contrato, concurrencia y metadatos                | NO EJECUTADO             |
-| 006-RF3 | T03/T04: fallos, expiración y recuperación sin alterar EUR | NO EJECUTADO             |
+| 006-RF2 | T03/T04: contrato, concurrencia y metadatos                | PARCIAL: CONTRATO        |
+| 006-RF3 | T03/T04: fallos, expiración y recuperación sin alterar EUR | PARCIAL: PAYLOAD/FECHAS  |
 | 006-RF4 | T04: caché, cambios de importe y caducidad                 | NO EJECUTADO             |
 
 ## T01 — Contratos, catálogo y fixtures
@@ -53,5 +53,17 @@ Atribución: verificar metadatos del cliente; presentación visible diferida a s
 Sin hook React, componentes, formulario, simulador, selector ni E2E visuales. No atribuir a 006 conservación de inputs o estados visuales comprobados.
 
 ## Registro
+
+## T03 — Validación del proveedor
+
+2026-11-15, Windows PowerShell, pnpm local/Node 22. Autorización explícita de T03 e instrucción previa en el plan. parseExchangeRates recibe unknown y reloj explícito en milisegundos, valida propiedades propias, result/base/EUR=1, tasas USD/GBP positivas finitas y timestamps Unix enteros seguros representables como ISO. Rechaza actualización futura y caducidad incoherente; caducidad exacta produce EXCHANGE_RATE_EXPIRED, otros errores de contrato EXCHANGE_PAYLOAD_INVALID. Normaliza decimales, fechas UTC y atribución fija; salida profundamente congelada y separada del payload.
+
+Runner web adaptado sin dependencias: tsc -p tsconfig.test.json emite solo módulos currency en .cache/currency-tests, seguido por node:test existente. No hay petición real, JSON parsing de transporte, UI, caché ni validación CORS en T03.
+
+Ocho pruebas nuevas: éxito y campos extra, fixtures negativos, propiedades/tipos, tasas, notación científica extrema, fechas/rango del reloj, fronteras temporales y aislamiento/inmutabilidad. Primera ejecución test:web: 10 correctas y 1 fallida, código 1; helper de pruebas reemplazaba undefined por reloj por defecto, causando una expectativa incorrecta. Se añadió llamada directa para ese caso sin modificar producción. Repetición test:web: 11/11, código 0; incluye compilación Vite y módulo de pruebas.
+
+pnpm.cmd lint y pnpm.cmd typecheck correctos, código 0. Cierre: pnpm.cmd test:docs (2/2), pnpm.cmd format:check y git diff --check correctos, código 0. No se ejecutaron test:unit, integración SQLite, test:gates, build global o suite completa; sin cambios API/shared/DB, dependencias/lockfile, red externa, ai-workspace ni commits. test:web sí compiló la web y sus módulos de pruebas. RF2/RF3 parciales hasta T04. Conformidad técnica de T03; aceptación humana pendiente.
+
+## Restricción de registro
 
 No registrar esta preparación en ai-workspace por instrucción de Alex. Incorporar futuras evidencias cuando se autorice su registro.
