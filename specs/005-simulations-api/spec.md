@@ -1,6 +1,6 @@
 # 005 — API de simulaciones e histórico
 
-Estado: T01/T02 completadas técnicamente; contratos, servicio y guardado disponibles. Endpoints pendientes de T03/T04. Decisiones confirmadas por Alex. Ejecutar tareas una a una por indicación posterior; sin commits automáticos.
+Estado: T01–T03 completadas técnicamente; POST /simulations disponible. Histórico y configuración HTTP pendientes de T04. Decisiones confirmadas por Alex; tareas por indicación posterior, sin commits automáticos.
 
 ## Contexto y fuentes
 
@@ -23,7 +23,7 @@ La DB limita taxRateBps a 0..10000; las tasas demo cumplen. Las tasas sintética
 
 ## Contrato HTTP previsto
 
-Esta sección define el contrato aprobado. Tipos/parsers implementados en T01; rutas todavía no implementadas. docs/api-contracts.md distingue esas piezas de endpoints existentes.
+Esta sección define el contrato aprobado. Tipos/parsers implementados en T01 y POST en T03; GET de histórico/configuración aún pendientes. docs/api-contracts.md distingue lo disponible de lo previsto.
 
 ### POST /simulations
 

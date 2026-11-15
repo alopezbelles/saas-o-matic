@@ -1,6 +1,6 @@
 # Plan 005 — Integración API e histórico
 
-Estado: T01/T02 completadas técnicamente; contratos, servicio y repositorio disponibles; T03–T05 pendientes. [Contrato](spec.md) y [decisiones](clarifications.md).
+Estado: T01–T03 completadas técnicamente; POST disponible, T04/T05 pendientes. [Contrato](spec.md) y [decisiones](clarifications.md).
 
 ## Reutilización y arquitectura
 
@@ -54,6 +54,8 @@ Config: proyectar configuración fiscal del servidor, CONSUMPTION_LIMITS y lectu
 Montar /customers/:id/simulations con convivencia explícita con el router de clientes existente. No depender de una ruta de detalle de simulación no definida.
 
 ## Validación y errores
+
+T03 implementa controlador/ruta y middleware http/json-body.ts compartido con clientes, conservando sus reglas. createApp acepta billingPolicy como opción interna de composición; no se expone en body. Handler mantiene código técnico de BillingError interno en log y envelope público INTERNAL_ERROR cuando corresponde.
 
 Reutilizar semántica UUID/query de 003; parser específico de historial rechaza q y extras. Defaults/límites fijados en spec.
 Mapear BillingError de consumos a 422; TAX_COUNTRY_UNSUPPORTED a 422 con mensaje del país del cliente y field customerId. Política inválida/overflow con entrada validada → 500 INTERNAL_ERROR, registrando código técnico sin filtrar datos. Cliente ausente → 404; DB busy/unavailable → 503.

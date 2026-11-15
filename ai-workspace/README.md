@@ -2,6 +2,8 @@
 
 ## 005 — Preparación y contratos T01
 
+T03: [instrucción previa](prompts/005-simulations-api.md#t03--instrucción-previa-de-implementación), [pruebas](testing/005-simulations-api-t03.md), [salida](testing/005-simulations-api-t03.txt) y [revisión](reviews/005-simulations-api-t03.md). POST /simulations implementado; historial/configuración pendientes de T04.
+
 T02: [instrucción previa](prompts/005-simulations-api.md#t02--instrucción-previa-de-implementación), [verificación](testing/005-simulations-api-t02.md), [salida](testing/005-simulations-api-t02.txt) y [revisión](reviews/005-simulations-api-t02.md). Servicio/guardado implementados con transacción coherente; endpoints pendientes de T03. Registro durante el trabajo, sin aceptación humana final.
 
 [Spec](../specs/005-simulations-api/spec.md), [plan/instrucción previa](../specs/005-simulations-api/plan.md#instrucción-previa-para-t01), [decisiones](../specs/005-simulations-api/clarifications.md), [tareas](../specs/005-simulations-api/tasks.md) y [validación](../specs/005-simulations-api/validation.md).

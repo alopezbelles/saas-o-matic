@@ -1,17 +1,19 @@
 # Validación 005
 
-Estado: T01/T02 completadas técnicamente; contratos, servicio y guardado transaccional probados. RF completos HTTP pendientes; T03–T05 no ejecutadas.
+Estado: T01–T03 completadas técnicamente; alta HTTP implementada y probada. T04/T05 pendientes; sin aceptación humana final.
 
 ## Matriz prevista
+
+T03: RF1/RF2 conformes en alta HTTP (IT-SIM-01/02, IT-INVALID-005, IT-LIFECYCLE-005). RF3 no ejecutado y RF4 parcial: conservación en servicio probada, configuración/historial HTTP pendientes.
 
 T02: IT-SIM-01/02 e IT-SNAPSHOT-005 ejecutados en servicio con SQLite temporal. RF1/RF2/RF4 parciales: aún no hay POST/historial/configuración HTTP. Resultados de RF completos siguientes conservan NO EJECUTADO hasta esas tareas.
 
 | RF      | Tareas             | Casos previstos                                | Resultado funcional real |
 | ------- | ------------------ | ---------------------------------------------- | ------------------------ |
-| 005-RF1 | T01, T02, T03, T05 | UT-SIM-CONTRACT-005, IT-SIM-01, IT-SIM-02      | NO EJECUTADO             |
-| 005-RF2 | T01, T02, T03, T05 | UT-SIM-CONTRACT-005, IT-INVALID-005, IT-SIM-02 | NO EJECUTADO             |
+| 005-RF1 | T01, T02, T03, T05 | UT-SIM-CONTRACT-005, IT-SIM-01, IT-SIM-02      | PASA EN T03              |
+| 005-RF2 | T01, T02, T03, T05 | UT-SIM-CONTRACT-005, IT-INVALID-005, IT-SIM-02 | PASA EN T03              |
 | 005-RF3 | T01, T04, T05      | IT-HIST-01, IT-SNAPSHOT-005                    | NO EJECUTADO             |
-| 005-RF4 | T01, T02, T04, T05 | IT-SNAPSHOT-005, IT-CONFIG-005                 | NO EJECUTADO             |
+| 005-RF4 | T01, T02, T04, T05 | IT-SNAPSHOT-005, IT-CONFIG-005                 | PARCIAL EN T03           |
 
 Criterios concretos en [plan](plan.md), contratos en [spec](spec.md). Las pruebas anteriores de 002/003/004 no acreditan endpoints de simulaciones ya implementados.
 
@@ -34,6 +36,13 @@ Alcance autorizado: adaptar exclusivamente los cinco archivos de esta carpeta. T
 Sin implementación, dependencias, commits ni registros en ai-workspace. Contexto global/gate siguen en 004 hasta iniciar T01.
 Controles reales de esta adaptación: .\node_modules\.bin\prettier.cmd --check specs/005-simulations-api devuelve 0 (cinco documentos conformes); pnpm.cmd test:docs devuelve 0 (2 tests documentales pasan). Se formatearon previamente solo estos cinco documentos con Prettier.
 El gate de contexto aún comprueba 004 porque T01 no ha comenzado; su PASS no acredita activación ni implementación de 005. No se ejecutaron lint/typecheck/build/tests funcionales por esta modificación exclusivamente documental. No confundir estos controles con la matriz funcional.
+
+## T03 — Alta HTTP y errores
+
+15 de noviembre de 2026, base d9b887a. POST /simulations usa parser antes de DB, servicio T02 y respuesta 201 después del commit. Protocolo JSON compartido con clientes; BillingError traducido y mensajes/logs sanitizados.
+Lint/typecheck correctos. Siete pruebas HTTP focalizadas pasan y se integran en suite: regresiones de 37 unitarios y 41 integración correctas. Incluyen 201/400/404/413/415/422/503/500, cero con país no soportado, DB ausente/busy y recuperación, fallo AFTER INSERT con rollback y no filtración de PII/SQL/stack.
+Al cierre, formato global, test:docs (2 pruebas) y git diff --check pasan, todos con código 0.
+[Comandos/límites](../../ai-workspace/testing/005-simulations-api-t03.md), [salida](../../ai-workspace/testing/005-simulations-api-t03.txt) y [revisión](../../ai-workspace/reviews/005-simulations-api-t03.md). Sin schema, dependencias, DB real ni commits. Endpoints GET reservados a T04.
 
 ## T02 — Servicio y guardado transaccional
 

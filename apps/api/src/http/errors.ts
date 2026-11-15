@@ -1,5 +1,5 @@
 import type { ErrorRequestHandler } from 'express';
-import { InputError } from '@saas-o-matic/shared';
+import { BillingError, InputError } from '@saas-o-matic/shared';
 export class HttpError extends Error {
   constructor(
     public readonly status: number,
@@ -17,6 +17,8 @@ const messages: Record<string, string> = {
   VALIDATION_ERROR: 'Revisa los campos indicados.',
   TAX_ID_INVALID: 'El formato o carácter de control fiscal no es válido.',
   CUSTOMER_NOT_FOUND: 'Cliente no encontrado.',
+  TAX_COUNTRY_UNSUPPORTED:
+    'El país del cliente no tiene una tarifa fiscal configurada.',
   ROUTE_NOT_FOUND: 'Ruta no encontrada.',
   CUSTOMER_TAX_ID_CONFLICT:
     'Ya existe un cliente con ese identificador fiscal en el país.',
@@ -69,6 +71,23 @@ export const errorHandler: ErrorRequestHandler = (
       ? 400
       : 422;
     if (Object.keys(error.fields).length) fields = error.fields;
+  } else if (error instanceof BillingError) {
+    if (error.code === 'TAX_COUNTRY_UNSUPPORTED') {
+      status = 422;
+      code = error.code;
+      fields = { customerId: messages.TAX_COUNTRY_UNSUPPORTED! };
+    } else if (error.code === 'BILLING_INPUT_INVALID') {
+      status = 422;
+      code = 'VALIDATION_ERROR';
+      if (
+        error.field &&
+        ['users', 'storageGb', 'apiCalls'].includes(error.field)
+      )
+        fields = { [error.field]: 'Consumo no válido.' };
+    } else {
+      // Technical code for the server log; the public response remains sanitized.
+      response.locals.errorCode = error.code;
+    }
   } else if (error && typeof error === 'object' && 'type' in error) {
     if (error.type === 'entity.too.large') {
       status = 413;
@@ -91,7 +110,7 @@ export const errorHandler: ErrorRequestHandler = (
       code = 'UNSUPPORTED_MEDIA_TYPE';
     }
   }
-  response.locals.errorCode = code;
+  response.locals.errorCode ??= code;
   response.status(status).json({
     error: {
       code,

@@ -1,6 +1,6 @@
 # Tareas 005
 
-Estado: T01/T02 completadas técnicamente; T03–T05 pendientes. Contratos, servicio y guardado disponibles, sin endpoints nuevos.
+Estado: T01–T03 completadas técnicamente; T04/T05 pendientes. POST /simulations disponible; historial y configuración HTTP pendientes.
 Cada tarea requiere indicación de Alex. Proponer commit separado al cerrar el bloque; no ejecutar commits/pushes. Tras T01 Alex autoriza registrar preparación/ejecución en ai-workspace; conservar la procedencia retrospectiva del registro inicial.
 
 ## T01 — Contratos de alta, histórico y configuración
@@ -33,7 +33,7 @@ Cada tarea requiere indicación de Alex. Proponer commit separado al cerrar el b
 
 ## T03 — Alta HTTP y traducción de errores
 
-- [ ] Pendiente. RF1, RF2. Depende de T02.
+- [x] Completada técnicamente. RF1/RF2 por HTTP. Depende de T02.
 - Archivos previstos: simulations/routes.ts, controller.ts, apps/api/src/app.ts, http/errors.ts, apps/api/test/simulations.test.mjs y apps/api/package.json.
 - Montar POST /simulations con JSON y límites/protocolo equivalentes a 003; validar antes de conexión.
 - 201 tras commit con SimulationDto. Sin Location hacia recurso inexistente; sin nuevo endpoint de detalle.
@@ -42,6 +42,7 @@ Cada tarea requiere indicación de Alex. Proponer commit separado al cerrar el b
 - Conectar integración HTTP al script existente y actualizar contrato API implementado. Controles por tarea.
 - Cierre: alta HTTP comprobable sin regresión de clientes/health.
 - Commit propuesto: feat(simulations): expose creation endpoint and sanitized errors.
+- Evidencia: [verificación T03](../../ai-workspace/testing/005-simulations-api-t03.md). Lint/typecheck, 37 unitarios y 41 integración pasan. Sin endpoints de T04 ni DB real.
 
 ## T04 — Histórico paginado y configuración pública
 

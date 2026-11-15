@@ -41,6 +41,13 @@ toSimulationDto transforma columnas a contrato y valida consistencia del dato gu
 Nueve pruebas focalizadas pasan y se incorporan a integración: regresión de 37 unitarios y 34 integración correcta, junto con lint/typecheck. [Evidencia](../testing/005-simulations-api-t02.md) y [revisión](../reviews/005-simulations-api-t02.md).
 Sin error funcional observado durante ejecución; tests negativos son deliberados. Sin endpoints, DB real, dependencias, migraciones ni commits. Esperar indicación para T03.
 
+## T03 — Alta HTTP y traducción de errores
+
+15 de noviembre de 2026, base d9b887a. Alex autoriza T03 y la instrucción se registra antes del código. Se añade controlador/ruta POST y montaje en createApp, con política interna opcional de composición.
+Se extrae jsonBody para compartir protocolo con clientes sin duplicación. errorHandler traduce BillingError, separando código público sanitizado y código técnico en log de fallos internos. Sin cambios de motor o transacción.
+Siete tests focalizados pasan; regresión de 37 unitarios y 41 integración correcta, además de lint/typecheck. Se verifican DB lazy, rechazo antes de conexión, 201 tras commit y rollback ante fallo real de inserción. [Evidencia](../testing/005-simulations-api-t03.md) y [revisión](../reviews/005-simulations-api-t03.md).
+Sin fallo funcional observado; errores de fixtures deliberados. Sin historial/configuración HTTP, datos reales, migraciones, dependencias ni commits. Esperar indicación para T04.
+
 ## Autorización del registro inicial
 
 Alex levantó después de T01 la exclusión de ai-workspace para registrar el trabajo realizado y continuar la trazabilidad. La instrucción previa en plan conserva la restricción histórica que realmente aplicaba.

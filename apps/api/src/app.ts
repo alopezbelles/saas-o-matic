@@ -2,6 +2,9 @@ import express from 'express';
 import { randomUUID } from 'node:crypto';
 import { customerRoutes } from './features/customers/routes.js';
 import { customerService } from './features/customers/service.js';
+import { simulationRoutes } from './features/simulations/routes.js';
+import { simulationService } from './features/simulations/service.js';
+import type { TaxPolicy } from '@saas-o-matic/shared';
 import type { Connection } from './db/connection.js';
 import { errorHandler, HttpError } from './http/errors.js';
 
@@ -15,9 +18,15 @@ export function createApp(
   options: {
     connection?: () => Connection;
     logger?: (entry: RequestLog) => void;
+    billingPolicy?: TaxPolicy;
   } = {},
 ) {
   const app = express();
+  const connection =
+    options.connection ??
+    (() => {
+      throw new HttpError(503, 'DATABASE_UNAVAILABLE');
+    });
   app.disable('x-powered-by');
   app.use((request, response, next) => {
     const requestId = randomUUID();
@@ -38,16 +47,10 @@ export function createApp(
   app.get('/health', (_request, response) => {
     response.json({ status: 'ok' });
   });
+  app.use('/customers', customerRoutes(customerService(connection)));
   app.use(
-    '/customers',
-    customerRoutes(
-      customerService(
-        options.connection ??
-          (() => {
-            throw new HttpError(503, 'DATABASE_UNAVAILABLE');
-          }),
-      ),
-    ),
+    '/simulations',
+    simulationRoutes(simulationService(connection, options.billingPolicy)),
   );
   app.use(() => {
     throw new HttpError(404, 'ROUTE_NOT_FOUND');

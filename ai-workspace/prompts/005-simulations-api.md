@@ -43,6 +43,12 @@ Preparada por el agente antes del código tras autorización de Alex para T02. B
 **Restricciones:** SQL/control transaccional solo en repositorio; callback de cálculo síncrono y puro en servicio. Sin endpoints auxiliares ni políticas seleccionables por HTTP. No commits ni T03.
 **Verificación:** lint, typecheck, format:check, unitarios, integración y docs; registrar evidencia real y distinguir este alcance de RF HTTP pendientes.
 
+## T03 — Instrucción previa de implementación
+
+Preparada por el agente antes del código, por autorización de Alex para T03. Base d9b887a. Publicar solo POST /simulations, usando parseCreateSimulation antes del proveedor DB y servicio T02 sin duplicar cálculo.
+Reutilizar protocolo JSON 32kb/strict:false de 003 mediante middleware compartido; mantener requestId, logs sin PII y respuestas sanitizadas. País no soportado → 422/customerId; cliente ausente → 404; DB busy/ausente → 503; política inválida/overflow/fallo interno → 500. Inyección interna opcional de política para tests, nunca seleccionable por HTTP.
+Probar 201 confirmado en DB, rechazo de JSON/UUID/extras/consumos antes de conexión, 413/415, país sin tarifa con cero, DB lazy/reintento/busy y rollback real ante fallo INSERT; no Location de recurso inexistente. Revisar logs/cuerpos sin PII/SQL/stack. Ejecutar lint/tipos/unitarios/integración/formato/docs. Sin historial/configuración HTTP, DB real, dependencias, migraciones ni commits.
+
 ## Registro posterior de T01 y continuidad
 
 Alex autorizó registrar preparación y T01 antes del commit. Se añadieron registros técnicos con fuentes, resultados reales y límites; no se atribuye autorización retroactiva a la fase inicial ni aceptación humana de entrega.

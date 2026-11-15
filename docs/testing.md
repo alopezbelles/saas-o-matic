@@ -1,5 +1,10 @@
 # Verificación
 
+## 005 — T03
+
+test:integration incorpora simulations.test.mjs, siete pruebas HTTP nuevas; total 41 integración. test:unit mantiene 37. POST 201 después de commit; 400/413/415/422 antes de conexión, cliente ausente/país sin regla, DB lazy/busy y recuperación, rollback de fallo AFTER INSERT y privacidad de error/log.
+La configuración/histórico HTTP siguen en 404 hasta T04; su implementación deberá actualizar esas expectativas explícitas del test de T03. [Evidencia T03](../ai-workspace/testing/005-simulations-api-t03.md).
+
 ## 005 — T02
 
 test:integration incorpora simulations-service.test.mjs; 9 pruebas nuevas y 25 anteriores, total 34, sobre contextos temporales de SQLite. Comprueban cálculo/DTO, cero/máximos/países, repetición, fallos transaccionales, savepoints, bloqueo de segundo escritor, reapertura y conservación histórica. test:unit mantiene 37 pruebas. Sin endpoint de simulaciones todavía. [Evidencia T02](../ai-workspace/testing/005-simulations-api-t02.md).
