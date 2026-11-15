@@ -59,3 +59,5 @@ T01: [instrucción previa](prompts/004-billing.md#t01--instrucción-previa-de-im
 T02: [instrucción previa](prompts/004-billing.md#t02--instrucción-previa-de-implementación), [pruebas](testing/004-billing-t02.md) y [revisión](reviews/004-billing-t02.md). Base acumulativa y contrato básico implementados; impuestos y presupuesto completo pendientes.
 
 T03: [instrucción previa](prompts/004-billing.md#t03--instrucción-previa-de-implementación), [pruebas](testing/004-billing-t03.md) y [revisión](reviews/004-billing-t03.md). Dinero e impuestos implementados; presupuesto completo pendiente de T04. Los párrafos anteriores describen sus cierres históricos.
+
+T04: [instrucción previa](prompts/004-billing.md#t04--instrucción-previa-de-implementación), [pruebas](testing/004-billing-t04.md) y [revisión](reviews/004-billing-t04.md). Motor y presupuesto completo implementados; regresión/cierre global T05 pendientes.

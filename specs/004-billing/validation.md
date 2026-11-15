@@ -1,15 +1,15 @@
 # Validación 004
 
-Estado: T01–T03 completadas técnicamente; base, dinero e impuestos implementados. Presupuesto completo y cierre pendientes (T04/T05).
+Estado: T01–T04 completadas técnicamente; presupuesto completo implementado. T05 y aceptación humana final pendientes.
 
-## Matriz de implementación futura
+## Matriz de implementación incremental
 
-| RF  | Pruebas previstas                                                 | Resultado de código |
-| --- | ----------------------------------------------------------------- | ------------------- |
-| RF1 | UT-BILL-01 y marginales UT-PROP-01                                | PASA en T02         |
-| RF2 | UT-TAX-01/UT-MONEY-01 pasan; composición pendiente                | PARCIAL en T03      |
-| RF3 | Users, política, país y dinero probados; tres consumos pendientes | PARCIAL en T03      |
-| RF4 | UT-PROP-01 (tramos); UT-QUOTE-004 pendiente                       | PARCIAL en T02      |
+| RF  | Pruebas previstas                                  | Resultado de código |
+| --- | -------------------------------------------------- | ------------------- |
+| RF1 | UT-BILL-01 y marginales UT-PROP-01                 | PASA en T02         |
+| RF2 | UT-TAX-01, UT-MONEY-01, UT-QUOTE-004               | PASA en T04         |
+| RF3 | UT-INPUT-004, UT-TAX-01, UT-MONEY-01, UT-QUOTE-004 | PASA en T04         |
+| RF4 | UT-PROP-01 y UT-QUOTE-004                          | PASA en T04         |
 
 Detalle de oráculos, límites, tasas sintéticas, cero usuarios y errores en [plan](plan.md). UT-FIX-004 comprueba fixtures, no requisitos productivos.
 No endpoints, SQLite, UI ni FX exigidos en 004. Conservar compatibilidad estructural con 002 sin escribir bases existentes.
@@ -23,6 +23,13 @@ Comandos y resultados documentales se enlazan desde [revisión de preparación](
 Los dos tests documentales pasan. El formato global todavía falla en 46 archivos ajenos a esta revisión; no se ha aplicado una corrección masiva. Resolver o delimitar esta incidencia antes de afirmar que los gates de implementación pasan.
 
 ## Registro durante implementación
+
+### T04 — 15 de noviembre de 2026
+
+calculateQuote valida tres consumos y compone base/impuesto/total con suma BigInt segura. Devuelve EUR, versiones reales y desglose; sin dependencia HTTP/DB/FX. validation.ts evita duplicación de guardas con tiers.
+Test:docs pasa (2 tests); formato acotado y git diff --check pasan tras actualizar registros.
+Lint/typecheck y 30 unitarios pasan: 25 shared (5 fixtures + 20 productivos) y 5 API. Nueve tests nuevos cubren contrato, entrada/orden de errores, secundarios sin tarifa, cero, overflow de impuesto/total, redondeo sobre base completa, invariantes en 4004 combinaciones y determinismo/no mutación.
+Formato global sigue fallando en 41 archivos ajenos. [Evidencia](../../ai-workspace/testing/004-billing-t04.md) y [revisión](../../ai-workspace/reviews/004-billing-t04.md). RF1..4 conformes en pruebas del motor; pendiente regresión global T05 y aceptación humana.
 
 ### T01 — 15 de noviembre de 2026
 

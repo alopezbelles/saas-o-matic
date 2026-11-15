@@ -54,3 +54,10 @@ RF1 implementado y probado; RF3/RF4 parciales. [Evidencia](../testing/004-billin
 Se implementaron money/tax, TaxPolicy, configuración API demo-standard-v1 y pruebas. Se centralizó conversión segura de tramos en toSafeCents para evitar duplicación. Objetos de política planos o sin prototipo, sin tasas heredadas; cero es explícito, nunca fallback.
 Seis tests shared y dos de API nuevos; 21 unitarios pasan junto con lint/typecheck. La configuración se congela en runtime. Formato global con 41 archivos ajenos; se formateó package.json de API al modificar el runner. No cambios masivos.
 [Evidencia](../testing/004-billing-t03.md) y [revisión](../reviews/004-billing-t03.md). Sin quote, DB, HTTP, FX, dependencias ni commits. Esperar indicación para T04.
+
+## T04 — Presupuesto completo
+
+15 de noviembre de 2026. Base b3f3061; autorización expresa de Alex para T04. [Instrucción previa](../prompts/004-billing.md#t04--instrucción-previa-de-implementación) preparada antes del código.
+Se añadieron quote.ts, BillingInput/BillingQuote y exports. validation.ts centraliza guardas de consumo que usan tanto tiers como quote. Se compone base/impuesto, se suma con BigInt y se devuelven EUR, tasa, versiones y desglose, sin cargos secundarios ni datos de cliente.
+Primera ejecución: 29 tests unitarios pasan. La revisión añadió un caso independiente que diferencia redondeo sobre base completa de redondeo por tramo; ejecución final de 30 tests correcta, junto con lint/typecheck. Formato global mantiene 41 archivos ajenos con incidencia conocida.
+[Evidencia](../testing/004-billing-t04.md) y [revisión](../reviews/004-billing-t04.md). RF1..4 implementados en motor puro; T05 y aceptación humana pendientes. Sin HTTP/DB/FX, dependencias ni commits.

@@ -84,3 +84,11 @@ Preparada por el agente antes del código, tras autorización de Alex para T03; 
 **Alcance:** money.ts, tax.ts, TaxPolicy y exports; centralizar la conversión segura ya presente en tiers.ts para evitar duplicación. Configuración congelada con ES 2100, FR 2000, DE 1900 y GB 2000 bps, sin entorno/red.
 **Restricciones:** no calculateQuote ni integración HTTP/DB/FX, dependencias o commits. Datos inválidos no se coercionan; cero explícito no equivale a ausencia; versiones y tasas se validan antes del uso.
 **Verificación prevista:** oráculos fiscales independientes y sintéticos de T01; half-up alrededor de medio céntimo, cero, valores seguros extremos, intermediarios mayores al rango Number, overflow, tasas/políticas inválidas y países ausentes o heredados. Probar configuración real desde build API y preservar tests anteriores. Lint, typecheck, unitarios, docs y formato global/acotado; registrar resultados reales.
+
+## T04 — Instrucción previa de implementación
+
+Instrucción del agente preparada antes del código, por autorización de Alex para T04; no cita literal. Base b3f3061.
+**Objetivo:** componer calculateQuote(input, policy) con los helpers existentes, devolviendo contrato completo EUR, versiones y desglose.
+**Alcance:** BillingInput/BillingQuote, quote.ts, exports y tests. Centralizar validación de consumos usada por tramos/quote para no duplicar reglas; sin modificar límites ni tarifas.
+**Restricciones:** sin HTTP/DB/FX, nuevas dependencias, commits ni T05. Validar tres consumos antes de política y cálculo; no usar campos monetarios/versiones proporcionados por consumidor.
+**Verificación:** oráculos de T01, máximos/máximo+1 para cada consumo, entradas inválidas y orden de errores, cero usuarios con país no soportado, invariantes y serialización en todo el rango/países, no mutación y versiones reales. Forzar overflow tanto de impuesto como de suma total mediante política sintética. Lint, typecheck, unitarios, docs y formato global/acotado; actualizar registros con evidencia real.

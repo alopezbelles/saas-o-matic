@@ -37,3 +37,5 @@ Motor puro previsto en packages/shared/src/billing/; configuración fiscal expl�
 Contratos, errores y pruebas en [plan 004](../specs/004-billing/plan.md); razones en [ADR-005](../ai-workspace/decisions/ADR-005-billing-engine.md). T03 implementa la política demo como configuración versionada congelada en API.
 
 T02 implementa tipos básicos, BillingError y calculateTieredBase en shared/src/billing, exportados desde shared. T03 añade money/tax y TaxPolicy, centralizando guardas y conversión segura con BigInt. Composición pendiente de T04; sin HTTP ni persistencia.
+
+T04 implementa calculateQuote y BillingInput/BillingQuote; validation.ts centraliza consumos para tramos y composición. Valida entrada antes de política y cálculo, suma con BigInt y devuelve datos JSON seguros con versiones. Sin integración HTTP/DB ni FX; T05 pendiente de cierre.

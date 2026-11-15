@@ -1,6 +1,6 @@
 # Tareas 004
 
-T01–T03 completadas técnicamente; T04/T05 pendientes. Base, dinero e impuestos disponibles; presupuesto completo pendiente.
+T01–T04 completadas técnicamente; T05 pendiente. Motor y presupuesto completo implementados; cierre global pendiente.
 Ejecutar una tarea por indicación de Alex. Informar cambios, controles y propuesta de commit por bloque; no hacer commits/pushes sin autorización específica.
 Alcance común: motor puro, contratos, configuración y pruebas. Sin HTTP, UI, DB, migraciones ni FX.
 
@@ -42,7 +42,7 @@ Alcance común: motor puro, contratos, configuración y pruebas. Sin HTTP, UI, D
 
 ## T04 — Componer presupuesto y validar todos los consumos
 
-- [ ] Pendiente. RF1..4. Depende de T03.
+- [x] Completada técnicamente. RF1..4. Depende de T03.
 - Archivos previstos: billing/quote.ts, types.ts, exports y pruebas shared.
 - Implementar calculateQuote(input, policy) validando users, storageGb, apiCalls y countryCode.
 - Devolver baseCents, taxCents, totalCents, currency EUR, rateBps, pricingVersion, taxPolicyVersion y breakdown.
@@ -50,6 +50,7 @@ Alcance común: motor puro, contratos, configuración y pruebas. Sin HTTP, UI, D
 - Sin planCode, clientId, HTTP ni consultas de clientes.
 - Cierre: contrato completo, salida determinista y errores observables; controles por tarea.
 - Commit propuesto: feat(billing): compose deterministic billing quotes.
+- Evidencia: [verificación T04](../../ai-workspace/testing/004-billing-t04.md). Lint/typecheck y 30 unitarios pasan (25 shared y 5 API). Sin HTTP/DB/FX. Incidencia global de formato ajena permanece.
 
 ## T05 — Verificar entrega y documentar resultados
 

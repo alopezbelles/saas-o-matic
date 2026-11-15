@@ -27,6 +27,8 @@ Actualización tras T01: Alex autoriza T02 (tramos, contrato básico, errores y 
 
 Actualización tras T02: Alex autoriza T03 (dinero exacto, impuestos versionados, configuración y pruebas). No autoriza todavía T04/T05 ni commits/pushes.
 
+Actualización tras T03: Alex autoriza T04 (presupuesto completo, validación de consumos y pruebas). T05 y commits/pushes siguen pendientes de indicación.
+
 ## Revisión de entregas
 
 La conformidad técnica se documenta en la validación de cada spec.

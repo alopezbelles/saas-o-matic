@@ -1,6 +1,6 @@
 # 004 — Motor acumulativo, impuestos y precisión
 
-Estado: T01–T03 completadas técnicamente; base, dinero e impuestos disponibles. Presupuesto completo pendiente de T04. Decisiones funcionales acordadas con Alex. Ejecutar cada tarea cuando se indique; sin commits automáticos.
+Estado: T01–T04 completadas técnicamente; presupuesto completo implementado. Cierre global T05 pendiente. Decisiones funcionales acordadas con Alex. Ejecutar cada tarea cuando se indique; sin commits automáticos.
 
 ## Contexto y fuentes
 
@@ -60,4 +60,4 @@ Endpoints, UI/preview integrado, DB/migraciones, simulaciones guardadas, FX, des
 
 Oráculos independientes de base: 0→0, 10→10000, 11→10800, 15→14000, 50→42000, 51→42500 céntimos.
 Cubrir límites, marginales, cuatro países, tasa cero, redondeo sintético, errores, overflow y determinismo.
-Cada RF tendrá prueba y evidencia en [validación](validation.md). Conformidad técnica y aceptación humana se distinguen. RF1 implementado y probado; RF2/RF3/RF4 parciales hasta composición completa T04. Dinero e impuestos ya probados bajo T03. [Tareas](tasks.md).
+RF1..4 implementados y probados en el motor puro; evidencia en [validación](validation.md). T05 debe verificar regresión global y cierre. Conformidad técnica y aceptación humana se distinguen; ninguna aceptación humana final registrada. [Tareas](tasks.md).

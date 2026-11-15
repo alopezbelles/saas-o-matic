@@ -27,7 +27,7 @@ Guardar usuarios, storageGb y apiCalls. Almacenamiento/API no tienen precio defi
 Aplicar después de base, antes de FX. Configuración versionada por país soportado; tasa en puntos básicos (2100 = 21%). Para 004 se acordó demo-standard-v1: ES 2100, FR 2000, DE 1900 y GB 2000 bps. Política de simulación simplificada, sin exenciones, inversión del sujeto pasivo ni particularidades territoriales; no fiscalidad completa de operaciones reales. Configuración/helper de impuesto implementados en T03; presupuesto completo pendiente. [Decisiones 004](../specs/004-billing/clarifications.md).
 taxCents=roundHalfUp(baseCents*rateBps/10000); total=base+tax.
 Usar intermediarios BigInt para evitar overflow; serializar importes como enteros JSON dentro de Number.MAX_SAFE_INTEGER. Valores no negativos: half-up = (numerador + divisor/2) div divisor cuando divisor par.
-País sin política: error TAX_COUNTRY_UNSUPPORTED, no 0% por defecto. No confundir país con jurisdicción completa real. D01/D10 implementadas como helpers en T03; composición del presupuesto pendiente de T04.
+País sin política: error TAX_COUNTRY_UNSUPPORTED, no 0% por defecto. No confundir país con jurisdicción completa real. D01/D10 implementadas en T03 y compuestas mediante calculateQuote en T04, incluyendo suma segura de base e impuesto. Cierre global pendiente de T05.
 
 ## BR04 — identificadores fiscales
 

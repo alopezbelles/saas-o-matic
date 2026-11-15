@@ -1,6 +1,6 @@
 # Plan 004 — Motor monetario puro
 
-Estado: T01–T03 implementadas; fixtures, runner, base, dinero e impuestos disponibles. Presupuesto completo pendiente. [Spec](spec.md) y [decisiones](clarifications.md) canónicas.
+Estado: T01–T04 implementadas; motor y contrato de presupuesto completo disponibles. Cierre global T05 pendiente. [Spec](spec.md) y [decisiones](clarifications.md) canónicas.
 
 ## Arquitectura
 
@@ -11,6 +11,7 @@ Configuración fiscal en API; shared recibe datos explícitos. No publicar confi
 
 Mapa de implementación: T01 creó fixtures/runner; T02 añadió types.ts (tipos básicos), errors.ts, tiers.ts y billing.test.mjs. El resto de rutas son previsiones, no enlaces a archivos existentes.
 T03 añade money.ts, tax.ts, TaxPolicy, configuración API y test. Las pruebas puras fiscales se agrupan en packages/shared/test/billing-tax.test.mjs, separadas de tramos. quote.ts y sus tipos siguen previstos para T04.
+T04 añade quote.ts, BillingInput/BillingQuote y packages/shared/test/billing-quote.test.mjs. validation.ts centraliza guardas de consumos reutilizadas por tiers/quote; no cambia reglas ni límites. Este párrafo actualiza el estado de las previsiones anteriores.
 
 | Archivo                                        | Responsabilidad                                                   |
 | ---------------------------------------------- | ----------------------------------------------------------------- |

@@ -1,7 +1,6 @@
-import { CONSUMPTION_LIMITS } from '../persistence-contracts.js';
-import { BillingError } from './errors.js';
 import { toSafeCents } from './money.js';
 import type { TierBreakdown, TieredBase } from './types.js';
+import { assertConsumption } from './validation.js';
 
 // Keep the version and its rules together; published rules must not be changed.
 const pricing = {
@@ -14,14 +13,7 @@ const pricing = {
 } as const;
 
 export function calculateTieredBase(users: number): TieredBase {
-  if (
-    typeof users !== 'number' ||
-    !Number.isSafeInteger(users) ||
-    users < 0 ||
-    users > CONSUMPTION_LIMITS.users
-  ) {
-    throw new BillingError('BILLING_INPUT_INVALID', 'users');
-  }
+  assertConsumption(users, 'users');
 
   const breakdown: TierBreakdown[] = [];
   let baseCents = 0n;

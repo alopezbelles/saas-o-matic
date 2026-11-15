@@ -16,3 +16,18 @@ export type TaxPolicy = {
   readonly version: string;
   readonly ratesByCountry: Readonly<Record<string, number>>;
 };
+
+export type BillingInput = {
+  users: number;
+  storageGb: number;
+  apiCalls: number;
+  countryCode: string;
+};
+
+export type BillingQuote = TieredBase & {
+  taxCents: number;
+  totalCents: number;
+  currency: 'EUR';
+  rateBps: number;
+  taxPolicyVersion: string;
+};
