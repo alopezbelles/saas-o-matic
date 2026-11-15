@@ -1,5 +1,9 @@
 import { toSafeCents } from './money.js';
-import type { TierBreakdown, TieredBase } from './types.js';
+import type {
+  PricingConfiguration,
+  TierBreakdown,
+  TieredBase,
+} from './types.js';
 import { assertConsumption } from './validation.js';
 
 // Keep the version and its rules together; published rules must not be changed.
@@ -11,6 +15,17 @@ const pricing = {
     { from: 51, to: null, unitPriceCents: 500 },
   ],
 } as const;
+
+export function getPricingConfiguration(): PricingConfiguration {
+  return {
+    pricingVersion: pricing.version,
+    tiers: pricing.tiers.map((tier) => ({
+      tierFrom: tier.from,
+      tierTo: tier.to,
+      unitPriceCents: tier.unitPriceCents,
+    })),
+  };
+}
 
 export function calculateTieredBase(users: number): TieredBase {
   assertConsumption(users, 'users');

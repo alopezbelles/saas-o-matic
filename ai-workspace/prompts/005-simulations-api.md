@@ -49,6 +49,12 @@ Preparada por el agente antes del código, por autorización de Alex para T03. B
 Reutilizar protocolo JSON 32kb/strict:false de 003 mediante middleware compartido; mantener requestId, logs sin PII y respuestas sanitizadas. País no soportado → 422/customerId; cliente ausente → 404; DB busy/ausente → 503; política inválida/overflow/fallo interno → 500. Inyección interna opcional de política para tests, nunca seleccionable por HTTP.
 Probar 201 confirmado en DB, rechazo de JSON/UUID/extras/consumos antes de conexión, 413/415, país sin tarifa con cero, DB lazy/reintento/busy y rollback real ante fallo INSERT; no Location de recurso inexistente. Revisar logs/cuerpos sin PII/SQL/stack. Ejecutar lint/tipos/unitarios/integración/formato/docs. Sin historial/configuración HTTP, DB real, dependencias, migraciones ni commits.
 
+## T04 — Instrucción previa de implementación
+
+Preparada por el agente antes del código, por autorización de Alex para T04. Base 7d968a2. Implementar GET /customers/:id/simulations con parse previo, SQL paginado/total y existencia bajo transacción de lectura; devolver snapshots guardados sin motor ni política actual.
+Publicar GET /billing-config sin DB y no-store. Exportar lectura de precios/versiones desde reglas reales de shared mediante copias, sin duplicar tarifas; copiar tasas/límites del servidor. Conservar inyección interna de política y semántica de POST.
+Probar vacío/404, límites/query inválida antes de DB, páginas y empate por id, aislamiento entre clientes y conservación ante cambio de cliente/política. Probar config con DB ausente, igualdad con motor en fronteras, copias no mutables por referencia y error de política sanitizado. Actualizar expectativas 404 de T03 ahora obsoletas. Sin migraciones, dependencias, UI, FX, datos reales ni commits; T05 queda pendiente. Ejecutar lint, tipos, unitarios, integración, formato/docs y guardar evidencias reales.
+
 ## Registro posterior de T01 y continuidad
 
 Alex autorizó registrar preparación y T01 antes del commit. Se añadieron registros técnicos con fuentes, resultados reales y límites; no se atribuye autorización retroactiva a la fase inicial ni aceptación humana de entrega.

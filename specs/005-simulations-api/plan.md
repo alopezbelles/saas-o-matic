@@ -1,6 +1,6 @@
 # Plan 005 — Integración API e histórico
 
-Estado: T01–T03 completadas técnicamente; POST disponible, T04/T05 pendientes. [Contrato](spec.md) y [decisiones](clarifications.md).
+Estado: T01–T04 completadas técnicamente; endpoints disponibles, T05 pendiente. [Contrato](spec.md) y [decisiones](clarifications.md).
 
 ## Reutilización y arquitectura
 
@@ -48,6 +48,8 @@ No exponer DB en contratos HTTP ni poner SQL en servicio. Callback solo recibe d
 Inyección explícita de política permite tests de versiones sin modificar archivos de configuración ni introducir selección de política por petición. Por defecto, usar taxPolicy del servidor. Es un punto de composición interno, no endpoint administrativo.
 
 ## Histórico y configuración
+
+T04 implementa historyPage en repositorio, método history en servicio y router GET bajo /customers. billing/routes.ts proyecta getPricingConfiguration y política/límites; getter público y PricingConfiguration son dominio puro, sin DTO HTTP ni duplicación de reglas.
 
 Historial: leer existencia, total y página en una transacción de lectura; consultas parametrizadas y orden con desempate por id. Filas mapeadas desde snapshots, no joins que sustituyan datos históricos. Deserializar breakdownJson a DTO validado; datos incoherentes provocan error interno sanitizado, no resultado silenciosamente incompleto.
 Config: proyectar configuración fiscal del servidor, CONSUMPTION_LIMITS y lectura de precios/versiones de shared. Copias nuevas, sin duplicar tarifas ni referencias mutables. Cache-Control no-store, sin llamada al proveedor DB. Debe funcionar aunque DB no exista.

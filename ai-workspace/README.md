@@ -2,6 +2,8 @@
 
 ## 005 — Preparación y contratos T01
 
+T04: [instrucción previa](prompts/005-simulations-api.md#t04--instrucción-previa-de-implementación), [pruebas](testing/005-simulations-api-t04.md), [salida](testing/005-simulations-api-t04.txt) y [revisión](reviews/005-simulations-api-t04.md). Histórico y configuración implementados; T05 pendiente. Incidencia inicial de fixture registrada y corregida.
+
 T03: [instrucción previa](prompts/005-simulations-api.md#t03--instrucción-previa-de-implementación), [pruebas](testing/005-simulations-api-t03.md), [salida](testing/005-simulations-api-t03.txt) y [revisión](reviews/005-simulations-api-t03.md). POST /simulations implementado; historial/configuración pendientes de T04.
 
 T02: [instrucción previa](prompts/005-simulations-api.md#t02--instrucción-previa-de-implementación), [verificación](testing/005-simulations-api-t02.md), [salida](testing/005-simulations-api-t02.txt) y [revisión](reviews/005-simulations-api-t02.md). Servicio/guardado implementados con transacción coherente; endpoints pendientes de T03. Registro durante el trabajo, sin aceptación humana final.

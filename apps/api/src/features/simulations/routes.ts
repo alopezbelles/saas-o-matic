@@ -8,3 +8,9 @@ export function simulationRoutes(service: SimulationService) {
   router.post('/', ...jsonBody(), simulationController(service).create);
   return router;
 }
+
+export function simulationHistoryRoutes(service: SimulationService) {
+  const router = Router();
+  router.get('/:id/simulations', simulationController(service).history);
+  return router;
+}

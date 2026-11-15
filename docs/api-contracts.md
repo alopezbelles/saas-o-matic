@@ -37,18 +37,19 @@ No se reintenta POST automáticamente.
 
 200 {"status":"ok"}, sin DB ni migraciones. Conserva la semántica liveness.
 Las rutas de clientes usan conexión lazy; requieren inicialización explícita vía CLI cuando no hay archivo.
-POST /simulations implementado en 005-T03. Histórico y configuración fiscal HTTP pendientes de T04.
+POST /simulations implementado en 005-T03; histórico y configuración fiscal HTTP implementados en T04.
 
-## Simulaciones 005 — alta implementada, lecturas pendientes
+## Simulaciones 005 — alta, histórico y configuración implementados
 
-T01 implementa tipos/parsers en shared; T02 el servicio/repositorio y T03 POST /simulations, que usa el motor de 004 en servidor.
+T01 implementa tipos/parsers en shared; T02 servicio/repositorio, T03 POST y T04 GET histórico/configuración. Motor de 004 solo en cálculo autoritativo, nunca al consultar histórico.
 CreateSimulation: customerId, users, storageGb, apiCalls, los cuatro obligatorios. Sin campos adicionales ni coerción numérica. UUID válido se normaliza a minúsculas mediante parseCustomerId de 003. Campo ausente → VALIDATION_ERROR (422); customerId presente pero inválido → INVALID_CUSTOMER_ID (400).
 Consumos enteros no negativos hasta límites shared: users 1000, storageGb 10000, apiCalls 10000000. parseCreateSimulation reutiliza guardas del motor y traduce errores a InputError con campos/mensajes sanitizados.
 SimulationDto: id, customerId, users, storageGb, apiCalls, currency EUR, baseCents, taxCents, totalCents, taxRateBps, pricingVersion, taxPolicyVersion, breakdown, createdAt y customerSnapshot.
 Snapshot: companyName, taxIdNormalized, countryCode, planCode. Desglose: tierFrom, tierTo, quantity, unitPriceCents y subtotalCents. Sin breakdownJson, email/contactName o modelos ORM. Mapping de filas implementado bajo T02, sin rutas nuevas.
 SimulationQuery: limit/offset, defaults 20/0 y rangos 1..100 / 0..100000. Sin repetidos, fracciones, exponentes, signos, espacios ni extras. Mantiene aceptación de ceros iniciales de 003. SimulationPage: {items: SimulationDto[], total, limit, offset}.
-BillingConfigDto: currency EUR, pricingVersion, taxPolicyVersion, tiers ({tierFrom,tierTo,unitPriceCents}[]), ratesByCountry y consumptionLimits. Solo tipos; proyección/endpoint pendientes de T04.
+BillingConfigDto: currency EUR, pricingVersion, taxPolicyVersion, tiers ({tierFrom,tierTo,unitPriceCents}[]), ratesByCountry y consumptionLimits. GET /billing-config devuelve 200 sin DB y Cache-Control: no-store, desde reglas/versiones reales y copias de tasas/límites. Configuración inválida → 500 sanitizado.
 POST /simulations: 201 con SimulationDto tras commit, sin Location de recurso inexistente. Cliente ausente 404; UUID/JSON inválidos 400; body/consumos/extras/país sin política 422; tamaño 413; media/charset 415; DB ausente/busy 503; fallo interno/política/overflow 500 sanitizado. Envelope y X-Request-Id de 003. Código técnico interno de BillingError solo en log, sin PII/SQL/stack.
 País no soportado: TAX_COUNTRY_UNSUPPORTED y fields.customerId. Validación antes de conexión; health sin DB. No retries automáticos ni deduplicación; dos guardados deliberados generan dos filas.
-Rutas futuras: GET /customers/:id/simulations y GET /billing-config (200). Semántica en [spec 005](../specs/005-simulations-api/spec.md); aún no implementadas.
+GET /customers/:id/simulations?limit=&offset= devuelve 200 SimulationPage. Orden createdAt DESC/id DESC, total y página coherentes en transacción de lectura. Cliente sin registros → items vacío; inexistente → 404; ID/query inválidos → 400; DB no disponible/busy → 503. HTTP GET usa snapshots e importes guardados, sin motor ni política actual.
+Las tres rutas de [spec 005](../specs/005-simulations-api/spec.md) están implementadas; cierre global T05 pendiente.
 Servicio T02 y ruta T03: calculateQuote usa país del cliente bajo transacción inmediata; persistencia guarda snapshots/resultado y el controlador devuelve DTO validado después del commit. billingPolicy es opción interna de composición en createApp para tests, no campo ni elección de petición.

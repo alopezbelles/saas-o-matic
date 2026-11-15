@@ -43,6 +43,8 @@ T02 de 005 autorizada después de T01: servicio, guardado transaccional, mapping
 
 Después de T02, Alex autoriza T03: alta HTTP, errores y pruebas. T04/T05 y commits/pushes requieren indicación posterior.
 
+Después de T03, Alex autoriza T04: histórico paginado, configuración pública y pruebas. T05 y commits/pushes requieren indicación posterior.
+
 ## Revisión de entregas — criterio general
 
 La conformidad técnica se documenta en la validación de cada spec.

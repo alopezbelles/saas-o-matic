@@ -1,5 +1,10 @@
 # Verificación
 
+## 005 — T04
+
+test:integration incorpora cinco pruebas de simulations-history.test.mjs y tres de billing-config.test.mjs; total 49 integración. test:unit conserva 37. Histórico paginado, total, orden con empates, vacío/404, validación previa, snapshots sin motor y DB busy/recovery probados; config sin DB/no-store y concordancia con motor/copia de reglas probadas.
+Fallo inicial de fixture en test de DB ausente (Error genérico frente a 503 esperado) corregido a HttpError(503), sin alterar handler; focalizado repetido 15/15 y regresión 49/49. [Evidencia T04](../ai-workspace/testing/005-simulations-api-t04.md). Web/gates y suite completa reservados a T05.
+
 ## 005 — T03
 
 test:integration incorpora simulations.test.mjs, siete pruebas HTTP nuevas; total 41 integración. test:unit mantiene 37. POST 201 después de commit; 400/413/415/422 antes de conexión, cliente ausente/país sin regla, DB lazy/busy y recuperación, rollback de fallo AFTER INSERT y privacidad de error/log.

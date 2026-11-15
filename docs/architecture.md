@@ -2,6 +2,8 @@
 
 ## Simulaciones 005 — T02
 
+T04 añade histórico con existencia/total/página en transacción de lectura SQL y mapper de snapshots, sin motor. Configuración GET sin DB en billing/routes proyecta getter puro getPricingConfiguration desde shared, política del servidor y límites existentes; solo copias y no-store. Un servicio de simulaciones comparte proveedor lazy/política con ambos routers; config no depende del proveedor. Sin cambios de schema ni duplicación de reglas.
+
 T03 añade controlador/ruta POST y montaje en createApp, preservando proveedor lazy. http/json-body.ts centraliza protocolo 32kb/application-json de clientes/simulaciones. Handler traduce BillingError a HTTP y mantiene fallos técnicos solo en logs sanitizados; no cambia motor, SQL ni snapshots. Política de tests inyectable solo en composición de app.
 
 simulationService recibe proveedor de conexión y política interna explícita; calcula mediante shared sin SQL. createCalculatedSimulation en repositorio obtiene cliente bajo transacción inmediata, invoca callback síncrono con su país y reutiliza insertSimulation (savepoint anidado) para snapshots/inserción. toSimulationDto valida y proyecta datos guardados antes del commit; no recalcula históricos. Sin nueva tabla/migración ni rutas HTTP.

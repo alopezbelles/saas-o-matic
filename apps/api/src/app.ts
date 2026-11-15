@@ -2,7 +2,11 @@ import express from 'express';
 import { randomUUID } from 'node:crypto';
 import { customerRoutes } from './features/customers/routes.js';
 import { customerService } from './features/customers/service.js';
-import { simulationRoutes } from './features/simulations/routes.js';
+import {
+  simulationHistoryRoutes,
+  simulationRoutes,
+} from './features/simulations/routes.js';
+import { billingRoutes } from './features/billing/routes.js';
 import { simulationService } from './features/simulations/service.js';
 import type { TaxPolicy } from '@saas-o-matic/shared';
 import type { Connection } from './db/connection.js';
@@ -48,10 +52,10 @@ export function createApp(
     response.json({ status: 'ok' });
   });
   app.use('/customers', customerRoutes(customerService(connection)));
-  app.use(
-    '/simulations',
-    simulationRoutes(simulationService(connection, options.billingPolicy)),
-  );
+  const simulations = simulationService(connection, options.billingPolicy);
+  app.use('/customers', simulationHistoryRoutes(simulations));
+  app.use('/billing-config', billingRoutes(options.billingPolicy));
+  app.use('/simulations', simulationRoutes(simulations));
   app.use(() => {
     throw new HttpError(404, 'ROUTE_NOT_FOUND');
   });

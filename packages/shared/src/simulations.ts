@@ -3,7 +3,7 @@ import { InputError } from './input-error.js';
 import { CONSUMPTION_LIMITS, type PlanCode } from './persistence-contracts.js';
 import { parsePagination, queryValues } from './query.js';
 import { BillingError } from './billing/errors.js';
-import type { TierBreakdown } from './billing/types.js';
+import type { PricingConfiguration, TierBreakdown } from './billing/types.js';
 import { assertConsumption } from './billing/validation.js';
 
 export type CreateSimulation = {
@@ -44,7 +44,7 @@ export type BillingConfigDto = {
   currency: 'EUR';
   pricingVersion: string;
   taxPolicyVersion: string;
-  tiers: Pick<TierBreakdown, 'tierFrom' | 'tierTo' | 'unitPriceCents'>[];
+  tiers: PricingConfiguration['tiers'];
   ratesByCountry: Record<string, number>;
   consumptionLimits: Record<keyof typeof CONSUMPTION_LIMITS, number>;
 };

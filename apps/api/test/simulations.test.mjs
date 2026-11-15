@@ -96,10 +96,10 @@ test('IT-SIM-01: POST returns committed DTO for ES 15/51 and deliberate repeat s
       ids.add(dto.id);
     }
     assert.equal(ids.size, 3);
-    assert.equal((await fetch(base + '/billing-config')).status, 404);
+    assert.equal((await fetch(base + '/billing-config')).status, 200);
     assert.equal(
       (await fetch(base + '/customers/' + client.id + '/simulations')).status,
-      404,
+      200,
     );
   });
 });

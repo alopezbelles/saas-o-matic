@@ -2,11 +2,15 @@ import type {
   BillingQuote,
   CreateSimulation,
   SimulationDto,
+  SimulationPage,
+  SimulationQuery,
 } from '@saas-o-matic/shared';
+import { drizzle } from 'drizzle-orm/better-sqlite3';
+import { count, desc, eq } from 'drizzle-orm';
 import { CONSUMPTION_LIMITS } from '@saas-o-matic/shared';
 import type { Connection } from '../../db/connection.js';
 import { getCustomer, insertSimulation } from '../../db/persistence.js';
-import type { simulations } from '../../db/schema.js';
+import { simulations } from '../../db/schema.js';
 import {
   country,
   dateValue,
@@ -19,6 +23,42 @@ import {
 import { databaseError, HttpError } from '../../http/errors.js';
 
 type Row = typeof simulations.$inferSelect;
+
+export function historyPage(
+  db: Connection,
+  customerId: string,
+  query: SimulationQuery,
+): SimulationPage {
+  try {
+    return db.transaction(() => {
+      if (!getCustomer(db, customerId))
+        throw new HttpError(404, 'CUSTOMER_NOT_FOUND');
+      const orm = drizzle(db);
+      const filter = eq(simulations.customerId, customerId);
+      const total = orm
+        .select({ total: count() })
+        .from(simulations)
+        .where(filter)
+        .get()!.total;
+      const rows = orm
+        .select()
+        .from(simulations)
+        .where(filter)
+        .orderBy(desc(simulations.createdAt), desc(simulations.id))
+        .limit(query.limit)
+        .offset(query.offset)
+        .all();
+      return {
+        items: rows.map(toSimulationDto),
+        total,
+        limit: query.limit,
+        offset: query.offset,
+      };
+    })();
+  } catch (error) {
+    return databaseError(error);
+  }
+}
 
 export function toSimulationDto(row: Row): SimulationDto {
   uuid(row.id);

@@ -1,6 +1,6 @@
 # Tareas 005
 
-Estado: T01–T03 completadas técnicamente; T04/T05 pendientes. POST /simulations disponible; historial y configuración HTTP pendientes.
+Estado: T01–T04 completadas técnicamente; T05 pendiente. Alta, histórico y configuración HTTP disponibles; cierre global pendiente.
 Cada tarea requiere indicación de Alex. Proponer commit separado al cerrar el bloque; no ejecutar commits/pushes. Tras T01 Alex autoriza registrar preparación/ejecución en ai-workspace; conservar la procedencia retrospectiva del registro inicial.
 
 ## T01 — Contratos de alta, histórico y configuración
@@ -46,7 +46,7 @@ Cada tarea requiere indicación de Alex. Proponer commit separado al cerrar el b
 
 ## T04 — Histórico paginado y configuración pública
 
-- [ ] Pendiente. RF3, RF4. Depende de T03.
+- [x] Completada técnicamente. RF3/RF4. Depende de T03.
 - Archivos previstos: simulations/repository.ts, service.ts, controller.ts, routes.ts; billing/routes.ts; app.ts; shared/src/billing/tiers.ts e index.ts; tests HTTP/histórico/configuración y scripts.
 - Histórico con SQL paginado/total y transacción de lectura coherente; cliente ausente 404 y existente sin registros vacío. Orden createdAt DESC, id DESC.
 - Mapear datos guardados/snapshots, sin recalcular ni cambiar el helper listSimulations original.
@@ -55,6 +55,7 @@ Cada tarea requiere indicación de Alex. Proponer commit separado al cerrar el b
 - Actualizar scripts y docs/api-contracts.md; controles por tarea.
 - Cierre: lectura paginada histórica y config probadas, sin preview/UI/FX.
 - Commit propuesto: feat(simulations): expose history and current billing configuration.
+- Evidencia: [verificación T04](../../ai-workspace/testing/005-simulations-api-t04.md). Lint/typecheck, 37 unitarios y 49 integración pasan; fixture fallido inicial registrado/corregido. Sin DB real ni cambios de schema.
 
 ## T05 — Revisión global y conservación histórica
 
