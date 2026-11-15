@@ -1,6 +1,6 @@
 # Plan 004 — Motor monetario puro
 
-Estado: preparado para ejecución incremental; no implementado. [Spec](spec.md) y [decisiones](clarifications.md) canónicas.
+Estado: ejecución incremental iniciada con T01 (fixtures y runner); motor todavía no implementado. [Spec](spec.md) y [decisiones](clarifications.md) canónicas.
 
 ## Arquitectura
 

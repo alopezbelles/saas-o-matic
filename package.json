@@ -27,7 +27,7 @@
     "db:demo:init": "pnpm --filter @saas-o-matic/api... build && pnpm --filter @saas-o-matic/api db:demo:init",
     "db:seed": "pnpm --filter @saas-o-matic/api... build && pnpm --filter @saas-o-matic/api db:seed",
     "db:backup": "pnpm --filter @saas-o-matic/api... build && pnpm --filter @saas-o-matic/api db:backup",
-    "test:unit": "pnpm --filter @saas-o-matic/api... build && pnpm --filter @saas-o-matic/api test:unit"
+    "test:unit": "pnpm --filter @saas-o-matic/api... build && pnpm --filter @saas-o-matic/shared test:unit && pnpm --filter @saas-o-matic/api test:unit"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

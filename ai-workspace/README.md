@@ -51,3 +51,7 @@ Estos registros corresponden a la implementación autorizada; no reproducen los 
 
 [Spec](../specs/004-billing/spec.md), [plan](../specs/004-billing/plan.md), [tareas](../specs/004-billing/tasks.md), [prompts reformulados](prompts/004-billing.md), [iteración de preparación](iterations/004-billing.md), [ADR-005](decisions/ADR-005-billing-engine.md), [revisión documental](reviews/004-billing-planning.md) y [validación](../specs/004-billing/validation.md).
 Registros redactados el 15 de noviembre de 2026 por autorización posterior de Alex, después de aclarar las decisiones y antes de implementar. Son reformulaciones retrospectivas, no mensajes originales. La revisión documental no acredita pruebas del motor ni aceptación humana de una entrega.
+
+### Ejecución incremental 004
+
+T01: [instrucción previa](prompts/004-billing.md#t01--instrucción-previa-de-implementación), [iteración](iterations/004-billing.md), [pruebas](testing/004-billing-t01.md) y [revisión técnica](reviews/004-billing-t01.md). Fixtures y runner implementados; motor pendiente. Formato global con incidencia CRLF/LF en archivos ajenos, delimitada en la evidencia.

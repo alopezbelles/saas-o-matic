@@ -1,6 +1,6 @@
 # Validación 004
 
-Estado: documentación preparada; motor NO IMPLEMENTADO. Todas las tareas de código pendientes.
+Estado: T01 completada técnicamente (fixtures, runner y gate documental); motor NO IMPLEMENTADO. T02–T05 pendientes.
 
 ## Matriz de implementación futura
 
@@ -23,6 +23,11 @@ Comandos y resultados documentales se enlazan desde [revisión de preparación](
 Los dos tests documentales pasan. El formato global todavía falla en 46 archivos ajenos a esta revisión; no se ha aplicado una corrección masiva. Resolver o delimitar esta incidencia antes de afirmar que los gates de implementación pasan.
 
 ## Registro durante implementación
+
+### T01 — 15 de noviembre de 2026
+
+Lint y typecheck pasan. test:unit pasa: 5 tests de coherencia de fixtures shared y 3 de API; test:docs pasa con 2 tests. Ningún RF monetario se marca implementado por estos resultados.
+format:check global falla en 43 archivos ajenos a T01; diagnóstico comprobado CRLF/LF, sin corrección masiva. Tres archivos de los 46 originales se formatearon al modificarlos dentro de T01. Ver [evidencia y comandos](../../ai-workspace/testing/004-billing-t01.md), [salida](../../ai-workspace/testing/004-billing-t01.txt) y [revisión](../../ai-workspace/reviews/004-billing-t01.md).
 
 Por tarea: fecha, versión identificable, comandos exactos, códigos de salida, pruebas, incidencias y limitaciones. Enlazar ai-workspace sin duplicar salidas.
 En T05 ejecutar controles completos y presentar casos ES 15/51 usuarios con bases 14000/42500, impuestos 2940/8925 y totales 16940/51425.

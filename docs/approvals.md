@@ -19,7 +19,9 @@ Alex autorizó ejecutar 003 y sus tasks después de señalar la diferencia entre
 ## 004 — Preparación
 
 Alex autorizó adaptar y consolidar spec/plan/tasks, resolver decisiones una a una y registrar ahora la preparación en ai-workspace mediante reformulaciones técnicas retrospectivas. Las decisiones de países, política demo, precisión, límites, entrada y salida constan en [aclaraciones](../specs/004-billing/clarifications.md).
-La autorización actual es documental: no iniciar código. La implementación se abordará tarea a tarea por indicación posterior, con commits separados propuestos, sin ejecutar commits/pushes automáticamente. No modificar DB, HTTP, UI ni FX bajo 004.
+La autorización inicial fue documental. La implementación se aborda tarea a tarea por indicación posterior, con commits separados propuestos, sin ejecutar commits/pushes automáticamente. No modificar DB, HTTP, UI ni FX bajo 004.
+
+Actualización posterior: Alex autoriza implementar T01 (fixtures, runner shared, gate documental y evidencias). No autoriza todavía T02–T05 ni commits/pushes.
 
 ## Revisión de entregas
 

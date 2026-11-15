@@ -1,12 +1,12 @@
 # Tareas 004
 
-Todas pendientes. Preparación documental consolidada; ninguna tarea de implementación ejecutada.
+T01 completada técnicamente; T02–T05 pendientes. Motor monetario todavía no implementado.
 Ejecutar una tarea por indicación de Alex. Informar cambios, controles y propuesta de commit por bloque; no hacer commits/pushes sin autorización específica.
 Alcance común: motor puro, contratos, configuración y pruebas. Sin HTTP, UI, DB, migraciones ni FX.
 
 ## T01 — Preparar oráculos y conectar tests de shared
 
-- [ ] Pendiente. Preparación de RF1..4; sin dependencia de implementación.
+- [x] Completada técnicamente. Preparación de RF1..4; no acredita RF implementados.
 - Archivos previstos: packages/shared/test/billing-fixtures.mjs, billing-fixtures.test.mjs, packages/shared/package.json, package.json raíz, test/docs.test.mjs y docs/testing.md.
 - Preparar resultados independientes de tramos, países, límites, redondeo y errores; distinguir tasas sintéticas.
 - Conectar test:unit de shared y raíz conservando API. No importar funciones inexistentes ni omitir tests.
@@ -15,6 +15,7 @@ Alcance común: motor puro, contratos, configuración y pruebas. Sin HTTP, UI, D
 - Antes del cierre, revisar la incidencia de formato global detectada en preparación (46 archivos ajenos a 004); no atribuirla a esta tarea ni afirmar gates completos mientras falle. No aplicar correcciones masivas fuera del alcance autorizado.
 - Cierre: fixtures coherentes y ejecución reproducible.
 - Commit propuesto: test(billing): add pricing fixtures and shared test runner.
+- Evidencia: [verificación T01](../../ai-workspace/testing/004-billing-t01.md). Lint/typecheck y 8 tests unitarios + 2 documentales pasan; format:check global falla en 43 archivos ajenos por CRLF/LF. Incidencia delimitada, no corregida masivamente.
 
 ## T02 — Implementar tramos y contrato básico
 

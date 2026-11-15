@@ -1,6 +1,6 @@
 # 004 — Motor acumulativo, impuestos y precisión
 
-Estado: preparación documental consolidada; implementación no iniciada. Decisiones funcionales acordadas con Alex. Ejecutar cada tarea cuando se indique; sin commits automáticos.
+Estado: T01 completada técnicamente (fixtures y runner); motor todavía no implementado. Decisiones funcionales acordadas con Alex. Ejecutar cada tarea cuando se indique; sin commits automáticos.
 
 ## Contexto y fuentes
 

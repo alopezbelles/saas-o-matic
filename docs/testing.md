@@ -4,7 +4,7 @@ Desde raíz con pnpm 10.33.4 y Node 22 compatible. En PowerShell usar pnpm.cmd s
 
 | Comando               | Control                                                                      |
 | --------------------- | ---------------------------------------------------------------------------- |
-| pnpm test:unit        | Compila shared/API y prueba contratos y fiscal de 003                        |
+| pnpm test:unit        | Compila shared/API, prueba fixtures shared de 004 y contratos/fiscal de 003  |
 | pnpm lint             | ESLint sin warnings                                                          |
 | pnpm typecheck        | Compila shared y verifica tipos de todo el workspace y configuración Drizzle |
 | pnpm format:check     | Prettier                                                                     |
@@ -12,7 +12,7 @@ Desde raíz con pnpm 10.33.4 y Node 22 compatible. En PowerShell usar pnpm.cmd s
 | pnpm test:integration | Compila shared/API, prueba HTTP y SQLite real                                |
 | pnpm test:web         | Compila web y prueba HTML/bundle HTTP                                        |
 | pnpm test:gates       | Errores deliberados de tipos/lint/test devuelven no cero                     |
-| pnpm test:docs        | Enlaces de ambas specs, contexto activo y scripts                            |
+| pnpm test:docs        | Enlaces documentales, spec activa 004 y scripts                              |
 | pnpm test             | Todas las suites anteriores, secuencialmente                                 |
 
 No ejecutar test:gates en paralelo con lint/typecheck/build. No se usa passWithNoTests.
@@ -22,7 +22,7 @@ Prueba límites contra shared, SQL directo, concurrencia, snapshots, migración 
 El CLI se prueba también desde raíz con un destino con espacios.
 Los fixtures monetarios son técnicos; no son políticas fiscales ni pruebas de un motor de cálculo.
 
-test:unit cubre fiscal/contratos de clientes. No hay E2E de navegador ni motor monetario. El smoke HTTP web no acredita accesibilidad.
+test:unit cubre fiscal/contratos de clientes y coherencia de fixtures monetarios de 004. No hay E2E de navegador ni motor monetario. El smoke HTTP web no acredita accesibilidad.
 Instalación con caché no equivale a otra máquina limpia.
 Evidencias: [001](../specs/001-foundation/validation.md), [002](../specs/002-persistence/validation.md).
 
@@ -30,3 +30,10 @@ Evidencias: [001](../specs/001-foundation/validation.md), [002](../specs/002-per
 El cierre SIGTERM se simula emitiendo el evento en proceso hijo e instrumentando el cierre real del driver; no equivale a probar entrega de una señal OS en Windows.
 La migración de contacto se prueba partiendo del esquema 0000 con cliente referenciado por una simulación. También se verifica rollback si el grafo final es inválido.
 [Resultados 003](../specs/003-customers-api/validation.md).
+
+## 004 — T01
+
+Desde raíz, pnpm test:unit compila shared/API, ejecuta pnpm --filter @saas-o-matic/shared test:unit y conserva pnpm --filter @saas-o-matic/api test:unit.
+El runner de shared es node --test test/*.test.mjs; puede ejecutarse aisladamente tras pnpm --filter @saas-o-matic/shared build.
+UT-FIX-004 verifica coherencia de datos esperados: fronteras, desglose, totales, países, casos sintéticos de redondeo/overflow, límites contra CONSUMPTION_LIMITS y vocabulario de errores. No importa un motor de facturación ni acredita RF implementados. Las pruebas productivas se añadirán con T02–T04.
+El gate de contexto comprueba la línea de spec activa 004 y la existencia del destino, sin dar por válida una mención histórica de 003.

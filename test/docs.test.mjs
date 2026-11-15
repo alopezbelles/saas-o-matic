@@ -37,7 +37,12 @@ test('los documentos y el índice enlazan archivos locales existentes', () => {
 });
 
 test('el contexto identifica la spec activa y los comandos documentados existen', () => {
-  assert.match(readFileSync('MEMORY.md', 'utf8'), /003-customers-api/);
+  const memory = readFileSync('MEMORY.md', 'utf8');
+  const activeSpec = memory.match(
+    /^- Spec activa: \[004-billing\]\((specs\/004-billing\/spec\.md)\)/m,
+  );
+  assert.ok(activeSpec, 'MEMORY debe identificar 004 como spec activa');
+  assert.ok(existsSync(activeSpec[1]), 'la spec activa debe existir');
   assert.match(readFileSync('AGENTS.md', 'utf8'), /MEMORY\.md/);
   assert.match(
     readFileSync('ai-workspace/README.md', 'utf8'),

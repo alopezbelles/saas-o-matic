@@ -58,3 +58,13 @@ Fuentes canónicas: [spec](../../specs/004-billing/spec.md), [aclaraciones](../.
 
 Este archivo documenta la preparación. Antes de cada bloque significativo de código, añadir la instrucción técnica realmente utilizada con su momento y alcance, sin convertir esta retrospectiva en evidencia de una instrucción original.
 [Iteración](../iterations/004-billing.md) y [revisión documental](../reviews/004-billing-planning.md).
+
+## T01 — Instrucción previa de implementación
+
+Preparada antes de modificar código para ejecutar T01, autorizada expresamente por Alex. Instrucción técnica del agente, no cita literal del usuario.
+
+**Contexto:** 004 definida, sin motor monetario. Existen tests API y límites compartidos; falta runner de tests en shared.
+**Objetivo:** crear datos esperados independientes y conectar su verificación al test:unit raíz conservando las pruebas de 003.
+**Acciones:** añadir fixtures de tramos/desglose, impuestos demo, half-up sintético, límites y errores; verificar coherencia sin reproducir el algoritmo productivo. Añadir runner shared, actualizar gate documental para comprobar la línea de spec activa 004 y su destino real; documentar comandos y alcance.
+**Restricciones:** no implementar funciones de cálculo ni tests omitidos, no dependencias ni DB/HTTP/FX, no commits. El PASS de fixtures no acredita RF implementados. No reformatear masivamente archivos ajenos para ocultar la incidencia global conocida.
+**Verificación:** lint, typecheck, format:check, test:unit y test:docs; registrar resultados reales y separar fallos globales preexistentes del formato de archivos afectados. Actualizar tareas, memoria y registros al cerrar.

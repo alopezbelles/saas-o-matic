@@ -32,3 +32,11 @@ El comprobador documental aún identifica 003 mediante expresión fija; al imple
 No código, dependencias instaladas, DB ni commits. Ninguna prueba monetaria ejecutada.
 Los 2 tests documentales pasan; el control global de formato informa 46 archivos ajenos a la revisión con avisos. Se documenta la incidencia sin reformatear código ni otras entregas.
 Siguiente paso: T01 cuando Alex indique empezar; registrar desde entonces las instrucciones y verificaciones durante cada tarea.
+
+## T01 — Implementación autorizada y registro durante el trabajo
+
+15 de noviembre de 2026, después del commit documental 06fd82b. Alex autorizó T01. Se preparó una instrucción técnica antes de modificar código, añadida en prompts/004-billing.md; esta sección registra la ejecución y no modifica la procedencia retrospectiva de la preparación anterior.
+Se añadieron fixtures y cinco pruebas de integridad, runner shared y encadenamiento test:unit raíz conservando API. Se corrigió el gate de contexto para exigir la spec activa 004 y su archivo. No se implementaron funciones de cálculo.
+La shell no encontraba Node en PATH; se utilizó la instalación existente en C:\Program Files\nodejs y el pnpm local mediante PATH de proceso. Sin instalación ni cambios personales.
+Lint/typecheck pasan; unitarios 5 shared + 3 API y 2 documentales pasan. Formato global falla en 43 archivos externos; comparación con Prettier confirma que son diferencias exclusivas CRLF/LF. No se corrigieron fuera de alcance.
+[Evidencia](../testing/004-billing-t01.md) y [revisión técnica](../reviews/004-billing-t01.md). T01 cerrada en su alcance, RF del motor pendientes. Sin DB ni commits. Siguiente paso: T02 por indicación de Alex.
