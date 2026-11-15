@@ -1,0 +1,661 @@
+T05 - actual outputs, 2026-11-15, base 88ce6b1, branch specs/004-billing.
+$ pnpm.cmd lint
+exit_code=0
+
+> saas-o-matic@0.0.0 lint C:\Users\alope\Documents\saas-o-matic
+> eslint . --max-warnings 0
+
+
+$ pnpm.cmd typecheck
+exit_code=0
+
+> saas-o-matic@0.0.0 typecheck C:\Users\alope\Documents\saas-o-matic
+> pnpm --filter @saas-o-matic/shared build && pnpm -r typecheck
+
+
+> @saas-o-matic/shared@0.0.0 build C:\Users\alope\Documents\saas-o-matic\packages\shared
+> tsc
+
+Scope: 3 of 4 workspace projects
+packages/shared typecheck$ tsc --noEmit
+apps/web typecheck$ tsc --noEmit
+packages/shared typecheck: Done
+apps/web typecheck: Done
+apps/api typecheck$ tsc --noEmit && tsc -p tsconfig.config.json
+apps/api typecheck: Done
+
+$ pnpm.cmd format:check
+exit_code=1
+
+> saas-o-matic@0.0.0 format:check C:\Users\alope\Documents\saas-o-matic
+> prettier --check .
+
+Checking formatting...
+[warn] AGENTS.md
+[warn] ai-workspace/decisions/ADR-004-customers-api.md
+[warn] ai-workspace/iterations/003-customers-api.md
+[warn] ai-workspace/iterations/README.md
+[warn] ai-workspace/prompts/003-customers-api.md
+[warn] ai-workspace/prompts/README.md
+[warn] ai-workspace/reviews/003-customers-api.md
+[warn] ai-workspace/reviews/README.md
+[warn] ai-workspace/testing/003-customers-api.md
+[warn] ai-workspace/testing/README.md
+[warn] apps/api/drizzle/meta/_journal.json
+[warn] apps/api/drizzle/meta/0001_snapshot.json
+[warn] apps/api/src/app.ts
+[warn] apps/api/src/db/migrate.ts
+[warn] apps/api/src/db/persistence.ts
+[warn] apps/api/src/db/provider.ts
+[warn] apps/api/src/db/schema.ts
+[warn] apps/api/src/features/customers/controller.ts
+[warn] apps/api/src/features/customers/domain/tax-id.ts
+[warn] apps/api/src/features/customers/repository.ts
+[warn] apps/api/src/features/customers/routes.ts
+[warn] apps/api/src/features/customers/service.ts
+[warn] apps/api/src/http/errors.ts
+[warn] apps/api/src/index.ts
+[warn] apps/api/test/customers-contract.test.mjs
+[warn] apps/api/test/customers.test.mjs
+[warn] apps/api/test/server-bootstrap.mjs
+[warn] apps/api/test/server-lifecycle.test.mjs
+[warn] apps/api/test/tax-id-fixtures.mjs
+[warn] apps/api/test/tax-id.test.mjs
+[warn] docs/api-contracts.md
+[warn] docs/data-model.md
+[warn] packages/shared/src/customers.ts
+[warn] README.md
+[warn] specs/002-persistence/clarifications.md
+[warn] specs/003-customers-api/clarifications.md
+[warn] specs/003-customers-api/fiscal-rules.md
+[warn] specs/003-customers-api/plan.md
+[warn] specs/003-customers-api/spec.md
+[warn] specs/003-customers-api/tasks.md
+[warn] specs/003-customers-api/validation.md
+[warn] Code style issues found in 41 files. Run Prettier with --write to fix.
+ ELIFECYCLE  Command failed with exit code 1.
+
+$ pnpm.cmd build
+exit_code=0
+
+> saas-o-matic@0.0.0 build C:\Users\alope\Documents\saas-o-matic
+> pnpm -r build
+
+Scope: 3 of 4 workspace projects
+packages/shared build$ tsc
+apps/web build$ tsc --noEmit && vite build
+packages/shared build: Done
+apps/web build: vite v8.3.8 building client environment for production...
+apps/web build: transforming...
+apps/web build: ✓ 15 modules transformed.
+apps/web build: rendering chunks...
+apps/web build: computing gzip size...
+apps/web build: dist/index.html                  0.32 kB │ gzip:  0.23 kB
+apps/web build: dist/assets/index-BgjfUC6V.js  219.74 kB │ gzip: 68.71 kB
+apps/web build: ✓ built in 185ms
+apps/web build: Done
+apps/api build$ tsc && tsc -p tsconfig.config.json
+apps/api build: Done
+
+$ pnpm.cmd test
+exit_code=0
+
+> saas-o-matic@0.0.0 test C:\Users\alope\Documents\saas-o-matic
+> pnpm test:unit && pnpm test:integration && pnpm test:web && pnpm test:gates && pnpm test:docs
+
+
+> saas-o-matic@0.0.0 test:unit C:\Users\alope\Documents\saas-o-matic
+> pnpm --filter @saas-o-matic/api... build && pnpm --filter @saas-o-matic/shared test:unit && pnpm --filter @saas-o-matic/api test:unit
+
+Scope: 2 of 4 workspace projects
+packages/shared build$ tsc
+packages/shared build: Done
+apps/api build$ tsc && tsc -p tsconfig.config.json
+apps/api build: Done
+
+> @saas-o-matic/shared@0.0.0 test:unit C:\Users\alope\Documents\saas-o-matic\packages\shared
+> node --test test/*.test.mjs
+
+TAP version 13
+# Subtest: tier fixtures cover agreed boundaries with coherent quantities
+ok 1 - tier fixtures cover agreed boundaries with coherent quantities
+  ---
+  duration_ms: 3.5889
+  type: 'test'
+  ...
+# Subtest: demo quote fixtures cover four countries and preserve totals
+ok 2 - demo quote fixtures cover four countries and preserve totals
+  ---
+  duration_ms: 0.6392
+  type: 'test'
+  ...
+# Subtest: synthetic rounding fixtures straddle half a cent without defining product rates
+ok 3 - synthetic rounding fixtures straddle half a cent without defining product rates
+  ---
+  duration_ms: 0.4018
+  type: 'test'
+  ...
+# Subtest: consumption fixtures match existing shared limits and cover invalid inputs
+ok 4 - consumption fixtures match existing shared limits and cover invalid inputs
+  ---
+  duration_ms: 0.462
+  type: 'test'
+  ...
+# Subtest: error and policy fixtures have unique cases and the agreed error vocabulary
+ok 5 - error and policy fixtures have unique cases and the agreed error vocabulary
+  ---
+  duration_ms: 0.5734
+  type: 'test'
+  ...
+# Subtest: UT-QUOTE-004: complete quote matches independent country and boundary oracles
+ok 6 - UT-QUOTE-004: complete quote matches independent country and boundary oracles
+  ---
+  duration_ms: 9.393
+  type: 'test'
+  ...
+# Subtest: UT-QUOTE-004: tax rounds on the whole base rather than separately by tier
+ok 7 - UT-QUOTE-004: tax rounds on the whole base rather than separately by tier
+  ---
+  duration_ms: 0.623
+  type: 'test'
+  ...
+# Subtest: UT-INPUT-004: all consumption limits and invalid values are validated
+ok 8 - UT-INPUT-004: all consumption limits and invalid values are validated
+  ---
+  duration_ms: 4.8566
+  type: 'test'
+  ...
+# Subtest: UT-QUOTE-004: secondary consumptions and untrusted extra fields never set prices
+ok 9 - UT-QUOTE-004: secondary consumptions and untrusted extra fields never set prices
+  ---
+  duration_ms: 0.8703
+  type: 'test'
+  ...
+# Subtest: UT-QUOTE-004: policy validation and country support apply even for zero users
+ok 10 - UT-QUOTE-004: policy validation and country support apply even for zero users
+  ---
+  duration_ms: 1.3785
+  type: 'test'
+  ...
+# Subtest: UT-QUOTE-004: input errors precede invalid policy and unsupported country
+ok 11 - UT-QUOTE-004: input errors precede invalid policy and unsupported country
+  ---
+  duration_ms: 0.3881
+  type: 'test'
+  ...
+# Subtest: UT-QUOTE-004: overflow rejects both unsafe tax and unsafe total
+ok 12 - UT-QUOTE-004: overflow rejects both unsafe tax and unsafe total
+  ---
+  duration_ms: 0.7192
+  type: 'test'
+  ...
+# Subtest: UT-PROP-01: quote invariants and monotonicity hold for every count and demo country
+ok 13 - UT-PROP-01: quote invariants and monotonicity hold for every count and demo country
+  ---
+  duration_ms: 83.2402
+  type: 'test'
+  ...
+# Subtest: UT-PROP-01: frozen inputs remain intact and outputs are isolated between calls
+ok 14 - UT-PROP-01: frozen inputs remain intact and outputs are isolated between calls
+  ---
+  duration_ms: 0.7753
+  type: 'test'
+  ...
+# Subtest: UT-MONEY-01: tax rounds only once, with half-up around half a cent
+ok 15 - UT-MONEY-01: tax rounds only once, with half-up around half a cent
+  ---
+  duration_ms: 2.4343
+  type: 'test'
+  ...
+# Subtest: UT-MONEY-01: safe boundary and oversized intermediates retain exact cents
+ok 16 - UT-MONEY-01: safe boundary and oversized intermediates retain exact cents
+  ---
+  duration_ms: 1.4164
+  type: 'test'
+  ...
+# Subtest: UT-MONEY-01: invalid helper inputs reject without coercion
+ok 17 - UT-MONEY-01: invalid helper inputs reject without coercion
+  ---
+  duration_ms: 2.3035
+  type: 'test'
+  ...
+# Subtest: UT-TAX-01: versioned policy selects all four explicit rates without mutation
+ok 18 - UT-TAX-01: versioned policy selects all four explicit rates without mutation
+  ---
+  duration_ms: 4.1753
+  type: 'test'
+  ...
+# Subtest: UT-TAX-01: invalid policies and countries fail with stable codes
+ok 19 - UT-TAX-01: invalid policies and countries fail with stable codes
+  ---
+  duration_ms: 1.82
+  type: 'test'
+  ...
+# Subtest: UT-TAX-01: valid version boundary and null-prototype rate maps are supported
+ok 20 - UT-TAX-01: valid version boundary and null-prototype rate maps are supported
+  ---
+  duration_ms: 0.4716
+  type: 'test'
+  ...
+# Subtest: UT-BILL-01: tiered base matches independent boundary oracles
+ok 21 - UT-BILL-01: tiered base matches independent boundary oracles
+  ---
+  duration_ms: 2.8566
+  type: 'test'
+  ...
+# Subtest: UT-BILL-01: every allowed count has a consistent, serializable breakdown
+ok 22 - UT-BILL-01: every allowed count has a consistent, serializable breakdown
+  ---
+  duration_ms: 26.6559
+  type: 'test'
+  ...
+# Subtest: UT-PROP-01: each added user costs only the applicable marginal price
+ok 23 - UT-PROP-01: each added user costs only the applicable marginal price
+  ---
+  duration_ms: 1.7291
+  type: 'test'
+  ...
+# Subtest: UT-INPUT-004: invalid users fail without coercion with a stable field and code
+ok 24 - UT-INPUT-004: invalid users fail without coercion with a stable field and code
+  ---
+  duration_ms: 1.5954
+  type: 'test'
+  ...
+# Subtest: UT-PROP-01: results are deterministic and mutations do not leak between calls
+ok 25 - UT-PROP-01: results are deterministic and mutations do not leak between calls
+  ---
+  duration_ms: 0.7335
+  type: 'test'
+  ...
+1..25
+# tests 25
+# suites 0
+# pass 25
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 271.3694
+
+> @saas-o-matic/api@0.0.0 test:unit C:\Users\alope\Documents\saas-o-matic\apps\api
+> node --test test/tax-id.test.mjs test/customers-contract.test.mjs test/tax-policy.test.mjs
+
+TAP version 13
+# Subtest: UT-CONTRACT-01: cinco campos, normalización y longitudes
+ok 1 - UT-CONTRACT-01: cinco campos, normalización y longitudes
+  ---
+  duration_ms: 6.9318
+  type: 'test'
+  ...
+# Subtest: UT-CONTRACT-01: parámetros, UUID y query repetida/estructurada
+ok 2 - UT-CONTRACT-01: parámetros, UUID y query repetida/estructurada
+  ---
+  duration_ms: 3.5356
+  type: 'test'
+  ...
+# Subtest: UT-FISC-01: fixtures independientes de todas las familias y control por prefijo
+ok 3 - UT-FISC-01: fixtures independientes de todas las familias y control por prefijo
+  ---
+  duration_ms: 3.0773
+  type: 'test'
+  ...
+# Subtest: UT-TAX-01: server policy has the agreed version, countries and rates
+ok 4 - UT-TAX-01: server policy has the agreed version, countries and rates
+  ---
+  duration_ms: 3.5559
+  type: 'test'
+  ...
+# Subtest: UT-TAX-01: published policy and rates cannot be mutated
+ok 5 - UT-TAX-01: published policy and rates cannot be mutated
+  ---
+  duration_ms: 0.692
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 168.4018
+
+> saas-o-matic@0.0.0 test:integration C:\Users\alope\Documents\saas-o-matic
+> pnpm --filter @saas-o-matic/api... build && pnpm --filter @saas-o-matic/api test:integration
+
+Scope: 2 of 4 workspace projects
+packages/shared build$ tsc
+packages/shared build: Done
+apps/api build$ tsc && tsc -p tsconfig.config.json
+apps/api build: Done
+
+> @saas-o-matic/api@0.0.0 test:integration C:\Users\alope\Documents\saas-o-matic\apps\api
+> node --test test/health.test.mjs test/database.test.mjs test/database-operations.test.mjs test/customers.test.mjs test/server-lifecycle.test.mjs
+
+TAP version 13
+# Subtest: IT-CUS-01: cinco campos, DTO, Location, normalización y detalle
+ok 1 - IT-CUS-01: cinco campos, DTO, Location, normalización y detalle
+  ---
+  duration_ms: 203.7048
+  type: 'test'
+  ...
+# Subtest: IT-INVALID-01/HTTP-01: errores antes de abrir DB, protocolo y requestId
+ok 2 - IT-INVALID-01/HTTP-01: errores antes de abrir DB, protocolo y requestId
+  ---
+  duration_ms: 56.7113
+  type: 'test'
+  ...
+# Subtest: IT-DUP-01: carrera 201/409 y unicidad por país
+ok 3 - IT-DUP-01: carrera 201/409 y unicidad por país
+  ---
+  duration_ms: 59.2144
+  type: 'test'
+  ...
+# Subtest: IT-CUS-03: búsqueda literal, orden, páginas, filtros y parámetros
+ok 4 - IT-CUS-03: búsqueda literal, orden, páginas, filtros y parámetros
+  ---
+  duration_ms: 93.9763
+  type: 'test'
+  ...
+# Subtest: IT-LIFECYCLE-01/PRIVACY-01: DB ausente/reintento, health, busy y errores sanitizados
+ok 5 - IT-LIFECYCLE-01/PRIVACY-01: DB ausente/reintento, health, busy y errores sanitizados
+  ---
+  duration_ms: 1224.7746
+  type: 'test'
+  ...
+# Subtest: IT-CUS-01: seed anterior sigue legible
+ok 6 - IT-CUS-01: seed anterior sigue legible
+  ---
+  duration_ms: 38.4424
+  type: 'test'
+  ...
+# Subtest: IT-MIG-003: migrar conserva clientes referenciados, contacto e histórico
+ok 7 - IT-MIG-003: migrar conserva clientes referenciados, contacto e histórico
+  ---
+  duration_ms: 69.4122
+  type: 'test'
+  ...
+# Subtest: IT-SEED-01: seed idempotente conserva filas ajenas, cero simulaciones y conflictos revierten todo
+ok 8 - IT-SEED-01: seed idempotente conserva filas ajenas, cero simulaciones y conflictos revierten todo
+  ---
+  duration_ms: 138.3601
+  type: 'test'
+  ...
+# Subtest: IT-SEED-01: rechaza bases no demo y demo:init sobre archivo existente
+ok 9 - IT-SEED-01: rechaza bases no demo y demo:init sobre archivo existente
+  ---
+  duration_ms: 34.9363
+  type: 'test'
+  ...
+# Subtest: IT-SAFETY-01: rutas inseguras, hardlinks, alias y centinelas no se abren
+ok 10 - IT-SAFETY-01: rutas inseguras, hardlinks, alias y centinelas no se abren
+  ---
+  duration_ms: 22.3582
+  type: 'test'
+  ...
+# Subtest: IT-MIG-01: base ajena y primera migración fallida no dejan cambios
+ok 11 - IT-MIG-01: base ajena y primera migración fallida no dejan cambios
+  ---
+  duration_ms: 55.7184
+  type: 'test'
+  ...
+# Subtest: IT-RECOVERY-01: SQLITE_BUSY finito sin escrituras parciales y posterior recuperación
+ok 12 - IT-RECOVERY-01: SQLITE_BUSY finito sin escrituras parciales y posterior recuperación
+  ---
+  duration_ms: 1206.7328
+  type: 'test'
+  ...
+# Subtest: IT-BACKUP-01: copia consistente, reapertura, destino existente/origen rechazados
+ok 13 - IT-BACKUP-01: copia consistente, reapertura, destino existente/origen rechazados
+  ---
+  duration_ms: 59.6444
+  type: 'test'
+  ...
+# Subtest: IT-CONSTRAINT-01: dos conexiones concurrentes solo aceptan una clave fiscal
+ok 14 - IT-CONSTRAINT-01: dos conexiones concurrentes solo aceptan una clave fiscal
+  ---
+  duration_ms: 157.9212
+  type: 'test'
+  ...
+# Subtest: IT-SAFETY-01: CLI raíz reenvía argumentos, seed exige autorización demo y errores no filtran PII
+ok 15 - IT-SAFETY-01: CLI raíz reenvía argumentos, seed exige autorización demo y errores no filtran PII
+  ---
+  duration_ms: 13570.4124
+  type: 'test'
+  ...
+# Subtest: IT-DB-01: esquema STRICT, FK por conexión, reconexión y migración idempotente
+ok 16 - IT-DB-01: esquema STRICT, FK por conexión, reconexión y migración idempotente
+  ---
+  duration_ms: 102.7417
+  type: 'test'
+  ...
+# Subtest: IT-MIG-01: deriva detectada y rollback de DDL, datos e historial
+ok 17 - IT-MIG-01: deriva detectada y rollback de DDL, datos e historial
+  ---
+  duration_ms: 44.3423
+  type: 'test'
+  ...
+# Subtest: IT-CONSTRAINT-01: UNIQUE por país, no por nombre/email, normalización sin perder ceros
+ok 18 - IT-CONSTRAINT-01: UNIQUE por país, no por nombre/email, normalización sin perder ceros
+  ---
+  duration_ms: 57.6145
+  type: 'test'
+  ...
+# Subtest: IT-CONSTRAINT-01: SQL directo rechaza FK, null, texto vacío, planes y fechas mal formadas
+ok 19 - IT-CONSTRAINT-01: SQL directo rechaza FK, null, texto vacío, planes y fechas mal formadas
+  ---
+  duration_ms: 45.3851
+  type: 'test'
+  ...
+# Subtest: IT-CONSTRAINT-01: CHECK y STRICT coinciden con los límites compartidos
+ok 20 - IT-CONSTRAINT-01: CHECK y STRICT coinciden con los límites compartidos
+  ---
+  duration_ms: 77.3293
+  type: 'test'
+  ...
+# Subtest: IT-SNAPSHOT-01: round-trip exacto, snapshots autoritativos e histórico inmutable
+ok 21 - IT-SNAPSHOT-01: round-trip exacto, snapshots autoritativos e histórico inmutable
+  ---
+  duration_ms: 55.038
+  type: 'test'
+  ...
+# Subtest: IT-SNAPSHOT-01: estructura, sumas, productos y overflow rechazados en persistencia
+ok 22 - IT-SNAPSHOT-01: estructura, sumas, productos y overflow rechazados en persistencia
+  ---
+  duration_ms: 27.0034
+  type: 'test'
+  ...
+# {"requestId":"1f176205-2502-4b14-939c-e609fcfcae11","method":"GET","status":200,"code":"OK"}
+# {"requestId":"0f22081d-fe8c-4f19-8970-922477db1cc1","method":"GET","status":404,"code":"ROUTE_NOT_FOUND"}
+# {"requestId":"9d8ccee7-c3dc-41e4-8769-1434e483b779","method":"POST","status":404,"code":"ROUTE_NOT_FOUND"}
+# Subtest: health responde JSON y las rutas desconocidas devuelven 404
+ok 23 - health responde JSON y las rutas desconocidas devuelven 404
+  ---
+  duration_ms: 114.6885
+  type: 'test'
+  ...
+# Subtest: el servidor rechaza PORT inválido y un puerto ocupado con salida no cero
+ok 24 - el servidor rechaza PORT inválido y un puerto ocupado con salida no cero
+  ---
+  duration_ms: 5672.4701
+  type: 'test'
+  ...
+# Subtest: IT-LIFECYCLE-01: proceso HTTP cierra conexión al manejar SIGTERM simulado
+ok 25 - IT-LIFECYCLE-01: proceso HTTP cierra conexión al manejar SIGTERM simulado
+  ---
+  duration_ms: 1786.6354
+  type: 'test'
+  ...
+1..25
+# tests 25
+# suites 0
+# pass 25
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 16478.0833
+
+> saas-o-matic@0.0.0 test:web C:\Users\alope\Documents\saas-o-matic
+> pnpm --filter @saas-o-matic/web build && pnpm --filter @saas-o-matic/web test
+
+
+> @saas-o-matic/web@0.0.0 build C:\Users\alope\Documents\saas-o-matic\apps\web
+> tsc --noEmit && vite build
+
+vite v8.3.8 building client environment for production...
+transforming...
+✓ 15 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                  0.32 kB │ gzip:  0.23 kB
+dist/assets/index-BgjfUC6V.js  219.74 kB │ gzip: 68.71 kB
+
+✓ built in 173ms
+
+> @saas-o-matic/web@0.0.0 test C:\Users\alope\Documents\saas-o-matic\apps\web
+> node --test test/*.test.mjs
+
+TAP version 13
+# Subtest: la web compilada sirve HTML y su módulo JavaScript
+ok 1 - la web compilada sirve HTML y su módulo JavaScript
+  ---
+  duration_ms: 146.1728
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 529.6728
+
+> saas-o-matic@0.0.0 test:gates C:\Users\alope\Documents\saas-o-matic
+> node --test test/gates.test.mjs
+
+TAP version 13
+# Subtest: los controles devuelven error ante tipos, lint y tests incorrectos
+ok 1 - los controles devuelven error ante tipos, lint y tests incorrectos
+  ---
+  duration_ms: 5025.2452
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5126.3206
+
+> saas-o-matic@0.0.0 test:docs C:\Users\alope\Documents\saas-o-matic
+> node --test test/docs.test.mjs
+
+TAP version 13
+# Subtest: los documentos y el índice enlazan archivos locales existentes
+ok 1 - los documentos y el índice enlazan archivos locales existentes
+  ---
+  duration_ms: 91.2742
+  type: 'test'
+  ...
+# Subtest: el contexto identifica la spec activa y los comandos documentados existen
+ok 2 - el contexto identifica la spec activa y los comandos documentados existen
+  ---
+  duration_ms: 1.6128
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 204.7217
+
+$ compatibility review (compiled domain + persistence validator, no DB)
+exit_code=0
+{
+  "compatibleBreakdowns": 4004,
+  "policy": {
+    "version": "demo-standard-v1",
+    "ratesByCountry": {
+      "ES": 2100,
+      "FR": 2000,
+      "DE": 1900,
+      "GB": 2000
+    }
+  },
+  "examples": [
+    {
+      "users": 15,
+      "baseCents": 14000,
+      "pricingVersion": "users-tiered-v1",
+      "breakdown": [
+        {
+          "tierFrom": 1,
+          "tierTo": 10,
+          "quantity": 10,
+          "unitPriceCents": 1000,
+          "subtotalCents": 10000
+        },
+        {
+          "tierFrom": 11,
+          "tierTo": 50,
+          "quantity": 5,
+          "unitPriceCents": 800,
+          "subtotalCents": 4000
+        }
+      ],
+      "taxCents": 2940,
+      "totalCents": 16940,
+      "currency": "EUR",
+      "rateBps": 2100,
+      "taxPolicyVersion": "demo-standard-v1"
+    },
+    {
+      "users": 51,
+      "baseCents": 42500,
+      "pricingVersion": "users-tiered-v1",
+      "breakdown": [
+        {
+          "tierFrom": 1,
+          "tierTo": 10,
+          "quantity": 10,
+          "unitPriceCents": 1000,
+          "subtotalCents": 10000
+        },
+        {
+          "tierFrom": 11,
+          "tierTo": 50,
+          "quantity": 40,
+          "unitPriceCents": 800,
+          "subtotalCents": 32000
+        },
+        {
+          "tierFrom": 51,
+          "tierTo": null,
+          "quantity": 1,
+          "unitPriceCents": 500,
+          "subtotalCents": 500
+        }
+      ],
+      "taxCents": 8925,
+      "totalCents": 51425,
+      "currency": "EUR",
+      "rateBps": 2100,
+      "taxPolicyVersion": "demo-standard-v1"
+    }
+  ]
+}
+
+$ read-only Prettier EOL diagnosis
+exit_code=0
+{"files":41,"eolOnly":41,"other":[]}

@@ -1,6 +1,6 @@
 # Plan 004 — Motor monetario puro
 
-Estado: T01–T04 implementadas; motor y contrato de presupuesto completo disponibles. Cierre global T05 pendiente. [Spec](spec.md) y [decisiones](clarifications.md) canónicas.
+Estado: T01–T04 implementadas; T05 ejecutada con regresión correcta. Cierre global pendiente del formato de 41 archivos ajenos. [Spec](spec.md) y [decisiones](clarifications.md) canónicas.
 
 ## Arquitectura
 

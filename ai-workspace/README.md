@@ -61,3 +61,5 @@ T02: [instrucción previa](prompts/004-billing.md#t02--instrucción-previa-de-im
 T03: [instrucción previa](prompts/004-billing.md#t03--instrucción-previa-de-implementación), [pruebas](testing/004-billing-t03.md) y [revisión](reviews/004-billing-t03.md). Dinero e impuestos implementados; presupuesto completo pendiente de T04. Los párrafos anteriores describen sus cierres históricos.
 
 T04: [instrucción previa](prompts/004-billing.md#t04--instrucción-previa-de-implementación), [pruebas](testing/004-billing-t04.md) y [revisión](reviews/004-billing-t04.md). Motor y presupuesto completo implementados; regresión/cierre global T05 pendientes.
+
+T05: [verificación global](testing/004-billing-t05.md), [salida](testing/004-billing-t05.txt) y [revisión](reviews/004-billing-t05.md). 59 tests correctos, lint/typecheck/build correctos; cierre global pendiente de format:check (41 archivos ajenos con CRLF/LF). Aceptación humana final no registrada.

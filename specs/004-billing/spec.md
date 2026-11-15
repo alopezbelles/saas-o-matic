@@ -1,6 +1,6 @@
 # 004 — Motor acumulativo, impuestos y precisión
 
-Estado: T01–T04 completadas técnicamente; presupuesto completo implementado. Cierre global T05 pendiente. Decisiones funcionales acordadas con Alex. Ejecutar cada tarea cuando se indique; sin commits automáticos.
+Estado: motor implementado; T05 ejecutada, regresión correcta. Cierre global pendiente de format:check en 41 archivos ajenos. Sin aceptación humana final ni commits automáticos.
 
 ## Contexto y fuentes
 

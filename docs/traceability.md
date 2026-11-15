@@ -26,6 +26,8 @@ Especificaciones y resultados: [001](../specs/001-foundation/spec.md), [validaci
 
 ## Motor 004 — implementación incremental
 
+Verificación global T05 ejecutada: RF1..4 conformes y 59 tests pasan; 4004 desgloses compatibles con validador de 002. Cierre global pendiente de formato ajeno (41 archivos CRLF/LF). [Evidencia T05](../ai-workspace/testing/004-billing-t05.md).
+
 | RF      | Tareas        | Casos previstos                                    |
 | ------- | ------------- | -------------------------------------------------- |
 | 004-RF1 | T02, T04, T05 | UT-BILL-01, UT-QUOTE-004, UT-PROP-01               |

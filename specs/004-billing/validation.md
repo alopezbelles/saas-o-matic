@@ -1,6 +1,6 @@
 # Validación 004
 
-Estado: T01–T04 completadas técnicamente; presupuesto completo implementado. T05 y aceptación humana final pendientes.
+Estado: motor implementado; T05 ejecutada con 59 pruebas correctas. Cierre global pendiente de formato (41 archivos ajenos); aceptación humana final no registrada.
 
 ## Matriz de implementación incremental
 
@@ -23,6 +23,12 @@ Comandos y resultados documentales se enlazan desde [revisión de preparación](
 Los dos tests documentales pasan. El formato global todavía falla en 46 archivos ajenos a esta revisión; no se ha aplicado una corrección masiva. Resolver o delimitar esta incidencia antes de afirmar que los gates de implementación pasan.
 
 ## Registro durante implementación
+
+### T05 — Verificación global, 15 de noviembre de 2026
+
+Ejecutados secuencialmente lint, typecheck, format:check, build y test. Lint/typecheck/build y test pasan; 59 pruebas (30 unitarios, 25 integración, 1 web, 1 gates y 2 docs). Formato global falla en 41 archivos ajenos, confirmado por comparación read-only con Prettier como diferencia exclusiva CRLF/LF.
+RF1..4 conformes en revisión del motor. 4004 desgloses aceptados por validateBreakdown de 002 sin DB. Sin HTTP/FX, datos reales ni dependencias nuevas. [Evidencia y ejemplos](../../ai-workspace/testing/004-billing-t05.md), [salida](../../ai-workspace/testing/004-billing-t05.txt) y [revisión](../../ai-workspace/reviews/004-billing-t05.md).
+T05 ejecutada; mantener cierre global pendiente mientras format:check falle. Aceptación humana de ejemplos/entrega no presumida.
 
 ### T04 — 15 de noviembre de 2026
 

@@ -55,7 +55,13 @@ Se implementaron money/tax, TaxPolicy, configuración API demo-standard-v1 y pru
 Seis tests shared y dos de API nuevos; 21 unitarios pasan junto con lint/typecheck. La configuración se congela en runtime. Formato global con 41 archivos ajenos; se formateó package.json de API al modificar el runner. No cambios masivos.
 [Evidencia](../testing/004-billing-t03.md) y [revisión](../reviews/004-billing-t03.md). Sin quote, DB, HTTP, FX, dependencias ni commits. Esperar indicación para T04.
 
-## T04 — Presupuesto completo
+## T05 — Verificación global
+
+15 de noviembre de 2026, base 88ce6b1. Autorización de Alex para T05; instrucción previa en prompts/004-billing.md. Se ejecutaron lint, typecheck, format:check, build y test secuencialmente, sin paralelizar gates con controles de código.
+Lint/typecheck/build correctos; suite completa con 59 tests correctos. Comprobación adicional de 4004 desgloses contra validador 002 sin DB, todos aceptados. Solo se modifican registros/documentación, sin código productivo.
+Formato global falla en 41 archivos ajenos; diagnóstico read-only confirma exclusivamente CRLF/LF. No reformateo masivo ni configuración Git. T05 ejecutada, cierre global pendiente de formato. [Pruebas](../testing/004-billing-t05.md) y [revisión](../reviews/004-billing-t05.md). Casos ES 15/51 y política presentados para revisión, sin aceptación humana registrada ni commits.
+
+## T04 — Presupuesto completo (detalle histórico)
 
 15 de noviembre de 2026. Base b3f3061; autorización expresa de Alex para T04. [Instrucción previa](../prompts/004-billing.md#t04--instrucción-previa-de-implementación) preparada antes del código.
 Se añadieron quote.ts, BillingInput/BillingQuote y exports. validation.ts centraliza guardas de consumo que usan tanto tiers como quote. Se compone base/impuesto, se suma con BigInt y se devuelven EUR, tasa, versiones y desglose, sin cargos secundarios ni datos de cliente.

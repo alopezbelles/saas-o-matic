@@ -92,3 +92,10 @@ Instrucción del agente preparada antes del código, por autorización de Alex p
 **Alcance:** BillingInput/BillingQuote, quote.ts, exports y tests. Centralizar validación de consumos usada por tramos/quote para no duplicar reglas; sin modificar límites ni tarifas.
 **Restricciones:** sin HTTP/DB/FX, nuevas dependencias, commits ni T05. Validar tres consumos antes de política y cálculo; no usar campos monetarios/versiones proporcionados por consumidor.
 **Verificación:** oráculos de T01, máximos/máximo+1 para cada consumo, entradas inválidas y orden de errores, cero usuarios con país no soportado, invariantes y serialización en todo el rango/países, no mutación y versiones reales. Forzar overflow tanto de impuesto como de suma total mediante política sintética. Lint, typecheck, unitarios, docs y formato global/acotado; actualizar registros con evidencia real.
+
+## T05 — Instrucción previa de verificación global
+
+Preparada por el agente antes de ejecutar controles de cierre, por autorización de Alex para T05; no cita literal.
+**Objetivo:** verificar RF1..4, arquitectura y regresiones mediante lint, typecheck, format:check, build y test, secuencialmente. Revisar independencia del dominio y compatibilidad del desglose con 002 sin tocar datos existentes.
+**Restricciones:** sin nueva funcionalidad, dependencias, DB real, commits ni aceptación humana inventada. test:gates no se ejecuta en paralelo con controles de código. La incidencia de formato preexistente se diagnostica y registra; no aplicar una corrección masiva fuera de alcance.
+**Cierre:** conservar resultados exactos, señalar controles fallidos y presentar a Alex casos ES 15/51 y política fiscal. Si falla un criterio obligatorio, distinguir implementación terminada de cierre técnico pendiente; actualizar memoria, validación y registros con ese estado real.
