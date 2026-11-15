@@ -1,6 +1,7 @@
 # Estado del proyecto
 
-- Spec activa: [005-simulations-api](specs/005-simulations-api/spec.md), T01 completada técnicamente: contratos y parsers. Esperar indicación para T02; sin endpoints de simulaciones. Alex autoriza ahora registro retrospectivo de preparación/T01 en ai-workspace.
+- Spec activa: [005-simulations-api](specs/005-simulations-api/spec.md), T01/T02 completadas técnicamente: contratos, servicio y guardado transaccional. Esperar indicación para T03; sin endpoints de simulaciones. Registro AI habilitado, preparación/T01 retrospectivas y T02 durante ejecución.
+- T02: lint/typecheck/formato, 37 unitarios, 34 integración, 2 docs y diff check pasan; transacción inmediata/savepoints, rollback, snapshots y reapertura temporal probados. [Evidencia](ai-workspace/testing/005-simulations-api-t02.md). Sin DB real, migraciones, dependencias ni commits.
 - [Prompts y procedencia 005](ai-workspace/prompts/005-simulations-api.md), [iteración](ai-workspace/iterations/005-simulations-api.md), [evidencia T01](ai-workspace/testing/005-simulations-api-t01.md) y [revisión](ai-workspace/reviews/005-simulations-api-t01.md). La instrucción de T01 sí existía en plan antes del código; no se presenta la síntesis posterior como chat original.
 - T01: lint/typecheck/format:check correctos, 37 unitarios (25 shared/12 API) y 2 docs pasan. InputError y paginación extraídos con compatibilidad 003; UUID/consumos reutilizados. [Evidencia](specs/005-simulations-api/validation.md#t01--contratos-y-parsers). Sin DB, dependencias ni commits.
 - 004-billing completada técnicamente: motor, política demo y formato global corregido; 59 pruebas pasaron en su cierre. Referencias siguientes corresponden a su historial.

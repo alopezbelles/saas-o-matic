@@ -1,6 +1,6 @@
 # Tareas 005
 
-Estado: T01 completada técnicamente; T02–T05 pendientes. Contratos y parsers disponibles, sin endpoints nuevos.
+Estado: T01/T02 completadas técnicamente; T03–T05 pendientes. Contratos, servicio y guardado disponibles, sin endpoints nuevos.
 Cada tarea requiere indicación de Alex. Proponer commit separado al cerrar el bloque; no ejecutar commits/pushes. Tras T01 Alex autoriza registrar preparación/ejecución en ai-workspace; conservar la procedencia retrospectiva del registro inicial.
 
 ## T01 — Contratos de alta, histórico y configuración
@@ -19,7 +19,7 @@ Cada tarea requiere indicación de Alex. Proponer commit separado al cerrar el b
 
 ## T02 — Servicio y guardado transaccional coherente
 
-- [ ] Pendiente. RF1, RF2, RF4. Depende de T01.
+- [x] Completada técnicamente en servicio/repositorio. RF1/RF2/RF4 completos por HTTP siguen pendientes. Depende de T01.
 - Archivos previstos: apps/api/src/features/simulations/service.ts, repository.ts, apps/api/test/simulations-service.test.mjs y apps/api/package.json.
 - Implementar repositorio transaccional que lee cliente, invoca cálculo síncrono del servicio y reutiliza insertSimulation con snapshots. País/plan del cliente y cálculo deben quedar alineados bajo misma transacción inmediata.
 - No duplicar SQL/allowlist de insertSimulation; verificar savepoints de transacción anidada y rollback de la operación completa.
@@ -29,6 +29,7 @@ Cada tarea requiere indicación de Alex. Proponer commit separado al cerrar el b
 - Conectar test de servicio/SQLite a test:integration API. Controles por tarea.
 - Cierre: servicio/repositorio probados, sin HTTP nuevo ni DB real.
 - Commit propuesto: feat(simulations): persist authoritative quotes transactionally.
+- Evidencia: [verificación T02](../../ai-workspace/testing/005-simulations-api-t02.md). Lint/typecheck y 37 unitarios + 34 integración pasan. Solo SQLite temporal, sin HTTP nuevo.
 
 ## T03 — Alta HTTP y traducción de errores
 

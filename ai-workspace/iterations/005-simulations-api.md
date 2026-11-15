@@ -33,7 +33,15 @@ Lint, typecheck, formato global, 37 unitarios y 2 documentales correctos durante
 No hubo fallo funcional observado ni cambio de enfoque que requiriese una corrección de negocio. Los errores deliberados de los casos negativos son pruebas de validación, no incidentes de producción.
 No servicio, SQL, endpoint, DB real, migración, dependencia nueva, commit ni aceptación humana final. T02–T05 siguen pendientes.
 
-## Autorización del registro
+## T02 — Ejecución y registro durante el trabajo
 
-Alex levanta ahora la exclusión de ai-workspace para registrar el trabajo realizado y continuar la trazabilidad. La instrucción previa en plan conserva la restricción histórica que realmente aplicaba.
+15 de noviembre de 2026, base 64a1aba. Alex autoriza T02; la instrucción se añadió antes del código a prompts/005-simulations-api.md. Este bloque es contemporáneo al trabajo T02, a diferencia de la preparación/T01 retrospectivas.
+Se implementó simulationService con política inyectable y cálculo de 004; createCalculatedSimulation controla lectura/cálculo/guardado/mapping en transacción inmediata. insertSimulation conserva inserción/snapshots y usa savepoint bajo transacción exterior. No SQL ni acceso DB en dominio puro.
+toSimulationDto transforma columnas a contrato y valida consistencia del dato guardado, sin recalcular. Tests cubren rollback AFTER INSERT, rollback exterior, bloqueo de segundo escritor, reapertura y cambios futuros de cliente/política.
+Nueve pruebas focalizadas pasan y se incorporan a integración: regresión de 37 unitarios y 34 integración correcta, junto con lint/typecheck. [Evidencia](../testing/005-simulations-api-t02.md) y [revisión](../reviews/005-simulations-api-t02.md).
+Sin error funcional observado durante ejecución; tests negativos son deliberados. Sin endpoints, DB real, dependencias, migraciones ni commits. Esperar indicación para T03.
+
+## Autorización del registro inicial
+
+Alex levantó después de T01 la exclusión de ai-workspace para registrar el trabajo realizado y continuar la trazabilidad. La instrucción previa en plan conserva la restricción histórica que realmente aplicaba.
 Este bloque documental se verifica con formato y enlaces; no se atribuye una nueva ejecución funcional a los registros recién creados.

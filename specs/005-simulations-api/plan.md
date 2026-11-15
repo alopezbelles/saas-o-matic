@@ -1,6 +1,6 @@
 # Plan 005 — Integración API e histórico
 
-Estado: T01 completada técnicamente; contratos/parsers disponibles, T02–T05 pendientes. [Contrato](spec.md) y [decisiones](clarifications.md).
+Estado: T01/T02 completadas técnicamente; contratos, servicio y repositorio disponibles; T03–T05 pendientes. [Contrato](spec.md) y [decisiones](clarifications.md).
 
 ## Reutilización y arquitectura
 

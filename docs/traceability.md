@@ -2,6 +2,8 @@
 
 ## Simulaciones 005 — contratos T01
 
+T02 añade servicio/guardado: IT-SIM-01/02 e IT-SNAPSHOT-005 pasan sobre SQLite temporal. RF1/RF2/RF4 parciales hasta rutas/historial/configuración HTTP. [Verificación T02](../ai-workspace/testing/005-simulations-api-t02.md). Los estados de contratos siguientes describen T01, no el cierre completo actual.
+
 | RF          | Pieza disponible                      | Evidencia                                                     |
 | ----------- | ------------------------------------- | ------------------------------------------------------------- |
 | 005-RF1/RF2 | Parse de alta, UUID y consumos.       | UT-SIM-CONTRACT-005 ejecutado; servicio/HTTP pendientes.      |

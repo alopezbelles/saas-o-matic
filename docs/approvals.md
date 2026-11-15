@@ -39,6 +39,8 @@ Alex autoriza T01 de 005: contratos, parsers, pruebas, contexto y documentación
 
 Después de T01, Alex autoriza registrar en ai-workspace preparación y trabajo realizado antes del commit, siguiendo el procedimiento habitual. Se levanta la exclusión para este registro; los documentos se identifican como retrospectivos y enlazan la instrucción previa real del plan. No autoriza T02 ni implica aceptación humana final.
 
+T02 de 005 autorizada después de T01: servicio, guardado transaccional, mapping y pruebas aisladas. T03–T05 y commits/pushes requieren indicación posterior.
+
 ## Revisión de entregas — criterio general
 
 La conformidad técnica se documenta en la validación de cada spec.

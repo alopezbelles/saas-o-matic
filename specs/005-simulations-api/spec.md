@@ -1,6 +1,6 @@
 # 005 — API de simulaciones e histórico
 
-Estado: T01 completada técnicamente; contratos/parsers disponibles, servicio y endpoints pendientes. Decisiones confirmadas por Alex. Ejecutar tareas una a una por indicación posterior; sin commits automáticos.
+Estado: T01/T02 completadas técnicamente; contratos, servicio y guardado disponibles. Endpoints pendientes de T03/T04. Decisiones confirmadas por Alex. Ejecutar tareas una a una por indicación posterior; sin commits automáticos.
 
 ## Contexto y fuentes
 

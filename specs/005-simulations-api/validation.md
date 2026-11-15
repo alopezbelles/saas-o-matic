@@ -1,8 +1,10 @@
 # Validación 005
 
-Estado: T01 completada técnicamente; contratos/parsers implementados y probados. RF completos de servicio/HTTP aún pendientes; T02–T05 no ejecutadas.
+Estado: T01/T02 completadas técnicamente; contratos, servicio y guardado transaccional probados. RF completos HTTP pendientes; T03–T05 no ejecutadas.
 
 ## Matriz prevista
+
+T02: IT-SIM-01/02 e IT-SNAPSHOT-005 ejecutados en servicio con SQLite temporal. RF1/RF2/RF4 parciales: aún no hay POST/historial/configuración HTTP. Resultados de RF completos siguientes conservan NO EJECUTADO hasta esas tareas.
 
 | RF      | Tareas             | Casos previstos                                | Resultado funcional real |
 | ------- | ------------------ | ---------------------------------------------- | ------------------------ |
@@ -32,6 +34,14 @@ Alcance autorizado: adaptar exclusivamente los cinco archivos de esta carpeta. T
 Sin implementación, dependencias, commits ni registros en ai-workspace. Contexto global/gate siguen en 004 hasta iniciar T01.
 Controles reales de esta adaptación: .\node_modules\.bin\prettier.cmd --check specs/005-simulations-api devuelve 0 (cinco documentos conformes); pnpm.cmd test:docs devuelve 0 (2 tests documentales pasan). Se formatearon previamente solo estos cinco documentos con Prettier.
 El gate de contexto aún comprueba 004 porque T01 no ha comenzado; su PASS no acredita activación ni implementación de 005. No se ejecutaron lint/typecheck/build/tests funcionales por esta modificación exclusivamente documental. No confundir estos controles con la matriz funcional.
+
+## T02 — Servicio y guardado transaccional
+
+15 de noviembre de 2026, base 64a1aba. Instrucción previa en ai-workspace antes del código. Servicio calcula con país del cliente y política del servidor; repositorio asegura transacción inmediata, reutiliza insertSimulation/savepoints y devuelve DTO validado antes del commit. Sin rutas ni schema nuevos.
+Lint/typecheck pasan; 9 pruebas focalizadas pasan y se añaden al runner de integración. Regresión: 37 unitarios y 34 integración pasan, sin omitidos. No duplicar el recuento de pruebas focalizadas ya incluidas en integración.
+Tras actualizar documentos, formato global, test:docs (2 pruebas) y git diff --check pasan con código 0.
+IT-SIM-01/02: ES 15/51, consumos/cero/máximos, cuatro países, snapshots, repetidos, reapertura y rollback real AFTER INSERT/exterior. IT-SNAPSHOT-005: bloqueo de cambio de cliente desde otra conexión y conservación histórica frente a cambios de cliente/política fixture. Mapper rechaza datos incoherentes sin recalcular.
+[Comandos y límites](../../ai-workspace/testing/005-simulations-api-t02.md), [salida real](../../ai-workspace/testing/005-simulations-api-t02.txt) y [revisión](../../ai-workspace/reviews/005-simulations-api-t02.md). Sin DB real, dependencias, migraciones, commits ni aceptación humana final.
 
 ## T01 — Contratos y parsers
 

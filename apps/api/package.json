@@ -15,7 +15,7 @@
     "db:seed": "node dist/db/cli.js seed",
     "db:backup": "node dist/db/cli.js backup",
     "test:unit": "node --test test/tax-id.test.mjs test/customers-contract.test.mjs test/tax-policy.test.mjs test/simulations-contract.test.mjs",
-    "test:integration": "node --test test/health.test.mjs test/database.test.mjs test/database-operations.test.mjs test/customers.test.mjs test/server-lifecycle.test.mjs"
+    "test:integration": "node --test test/health.test.mjs test/database.test.mjs test/database-operations.test.mjs test/customers.test.mjs test/server-lifecycle.test.mjs test/simulations-service.test.mjs"
   },
   "dependencies": {
     "@saas-o-matic/shared": "workspace:*",

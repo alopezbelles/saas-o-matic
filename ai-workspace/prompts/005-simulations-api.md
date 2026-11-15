@@ -34,8 +34,17 @@ La instrucción técnica real se preparó y utilizó en [plan 005, instrucción 
 Ese texto conserva su procedencia: ordena reutilizar UUID/consumos, extraer InputError/paginación sin ciclos, probar el contrato y actualizar contexto/gate, sin endpoints ni ai-workspace en esa fase.
 Este archivo se redacta después; enlazar la instrucción previa no convierte las reformulaciones P01–P03 en mensajes originales.
 
-## Registro posterior y continuidad
+## T02 — Instrucción previa de implementación
 
-Alex autoriza ahora registrar preparación y T01 antes del commit. Se añaden registros técnicos con fuentes, resultados reales y límites; no se atribuye autorización retroactiva a la fase inicial ni aceptación humana de entrega.
+Preparada por el agente antes del código tras autorización de Alex para T02. Base 64a1aba. No transcripción literal ni retrospectiva de código ya escrito.
+**Objetivo:** crear servicio/repository de alta que calculen con país del cliente y política explícita, reutilicen insertSimulation y devuelvan SimulationDto tras una transacción inmediata coherente.
+**Alcance:** servicio, repositorio/mapping, inyección interna de política y tests SQLite temporales conectados a integración. Sin rutas, dependencias, migraciones ni datos reales.
+**Pruebas:** ES 15/51, cuatro países, consumos secundarios, cero, máximos, cliente ausente/país no soportado, invariantes, snapshots, reapertura, duplicados deliberados, fallo antes/después de insertar y rollback de savepoint bajo transacción exterior. Verificar bloqueo de una segunda conexión al intentar cambiar cliente durante el cálculo.
+**Restricciones:** SQL/control transaccional solo en repositorio; callback de cálculo síncrono y puro en servicio. Sin endpoints auxiliares ni políticas seleccionables por HTTP. No commits ni T03.
+**Verificación:** lint, typecheck, format:check, unitarios, integración y docs; registrar evidencia real y distinguir este alcance de RF HTTP pendientes.
+
+## Registro posterior de T01 y continuidad
+
+Alex autorizó registrar preparación y T01 antes del commit. Se añadieron registros técnicos con fuentes, resultados reales y límites; no se atribuye autorización retroactiva a la fase inicial ni aceptación humana de entrega.
 Para T02 y siguientes, mantener el registro durante el trabajo autorizado. No ejecutar T02 por crear este archivo.
 [Iteración](../iterations/005-simulations-api.md), [verificación T01](../testing/005-simulations-api-t01.md) y [revisión](../reviews/005-simulations-api-t01.md).

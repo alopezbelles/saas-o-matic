@@ -1,5 +1,9 @@
 # Arquitectura
 
+## Simulaciones 005 — T02
+
+simulationService recibe proveedor de conexión y política interna explícita; calcula mediante shared sin SQL. createCalculatedSimulation en repositorio obtiene cliente bajo transacción inmediata, invoca callback síncrono con su país y reutiliza insertSimulation (savepoint anidado) para snapshots/inserción. toSimulationDto valida y proyecta datos guardados antes del commit; no recalcula históricos. Sin nueva tabla/migración ni rutas HTTP.
+
 Monorepo pnpm 10.33.4: apps/web, apps/api y packages/shared; Node 22, TypeScript estricto y ESM.
 React/Vite para web y Express/tsx para API. ESLint, Prettier y node:test para calidad.
 
