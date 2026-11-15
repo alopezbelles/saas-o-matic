@@ -22,7 +22,7 @@ La infraestructura existe. No asumir que las features descritas en docs están i
 
 Comandos actuales: pnpm lint, pnpm typecheck, pnpm format:check, pnpm build y pnpm test.
 Suites: test:integration, test:web, test:gates, test:docs. Ver [testing](docs/testing.md).
-No existen test:unit ni test:e2e: añadirlos solo con casos reales.
+test:unit cubre contratos y control fiscal de 003. test:e2e no existe: añadirlo solo con flujos reales.
 No ejecutar test:gates en paralelo con otros controles de código.
 Informar controles no ejecutados; no afirmar que pasaron por inspección.
 

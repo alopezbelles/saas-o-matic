@@ -8,3 +8,5 @@ No duplicar el esquema ni los contratos.
 - [ADR-003](ADR-003-preview-fx.md): propuesta futura, sin preview/FX implementados.
 
 Las actualizaciones de ADR-001/002 son retrospectivas. Una decisión aceptada, una implementación validada y una revisión humana de entrega son hechos distintos.
+
+- [ADR-004](ADR-004-customers-api.md): cinco campos de alta y compatibilidad de persistencia.

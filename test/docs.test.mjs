@@ -37,7 +37,7 @@ test('los documentos y el índice enlazan archivos locales existentes', () => {
 });
 
 test('el contexto identifica la spec activa y los comandos documentados existen', () => {
-  assert.match(readFileSync('MEMORY.md', 'utf8'), /002-persistence/);
+  assert.match(readFileSync('MEMORY.md', 'utf8'), /003-customers-api/);
   assert.match(readFileSync('AGENTS.md', 'utf8'), /MEMORY\.md/);
   assert.match(
     readFileSync('ai-workspace/README.md', 'utf8'),
@@ -58,6 +58,7 @@ test('el contexto identifica la spec activa y los comandos documentados existen'
     'build',
     'test',
     'test:integration',
+    'test:unit',
     'test:web',
     'test:gates',
     'test:docs',

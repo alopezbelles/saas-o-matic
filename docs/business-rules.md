@@ -31,6 +31,8 @@ País sin política: error TAX_COUNTRY_UNSUPPORTED, no 0% por defecto. No confun
 
 ## BR04 — identificadores fiscales
 
+La especificación ejecutable de control para clientes está en [003 fiscal-rules](../specs/003-customers-api/fiscal-rules.md). Se prioriza nota AEAT para K/L/M y tipos de control. La descripción inicial siguiente es contexto histórico y no prevalece sobre esa tabla contrastada.
+
 Normalizar trim y mayúsculas; preservar ceros iniciales. Propuesta rechazar separadores internos, no eliminar caracteres arbitrariamente. País ISO alpha-2 normalizado antes de seleccionar algoritmo.
 
 - DNI: ocho dígitos y letra según resto 23 de TRWAGMYFPDXBNJZSQVHLCKE.

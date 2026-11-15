@@ -5,3 +5,5 @@
 
 Los resúmenes son retrospectivos y no representan ejecuciones nuevas. No sumar resultados históricos como cobertura actual.
 Las plantillas vacías no son resultados.
+
+- [003 — Pruebas durante ejecución](003-customers-api.md), con evidencia en su validación.

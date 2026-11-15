@@ -1,12 +1,11 @@
 # Estado del proyecto
 
-- Spec activa: [002-persistence](specs/002-persistence/spec.md).
-- Autorización: Alex indicó «perfecto, desarrolla la spec», tras concretar decisiones y modelo.
-- Base: pnpm 10.33.4, Node 22, React/Vite, Express/tsx; [001](specs/001-foundation/validation.md) conserva su evidencia.
-- 002 implementa SQLite/Drizzle, migraciones, seed demo, snapshots y backup; sin nuevos endpoints ni motor monetario.
-- Datos de validación exclusivamente temporales bajo .cache/002-tests; no se inicializa la base de desarrollo del usuario.
-- T01–T06 completadas técnicamente; 21 pruebas pasan. La aceptación humana de la entrega no está registrada.
-- [Validación 002](specs/002-persistence/validation.md) registra controles y límites.
-- No hay commits/pushes, cambios de remoto ni aceptación humana de la entrega registrados por el agente.
-
-- Documentación del proceso: [índice ai-workspace](ai-workspace/README.md), con retrospectivas de 001/002 redactadas después del desarrollo; instrucciones técnicas reformuladas, identificadas como retrospectivas y no como mensajes literales. No representan nuevas ejecuciones de aplicación ni revisión humana final.
+- Spec activa: [003-customers-api](specs/003-customers-api/spec.md), autorizada para implementar por Alex.
+- 001 infraestructura y 002 persistencia se conservan; [validación 002](specs/002-persistence/validation.md) es histórica.
+- 003 añade alta de cinco campos, validación fiscal, búsqueda paginada, detalle, errores sanitizados y proveedor DB lazy.
+- Nueva migración 0001_optional_contact permite contact_name nulo conservando datos existentes; no se ejecuta sobre DB del usuario.
+- Sin endpoint de simulaciones, motor monetario, frontend de clientes ni políticas tributarias.
+- T01–T06 completadas técnicamente; 32 pruebas pasan (incluye regresiones anteriores). Sin aceptación humana final.
+- Pruebas y tareas actuales en [validación 003](specs/003-customers-api/validation.md); no atribuir resultados antes de ejecutarlos.
+- [Instrucción previa de trabajo](ai-workspace/prompts/003-customers-api.md) y [registro durante desarrollo](ai-workspace/iterations/003-customers-api.md). No se registran los mensajes de análisis/adaptación excluidos expresamente por Alex.
+- No commits/pushes ni aceptación humana final realizados por el agente.

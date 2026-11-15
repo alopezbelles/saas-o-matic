@@ -19,4 +19,5 @@
 
 Fuente de D02/D04/D05/D06: decisiones delegadas y aceptadas por Alex antes de implementar 002; [detalle](../specs/002-persistence/clarifications.md).
 Se eligió 12.11.1 porque tiene binario publicado Windows x64/Node ABI127; 13.2.0 declaraba compatibilidad pero no tenía ese asset.
-Los códigos y tasas de fixtures técnicos no definen reglas fiscales. D01/D03/D10 siguen fuera de 002.
+D03 se concreta para clientes en [003 fiscal-rules](../specs/003-customers-api/fiscal-rules.md), sin censo/identidad. contact_name pasa a opcional para aceptar los cinco datos oficiales; migración nueva, datos antiguos conservados.
+Los códigos y tasas de fixtures técnicos no definen reglas fiscales. D01/D10 siguen fuera del motor monetario; D03 corresponde a 003.

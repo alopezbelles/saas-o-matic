@@ -4,6 +4,10 @@ Diccionario canónico: [spec 002](../specs/002-persistence/spec.md#diccionario-v
 Esquema ejecutable: [schema.ts](../apps/api/src/db/schema.ts).
 Migración SQL: [0000_foundation.sql](../apps/api/drizzle/0000_foundation.sql).
 
+## Evolución 003
+
+La migración nueva 0001_optional_contact permite contact_name nulo. Los valores antiguos se conservan; el alta HTTP solo exige los cinco datos del enunciado y no expone esa columna. SQL 0000 no se modifica. La reconstrucción comprueba integridad/FK antes del commit y preserva simulaciones y triggers.
+
 ## Operación
 
 - SQLite en archivo, tablas STRICT, FK activas, journal DELETE y busy_timeout 1000 ms.

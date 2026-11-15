@@ -15,3 +15,5 @@ Registros actuales:
 Ambos son reformulaciones retrospectivas redactadas el 14 de noviembre de 2026. No se conserva aquí una transcripción literal ni una exportación completa del chat.
 No introducir decisiones futuras en instrucciones antiguas ni utilizar una reformulación como prueba independiente de autorización.
 Procedimiento: [harness](../../docs/sdd-harness.md). [Plantilla](../templates/prompt.md).
+
+- [003 — Instrucción técnica preparada antes de código](003-customers-api.md), no reformulación ni transcripción de los mensajes excluidos.

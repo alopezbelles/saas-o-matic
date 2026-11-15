@@ -1,6 +1,6 @@
 # saas-o-matic
 
-Infraestructura inicial Full-Stack para la prueba técnica de Roams. Incluye infraestructura y persistencia SQLite; las funcionalidades de negocio todavía no están implementadas.
+Infraestructura inicial Full-Stack para la prueba técnica de Roams. Incluye infraestructura y persistencia SQLite; incluye API de clientes; el motor de simulaciones/facturación y las pantallas de negocio todavía no están implementados.
 
 ## Requisitos
 
@@ -72,7 +72,7 @@ Web utiliza React/React DOM. API utiliza Express, Drizzle y better-sqlite3. No s
 
 `pnpm test` ejecuta integración de API, smoke HTTP de web, comprobaciones negativas de los controles y enlaces documentales. Compila las aplicaciones antes de sus pruebas. Usa bases SQLite temporales aisladas; no abre la base de desarrollo.
 
-También existen `test:integration`, `test:web`, `test:gates` y `test:docs`. No ejecutar `test:gates` en paralelo con lint, tipos o build: introduce errores temporales y comprueba que los controles los rechazan. El smoke web no sustituye pruebas de navegador.
+También existen `test:unit` (contratos/fiscal de clientes), `test:integration`, `test:web`, `test:gates` y `test:docs`. No ejecutar `test:gates` en paralelo con lint, tipos o build: introduce errores temporales y comprueba que los controles los rechazan. El smoke web no sustituye pruebas de navegador.
 
 El arranque no carga `.env` automáticamente; [.env.example](.env.example) explica la variable opcional PORT. Contexto y evidencias en [ai-workspace](ai-workspace/README.md), [testing](docs/testing.md) y [validación 001](specs/001-foundation/validation.md).
 
@@ -118,3 +118,15 @@ No hay carga automática de .env: exportar las variables en la terminal.
 No se ha creado una DB persistente de desarrollo durante la implementación: los tests usan .cache/002-tests.
 
 [Modelo y recuperación](docs/data-model.md), [spec 002](specs/002-persistence/spec.md) y [validación](specs/002-persistence/validation.md).
+
+## API de clientes (003)
+
+Inicializa o actualiza la DB explícitamente con pnpm db:migrate antes de usar /customers. /health sigue funcionando sin ella; clientes devuelve 503 si falta el archivo o hay migraciones pendientes.
+Para una base existente, genera primero un backup en un destino nuevo mediante pnpm db:backup --out apps/api/data/antes-003.sqlite. La migración 0001_optional_contact conserva contactos e histórico; no se ejecuta automáticamente al arrancar.
+
+POST /customers acepta exactamente companyName, taxId, contactEmail, countryCode y planCode. No exige contactName. Responde 201 y Location.
+GET /customers?q=&limit=&offset= busca por nombre/fiscal; GET /customers/:id devuelve detalle.
+Contrato y ejemplo en [API](docs/api-contracts.md). Control ES algorítmico, no consulta censal; [fuentes y límites](specs/003-customers-api/fiscal-rules.md).
+
+pnpm test:unit ejecuta contratos y fiscal; pnpm test:integration conserva SQLite/HTTP anteriores y añade clientes/lifecycle.
+No hay POST /simulations ni cálculo de facturación implementado todavía.

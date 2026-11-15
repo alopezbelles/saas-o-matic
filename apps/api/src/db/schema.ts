@@ -26,7 +26,7 @@ export const customers = sqliteTable(
     companyName: text('company_name').notNull(),
     taxIdOriginal: text('tax_id_original').notNull(),
     taxIdNormalized: text('tax_id_normalized').notNull(),
-    contactName: text('contact_name').notNull(),
+    contactName: text('contact_name'),
     contactEmail: text('contact_email').notNull(),
     countryCode: text('country_code').notNull(),
     planCode: text('plan_code').notNull(),

@@ -17,8 +17,8 @@
     "lint": "eslint . --max-warnings 0",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "test": "pnpm test:integration && pnpm test:web && pnpm test:gates && pnpm test:docs",
-    "test:integration": "pnpm --filter @saas-o-matic/api... build && pnpm --filter @saas-o-matic/api test",
+    "test": "pnpm test:unit && pnpm test:integration && pnpm test:web && pnpm test:gates && pnpm test:docs",
+    "test:integration": "pnpm --filter @saas-o-matic/api... build && pnpm --filter @saas-o-matic/api test:integration",
     "test:web": "pnpm --filter @saas-o-matic/web build && pnpm --filter @saas-o-matic/web test",
     "test:gates": "node --test test/gates.test.mjs",
     "test:docs": "node --test test/docs.test.mjs",
@@ -26,7 +26,8 @@
     "db:migrate": "pnpm --filter @saas-o-matic/api... build && pnpm --filter @saas-o-matic/api db:migrate",
     "db:demo:init": "pnpm --filter @saas-o-matic/api... build && pnpm --filter @saas-o-matic/api db:demo:init",
     "db:seed": "pnpm --filter @saas-o-matic/api... build && pnpm --filter @saas-o-matic/api db:seed",
-    "db:backup": "pnpm --filter @saas-o-matic/api... build && pnpm --filter @saas-o-matic/api db:backup"
+    "db:backup": "pnpm --filter @saas-o-matic/api... build && pnpm --filter @saas-o-matic/api db:backup",
+    "test:unit": "pnpm --filter @saas-o-matic/api... build && pnpm --filter @saas-o-matic/api test:unit"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

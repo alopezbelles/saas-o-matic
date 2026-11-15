@@ -5,3 +5,5 @@
 
 Redactadas después del desarrollo y enlazadas a mensajes, decisiones y evidencias disponibles.
 Las siguientes iteraciones se registrarán durante el trabajo, de acuerdo con el [harness](../../docs/sdd-harness.md).
+
+- [003 — Registro durante implementación](003-customers-api.md), sin registrar los mensajes excluidos.

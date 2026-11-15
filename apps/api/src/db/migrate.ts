@@ -12,6 +12,20 @@ import {
 import { resolveDatabasePath } from './paths.js';
 
 export type Migration = { id: string; hash: string; sql: string };
+export function assertCurrentSchema(db: Connection) {
+  const expected = loadMigrations();
+  const actual = db
+    .prepare('SELECT id, hash FROM __app_migrations ORDER BY id')
+    .all() as { id: string; hash: string }[];
+  if (
+    actual.length !== expected.length ||
+    actual.some(
+      (entry, i) =>
+        entry.id !== expected[i]?.id || entry.hash !== expected[i]?.hash,
+    )
+  )
+    throw new Error('DB_MIGRATION_REQUIRED');
+}
 export function loadMigrations(
   directory = fileURLToPath(new URL('../../drizzle/', import.meta.url)),
 ): Migration[] {
@@ -74,6 +88,10 @@ export function applyMigrations(
       db.pragma('integrity_check', { simple: true }) !== 'ok'
     )
       throw new Error('DB_INTEGRITY_FAILED');
+    // Table rebuilds can leave deferred DROP-parent counters even after restoring
+    // the same parent IDs. Validate the final graph above before resetting them.
+    // foreign_keys stays ON; invalid final references still abort this transaction.
+    db.pragma('defer_foreign_keys = OFF');
   }).immediate();
 }
 

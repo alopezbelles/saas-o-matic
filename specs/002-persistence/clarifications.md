@@ -2,7 +2,6 @@
 
 ## Fuente y estado
 
-
 | ID      | Decisión para 002                                                                                                                          |
 | ------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
 | D02     | Catálogo compartido cerrado DEMO_BASIC / DEMO_PRO, sin tabla plans, precios ni multiplicadores por plan.                                   |

@@ -21,12 +21,12 @@ Más detalle en [modelo](data-model.md), [decisiones](decisions.md) y [spec 002]
 ## Arranque
 
 createApp está separado de listen. pnpm dev arranca web en 127.0.0.1:5173 y API en 127.0.0.1:3000.
-No requiere DB ni .env. /health conserva su contrato HTTP y no migra archivos.
+El arranque y /health no requieren DB ni .env. Las rutas de clientes usan proveedor lazy; sin DB inicializada responden 503. No se migra al arrancar.
 Los comandos DB compilan shared/API antes de ejecutar el CLI; las rutas relativas se resuelven contra raíz del repo.
 
 ## Evolución
 
-No hay endpoints de clientes/simulaciones, motor monetario, políticas fiscales ni FX implementados.
+003 añade endpoints de clientes, validación pura, contratos shared y conexión lazy. No hay endpoint de simulaciones, motor monetario, políticas fiscales ni FX.
 El futuro dominio permanecerá puro, separado de HTTP/SQL/React; los contratos no expondrán tipos ORM.
 Router, Zod y librerías UI no están instalados por anticipación.
 No se han configurado servicios externos ni despliegue.

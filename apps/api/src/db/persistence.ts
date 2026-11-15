@@ -25,13 +25,14 @@ export function insertCustomer(db: Connection, input: CustomerInput) {
     id: input.id ?? randomUUID(),
     createdAt: input.createdAt ?? new Date().toISOString(),
     taxIdNormalized: input.taxIdOriginal.trim().toUpperCase(),
+    contactName: input.contactName ?? null,
   };
   uuid(row.id);
   dateValue(row.createdAt);
   textValue(row.companyName, 200);
   textValue(row.taxIdOriginal, 64);
   textValue(row.taxIdNormalized, 64);
-  textValue(row.contactName, 200);
+  if (row.contactName !== null) textValue(row.contactName, 200);
   textValue(row.contactEmail, 254);
   country(row.countryCode);
   plan(row.planCode);

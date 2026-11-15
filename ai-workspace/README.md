@@ -41,3 +41,8 @@ Los documentos actuales pueden contener ajustes posteriores; no son copias inmut
 - [templates](templates/README.md): ayudas vacías, nunca evidencia.
 
 El [antecedente importado de planificación](reviews/planning-document-review.md) describe otro paquete. Sus cifras y comprobaciones no se han verificado aquí ni acreditan el estado actual.
+
+## Implementación 003 — registro durante el trabajo
+
+[Instrucción técnica previa](prompts/003-customers-api.md), [iteración](iterations/003-customers-api.md), [ADR-004](decisions/ADR-004-customers-api.md), [pruebas](testing/003-customers-api.md), [revisión](reviews/003-customers-api.md) y [validación](../specs/003-customers-api/validation.md).
+Estos registros corresponden a la implementación autorizada; no reproducen los mensajes previos cuyo registro Alex excluyó.

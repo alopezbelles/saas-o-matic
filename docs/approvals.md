@@ -12,6 +12,10 @@ Aceptó la propuesta documentada y después indicó: «perfecto, desarrolla la s
 Esto autoriza implementar 002, instalar sus dependencias y ejecutar migraciones/seed/backup en archivos temporales de validación.
 No autoriza modificar bases preexistentes del usuario, desplegar, hacer commits/pushes ni cambiar remotos.
 
+## 003
+
+Alex autorizó ejecutar 003 y sus tasks después de señalar la diferencia entre cinco campos oficiales y contactName extra. Se implementa esa corrección con migración compatible, validada solo en archivos temporales. No se registran los mensajes de análisis/adaptación excluidos expresamente por el usuario.
+
 ## Revisión
 
 La conformidad técnica se documenta en la validación de cada spec.
