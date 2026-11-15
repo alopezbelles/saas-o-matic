@@ -23,6 +23,8 @@ La autorización inicial fue documental. La implementación se aborda tarea a ta
 
 Actualización posterior: Alex autoriza implementar T01 (fixtures, runner shared, gate documental y evidencias). No autoriza todavía T02–T05 ni commits/pushes.
 
+Actualización tras T01: Alex autoriza T02 (tramos, contrato básico, errores y pruebas). T03–T05 y commits/pushes requieren indicación posterior.
+
 ## Revisión de entregas
 
 La conformidad técnica se documenta en la validación de cada spec.

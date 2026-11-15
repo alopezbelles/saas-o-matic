@@ -31,7 +31,9 @@ El futuro dominio permanecerá puro, separado de HTTP/SQL/React; los contratos n
 Router, Zod y librerías UI no están instalados por anticipación.
 No se han configurado servicios externos ni despliegue.
 
-## Diseño acordado 004 — todavía no implementado
+## Diseño acordado 004 — implementación parcial
 
 Motor puro previsto en packages/shared/src/billing/; configuración fiscal explícita en API, sin HTTP/SQL/React en el dominio. Sin paquetes ni dependencias nuevas. Reutiliza límites de 002 y expone desglose/versiones para futura integración en 005. FX e integración de preview no pertenecen a 004.
 Contratos, errores y pruebas en [plan 004](../specs/004-billing/plan.md); razones en [ADR-005](../ai-workspace/decisions/ADR-005-billing-engine.md). Las políticas fiscales acordadas todavía no existen como código.
+
+T02 implementa tipos básicos, BillingError y calculateTieredBase en shared/src/billing, exportados desde shared. No cambia HTTP ni persistencia. El cálculo usa intermediarios BigInt y devuelve céntimos seguros/desglose/versiones; política fiscal y composición pendientes.

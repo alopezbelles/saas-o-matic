@@ -68,3 +68,11 @@ Preparada antes de modificar código para ejecutar T01, autorizada expresamente 
 **Acciones:** añadir fixtures de tramos/desglose, impuestos demo, half-up sintético, límites y errores; verificar coherencia sin reproducir el algoritmo productivo. Añadir runner shared, actualizar gate documental para comprobar la línea de spec activa 004 y su destino real; documentar comandos y alcance.
 **Restricciones:** no implementar funciones de cálculo ni tests omitidos, no dependencias ni DB/HTTP/FX, no commits. El PASS de fixtures no acredita RF implementados. No reformatear masivamente archivos ajenos para ocultar la incidencia global conocida.
 **Verificación:** lint, typecheck, format:check, test:unit y test:docs; registrar resultados reales y separar fallos globales preexistentes del formato de archivos afectados. Actualizar tareas, memoria y registros al cerrar.
+
+## T02 — Instrucción previa de implementación
+
+Preparada antes del código por el agente para ejecutar T02, autorizada por Alex; no transcripción literal. Base: 84818bf, T01 implementada.
+**Objetivo:** implementar calculateTieredBase(users) con tramos acumulativos, versión users-tiered-v1, tipos básicos y BillingError. Validar runtime usando CONSUMPTION_LIMITS; rechazo sin coerción con code BILLING_INPUT_INVALID y field users.
+**Alcance:** tipos TierBreakdown/TieredBase, errores, cálculo puro y exports públicos. Intermediarios monetarios BigInt y salida segura en céntimos. Sin impuestos, política fiscal, presupuesto completo, dependencias ni persistencia.
+**Pruebas:** consumir oráculos independientes de T01, comprobar fronteras/desglose, usuarios inválidos, todos los marginales 1..1000, invariantes, serialización y aislamiento entre llamadas. No replicar el algoritmo como único oráculo.
+**Verificación:** lint, typecheck, test:unit, test:docs, format:check global y acotado; documentar incidencia CRLF/LF ajena sin reformateo masivo. Actualizar evidencias y marcar solo T02 si cumple. No ejecutar commits ni continuar T03.

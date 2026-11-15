@@ -1,6 +1,6 @@
 # Tareas 004
 
-T01 completada técnicamente; T02–T05 pendientes. Motor monetario todavía no implementado.
+T01 y T02 completadas técnicamente; T03–T05 pendientes. Cálculo de base implementado; impuestos y presupuesto completo pendientes.
 Ejecutar una tarea por indicación de Alex. Informar cambios, controles y propuesta de commit por bloque; no hacer commits/pushes sin autorización específica.
 Alcance común: motor puro, contratos, configuración y pruebas. Sin HTTP, UI, DB, migraciones ni FX.
 
@@ -19,13 +19,14 @@ Alcance común: motor puro, contratos, configuración y pruebas. Sin HTTP, UI, D
 
 ## T02 — Implementar tramos y contrato básico
 
-- [ ] Pendiente. RF1, RF3, RF4. Depende de T01.
+- [x] Completada técnicamente. RF1 y partes de RF3/RF4 relativas a tramos. Depende de T01.
 - Archivos previstos: billing/types.ts, errors.ts, tiers.ts, billing.test.mjs y exports de shared.
 - Implementar calculateTieredBase y users-tiered-v1. Desglose compatible con 002, cero usuarios → base 0 y [].
 - Validar users con límites y errores acordados; no cargos adicionales.
 - Verificar UT-BILL-01, marginales UT-PROP-01 y entradas inválidas de users. Controles por tarea.
 - Cierre: pruebas reales de fronteras y desglose.
 - Commit propuesto: feat(billing): implement cumulative user pricing.
+- Evidencia: [verificación T02](../../ai-workspace/testing/004-billing-t02.md); 13 tests unitarios pasan (5 fixtures, 5 productivos de tramos, 3 API). Sin impuestos ni cálculo completo.
 
 ## T03 — Implementar dinero e impuestos versionados
 

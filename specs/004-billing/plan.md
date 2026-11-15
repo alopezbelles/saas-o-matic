@@ -1,6 +1,6 @@
 # Plan 004 — Motor monetario puro
 
-Estado: ejecución incremental iniciada con T01 (fixtures y runner); motor todavía no implementado. [Spec](spec.md) y [decisiones](clarifications.md) canónicas.
+Estado: T01/T02 implementadas; fixtures, runner y base por tramos disponibles. Impuestos y presupuesto completo pendientes. [Spec](spec.md) y [decisiones](clarifications.md) canónicas.
 
 ## Arquitectura
 
@@ -9,7 +9,7 @@ Configuración fiscal en API; shared recibe datos explícitos. No publicar confi
 
 ## Archivos previstos
 
-Las rutas siguientes son futuras, no enlaces a archivos existentes:
+Mapa de implementación: T01 creó fixtures/runner; T02 añadió types.ts (tipos básicos), errors.ts, tiers.ts y billing.test.mjs. El resto de rutas son previsiones, no enlaces a archivos existentes.
 
 | Archivo                                        | Responsabilidad                                                   |
 | ---------------------------------------------- | ----------------------------------------------------------------- |

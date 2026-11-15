@@ -40,3 +40,10 @@ Se añadieron fixtures y cinco pruebas de integridad, runner shared y encadenami
 La shell no encontraba Node en PATH; se utilizó la instalación existente en C:\Program Files\nodejs y el pnpm local mediante PATH de proceso. Sin instalación ni cambios personales.
 Lint/typecheck pasan; unitarios 5 shared + 3 API y 2 documentales pasan. Formato global falla en 43 archivos externos; comparación con Prettier confirma que son diferencias exclusivas CRLF/LF. No se corrigieron fuera de alcance.
 [Evidencia](../testing/004-billing-t01.md) y [revisión técnica](../reviews/004-billing-t01.md). T01 cerrada en su alcance, RF del motor pendientes. Sin DB ni commits. Siguiente paso: T02 por indicación de Alex.
+
+## T02 — Tramos y contrato básico
+
+15 de noviembre de 2026. Base 84818bf; T02 autorizada por Alex. [Instrucción previa](../prompts/004-billing.md#t02--instrucción-previa-de-implementación) preparada antes del código.
+Se implementaron TierBreakdown/TieredBase, BillingError y calculateTieredBase con versión/reglas agrupadas. Validación de users mediante límite shared, BigInt en operaciones monetarias y resultados nuevos por llamada; sin impuestos ni quote.
+Cinco tests productivos se suman a los cinco fixtures y tres de API: 13 pasan. Se cubren rango completo, marginales, oráculos, errores, JSON y aislamiento. Lint y typecheck pasan; formato global informa 42 archivos ajenos, uno menos al modificar/formatear index.ts en esta tarea.
+RF1 implementado y probado; RF3/RF4 parciales. [Evidencia](../testing/004-billing-t02.md) y [revisión](../reviews/004-billing-t02.md). Sin DB, nuevas dependencias ni commits. Esperar indicación para T03.

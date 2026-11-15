@@ -1,6 +1,6 @@
 # 004 — Motor acumulativo, impuestos y precisión
 
-Estado: T01 completada técnicamente (fixtures y runner); motor todavía no implementado. Decisiones funcionales acordadas con Alex. Ejecutar cada tarea cuando se indique; sin commits automáticos.
+Estado: T01 y T02 completadas técnicamente; base por tramos implementada, impuestos y presupuesto completo pendientes. Decisiones funcionales acordadas con Alex. Ejecutar cada tarea cuando se indique; sin commits automáticos.
 
 ## Contexto y fuentes
 
@@ -60,4 +60,4 @@ Endpoints, UI/preview integrado, DB/migraciones, simulaciones guardadas, FX, des
 
 Oráculos independientes de base: 0→0, 10→10000, 11→10800, 15→14000, 50→42000, 51→42500 céntimos.
 Cubrir límites, marginales, cuatro países, tasa cero, redondeo sintético, errores, overflow y determinismo.
-Cada RF tendrá prueba y evidencia en [validación](validation.md). Conformidad técnica y aceptación humana se distinguen. Ningún RF implementado; [tareas](tasks.md) pendientes.
+Cada RF tendrá prueba y evidencia en [validación](validation.md). Conformidad técnica y aceptación humana se distinguen. RF1 implementado y probado; RF2 pendiente y RF3/RF4 parciales (solo tramos). [Tareas](tasks.md).

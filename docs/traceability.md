@@ -24,7 +24,7 @@ Especificaciones y resultados: [001](../specs/001-foundation/spec.md), [validaci
 
 [Spec](../specs/003-customers-api/spec.md), [validación](../specs/003-customers-api/validation.md).
 
-## Motor 004 — planificación, sin implementación
+## Motor 004 — implementación incremental
 
 | RF      | Tareas        | Casos previstos                                    |
 | ------- | ------------- | -------------------------------------------------- |
@@ -34,3 +34,4 @@ Especificaciones y resultados: [001](../specs/001-foundation/spec.md), [validaci
 | 004-RF4 | T02, T04, T05 | UT-PROP-01, UT-QUOTE-004                           |
 
 T01 prepara fixtures/runner; no acredita RF. [Spec](../specs/004-billing/spec.md), [plan](../specs/004-billing/plan.md), [validación pendiente](../specs/004-billing/validation.md).
+T02 implementa RF1 y partes de RF3/RF4 relativas a tramos: UT-BILL-01, marginales/determinismo UT-PROP-01 y usuarios inválidos UT-INPUT-004 pasan. Impuestos y quote pendientes. [Evidencia](../ai-workspace/testing/004-billing-t02.md).
