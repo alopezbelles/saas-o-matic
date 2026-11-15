@@ -1,6 +1,6 @@
 # Tareas 006
 
-Estado global: T01 completada técnicamente; T02–T05 pendientes. Cada tarea requiere indicación de Alex. Sin aceptación humana final.
+Estado global: T01–T02 completadas técnicamente; T03–T05 pendientes. Cada tarea requiere indicación de Alex. Sin aceptación humana final.
 
 - [x] **T01 — Contratos, catálogo y fixtures**
   - RF: 006-RF1–RF4.
@@ -9,12 +9,13 @@ Estado global: T01 completada técnicamente; T02–T05 pendientes. Cada tarea re
   - Verificación: compilación/exportaciones, catálogo y fixtures deterministas. Sin llamadas reales ni UI; no marcar RF completos solo por tipos.
   - Evidencia real: [validación T01](validation.md#t01--contratos-catálogo-y-fixtures). Catálogo/errores y cinco pruebas nuevas correctos; RF funcionales pendientes.
 
-- [ ] **T02 — Conversión pura**
+- [x] **T02 — Conversión pura**
   - Dependencia: T01. RF: 006-RF1.
   - Tasa decimal/racional con límites técnicos explícitos, BigInt y utilidades actuales; EUR identidad sin tasa, solo total.
   - Destinos: packages/shared/src/currency/ y packages/shared/test/currency.test.mjs.
   - Pruebas: 16940 EUR cents ×1.1 = 18634 USD cents; ×0.8 = 13552 GBP cents; cero, identidad, mitad exacta, notación científica, entradas inválidas, moneda no soportada y overflow.
   - Hecho cuando pasan oráculos independientes sin operaciones monetarias flotantes ni efectos externos.
+  - Evidencia: [validación T02](validation.md#t02--conversión-pura). RF1 conforme en dominio; proveedor y metadatos externos pendientes de T03/T04.
 
 - [ ] **T03 — Validación del proveedor**
   - Dependencias: T01/T02. RF: 006-RF2/RF3.

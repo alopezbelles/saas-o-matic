@@ -32,6 +32,8 @@ Validar objeto, result=success, base_code=EUR, rates.EUR=1, USD/GBP numéricas p
 
 Normalizar números JSON mediante su representación decimal de JavaScript, incluyendo notación científica. No prometer recuperar dígitos perdidos al parsear JSON. Acotar longitud/exponente antes de construir potencias BigInt y probar los límites técnicos.
 
+Límites técnicos concretados en T02: texto de hasta 64 caracteres; parte entera obligatoria, fracción opcional con dígitos y exponente científico opcional de valor absoluto máximo 324. Sin espacios ni signo inicial. El número representado debe ser positivo y finito en JavaScript, compatible con la fuente JSON; Number solo valida finitud, no calcula importes. Aritmética posterior exacta sobre el texto decimal original.
+
 Proporcionar fuente, enlace https://www.exchangerate-api.com y texto de atribución «Rates By Exchange Rate API». La UI futura debe mostrarlo antes de publicar una pantalla que use tasas. No enviar datos privados ni importes.
 
 ## Cálculo exacto

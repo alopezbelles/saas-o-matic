@@ -1,10 +1,10 @@
 # Validación 006
 
-Estado funcional: T01 completada técnicamente; conversión, validación del proveedor y cliente pendientes. Sin RF completo ni aceptación humana.
+Estado funcional: T01/T02 completadas técnicamente; RF1 conforme en dominio. Validación del proveedor y cliente pendientes; sin aceptación humana.
 
 | RF      | Verificación prevista                                      | Resultado funcional real |
 | ------- | ---------------------------------------------------------- | ------------------------ |
-| 006-RF1 | T02: conversión exacta, identidad, redondeo y overflow     | NO EJECUTADO             |
+| 006-RF1 | T02: conversión exacta, identidad, redondeo y overflow     | CONFORME EN DOMINIO      |
 | 006-RF2 | T03/T04: contrato, concurrencia y metadatos                | NO EJECUTADO             |
 | 006-RF3 | T03/T04: fallos, expiración y recuperación sin alterar EUR | NO EJECUTADO             |
 | 006-RF4 | T04: caché, cambios de importe y caducidad                 | NO EJECUTADO             |
@@ -29,6 +29,14 @@ Las cinco pruebas nuevas verifican catálogo inmutable, errores exportados y coh
 pnpm.cmd test:docs: 2 pruebas correctas, código 0. pnpm.cmd format:check: todos los archivos cumplen Prettier, código 0. git diff --check: código 0. El gate documental identifica 006 como spec activa sin alterar los resultados históricos de 005.
 
 ## Controles globales futuros
+
+## T02 — Conversión pura
+
+2026-11-15. Autorización explícita de T02; instrucción previa en plan. Se añade convertCurrency en shared con errores CURRENCY_*, identidad EUR, parser decimal acotado, intermediarios BigInt y utilidades existentes roundHalfUp/assertMoneyCents/toSafeCents. No se cambia el motor fiscal ni la persistencia. El parser compara el texto completo para rechazar también saltos de línea finales; Number se usa solo para validar finitud del número representado.
+
+Ocho pruebas productivas cubren fixtures independientes, cero/máximo EUR, mitades y valores adyacentes, equivalencia decimal/científica, tipos inválidos, claves heredadas como monedas, límites de longitud/exponente, overflow e inputs congelados. RF1 conforme en dominio, no integración externa.
+
+Primera secuencia lint/typecheck/test:unit correcta (código 0). Controles finales tras revisión: pnpm.cmd lint, pnpm.cmd typecheck, pnpm.cmd test:unit (36 shared + 12 API = 48), pnpm.cmd test:docs (2), pnpm.cmd format:check y git diff --check correctos, código 0. No se ejecutaron integración SQLite, CORS, test:web, test:gates, pnpm build global ni suite completa: no cambian transporte/API/UI/runners. typecheck y test:unit sí compilan shared/API. Sin red externa, instalaciones, datos reales, registros ai-workspace ni commits.
 
 pnpm lint, pnpm typecheck, pnpm format:check, pnpm build y pnpm test. No ejecutar test:gates en paralelo con otros controles de código.
 

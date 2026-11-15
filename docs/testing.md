@@ -1,5 +1,9 @@
 # Verificación
 
+## 006 — T02
+
+Ocho pruebas productivas nuevas de convertCurrency: oráculos USD/GBP, identidad EUR, half-up exacto, notación científica, entradas inválidas, límites de tasa, overflow e independencia. test:unit suma 36 shared y 12 API. [Evidencia T02](../specs/006-currency/validation.md#t02--conversión-pura). Sin validación de proveedor, transporte ni CORS en este alcance.
+
 ## 006 — T01
 
 test:unit incorpora 3 pruebas de contratos/fixtures FX en shared (28 shared + 12 API). test:web incorpora 2 pruebas de fixtures del proveedor y conserva el smoke HTTP (3 en total). Verifican catálogo, errores y datos de prueba; no acreditan todavía conversión, validación externa, cliente HTTP o CORS. El gate documental identifica 006 como spec activa. [Evidencia T01](../specs/006-currency/validation.md#t01--contratos-catálogo-y-fixtures). Sin registro ai-workspace por indicación de Alex.

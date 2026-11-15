@@ -10,3 +10,4 @@ export * from './billing/quote.js';
 export * from './currency/catalog.js';
 export * from './currency/types.js';
 export * from './currency/errors.js';
+export * from './currency/convert.js';
