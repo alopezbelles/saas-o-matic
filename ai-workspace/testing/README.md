@@ -1,5 +1,7 @@
 # Evidencias de pruebas
 
+- [005-T01 — Contratos y parsers](005-simulations-api-t01.md): resumen retrospectivo autorizado, 37 unitarios y 2 documentales; no suite completa ni endpoints.
+
 - [001 — Resumen histórico](001-foundation.md): referencia a validación; sin log íntegro conservado.
 - [002 — Resumen histórico](002-persistence.md): referencia a validación y [salida real](002-tests.txt).
 

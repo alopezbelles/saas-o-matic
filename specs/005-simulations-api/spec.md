@@ -1,6 +1,6 @@
 # 005 — API de simulaciones e histórico
 
-Estado: preparación documental adaptada al proyecto; decisiones de contrato confirmadas por Alex. Implementación no iniciada. Ejecutar tareas una a una por indicación posterior; sin commits automáticos.
+Estado: T01 completada técnicamente; contratos/parsers disponibles, servicio y endpoints pendientes. Decisiones confirmadas por Alex. Ejecutar tareas una a una por indicación posterior; sin commits automáticos.
 
 ## Contexto y fuentes
 
@@ -23,11 +23,11 @@ La DB limita taxRateBps a 0..10000; las tasas demo cumplen. Las tasas sintética
 
 ## Contrato HTTP previsto
 
-Esta sección define el contrato futuro aprobado, todavía no implementado. docs/api-contracts.md describe hoy solo endpoints existentes; sincronizarlo al implementar.
+Esta sección define el contrato aprobado. Tipos/parsers implementados en T01; rutas todavía no implementadas. docs/api-contracts.md distingue esas piezas de endpoints existentes.
 
 ### POST /simulations
 
-Cuerpo JSON con exactamente cuatro campos obligatorios: customerId (UUID válido), users, storageGb y apiCalls (números enteros dentro de límites). Sin coerción.
+Cuerpo JSON con exactamente cuatro campos obligatorios: customerId (UUID válido), users, storageGb y apiCalls (números enteros dentro de límites). Sin coerción. Campos ausentes → VALIDATION_ERROR (422); customerId presente pero UUID inválido → INVALID_CUSTOMER_ID (400). UUID válido se normaliza a minúsculas como en 003.
 Rechazar campos adicionales, incluidos importes, currency, país, plan, versiones, tasa, snapshots, id o createdAt. País y plan proceden del cliente; identificador/fecha se generan en servidor.
 201 con SimulationDto tras guardar. No anunciar Location hacia un endpoint de detalle inexistente ni añadir ese endpoint en esta spec.
 

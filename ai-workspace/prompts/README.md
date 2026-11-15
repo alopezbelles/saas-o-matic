@@ -1,5 +1,7 @@
 # Instrucciones técnicas para la IA
 
+- [005 — Preparación y T01](005-simulations-api.md): reformulaciones retrospectivas autorizadas después, con enlace a la instrucción real escrita en el plan antes del código.
+
 Se priorizan registros estructurados con contexto, objetivo, alcance, restricciones, decisiones y criterios de verificación.
 Cada registro identifica su procedencia y momento de redacción:
 

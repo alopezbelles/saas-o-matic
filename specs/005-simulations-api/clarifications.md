@@ -36,3 +36,7 @@ Tasas demo compatibles con CHECK 0..10000 de persistencia; políticas sintética
 
 No quedan decisiones de producto abiertas para preparar estas tareas. Si al implementar surge una necesidad real de migración, dependencia, servicio o cambio de contrato, proponerla antes de ejecutar.
 Esta autorización solo adapta los cinco documentos. Esperar indicación para implementar T01 y después cada tarea. Sin ai-workspace hasta que Alex lo solicite; no commits/pushes.
+
+Actualización posterior: Alex autoriza T01; implementados tipos/parsers y actualizados contexto/gate/documentación. La exclusión de ai-workspace permanece. Campos ausentes se distinguen de UUID presente inválido según precisión técnica documentada en spec; sin cambio de los estados acordados. T02–T05 requieren indicación posterior.
+
+Actualización después de T01: Alex autoriza registrar preparación y ejecución en ai-workspace antes del commit. Registro inicial retrospectivo, con enlaces a instrucción previa del plan y decisiones reales. No autoriza T02 ni implica aceptación humana de entrega.

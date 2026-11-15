@@ -1,5 +1,11 @@
 # Verificación
 
+## 005 — T01
+
+test:unit incorpora apps/api/test/simulations-contract.test.mjs sin retirar pruebas anteriores. Siete tests UT-SIM-CONTRACT-005 prueban petición estricta, ausencia/extras, tres límites, rechazo sin coerción, UUID, paginación y regresión compartida de clientes.
+InputError conserva reexport compatible al separarse; query.ts centraliza paginación sin cambiar defaults/rangos ni ceros iniciales. Contratos sin ORM, DB ni HTTP.
+El gate documental exige 005 en la línea activa y un destino existente. Resultados reales en [validación 005](../specs/005-simulations-api/validation.md); [resumen en ai-workspace](../ai-workspace/testing/005-simulations-api-t01.md) añadido después por autorización de Alex.
+
 Desde raíz con pnpm 10.33.4 y Node 22 compatible. En PowerShell usar pnpm.cmd si es necesario.
 
 | Comando               | Control                                                                      |

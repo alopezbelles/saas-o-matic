@@ -1,5 +1,7 @@
 # Iteraciones
 
+- [005 — Preparación y T01](005-simulations-api.md): registro retrospectivo autorizado, enlazado a decisiones, cambios y evidencia canónica.
+
 - [001 — Retrospectiva foundation](001-foundation-retrospective.md).
 - [002 — Retrospectiva persistence](002-persistence-retrospective.md).
 

@@ -1,11 +1,11 @@
 # Tareas 005
 
-Estado: todas pendientes. Cinco tareas preparadas para ejecución incremental; ninguna implementación realizada.
-Cada tarea requiere indicación de Alex. Proponer commit separado al cerrar el bloque; no ejecutar commits/pushes. Sin registro en ai-workspace hasta autorización posterior.
+Estado: T01 completada técnicamente; T02–T05 pendientes. Contratos y parsers disponibles, sin endpoints nuevos.
+Cada tarea requiere indicación de Alex. Proponer commit separado al cerrar el bloque; no ejecutar commits/pushes. Tras T01 Alex autoriza registrar preparación/ejecución en ai-workspace; conservar la procedencia retrospectiva del registro inicial.
 
 ## T01 — Contratos de alta, histórico y configuración
 
-- [ ] Pendiente. RF1..4 en su parte de contratos.
+- [x] Completada técnicamente. RF1..4 solo en su parte de contratos; endpoints pendientes.
 - Archivos previstos: packages/shared/src/simulations.ts, index.ts, apps/api/test/simulations-contract.test.mjs, apps/api/package.json; contexto/gate/documentación pertinente al iniciar implementación.
 - Definir CreateSimulation, SimulationDto, CustomerSnapshotDto, SimulationQuery, SimulationPage y BillingConfigDto con el contrato exacto de spec.md; sin tipos ORM.
 - Parse estricto de cuatro campos; UUID, números/límites de shared y query limit/offset. Rechazar extras, coerción, parámetros repetidos y q.
@@ -15,6 +15,7 @@ Cada tarea requiere indicación de Alex. Proponer commit separado al cerrar el b
 - Verificación: UT-SIM-CONTRACT-005 y controles por tarea del plan. Tests reales de parsers, sin placeholders.
 - Cierre: contrato y parse probados; no afirmar endpoint implementado.
 - Commit propuesto: feat(simulations): define simulation API contracts and validation.
+- Evidencia: [validación T01](validation.md#t01--contratos-y-parsers). Lint/typecheck/format:check pasan; 37 unitarios (25 shared y 12 API) y 2 documentales pasan. Sin DB. [Registro de IA](../../ai-workspace/iterations/005-simulations-api.md) añadido por autorización posterior.
 
 ## T02 — Servicio y guardado transaccional coherente
 

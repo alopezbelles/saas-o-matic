@@ -1,5 +1,11 @@
 # Desarrollo asistido por IA — SaaS-O-Matic
 
+## 005 — Preparación y contratos T01
+
+[Spec](../specs/005-simulations-api/spec.md), [plan/instrucción previa](../specs/005-simulations-api/plan.md#instrucción-previa-para-t01), [decisiones](../specs/005-simulations-api/clarifications.md), [tareas](../specs/005-simulations-api/tasks.md) y [validación](../specs/005-simulations-api/validation.md).
+[Prompts y procedencia](prompts/005-simulations-api.md), [iteración](iterations/005-simulations-api.md), [pruebas T01](testing/005-simulations-api-t01.md) y [revisión técnica](reviews/005-simulations-api-t01.md).
+Registros creados el 15 de noviembre de 2026 por autorización posterior de Alex, después de T01 y antes del commit. Preparación/ejecución inicial excluyeron ai-workspace; ahora se documentan retrospectivamente. La instrucción de T01 sí se escribió en el plan antes del código y se enlaza como tal. Sin mensajes literales reconstruidos ni aceptación humana final. Solo contratos/parsers implementados; T02–T05 pendientes.
+
 Índice para evaluar planificación, arquitectura, interacción y control de calidad.
 001 y 002 están implementadas con validación técnica registrada. No hay aceptación humana final documentada.
 

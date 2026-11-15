@@ -1,5 +1,15 @@
 # Trazabilidad
 
+## Simulaciones 005 — contratos T01
+
+| RF          | Pieza disponible                      | Evidencia                                                     |
+| ----------- | ------------------------------------- | ------------------------------------------------------------- |
+| 005-RF1/RF2 | Parse de alta, UUID y consumos.       | UT-SIM-CONTRACT-005 ejecutado; servicio/HTTP pendientes.      |
+| 005-RF3     | DTO y parse de paginación.            | UT-SIM-CONTRACT-005 ejecutado; consultas HTTP/SQL pendientes. |
+| 005-RF4     | BillingConfigDto y versiones tipadas. | Tipos compilados; proyección HTTP pendiente.                  |
+
+[Tareas](../specs/005-simulations-api/tasks.md), [validación](../specs/005-simulations-api/validation.md). T01 no acredita RF completos ni endpoints implementados.
+
 | Requisito  | Tareas             | Casos                                      |
 | ---------- | ------------------ | ------------------------------------------ |
 | 001-RF1..4 | T01..T05 de 001    | ENV/API/WEB/GATE/DOC de 001                |

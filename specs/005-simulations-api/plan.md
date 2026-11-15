@@ -1,8 +1,13 @@
 # Plan 005 — Integración API e histórico
 
-Estado: plan adaptado para implementación incremental; código no iniciado. [Contrato canónico futuro](spec.md) y [decisiones](clarifications.md).
+Estado: T01 completada técnicamente; contratos/parsers disponibles, T02–T05 pendientes. [Contrato](spec.md) y [decisiones](clarifications.md).
 
 ## Reutilización y arquitectura
+
+### Instrucción previa para T01
+
+Preparada por el agente antes del código, tras autorización de Alex para T01. Base 675ac5e. Implementar contratos públicos y parsers estrictos, reutilizar UUID/consumos y extraer paginación de 003 sin cambiar su semántica. Separar InputError en módulo independiente, conservando reexport compatible, para que los helpers no dependan de clientes ni generen ciclos.
+Probar cuerpos/tipos/extras/límites/UUID/query, regresiones de clientes y entradas inmutables. Actualizar contexto y gate a 005; endpoints y persistencia siguen pendientes. Verificar lint, typecheck, format:check, test:unit y test:docs. Sin dependencias, DB, commits ni ai-workspace; registrar resultados reales en validation.md.
 
 No recrear tablas, límites, motor ni política. Reutilizar db/persistence.ts (getCustomer, insertSimulation), esquema/índice histórico, proveedor lazy, InputError/HttpError y calculateQuote de shared.
 El listado existente listSimulations devuelve todo; añadir consulta paginada en repositorio de feature sin cambiar la semántica de ese helper usado por tests previos.
@@ -29,6 +34,7 @@ Rutas futuras como texto; no enlaces a archivos que aún no existen.
 | test/docs.test.mjs                                                          | Contexto activo 005 al comenzar implementación.                          |
 
 Extraer utilidades de paginación existentes únicamente si evita duplicación real, sin alterar contrato de clientes. No introducir packages/contracts ni runner TS.
+T01 implementa input-error.ts (reexport compatible desde customers.ts), query.ts (validación de claves/paginación compartida) y simulations.ts. Reutiliza parseCustomerId y assertConsumption de 004; no duplica UUID, límites ni reglas de parse de paginación.
 
 ## Guardado coherente
 
@@ -76,5 +82,5 @@ Controles por tarea: pnpm lint, pnpm typecheck, pnpm format:check, pruebas afect
 ## Documentación y alcance
 
 Al implementar T01 actualizar MEMORY.md y gate de spec activa a 005, docs/approvals y comandos/contexto pertinentes; esta preparación modifica solo los cinco documentos solicitados.
-Actualizar docs/api-contracts.md al crear contratos/rutas, distinguiendo implementado de previsto; trazabilidad y validación con resultados reales. Registro ai-workspace solo cuando Alex lo autorice.
+Actualizar docs/api-contracts.md al crear contratos/rutas, distinguiendo implementado de previsto; trazabilidad y validación con resultados reales. Alex autoriza después de T01 registrar preparación y ejecución en ai-workspace; se mantienen procedencia/momento reales y no se reescribe la instrucción previa histórica.
 Sin migración prevista; si aparece necesidad, justificarla antes. Sin DB real, commits, frontend, FX o nuevas dependencias.

@@ -33,7 +33,13 @@ Actualización tras T04: Alex autoriza ejecutar T05 (controles globales, revisi�
 
 Corrección posterior a T05: Alex autoriza resolver los issues de formato, normalizar los archivos afectados y establecer reglas versionadas para evitar su recurrencia. No autoriza commits/pushes ni cambios de configuración personal o del directorio .git.
 
-## Revisión de entregas
+## 005 — Implementación incremental
+
+Alex autoriza T01 de 005: contratos, parsers, pruebas, contexto y documentación. Las decisiones de contrato constan en su spec/clarifications. T02–T05 requieren indicación posterior. Se mantiene la exclusión de ai-workspace hasta autorización explícita; sin commits/pushes ni datos reales.
+
+Después de T01, Alex autoriza registrar en ai-workspace preparación y trabajo realizado antes del commit, siguiendo el procedimiento habitual. Se levanta la exclusión para este registro; los documentos se identifican como retrospectivos y enlazan la instrucción previa real del plan. No autoriza T02 ni implica aceptación humana final.
+
+## Revisión de entregas — criterio general
 
 La conformidad técnica se documenta en la validación de cada spec.
 No registrar aceptación humana de una entrega terminada en nombre de Alex.

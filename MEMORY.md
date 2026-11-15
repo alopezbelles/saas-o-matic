@@ -1,6 +1,9 @@
 # Estado del proyecto
 
-- Spec activa: [004-billing](specs/004-billing/spec.md), T01–T05 completadas técnicamente. Incidencia CRLF/LF resuelta por autorización posterior; todos los controles globales pasan y 59 tests correctos. Aceptación humana final no registrada; no iniciar otra spec sin indicación.
+- Spec activa: [005-simulations-api](specs/005-simulations-api/spec.md), T01 completada técnicamente: contratos y parsers. Esperar indicación para T02; sin endpoints de simulaciones. Alex autoriza ahora registro retrospectivo de preparación/T01 en ai-workspace.
+- [Prompts y procedencia 005](ai-workspace/prompts/005-simulations-api.md), [iteración](ai-workspace/iterations/005-simulations-api.md), [evidencia T01](ai-workspace/testing/005-simulations-api-t01.md) y [revisión](ai-workspace/reviews/005-simulations-api-t01.md). La instrucción de T01 sí existía en plan antes del código; no se presenta la síntesis posterior como chat original.
+- T01: lint/typecheck/format:check correctos, 37 unitarios (25 shared/12 API) y 2 docs pasan. InputError y paginación extraídos con compatibilidad 003; UUID/consumos reutilizados. [Evidencia](specs/005-simulations-api/validation.md#t01--contratos-y-parsers). Sin DB, dependencias ni commits.
+- 004-billing completada técnicamente: motor, política demo y formato global corregido; 59 pruebas pasaron en su cierre. Referencias siguientes corresponden a su historial.
 - Corrección: 41 archivos normalizados solo CRLF→LF; .gitattributes y Prettier fijan LF. Índice ya LF, sin renormalización ni cambios .git/personales. [Evidencia final](ai-workspace/testing/004-billing-format-fix.md). Los fallos descritos debajo son históricos.
 - T05: lint/typecheck/build y suite completa pasan (59 tests); 4004 desgloses compatibles con validador 002 sin DB. Prettier global falla exclusivamente por CRLF/LF en 41 archivos. [Evidencia global](ai-workspace/testing/004-billing-t05.md).
 - Decisiones 004: motor puro en shared, política demo ES/FR/DE/GB, céntimos/BigInt/half-up, límites de 002 y contratos con desglose/versiones. Sin HTTP, DB, UI ni FX en 004.
