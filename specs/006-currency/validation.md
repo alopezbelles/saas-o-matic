@@ -1,13 +1,13 @@
 # Validación 006
 
-Estado funcional: T01–T03 completadas técnicamente; RF1 conforme en dominio y validación del proveedor probada. Transporte/caché pendientes; sin aceptación humana.
+Estado funcional: T01–T04 completadas técnicamente; RF1 conforme en dominio y RF2–RF4 probados con transporte simulado. T05 y CORS pendientes; sin aceptación humana.
 
 | RF      | Verificación prevista                                      | Resultado funcional real |
 | ------- | ---------------------------------------------------------- | ------------------------ |
 | 006-RF1 | T02: conversión exacta, identidad, redondeo y overflow     | CONFORME EN DOMINIO      |
-| 006-RF2 | T03/T04: contrato, concurrencia y metadatos                | PARCIAL: CONTRATO        |
-| 006-RF3 | T03/T04: fallos, expiración y recuperación sin alterar EUR | PARCIAL: PAYLOAD/FECHAS  |
-| 006-RF4 | T04: caché, cambios de importe y caducidad                 | NO EJECUTADO             |
+| 006-RF2 | T03/T04: contrato, concurrencia y metadatos                | CONFORME CON FIXTURES    |
+| 006-RF3 | T03/T04: fallos, expiración y recuperación sin alterar EUR | CONFORME CON FIXTURES    |
+| 006-RF4 | T04: reutilización de tasas y caducidad                    | CONFORME EN CLIENTE      |
 
 ## T01 — Contratos, catálogo y fixtures
 
@@ -65,5 +65,17 @@ Ocho pruebas nuevas: éxito y campos extra, fixtures negativos, propiedades/tipo
 pnpm.cmd lint y pnpm.cmd typecheck correctos, código 0. Cierre: pnpm.cmd test:docs (2/2), pnpm.cmd format:check y git diff --check correctos, código 0. No se ejecutaron test:unit, integración SQLite, test:gates, build global o suite completa; sin cambios API/shared/DB, dependencias/lockfile, red externa, ai-workspace ni commits. test:web sí compiló la web y sus módulos de pruebas. RF2/RF3 parciales hasta T04. Conformidad técnica de T03; aceptación humana pendiente.
 
 ## Restricción de registro
+
+## T04 — Cliente HTTP y caché
+
+2026-11-15. Autorización explícita de T04 e instrucción previa del plan. createExchangeClient inyecta fetch/reloj; exchangeClient comparte instancia sin petición al importar. EUR devuelve null identidad; USD/GBP comparten payload validado inmutable. No recibe ni modifica importes o consumos; composición con convertCurrency reservada a revisión T05.
+
+GET fijo, credentials omit, sin body/referrer ni caché HTTP para no confundirla con la caché de tasas. Timeout 5000 ms con AbortController y Promise.race cubre fetch y lectura JSON, incluso si el transporte ignora abort. Solo se publica el ganador validado al terminar; respuesta tardía no llena caché. Petición liberada en finally; sin reintentos automáticos ni caché caducada.
+
+Resultados reales: pnpm.cmd lint y pnpm.cmd typecheck correctos, código 0. pnpm.cmd test:web compila Vite/módulos y ejecuta 20/20 correctas, código 0. Nueve casos nuevos agrupan EUR sin red, concurrencia/privacidad, reutilización/inmutabilidad, caducidad exacta/refresco compartido, HTTP/red/JSON/error lógico y recuperación, fallo de refresco sin datos viejos, expiración durante lectura, timeout/respuesta tardía, cuerpo bloqueado, aislamiento y moneda inválida.
+
+Aviso observado: MockTimers experimental en Node 22, sin fallo ni dependencias nuevas. No se ejecutaron test:unit, integración, test:gates, build global ni suite completa en T04; cierre global reservado a T05. Sin red externa, UI, cambios shared/API/SQLite/lockfile, instalaciones, ai-workspace o commits. CORS pendiente. Cierre documental: pnpm.cmd test:docs (2/2), pnpm.cmd format:check y git diff --check correctos, código 0. Conformidad técnica T04, sin aceptación humana.
+
+## Registro excluido
 
 No registrar esta preparación en ai-workspace por instrucción de Alex. Incorporar futuras evidencias cuando se autorice su registro.

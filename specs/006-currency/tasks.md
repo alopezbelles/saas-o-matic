@@ -1,6 +1,6 @@
 # Tareas 006
 
-Estado global: T01–T03 completadas técnicamente; T04–T05 pendientes. Cada tarea requiere indicación de Alex. Sin aceptación humana final.
+Estado global: T01–T04 completadas técnicamente; T05 pendiente. Cada tarea requiere indicación de Alex. Sin aceptación humana final.
 
 - [x] **T01 — Contratos, catálogo y fixtures**
   - RF: 006-RF1–RF4.
@@ -25,12 +25,13 @@ Estado global: T01–T03 completadas técnicamente; T04–T05 pendientes. Cada t
   - Hecho cuando payload rechazado nunca produce tasas utilizables.
   - Evidencia real: [validación T03](validation.md#t03--validación-del-proveedor). Ocho pruebas productivas correctas; sin transporte ni comprobación CORS.
 
-- [ ] **T04 — Cliente HTTP y caché**
+- [x] **T04 — Cliente HTTP y caché**
   - Dependencia: T03. RF: 006-RF2/RF3/RF4.
   - Cliente sin React, fetch/reloj inyectables, timeout 5 s, petición compartida, caché hasta caducidad y recuperación explícita.
   - Destinos: apps/web/src/features/currency/exchange-client.ts y pruebas node:test.
   - Pruebas: EUR sin red; USD/GBP concurrentes con una petición; cambios de importe sin refetch; caducidad exacta; timeout/429/red/JSON; recuperación y protección contra mutación externa.
   - Hecho cuando no se entregan tasas caducadas como vigentes y los fallos no alteran EUR.
+  - Evidencia: [validación T04](validation.md#t04--cliente-http-y-caché). Nueve pruebas nuevas sin proveedor real ni UI.
 
 - [ ] **T05 — Revisión técnica y regresión**
   - Dependencia: T04. RF: 006-RF1–RF4.
@@ -39,7 +40,3 @@ Estado global: T01–T03 completadas técnicamente; T04–T05 pendientes. Cada t
   - Comprobar CORS real desde navegador si el entorno permite, sin pantalla de producto; separar smoke externo de pruebas deterministas. Declarar limitación si no es comprobable; si falla, detener integración afectada y consultar alternativa.
   - Dejar pendientes para otras specs hook, selector, presentación, estados visuales, atribución visible y E2E.
   - Hecho cuando existe evidencia por RF, controles correctos y límites externos explícitos; no equivale a aceptación humana.
-
-## Registro
-
-No registrar esta preparación en ai-workspace por instrucción de Alex. Registrar futuras evidencias únicamente conforme a autorización disponible; no anticipar resultados.

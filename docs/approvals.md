@@ -49,6 +49,8 @@ Después de T04, Alex autoriza T05: revisión y verificación global de 005, con
 
 ## 006 — Preparación e implementación incremental
 
+Tras T03, Alex autoriza T04: cliente HTTP/caché y pruebas con transporte inyectado, sin proveedor real. T05 pendiente; mantener exclusión ai-workspace, commits/pushes y datos reales.
+
 Tras T02, Alex autoriza T03: validación/normalización del proveedor y pruebas, incluido ajuste del runner sin dependencias externas. T04/T05 requieren indicación posterior. Se mantiene exclusión de ai-workspace y ausencia de autorización para commits/pushes o datos reales.
 
 Tras T01, Alex autoriza T02: conversión pura y pruebas, con reutilización monetaria y sin nuevas dependencias. T03–T05 siguen pendientes; se conserva exclusión de ai-workspace, commits/pushes y datos existentes.

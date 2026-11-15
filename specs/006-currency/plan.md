@@ -46,6 +46,8 @@ Reutilizar roundHalfUp y comprobación de entero seguro; convertir a number solo
 
 ## Caché y transporte
 
+API concretada en T04: createExchangeClient({ fetch?, now? }) permite aislamiento; exchangeClient exporta la instancia compartida sin peticiones al importar. getRates('EUR') resuelve null (identidad sin metadatos externos); getRates('USD'|'GBP') resuelve ExchangeRates validado e inmutable. No recibe importes ni llama al motor. Monedas ajenas al contrato tipado producen TypeError sin red; fallos de proveedor usan EXCHANGE_*.
+
 - Inyectar fetch y reloj; AbortController con timeout de 5000 ms.
 - Instancia compartida para la futura pestaña; caché y petición en curso privadas. Instancias aislables en pruebas.
 - EUR sin red; USD/GBP comparten respuesta y petición en curso.

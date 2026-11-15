@@ -1,5 +1,9 @@
 # Verificación
 
+## 006 — T04
+
+test:web ejecuta 20 pruebas: nueve nuevas del cliente, ocho del parser, dos fixtures y smoke web. Transporte/reloj inyectados y MockTimers de node:test (aviso experimental en Node 22) verifican timeout sin esperar. Concurrencia, caducidad durante descarga, recuperación y respuestas tardías probadas. Sin proveedor real/CORS. [Evidencia T04](../specs/006-currency/validation.md#t04--cliente-http-y-caché).
+
 ## 006 — T03
 
 test:web compila los módulos currency mediante apps/web/tsconfig.test.json en apps/web/.cache/currency-tests, ignorado por Git, y prueba el JavaScript real con node:test. Conserva el smoke Vite. Total 11 pruebas: 8 del parser, 2 fixtures y 1 smoke. Sin nuevas librerías ni comprobación de CORS. Primera ejecución falló por el default de reloj del helper de pruebas ante undefined; corregido el helper/caso explícito y repetición 11/11 correcta. [Evidencia T03](../specs/006-currency/validation.md#t03--validación-del-proveedor).

@@ -1,8 +1,10 @@
 # Estado del proyecto
 
+- 006-T04 completada técnicamente: cliente HTTP, caché por pestaña, timeout 5 s, petición compartida y recuperación. T05 pendiente, CORS no comprobado; 20 pruebas web pasan. [Validación T04](specs/006-currency/validation.md#t04--cliente-http-y-caché). Mantener exclusión ai-workspace.
+
 - 006-T02 completada técnicamente: convertCurrency puro, tasas decimales acotadas, BigInt y half-up reutilizado, identidad EUR y errores de entrada/overflow. RF1 conforme en dominio; T03–T05 pendientes. Sin red, UI, dependencias, DB ni registro ai-workspace. [Validación T02](specs/006-currency/validation.md#t02--conversión-pura).
 
-- Spec activa: [006-currency](specs/006-currency/spec.md), T01–T03 completadas técnicamente: contratos, catálogo, conversión y validación del proveedor. T04–T05 pendientes de indicación. Sin UI, red externa, dependencias nuevas ni cambios de DB. Registro ai-workspace excluido hasta nueva indicación. [Validación T03](specs/006-currency/validation.md#t03--validación-del-proveedor).
+- Spec activa: [006-currency](specs/006-currency/spec.md), T01–T04 completadas técnicamente: contratos, conversión, parser y cliente/caché. T05 pendiente de indicación, CORS sin comprobar. Sin UI, red externa, dependencias nuevas ni cambios de DB. Registro ai-workspace excluido hasta nueva indicación. [Validación T04](specs/006-currency/validation.md#t04--cliente-http-y-caché).
 - 005-simulations-api: T01–T05 completadas técnicamente; POST /simulations, histórico y configuración disponibles. Sin aceptación humana final ni commits del agente.
 - T05: lint/typecheck/format:check/build/test correctos; 90 pruebas (37 unitarias, 49 integración, 1 web, 1 gates, 2 docs). Auditoría sin cambios de schema/migraciones/lockfile/dependencias/frontend; DB temporales limpiadas. [Evidencia global](ai-workspace/testing/005-simulations-api-t05.md).
 - T04: lint/typecheck/formato, 37 unitarios, 49 integración, 2 docs y diff check correctos; fixture inicial de 503 corregido, evidencia conservada. Histórico sin recalcular y config sin DB, no-store/fuentes únicas. [Evidencia](ai-workspace/testing/005-simulations-api-t04.md). Sin schema, dependencias o DB real.
