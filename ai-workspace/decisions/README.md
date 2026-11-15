@@ -10,3 +10,4 @@ No duplicar el esquema ni los contratos.
 Las actualizaciones de ADR-001/002 son retrospectivas. Una decisión aceptada, una implementación validada y una revisión humana de entrega son hechos distintos.
 
 - [ADR-004](ADR-004-customers-api.md): cinco campos de alta y compatibilidad de persistencia.
+- [ADR-005](ADR-005-billing-engine.md): motor puro compartido y separación de cálculo, persistencia y FX; decisión adoptada, código pendiente.

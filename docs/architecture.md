@@ -30,3 +30,8 @@ Los comandos DB compilan shared/API antes de ejecutar el CLI; las rutas relativa
 El futuro dominio permanecerá puro, separado de HTTP/SQL/React; los contratos no expondrán tipos ORM.
 Router, Zod y librerías UI no están instalados por anticipación.
 No se han configurado servicios externos ni despliegue.
+
+## Diseño acordado 004 — todavía no implementado
+
+Motor puro previsto en packages/shared/src/billing/; configuración fiscal explícita en API, sin HTTP/SQL/React en el dominio. Sin paquetes ni dependencias nuevas. Reutiliza límites de 002 y expone desglose/versiones para futura integración en 005. FX e integración de preview no pertenecen a 004.
+Contratos, errores y pruebas en [plan 004](../specs/004-billing/plan.md); razones en [ADR-005](../ai-workspace/decisions/ADR-005-billing-engine.md). Las políticas fiscales acordadas todavía no existen como código.

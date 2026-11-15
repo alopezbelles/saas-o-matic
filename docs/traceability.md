@@ -23,3 +23,14 @@ Especificaciones y resultados: [001](../specs/001-foundation/spec.md), [validaci
 | 003-RF5 | T02..T06 | IT-HTTP-01, IT-LIFECYCLE-01, IT-PRIVACY-01 |
 
 [Spec](../specs/003-customers-api/spec.md), [validación](../specs/003-customers-api/validation.md).
+
+## Motor 004 — planificación, sin implementación
+
+| RF      | Tareas        | Casos previstos                                    |
+| ------- | ------------- | -------------------------------------------------- |
+| 004-RF1 | T02, T04, T05 | UT-BILL-01, UT-QUOTE-004, UT-PROP-01               |
+| 004-RF2 | T03, T04, T05 | UT-TAX-01, UT-MONEY-01, UT-QUOTE-004               |
+| 004-RF3 | T02..T05      | UT-INPUT-004, UT-TAX-01, UT-MONEY-01, UT-QUOTE-004 |
+| 004-RF4 | T02, T04, T05 | UT-PROP-01, UT-QUOTE-004                           |
+
+T01 prepara fixtures/runner; no acredita RF. [Spec](../specs/004-billing/spec.md), [plan](../specs/004-billing/plan.md), [validación pendiente](../specs/004-billing/validation.md).

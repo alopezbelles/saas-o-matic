@@ -16,7 +16,12 @@ No autoriza modificar bases preexistentes del usuario, desplegar, hacer commits/
 
 Alex autorizó ejecutar 003 y sus tasks después de señalar la diferencia entre cinco campos oficiales y contactName extra. Se implementa esa corrección con migración compatible, validada solo en archivos temporales. No se registran los mensajes de análisis/adaptación excluidos expresamente por el usuario.
 
-## Revisión
+## 004 — Preparación
+
+Alex autorizó adaptar y consolidar spec/plan/tasks, resolver decisiones una a una y registrar ahora la preparación en ai-workspace mediante reformulaciones técnicas retrospectivas. Las decisiones de países, política demo, precisión, límites, entrada y salida constan en [aclaraciones](../specs/004-billing/clarifications.md).
+La autorización actual es documental: no iniciar código. La implementación se abordará tarea a tarea por indicación posterior, con commits separados propuestos, sin ejecutar commits/pushes automáticamente. No modificar DB, HTTP, UI ni FX bajo 004.
+
+## Revisión de entregas
 
 La conformidad técnica se documenta en la validación de cada spec.
 No registrar aceptación humana de una entrega terminada en nombre de Alex.

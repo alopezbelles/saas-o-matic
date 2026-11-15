@@ -46,3 +46,8 @@ El [antecedente importado de planificación](reviews/planning-document-review.md
 
 [Instrucción técnica previa](prompts/003-customers-api.md), [iteración](iterations/003-customers-api.md), [ADR-004](decisions/ADR-004-customers-api.md), [pruebas](testing/003-customers-api.md), [revisión](reviews/003-customers-api.md) y [validación](../specs/003-customers-api/validation.md).
 Estos registros corresponden a la implementación autorizada; no reproducen los mensajes previos cuyo registro Alex excluyó.
+
+## Preparación 004 — sin implementación
+
+[Spec](../specs/004-billing/spec.md), [plan](../specs/004-billing/plan.md), [tareas](../specs/004-billing/tasks.md), [prompts reformulados](prompts/004-billing.md), [iteración de preparación](iterations/004-billing.md), [ADR-005](decisions/ADR-005-billing-engine.md), [revisión documental](reviews/004-billing-planning.md) y [validación](../specs/004-billing/validation.md).
+Registros redactados el 15 de noviembre de 2026 por autorización posterior de Alex, después de aclarar las decisiones y antes de implementar. Son reformulaciones retrospectivas, no mensajes originales. La revisión documental no acredita pruebas del motor ni aceptación humana de una entrega.
