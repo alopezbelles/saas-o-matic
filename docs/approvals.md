@@ -47,6 +47,10 @@ Después de T03, Alex autoriza T04: histórico paginado, configuración pública
 
 Después de T04, Alex autoriza T05: revisión y verificación global de 005, con cierre documental/evidencias. Sin commits/pushes ni aceptación humana final anticipada.
 
+## 006 — Preparación e implementación incremental
+
+Alex autorizó adaptar los cinco documentos de 006, excluyó interfaz/hooks y confirmó proveedor directo, caché por pestaña, timeout 5 s, EUR/USD/GBP solo total y precisión BigInt sin librerías nuevas. Después autorizó T01: contratos, catálogo, errores y fixtures deterministas. T02–T05 requieren indicación posterior. Mantener exclusión de ai-workspace hasta nueva autorización; sin commits/pushes, red externa ni datos existentes en T01.
+
 ## Revisión de entregas — criterio general
 
 La conformidad técnica se documenta en la validación de cada spec.

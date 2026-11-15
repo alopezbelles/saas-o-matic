@@ -7,3 +7,6 @@ export * from './billing/tiers.js';
 export * from './billing/money.js';
 export * from './billing/tax.js';
 export * from './billing/quote.js';
+export * from './currency/catalog.js';
+export * from './currency/types.js';
+export * from './currency/errors.js';

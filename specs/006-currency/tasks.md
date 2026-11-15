@@ -1,12 +1,13 @@
 # Tareas 006
 
-Estado global: PENDIENTE. Cada tarea requiere indicación de Alex. La preparación documental no autoriza implementar ni acredita resultados.
+Estado global: T01 completada técnicamente; T02–T05 pendientes. Cada tarea requiere indicación de Alex. Sin aceptación humana final.
 
-- [ ] **T01 — Contratos, catálogo y fixtures**
+- [x] **T01 — Contratos, catálogo y fixtures**
   - RF: 006-RF1–RF4.
   - Definir contratos/errores compartidos, catálogo EUR/USD/GBP con exponente 2 y contrato normalizado del cliente web.
   - Destinos: packages/shared/src/currency/, apps/web/src/features/currency/exchange-contract.ts y fixtures de sus suites.
   - Verificación: compilación/exportaciones, catálogo y fixtures deterministas. Sin llamadas reales ni UI; no marcar RF completos solo por tipos.
+  - Evidencia real: [validación T01](validation.md#t01--contratos-catálogo-y-fixtures). Catálogo/errores y cinco pruebas nuevas correctos; RF funcionales pendientes.
 
 - [ ] **T02 — Conversión pura**
   - Dependencia: T01. RF: 006-RF1.

@@ -1,5 +1,9 @@
 # Verificación
 
+## 006 — T01
+
+test:unit incorpora 3 pruebas de contratos/fixtures FX en shared (28 shared + 12 API). test:web incorpora 2 pruebas de fixtures del proveedor y conserva el smoke HTTP (3 en total). Verifican catálogo, errores y datos de prueba; no acreditan todavía conversión, validación externa, cliente HTTP o CORS. El gate documental identifica 006 como spec activa. [Evidencia T01](../specs/006-currency/validation.md#t01--contratos-catálogo-y-fixtures). Sin registro ai-workspace por indicación de Alex.
+
 ## 005 — T05: cierre global
 
 Lint/typecheck/format:check/build/test pasan (código 0) con 90 pruebas: 25 shared, 12 unitarios API, 49 integración, 1 smoke web, 1 gates, 2 docs. Secuencia sin concurrencia de gates con otros controles de código.
