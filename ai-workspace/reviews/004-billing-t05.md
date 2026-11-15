@@ -4,6 +4,8 @@
 
 ## Veredicto
 
+**Revisión posterior autorizada:** incidencia CRLF/LF resuelta; lint/typecheck/format:check/build/test pasan con 59 tests. CUMPLE TÉCNICAMENTE, T05 cerrada. [Evidencia de corrección](../testing/004-billing-format-fix.md). Sin aceptación humana final. El veredicto siguiente conserva el resultado de la ejecución original.
+
 CAMBIOS NECESARIOS para cierre global: normalizar saltos de línea de 41 archivos ajenos que incumplen format:check. RF1..4 cumplen técnicamente en el motor y las regresiones pasan; la incidencia no se oculta ni se atribuye a lógica monetaria.
 
 | RF  | Evidencia revisada                                      | Resultado |

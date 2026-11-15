@@ -57,6 +57,11 @@ Seis tests shared y dos de API nuevos; 21 unitarios pasan junto con lint/typeche
 
 ## T05 — Verificación global
 
+### Corrección posterior autorizada de formato
+
+15 de noviembre de 2026, base 9246956. Alex autoriza resolver issues. Se preparó instrucción previa y normalizaron los 41 archivos tras comprobar equivalencia exacta CRLF→LF; sin cambios de lógica. .gitattributes y Prettier fijan LF, sin configuración personal/.git.
+Lint/typecheck/format:check/build/test correctos; 59 pruebas pasan. git ls-files --eol confirma índice/working tree LF en los 41, por lo que no se renormalizó el índice. T05 cerrada técnicamente, aceptación humana pendiente. [Evidencia y revisión](../testing/004-billing-format-fix.md). Fallos originales siguientes son históricos, no estado vigente. Sin commits.
+
 15 de noviembre de 2026, base 88ce6b1. Autorización de Alex para T05; instrucción previa en prompts/004-billing.md. Se ejecutaron lint, typecheck, format:check, build y test secuencialmente, sin paralelizar gates con controles de código.
 Lint/typecheck/build correctos; suite completa con 59 tests correctos. Comprobación adicional de 4004 desgloses contra validador 002 sin DB, todos aceptados. Solo se modifican registros/documentación, sin código productivo.
 Formato global falla en 41 archivos ajenos; diagnóstico read-only confirma exclusivamente CRLF/LF. No reformateo masivo ni configuración Git. T05 ejecutada, cierre global pendiente de formato. [Pruebas](../testing/004-billing-t05.md) y [revisión](../reviews/004-billing-t05.md). Casos ES 15/51 y política presentados para revisión, sin aceptación humana registrada ni commits.

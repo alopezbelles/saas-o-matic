@@ -1,6 +1,6 @@
 # 004 — Motor acumulativo, impuestos y precisión
 
-Estado: motor implementado; T05 ejecutada, regresión correcta. Cierre global pendiente de format:check en 41 archivos ajenos. Sin aceptación humana final ni commits automáticos.
+Estado: motor implementado; T01–T05 completadas técnicamente tras corregir CRLF/LF. Controles globales y 59 pruebas correctos. Sin aceptación humana final ni commits automáticos.
 
 ## Contexto y fuentes
 

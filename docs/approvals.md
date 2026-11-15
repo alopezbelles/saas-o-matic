@@ -31,6 +31,8 @@ Actualización tras T03: Alex autoriza T04 (presupuesto completo, validación de
 
 Actualización tras T04: Alex autoriza ejecutar T05 (controles globales, revisión y documentación de resultados). Sin autorización de commits/pushes ni aceptación humana final anticipada.
 
+Corrección posterior a T05: Alex autoriza resolver los issues de formato, normalizar los archivos afectados y establecer reglas versionadas para evitar su recurrencia. No autoriza commits/pushes ni cambios de configuración personal o del directorio .git.
+
 ## Revisión de entregas
 
 La conformidad técnica se documenta en la validación de cada spec.

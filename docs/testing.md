@@ -50,6 +50,8 @@ UT-MONEY-01 cubre half-up, tipos/rangos, intermediarios BigInt y overflow. UT-TA
 
 ## 004 — T05: verificación global
 
+Estado posterior: normalización CRLF/LF autorizada y completada; todos los controles globales pasan con 59 pruebas. T05 cerrada técnicamente, sin aceptación humana final. [Corrección y evidencia](../ai-workspace/testing/004-billing-format-fix.md). El fallo descrito a continuación corresponde a la primera ejecución.
+
 Lint/typecheck/build pasan y pnpm test completa 59 pruebas (30 unitarias, 25 integración, 1 web, 1 gates, 2 docs). Compatibilidad adicional: 4004 desgloses aceptados por validador de 002 sin DB.
 format:check falla en 41 archivos ajenos por CRLF/LF confirmado; cierre global pendiente de normalización. [Evidencia global](../ai-workspace/testing/004-billing-t05.md). No confundir regresión correcta con todos los gates verdes ni aceptación humana.
 

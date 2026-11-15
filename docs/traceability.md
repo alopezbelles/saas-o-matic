@@ -26,6 +26,8 @@ Especificaciones y resultados: [001](../specs/001-foundation/spec.md), [validaci
 
 ## Motor 004 — implementación incremental
 
+Estado final tras corregir formato: RF1..4 conformes, T01–T05 completadas técnicamente; lint/typecheck/format:check/build/test correctos y 59 tests pasan. [Evidencia final](../ai-workspace/testing/004-billing-format-fix.md). Aceptación humana no registrada; estados parciales siguientes son históricos.
+
 Verificación global T05 ejecutada: RF1..4 conformes y 59 tests pasan; 4004 desgloses compatibles con validador de 002. Cierre global pendiente de formato ajeno (41 archivos CRLF/LF). [Evidencia T05](../ai-workspace/testing/004-billing-t05.md).
 
 | RF      | Tareas        | Casos previstos                                    |

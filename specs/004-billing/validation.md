@@ -1,6 +1,6 @@
 # Validación 004
 
-Estado: motor implementado; T05 ejecutada con 59 pruebas correctas. Cierre global pendiente de formato (41 archivos ajenos); aceptación humana final no registrada.
+Estado: T01–T05 completadas técnicamente. Motor implementado; formato global corregido y 59 pruebas correctas. Aceptación humana final no registrada.
 
 ## Matriz de implementación incremental
 
@@ -23,6 +23,11 @@ Comandos y resultados documentales se enlazan desde [revisión de preparación](
 Los dos tests documentales pasan. El formato global todavía falla en 46 archivos ajenos a esta revisión; no se ha aplicado una corrección masiva. Resolver o delimitar esta incidencia antes de afirmar que los gates de implementación pasan.
 
 ## Registro durante implementación
+
+### Corrección de formato posterior a T05 — 15 de noviembre de 2026
+
+Autorizada por Alex. Normalizados 41 archivos únicamente CRLF→LF, con comprobación exacta de equivalencia. Añadidas reglas LF versionadas en .gitattributes y Prettier, sin tocar configuración personal ni .git.
+Lint, typecheck, format:check, build y test pasan (código 0); 59 pruebas correctas. T05 cerrada técnicamente; fallo previo conservado como histórico. [Evidencia y revisión](../../ai-workspace/testing/004-billing-format-fix.md) y [salida](../../ai-workspace/testing/004-billing-format-fix.txt). Sin aceptación humana final ni commits.
 
 ### T05 — Verificación global, 15 de noviembre de 2026
 

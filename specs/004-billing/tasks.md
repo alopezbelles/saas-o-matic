@@ -1,6 +1,6 @@
 # Tareas 004
 
-T01–T04 completadas técnicamente. T05 ejecutada: regresión correcta, cierre global pendiente del formato de 41 archivos ajenos. Motor implementado; sin aceptación humana final.
+T01–T05 completadas técnicamente. Incidencia CRLF/LF resuelta con autorización posterior; controles globales correctos. Sin aceptación humana final registrada.
 Ejecutar una tarea por indicación de Alex. Informar cambios, controles y propuesta de commit por bloque; no hacer commits/pushes sin autorización específica.
 Alcance común: motor puro, contratos, configuración y pruebas. Sin HTTP, UI, DB, migraciones ni FX.
 
@@ -54,7 +54,7 @@ Alcance común: motor puro, contratos, configuración y pruebas. Sin HTTP, UI, D
 
 ## T05 — Verificar entrega y documentar resultados
 
-- [ ] Verificación ejecutada; cierre global pendiente de format:check. RF1..4 revisados. Depende de T04.
+- [x] Completada técnicamente tras corregir formato; RF1..4 revisados. Depende de T04.
 - Archivos: validation.md, MEMORY.md, docs/testing.md y registros pertinentes en ai-workspace.
 - Ejecutar lint, typecheck, format:check, build y test secuencialmente; registrar resultados reales.
 - Revisar cobertura RF, compatibilidad con 002, dominio puro y ausencia de integración HTTP/DB/FX.
@@ -62,5 +62,6 @@ Alcance común: motor puro, contratos, configuración y pruebas. Sin HTTP, UI, D
 - Cierre técnico con evidencia; aceptación humana solo cuando Alex la confirme, por separado.
 - Commit propuesto: docs(billing): record validation and implementation review.
 - Evidencia: [verificación global T05](../../ai-workspace/testing/004-billing-t05.md). Lint/typecheck/build y 59 tests pasan; formato global falla por CRLF/LF en 41 archivos ajenos. No marcar todos los gates correctos ni aceptación humana.
+- Corrección posterior autorizada: [evidencia de normalización](../../ai-workspace/testing/004-billing-format-fix.md). Lint/typecheck/format:check/build/test devuelven 0; 59 tests pasan. El fallo del párrafo anterior es histórico, ya resuelto.
 
 Evidencias futuras en [validación](validation.md) y ai-workspace. Los nombres de commit son propuestas, no autorización ni operaciones realizadas.

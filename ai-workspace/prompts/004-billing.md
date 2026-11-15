@@ -95,6 +95,13 @@ Instrucción del agente preparada antes del código, por autorización de Alex p
 
 ## T05 — Instrucción previa de verificación global
 
+### Corrección posterior de formato — instrucción previa
+
+Alex autoriza resolver la incidencia después de T05, sobre base 9246956. Instrucción preparada por el agente antes de modificar archivos, no cita literal.
+**Objetivo:** normalizar exclusivamente CRLF→LF en los archivos afectados, fijar la convención en configuración versionada Git/Prettier y recuperar el gate global.
+**Restricciones:** no cambiar lógica, migraciones, datos, dependencias ni configuración personal/.git. No renormalizar índice ni hacer commits. Verificar equivalencia exacta de cada archivo normalizado al ignorar CRLF.
+**Verificación:** lint, typecheck, format:check, build y test secuenciales. Conservar evidencia del diff y de pruebas, cerrar T05 solo si todos los controles pasan y distinguir aceptación humana pendiente.
+
 Preparada por el agente antes de ejecutar controles de cierre, por autorización de Alex para T05; no cita literal.
 **Objetivo:** verificar RF1..4, arquitectura y regresiones mediante lint, typecheck, format:check, build y test, secuencialmente. Revisar independencia del dominio y compatibilidad del desglose con 002 sin tocar datos existentes.
 **Restricciones:** sin nueva funcionalidad, dependencias, DB real, commits ni aceptación humana inventada. test:gates no se ejecuta en paralelo con controles de código. La incidencia de formato preexistente se diagnostica y registra; no aplicar una corrección masiva fuera de alcance.

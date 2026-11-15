@@ -63,3 +63,5 @@ T03: [instrucción previa](prompts/004-billing.md#t03--instrucción-previa-de-im
 T04: [instrucción previa](prompts/004-billing.md#t04--instrucción-previa-de-implementación), [pruebas](testing/004-billing-t04.md) y [revisión](reviews/004-billing-t04.md). Motor y presupuesto completo implementados; regresión/cierre global T05 pendientes.
 
 T05: [verificación global](testing/004-billing-t05.md), [salida](testing/004-billing-t05.txt) y [revisión](reviews/004-billing-t05.md). 59 tests correctos, lint/typecheck/build correctos; cierre global pendiente de format:check (41 archivos ajenos con CRLF/LF). Aceptación humana final no registrada.
+
+Corrección posterior autorizada: [normalización y cierre técnico](testing/004-billing-format-fix.md), [salida](testing/004-billing-format-fix.txt). T05 cerrada: formato global y demás controles pasan, 59 tests correctos. La incidencia anterior conserva su valor histórico; aceptación humana final pendiente.
