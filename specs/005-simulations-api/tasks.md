@@ -1,11 +1,11 @@
 # Tareas 005
 
-Estado: T01–T04 completadas técnicamente; T05 pendiente. Alta, histórico y configuración HTTP disponibles; cierre global pendiente.
+Estado: T01–T05 completadas técnicamente. Alta, histórico y configuración HTTP disponibles; controles globales correctos. Aceptación humana final no registrada.
 Cada tarea requiere indicación de Alex. Proponer commit separado al cerrar el bloque; no ejecutar commits/pushes. Tras T01 Alex autoriza registrar preparación/ejecución en ai-workspace; conservar la procedencia retrospectiva del registro inicial.
 
 ## T01 — Contratos de alta, histórico y configuración
 
-- [x] Completada técnicamente. RF1..4 solo en su parte de contratos; endpoints pendientes.
+- [x] Completada técnicamente. RF1..4 en su parte de contratos; al cierre T01 los endpoints seguían pendientes, resueltos en tareas posteriores.
 - Archivos previstos: packages/shared/src/simulations.ts, index.ts, apps/api/test/simulations-contract.test.mjs, apps/api/package.json; contexto/gate/documentación pertinente al iniciar implementación.
 - Definir CreateSimulation, SimulationDto, CustomerSnapshotDto, SimulationQuery, SimulationPage y BillingConfigDto con el contrato exacto de spec.md; sin tipos ORM.
 - Parse estricto de cuatro campos; UUID, números/límites de shared y query limit/offset. Rechazar extras, coerción, parámetros repetidos y q.
@@ -19,7 +19,7 @@ Cada tarea requiere indicación de Alex. Proponer commit separado al cerrar el b
 
 ## T02 — Servicio y guardado transaccional coherente
 
-- [x] Completada técnicamente en servicio/repositorio. RF1/RF2/RF4 completos por HTTP siguen pendientes. Depende de T01.
+- [x] Completada técnicamente en servicio/repositorio. Al cierre T02 las piezas HTTP seguían pendientes, resueltas en T03/T04. Depende de T01.
 - Archivos previstos: apps/api/src/features/simulations/service.ts, repository.ts, apps/api/test/simulations-service.test.mjs y apps/api/package.json.
 - Implementar repositorio transaccional que lee cliente, invoca cálculo síncrono del servicio y reutiliza insertSimulation con snapshots. País/plan del cliente y cálculo deben quedar alineados bajo misma transacción inmediata.
 - No duplicar SQL/allowlist de insertSimulation; verificar savepoints de transacción anidada y rollback de la operación completa.
@@ -59,7 +59,7 @@ Cada tarea requiere indicación de Alex. Proponer commit separado al cerrar el b
 
 ## T05 — Revisión global y conservación histórica
 
-- [ ] Pendiente. RF1..4. Depende de T04.
+- [x] Completada técnicamente. RF1..4 revisados. Depende de T04.
 - Archivos pertinentes: tests existentes de simulaciones/configuración, validation.md, memoria y documentación de contratos/testing/trazabilidad.
 - Revisar cobertura, coherencia transaccional y snapshots, errores, ausencia de precios confiados a cliente, duplicados deliberados y riesgo de resultado incierto tras timeout.
 - Ejecutar secuencialmente pnpm lint, typecheck, format:check, build y test; conservar resultados reales. test:gates sin otros controles de código simultáneos.
@@ -67,5 +67,6 @@ Cada tarea requiere indicación de Alex. Proponer commit separado al cerrar el b
 - Presentar resultados a Alex; separar cierre técnico de aceptación humana.
 - Cierre: RF con pruebas y evidencias, todos los controles pertinentes correctos y límites documentados.
 - Commit propuesto: docs(simulations): record API and history validation.
+- Evidencia: [verificación global T05](../../ai-workspace/testing/005-simulations-api-t05.md), [salida](../../ai-workspace/testing/005-simulations-api-t05.txt) y [revisión](../../ai-workspace/reviews/005-simulations-api-t05.md). Lint/typecheck/format:check/build/test devuelven 0; 90 pruebas pasan. Sin aceptación humana final ni commits del agente.
 
-La preparación actual no marca ninguna tarea completa. [Matriz y estado](validation.md); registro de IA solo después de autorización de Alex.
+Las cinco tareas están completadas técnicamente con evidencia real en [validación](validation.md) y registros autorizados de ai-workspace. La aceptación humana no se presume por autorizar tareas.

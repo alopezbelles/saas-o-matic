@@ -55,6 +55,13 @@ getPricingConfiguration devuelve copias; dominio sigue puro y sin DTO HTTP. Ruta
 Primer focalizado: 14/15, fallo de fixture que simulaba Error genérico pero esperaba DB no disponible (503). Se corrigió a HttpError(503) sin tocar handler. Repetición 15/15; regresión 37 unitarios/49 integración correcta, junto con lint/typecheck. [Evidencia](../testing/005-simulations-api-t04.md) y [revisión](../reviews/005-simulations-api-t04.md).
 Sin schema/migraciones, dependencias, DB real, UI/FX ni commits. T05 pendiente de indicación y aceptación humana no registrada.
 
+## T05 — Verificación global y cierre técnico
+
+15 de noviembre de 2026, base 95e9243. Alex autoriza T05; instrucción registrada antes de ejecutar controles. Lint/typecheck/formato/build y test se ejecutan secuencialmente; todos correctos, con 90 pruebas y ninguna omitida.
+Revisión RF1..4 conforme: motor autoritativo, transacciones/snapshots coherentes, histórico sin recálculo y configuración sin DB. Auditoría frente a 675ac5e confirma schema/migraciones/lockfile/dependencias/frontend sin cambios; .cache/002-tests queda vacío tras la suite.
+No fallo funcional nuevo detectado; incidencia de fixture de T04 queda como antecedente resuelto, no se reescribe su evidencia. La revisión encontró referencias obsoletas de README/spec que aún negaban endpoints o marcaban T05 pendiente; se corrigieron en documentación canónica, sin alterar evidencias históricas. [Verificación global](../testing/005-simulations-api-t05.md), [salida](../testing/005-simulations-api-t05.txt) y [revisión](../reviews/005-simulations-api-t05.md).
+T01–T05 completas técnicamente. Casos ES 15/51 y política/endpoints presentados para revisión; no aprobación humana anticipada ni inicio de 006. Sin código funcional nuevo, DB real, commits ni pushes en T05.
+
 ## Autorización del registro inicial
 
 Alex levantó después de T01 la exclusión de ai-workspace para registrar el trabajo realizado y continuar la trazabilidad. La instrucción previa en plan conserva la restricción histórica que realmente aplicaba.

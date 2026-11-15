@@ -2,6 +2,8 @@
 
 ## Simulaciones 005 — contratos T01
 
+T05 confirma cierre técnico RF1..4; todos los controles globales correctos y 90 pruebas pasan. [Evidencia final](../ai-workspace/testing/005-simulations-api-t05.md). Aceptación humana no registrada; los párrafos posteriores conservan fases históricas.
+
 T04 completa RF3/RF4 mediante histórico y configuración HTTP; RF1..4 implementados/probados en verificaciones incrementales. IT-HIST-01, IT-SNAPSHOT-005 e IT-CONFIG-005 pasan. [Evidencia T04](../ai-workspace/testing/005-simulations-api-t04.md). Cierre global T05 pendiente; estados anteriores siguientes son históricos.
 
 T03: RF1/RF2 conformes por HTTP, probados IT-SIM-01/02, IT-INVALID-005 e IT-LIFECYCLE-005. RF3 pendiente y RF4 parcial hasta lecturas/configuración de T04. [Evidencia T03](../ai-workspace/testing/005-simulations-api-t03.md). Los estados previos siguientes son históricos.

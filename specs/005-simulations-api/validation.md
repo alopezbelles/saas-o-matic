@@ -1,8 +1,10 @@
 # Validación 005
 
-Estado: T01–T04 completadas técnicamente; todos los endpoints de 005 implementados y probados. T05 pendiente de cierre global; sin aceptación humana final.
+Estado: T01–T05 completadas técnicamente; todos los endpoints implementados y controles globales correctos. 90 pruebas pasan; aceptación humana final no registrada.
 
 ## Matriz de cumplimiento incremental
+
+T05 confirma RF1..4 y cierre técnico: lint/typecheck/format:check/build/test correctos, 90 pruebas. Sin cambios de schema, migraciones, lockfile, dependencias ni frontend respecto a la base documental 675ac5e. Los estados T02/T03/T04 siguientes son históricos.
 
 T04: RF1..4 conformes en pruebas incrementales. IT-HIST-01/IT-SNAPSHOT-005/IT-CONFIG-005 pasan por HTTP; cierre global T05 pendiente. Párrafos T02/T03 siguientes describen sus estados históricos.
 
@@ -38,6 +40,13 @@ Alcance autorizado: adaptar exclusivamente los cinco archivos de esta carpeta. T
 Sin implementación, dependencias, commits ni registros en ai-workspace. Contexto global/gate siguen en 004 hasta iniciar T01.
 Controles reales de esta adaptación: .\node_modules\.bin\prettier.cmd --check specs/005-simulations-api devuelve 0 (cinco documentos conformes); pnpm.cmd test:docs devuelve 0 (2 tests documentales pasan). Se formatearon previamente solo estos cinco documentos con Prettier.
 El gate de contexto aún comprueba 004 porque T01 no ha comenzado; su PASS no acredita activación ni implementación de 005. No se ejecutaron lint/typecheck/build/tests funcionales por esta modificación exclusivamente documental. No confundir estos controles con la matriz funcional.
+
+## T05 — Revisión y cierre global
+
+15 de noviembre de 2026, base 95e9243. Ejecutados secuencialmente lint, typecheck, format:check, build y test: todos devuelven 0. Suite completa: 90 pruebas (37 unitarias, 49 integración, 1 web, 1 gates y 2 docs), ninguna omitida. Gates sin otros controles de código simultáneos.
+RF1..4 conformes en revisión de contratos, cálculo/guardado/snapshots, histórico sin recálculo y configuración sin DB/no-store. Auditoría de schema/migraciones/persistencia 002/lockfile/frontend y declaraciones de dependencias frente a 675ac5e sin cambios. Contextos temporales de DB limpiados; ningún dato real operado.
+Al actualizar registros/README, formato global y test:docs se repiten con código 0 (2 pruebas documentales), igual que git diff --check. Sin nueva ejecución funcional atribuida a documentos.
+[Evidencia final y ejemplos](../../ai-workspace/testing/005-simulations-api-t05.md), [salida](../../ai-workspace/testing/005-simulations-api-t05.txt) y [revisión](../../ai-workspace/reviews/005-simulations-api-t05.md). Sin commits/pushes ni inicio de 006; aceptación humana pendiente. No E2E de navegador ni UI nueva.
 
 ## T04 — Histórico y configuración
 

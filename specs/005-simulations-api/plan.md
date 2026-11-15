@@ -1,6 +1,6 @@
 # Plan 005 — Integración API e histórico
 
-Estado: T01–T04 completadas técnicamente; endpoints disponibles, T05 pendiente. [Contrato](spec.md) y [decisiones](clarifications.md).
+Estado: T01–T05 completadas técnicamente; endpoints y verificación global correctos. [Contrato](spec.md), [decisiones](clarifications.md) y [evidencia final](../../ai-workspace/testing/005-simulations-api-t05.md). Aceptación humana final no registrada.
 
 ## Reutilización y arquitectura
 

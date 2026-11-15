@@ -1,6 +1,7 @@
 # Estado del proyecto
 
-- Spec activa: [005-simulations-api](specs/005-simulations-api/spec.md), T01–T04 completadas técnicamente; alta, histórico y configuración HTTP disponibles. Esperar indicación para T05; sin aceptación humana final ni commits del agente.
+- Spec activa: [005-simulations-api](specs/005-simulations-api/spec.md), T01–T05 completadas técnicamente; POST /simulations, histórico paginado y configuración disponibles. No iniciar 006 sin indicación. Sin aceptación humana final ni commits del agente.
+- T05: lint/typecheck/format:check/build/test correctos; 90 pruebas (37 unitarias, 49 integración, 1 web, 1 gates, 2 docs). Auditoría sin cambios de schema/migraciones/lockfile/dependencias/frontend; DB temporales limpiadas. [Evidencia global](ai-workspace/testing/005-simulations-api-t05.md).
 - T04: lint/typecheck/formato, 37 unitarios, 49 integración, 2 docs y diff check correctos; fixture inicial de 503 corregido, evidencia conservada. Histórico sin recalcular y config sin DB, no-store/fuentes únicas. [Evidencia](ai-workspace/testing/005-simulations-api-t04.md). Sin schema, dependencias o DB real.
 - T03: lint/typecheck/formato, 37 unitarios, 41 integración, 2 docs y diff check pasan; 7 HTTP nuevos cubren errores, DB lazy, rollback y privacidad. [Evidencia](ai-workspace/testing/005-simulations-api-t03.md). Sin schema/dependencias/DB real ni commits.
 - T02: lint/typecheck/formato, 37 unitarios, 34 integración, 2 docs y diff check pasan; transacción inmediata/savepoints, rollback, snapshots y reapertura temporal probados. [Evidencia](ai-workspace/testing/005-simulations-api-t02.md). Sin DB real, migraciones, dependencias ni commits.

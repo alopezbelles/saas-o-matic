@@ -55,6 +55,12 @@ Preparada por el agente antes del código, por autorización de Alex para T04. B
 Publicar GET /billing-config sin DB y no-store. Exportar lectura de precios/versiones desde reglas reales de shared mediante copias, sin duplicar tarifas; copiar tasas/límites del servidor. Conservar inyección interna de política y semántica de POST.
 Probar vacío/404, límites/query inválida antes de DB, páginas y empate por id, aislamiento entre clientes y conservación ante cambio de cliente/política. Probar config con DB ausente, igualdad con motor en fronteras, copias no mutables por referencia y error de política sanitizado. Actualizar expectativas 404 de T03 ahora obsoletas. Sin migraciones, dependencias, UI, FX, datos reales ni commits; T05 queda pendiente. Ejecutar lint, tipos, unitarios, integración, formato/docs y guardar evidencias reales.
 
+## T05 — Instrucción previa de verificación global
+
+Preparada por el agente antes de ejecutar el cierre, tras autorización de Alex para T05. Revisar RF1..4, contratos públicos, transacciones/snapshots, histórico sin recálculo y configuración sin DB. Ejecutar lint, typecheck, format:check, build y test secuencialmente; no ejecutar gates en paralelo con otros controles de código.
+Contrastar cambios desde la base documental 675ac5e: sin migraciones/schema, dependencias, FX/UI ni datos reales. Conservar salidas y comandos exactos, distinguir pruebas reales de revisión por inspección, y presentar a Alex ejemplos de alta/configuración e histórico sin atribuir aceptación humana.
+Actualizar tareas, memoria, validación, trazabilidad y registros pertinentes solo con resultados observados. No commits/pushes, nueva funcionalidad ni inicio de spec 006.
+
 ## Registro posterior de T01 y continuidad
 
 Alex autorizó registrar preparación y T01 antes del commit. Se añadieron registros técnicos con fuentes, resultados reales y límites; no se atribuye autorización retroactiva a la fase inicial ni aceptación humana de entrega.

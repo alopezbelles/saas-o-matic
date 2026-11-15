@@ -45,6 +45,8 @@ Después de T02, Alex autoriza T03: alta HTTP, errores y pruebas. T04/T05 y comm
 
 Después de T03, Alex autoriza T04: histórico paginado, configuración pública y pruebas. T05 y commits/pushes requieren indicación posterior.
 
+Después de T04, Alex autoriza T05: revisión y verificación global de 005, con cierre documental/evidencias. Sin commits/pushes ni aceptación humana final anticipada.
+
 ## Revisión de entregas — criterio general
 
 La conformidad técnica se documenta en la validación de cada spec.

@@ -128,5 +128,13 @@ POST /customers acepta exactamente companyName, taxId, contactEmail, countryCode
 GET /customers?q=&limit=&offset= busca por nombre/fiscal; GET /customers/:id devuelve detalle.
 Contrato y ejemplo en [API](docs/api-contracts.md). Control ES algorítmico, no consulta censal; [fuentes y límites](specs/003-customers-api/fiscal-rules.md).
 
-pnpm test:unit ejecuta contratos y fiscal; pnpm test:integration conserva SQLite/HTTP anteriores y añade clientes/lifecycle.
-No hay POST /simulations ni cálculo de facturación implementado todavía.
+pnpm test:unit ejecuta contratos, fiscal y motor monetario; pnpm test:integration cubre clientes, persistencia, lifecycle y simulaciones.
+
+## Simulaciones e histórico (005)
+
+Con la DB inicializada mediante los comandos existentes, POST /simulations acepta exactamente customerId (UUID de cliente registrado), users, storageGb y apiCalls. El servidor calcula y guarda EUR, versiones y snapshots; responde 201 después del commit. No enviar precios, país, plan ni importes calculados.
+GET /customers/:id/simulations?limit=20&offset=0 devuelve historial paginado con total, desde datos guardados sin recalcular; cliente inexistente devuelve 404 y cliente sin registros devuelve lista vacía.
+GET /billing-config publica tramos, versiones, tasas por país y límites; funciona sin DB y usa Cache-Control: no-store. /health también permanece independiente de DB.
+Límites: users 0..1000, storageGb 0..10000, apiCalls 0..10000000, enteros. Solo users genera coste. Motor acumulativo users-tiered-v1 y política demo-standard-v1 (ES 21%, FR 20%, DE 19%, GB 20%); política simplificada, sin fiscalidad completa ni FX.
+No se crea ni migra DB al arrancar y 005 no añade migraciones. Dos guardados deliberados pueden crear dos registros; no hay reintento POST automático ni idempotencia avanzada.
+[Contratos](docs/api-contracts.md), [spec](specs/005-simulations-api/spec.md) y [verificación global](ai-workspace/testing/005-simulations-api-t05.md). T01–T05 completadas técnicamente; aceptación humana final no registrada.

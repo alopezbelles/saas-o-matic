@@ -1,6 +1,6 @@
 # 005 — API de simulaciones e histórico
 
-Estado: T01–T04 completadas técnicamente; alta, histórico y configuración HTTP disponibles. T05 pendiente de cierre global; aceptación humana no registrada. Sin commits automáticos.
+Estado: T01–T05 completadas técnicamente; endpoints y controles globales correctos, 90 pruebas pasan. Aceptación humana final no registrada; sin commits automáticos.
 
 ## Contexto y fuentes
 
@@ -23,7 +23,7 @@ La DB limita taxRateBps a 0..10000; las tasas demo cumplen. Las tasas sintética
 
 ## Contrato HTTP previsto
 
-Esta sección define el contrato aprobado e implementado: tipos/parsers en T01, POST en T03 y GET de histórico/configuración en T04. docs/api-contracts.md recoge lo disponible; cierre global T05 pendiente.
+Esta sección define el contrato aprobado e implementado: tipos/parsers en T01, POST en T03 y GET de histórico/configuración en T04, verificados globalmente en T05. docs/api-contracts.md recoge lo disponible.
 
 ### POST /simulations
 
@@ -79,5 +79,5 @@ Fallo antes del commit → sin inserción parcial. Histórico append-only: no ed
 ## Fuera de alcance y cierre
 
 Sin frontend, preview integrado, FX/monedas (006), autenticación nueva, edición/borrado, migraciones nuevas previstas ni datos demo adicionales.
-RF con pruebas/evidencia reales; controles globales correctos; aceptación humana separada del cierre técnico. Ningún RF implementado en 005 todavía.
+RF1..4 implementados y verificados con evidencia real; controles globales correctos en T05. Aceptación humana separada del cierre técnico y todavía no registrada.
 [Plan](plan.md), [tareas](tasks.md), [decisiones](clarifications.md) y [validación](validation.md).

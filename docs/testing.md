@@ -1,5 +1,10 @@
 # Verificación
 
+## 005 — T05: cierre global
+
+Lint/typecheck/format:check/build/test pasan (código 0) con 90 pruebas: 25 shared, 12 unitarios API, 49 integración, 1 smoke web, 1 gates, 2 docs. Secuencia sin concurrencia de gates con otros controles de código.
+Regresiones 001–004 conservadas, sin datos reales ni cambios de schema/dependencias. Smoke web no equivale a E2E de navegador o accesibilidad. [Evidencia global](../ai-workspace/testing/005-simulations-api-t05.md). Aceptación humana final pendiente; resultados parciales siguientes son históricos.
+
 ## 005 — T04
 
 test:integration incorpora cinco pruebas de simulations-history.test.mjs y tres de billing-config.test.mjs; total 49 integración. test:unit conserva 37. Histórico paginado, total, orden con empates, vacío/404, validación previa, snapshots sin motor y DB busy/recovery probados; config sin DB/no-store y concordancia con motor/copia de reglas probadas.
