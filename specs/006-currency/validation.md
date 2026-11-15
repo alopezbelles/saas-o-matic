@@ -1,6 +1,6 @@
 # Validación 006
 
-Estado funcional: T01–T04 completadas técnicamente; RF1 conforme en dominio y RF2–RF4 probados con transporte simulado. T05 y CORS pendientes; sin aceptación humana.
+Estado funcional: T01–T05 completadas técnicamente. RF1–RF4 conformes con pruebas deterministas y composición; 122 pruebas globales correctas. CORS externo inconcluso por fallo del navegador del entorno. Sin interfaz ni aceptación humana final.
 
 | RF      | Verificación prevista                                      | Resultado funcional real |
 | ------- | ---------------------------------------------------------- | ------------------------ |
@@ -44,15 +44,13 @@ Conservar fecha, entorno, comandos y códigos reales por tarea. Diferenciar prue
 
 ## Comprobaciones externas
 
-CORS desde origen de desarrollo: NO COMPROBADO. Un fetch de Node no acredita CORS del navegador. Un fallo exige consultar alternativa antes de añadir proxy o cambiar proveedor.
+CORS desde origen de desarrollo: INCONCLUSO. Smoke intentado con navegadores headless; Edge abortó por GPU no utilizable antes de producir DOM. No hay evidencia de fallo CORS del proveedor. Un fetch de Node no acredita CORS; verificar en navegador operativo antes de integrar UI. Si CORS realmente falla, consultar alternativa antes de añadir proxy o cambiar proveedor.
 
 Atribución: verificar metadatos del cliente; presentación visible diferida a specs de interfaz.
 
 ## Alcance diferido
 
 Sin hook React, componentes, formulario, simulador, selector ni E2E visuales. No atribuir a 006 conservación de inputs o estados visuales comprobados.
-
-## Registro
 
 ## T03 — Validación del proveedor
 
@@ -64,8 +62,6 @@ Ocho pruebas nuevas: éxito y campos extra, fixtures negativos, propiedades/tipo
 
 pnpm.cmd lint y pnpm.cmd typecheck correctos, código 0. Cierre: pnpm.cmd test:docs (2/2), pnpm.cmd format:check y git diff --check correctos, código 0. No se ejecutaron test:unit, integración SQLite, test:gates, build global o suite completa; sin cambios API/shared/DB, dependencias/lockfile, red externa, ai-workspace ni commits. test:web sí compiló la web y sus módulos de pruebas. RF2/RF3 parciales hasta T04. Conformidad técnica de T03; aceptación humana pendiente.
 
-## Restricción de registro
-
 ## T04 — Cliente HTTP y caché
 
 2026-11-15. Autorización explícita de T04 e instrucción previa del plan. createExchangeClient inyecta fetch/reloj; exchangeClient comparte instancia sin petición al importar. EUR devuelve null identidad; USD/GBP comparten payload validado inmutable. No recibe ni modifica importes o consumos; composición con convertCurrency reservada a revisión T05.
@@ -76,6 +72,20 @@ Resultados reales: pnpm.cmd lint y pnpm.cmd typecheck correctos, código 0. pnpm
 
 Aviso observado: MockTimers experimental en Node 22, sin fallo ni dependencias nuevas. No se ejecutaron test:unit, integración, test:gates, build global ni suite completa en T04; cierre global reservado a T05. Sin red externa, UI, cambios shared/API/SQLite/lockfile, instalaciones, ai-workspace o commits. CORS pendiente. Cierre documental: pnpm.cmd test:docs (2/2), pnpm.cmd format:check y git diff --check correctos, código 0. Conformidad técnica T04, sin aceptación humana.
 
-## Registro excluido
+## T05 — Revisión y regresión global
 
-No registrar esta preparación en ai-workspace por instrucción de Alex. Incorporar futuras evidencias cuando se autorice su registro.
+2026-11-15. Base revisada: 53c38a7 (T04); comparación adicional con 6d4d14e (cierre 005). Instrucción previa: revisar composición/privacidad/exportaciones, ejecutar controles, documentar límites reales y preservar UI/API/DB. Alex autorizó T05; ai-workspace sigue excluido.
+
+Cambios: dos pruebas de composición en currency-composition.test.mjs verifican tasas normalizadas → conversión exacta de total EUR, USD/GBP con fecha/atribución, cambio de importe sin refetch, error 429 → EUR utilizable → recuperación explícita. Snapshot de prueba congelado; no se persiste FX. Runner web compila shared antes de importar sus exports productivos; sin dependencia runtime nueva. Se actualizan reglas/arquitectura/contratos y contexto para retirar propuesta obsoleta decimal.js/packages/billing. UI, hook, selector, formato, estados visuales, atribución visible y E2E quedan diferidos.
+
+Incidencia real: primer pnpm.cmd lint falló (código 1) con tres no-undef sobre JavaScript generado en apps/web/.cache/currency-tests. La exclusión anterior solo cubría .cache raíz; se cambió a **/.cache/**. No se silenciaron reglas productivas. Repetición lint correcta tras caché generada.
+
+Resultados globales reales: pnpm.cmd lint, pnpm.cmd typecheck, pnpm.cmd build y pnpm.cmd test correctos, código 0. Suite completa: 36 shared + 12 unitarios API + 49 integración + 22 web + 1 gates + 2 docs = 122 correctas, cero fallos/omitidas. Gates no ejecutados en paralelo con otros controles. MockTimers emite aviso experimental en Node 22, sin fallo. Cierre documental: pnpm.cmd test:docs (2/2), pnpm.cmd format:check y git diff --check correctos, código 0.
+
+Smoke externo separado: Vite iniciado en http://127.0.0.1:5173; HTML temporal ignorado carga el cliente real desde ese origen. Chrome headless no produjo resultado verificable. Edge headless con perfil aislado bajo .cache terminó con «GPU process isn't usable. Goodbye.»; no produjo DOM ni resultado del cliente. CORS queda INCONCLUSO por entorno, no se atribuye fallo al proveedor ni se añade proxy. No se usó fetch Node como sustituto. Artefactos diagnósticos locales ignorados, sin datos privados ni modificación de perfiles personales. Verificación real de CORS pendiente antes de integrar UI en navegador operativo.
+
+Auditoría git diff contra cierre 005: sin cambios en apps/api, pnpm-lock.yaml, App.tsx o main.tsx; sin schema/migraciones/endpoints nuevos. Integración usó archivos temporales existentes del runner; .cache/002-tests vacío al finalizar y sin gate-check residual. No se abrió DB real ni se instalaron librerías. Sin commits/pushes ni registros ai-workspace. Conformidad técnica de T05 con limitación externa documentada; aceptación humana no registrada.
+
+## Restricción vigente
+
+Tras T05, Alex autorizó registrar ahora el trabajo en ai-workspace. Se mantiene en los apartados históricos la exclusión que realmente aplicaba durante preparación/ejecución. Los nuevos registros son retrospectivos, sin aceptación humana final: [prompts](../../ai-workspace/prompts/006-currency.md), [iteración](../../ai-workspace/iterations/006-currency.md), [ADR-006](../../ai-workspace/decisions/ADR-006-currency-infrastructure.md), [pruebas y salida real](../../ai-workspace/testing/006-currency.md) y [revisión](../../ai-workspace/reviews/006-currency.md).

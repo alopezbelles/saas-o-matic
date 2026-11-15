@@ -1,5 +1,13 @@
 # Verificación
 
+## 006 — T05: cierre global
+
+Actualización posterior: Alex autorizó registrar ai-workspace tras T05; [resumen retrospectivo y salida real](../ai-workspace/testing/006-currency.md). La exclusión mencionada en el relato de ejecución describe el estado histórico, no la autorización vigente.
+
+Lint/typecheck/build/test correctos: 122 pruebas (36 shared, 12 unitarios API, 49 integración, 22 web, 1 gates y 2 docs). Gates ejecutados secuencialmente. Dos pruebas nuevas componen cliente y conversión con fixtures, importes variables sin refetch y recuperación EUR. Primer lint detectó JS generado en apps/web/.cache; corregida exclusión ESLint a **/.cache/** y repetición correcta. MockTimers mantiene aviso experimental de Node 22.
+
+Smoke CORS inconcluso: Edge headless falla por GPU del entorno, sin evidencia del proveedor. Sin E2E visual ni aceptación humana. [Resultados y límites](../specs/006-currency/validation.md#t05--revisión-y-regresión-global); sin registros ai-workspace por instrucción vigente.
+
 ## 006 — T04
 
 test:web ejecuta 20 pruebas: nueve nuevas del cliente, ocho del parser, dos fixtures y smoke web. Transporte/reloj inyectados y MockTimers de node:test (aviso experimental en Node 22) verifican timeout sin esperar. Concurrencia, caducidad durante descarga, recuperación y respuestas tardías probadas. Sin proveedor real/CORS. [Evidencia T04](../specs/006-currency/validation.md#t04--cliente-http-y-caché).

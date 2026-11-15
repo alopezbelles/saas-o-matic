@@ -1,5 +1,16 @@
 # Trazabilidad
 
+## Conversión 006 — cierre técnico
+
+| RF      | Tareas      | Evidencia ejecutada                                                   |
+| ------- | ----------- | --------------------------------------------------------------------- |
+| 006-RF1 | T01/T02/T05 | Ocho pruebas monetarias y composición cliente/conversión              |
+| 006-RF2 | T03/T04/T05 | Contrato normalizado, fuente/fechas y petición concurrente compartida |
+| 006-RF3 | T03/T04/T05 | Tasas inválidas/caducadas, HTTP/red/timeout y recuperación EUR        |
+| 006-RF4 | T04/T05     | Caché hasta caducidad y varios importes sin refetch                   |
+
+122 pruebas globales correctas. CORS inconcluso por fallo del navegador, interfaz y aceptación humana pendientes. [Validación canónica](../specs/006-currency/validation.md#t05--revisión-y-regresión-global). No confundir fixtures con integración real del proveedor.
+
 ## Simulaciones 005 — contratos T01
 
 T05 confirma cierre técnico RF1..4; todos los controles globales correctos y 90 pruebas pasan. [Evidencia final](../ai-workspace/testing/005-simulations-api-t05.md). Aceptación humana no registrada; los párrafos posteriores conservan fases históricas.

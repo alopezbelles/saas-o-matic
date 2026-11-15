@@ -1,6 +1,6 @@
 # Tareas 006
 
-Estado global: T01–T04 completadas técnicamente; T05 pendiente. Cada tarea requiere indicación de Alex. Sin aceptación humana final.
+Estado global: T01–T05 completadas técnicamente con limitación externa: CORS no pudo comprobarse por fallo del navegador del entorno. Sin aceptación humana final; interfaz diferida.
 
 - [x] **T01 — Contratos, catálogo y fixtures**
   - RF: 006-RF1–RF4.
@@ -33,10 +33,11 @@ Estado global: T01–T04 completadas técnicamente; T05 pendiente. Cada tarea re
   - Hecho cuando no se entregan tasas caducadas como vigentes y los fallos no alteran EUR.
   - Evidencia: [validación T04](validation.md#t04--cliente-http-y-caché). Nueve pruebas nuevas sin proveedor real ni UI.
 
-- [ ] **T05 — Revisión técnica y regresión**
+- [x] **T05 — Revisión técnica y regresión**
   - Dependencia: T04. RF: 006-RF1–RF4.
   - Revisar conversión/cliente compuestos con fixtures, privacidad, exports y compilación; preservar motor, API y snapshots.
   - Ejecutar controles del plan, registrar resultados reales en validation.md y actualizar contexto/documentación global pertinente.
   - Comprobar CORS real desde navegador si el entorno permite, sin pantalla de producto; separar smoke externo de pruebas deterministas. Declarar limitación si no es comprobable; si falla, detener integración afectada y consultar alternativa.
   - Dejar pendientes para otras specs hook, selector, presentación, estados visuales, atribución visible y E2E.
   - Hecho cuando existe evidencia por RF, controles correctos y límites externos explícitos; no equivale a aceptación humana.
+  - Evidencia: [validación T05](validation.md#t05--revisión-y-regresión-global). 122 pruebas correctas; CORS inconcluso por fallo GPU del navegador, sin cambio de proveedor/proxy.

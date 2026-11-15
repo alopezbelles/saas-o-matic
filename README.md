@@ -132,6 +132,8 @@ pnpm test:unit ejecuta contratos, fiscal y motor monetario; pnpm test:integratio
 
 ## Simulaciones e histórico (005)
 
+La infraestructura FX de [006](specs/006-currency/spec.md) añade conversión orientativa del total EUR a USD/GBP y cliente de tasas con caché/timeout. No modifica guardado ni histórico; no hay todavía selector, hook o pantalla. La futura interfaz deberá mostrar fecha y atribución del proveedor. Contratos y límites en [API](docs/api-contracts.md#servicio-externo-fx--006).
+
 Con la DB inicializada mediante los comandos existentes, POST /simulations acepta exactamente customerId (UUID de cliente registrado), users, storageGb y apiCalls. El servidor calcula y guarda EUR, versiones y snapshots; responde 201 después del commit. No enviar precios, país, plan ni importes calculados.
 GET /customers/:id/simulations?limit=20&offset=0 devuelve historial paginado con total, desde datos guardados sin recalcular; cliente inexistente devuelve 404 y cliente sin registros devuelve lista vacía.
 GET /billing-config publica tramos, versiones, tasas por país y límites; funciona sin DB y usa Cache-Control: no-store. /health también permanece independiente de DB.

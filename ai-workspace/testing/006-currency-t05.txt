@@ -1,0 +1,864 @@
+﻿
+> saas-o-matic@0.0.0 test C:\Users\alope\Documents\saas-o-matic
+> pnpm test:unit && pnpm test:integration && pnpm test:web && pnpm test:gates && pnpm test:docs
+
+
+> saas-o-matic@0.0.0 test:unit C:\Users\alope\Documents\saas-o-matic
+> pnpm --filter @saas-o-matic/api... build && pnpm --filter @saas-o-matic/shared test:unit && pnpm --filter @saas-o-matic/api test:unit
+
+Scope: 2 of 4 workspace projects
+packages/shared build$ tsc
+packages/shared build: Done
+apps/api build$ tsc && tsc -p tsconfig.config.json
+apps/api build: Done
+
+> @saas-o-matic/shared@0.0.0 test:unit C:\Users\alope\Documents\saas-o-matic\packages\shared
+> node --test test/*.test.mjs
+
+TAP version 13
+# Subtest: tier fixtures cover agreed boundaries with coherent quantities
+ok 1 - tier fixtures cover agreed boundaries with coherent quantities
+  ---
+  duration_ms: 3.4335
+  type: 'test'
+  ...
+# Subtest: demo quote fixtures cover four countries and preserve totals
+ok 2 - demo quote fixtures cover four countries and preserve totals
+  ---
+  duration_ms: 0.6865
+  type: 'test'
+  ...
+# Subtest: synthetic rounding fixtures straddle half a cent without defining product rates
+ok 3 - synthetic rounding fixtures straddle half a cent without defining product rates
+  ---
+  duration_ms: 0.4338
+  type: 'test'
+  ...
+# Subtest: consumption fixtures match existing shared limits and cover invalid inputs
+ok 4 - consumption fixtures match existing shared limits and cover invalid inputs
+  ---
+  duration_ms: 0.5277
+  type: 'test'
+  ...
+# Subtest: error and policy fixtures have unique cases and the agreed error vocabulary
+ok 5 - error and policy fixtures have unique cases and the agreed error vocabulary
+  ---
+  duration_ms: 0.7794
+  type: 'test'
+  ...
+# Subtest: UT-QUOTE-004: complete quote matches independent country and boundary oracles
+ok 6 - UT-QUOTE-004: complete quote matches independent country and boundary oracles
+  ---
+  duration_ms: 5.1157
+  type: 'test'
+  ...
+# Subtest: UT-QUOTE-004: tax rounds on the whole base rather than separately by tier
+ok 7 - UT-QUOTE-004: tax rounds on the whole base rather than separately by tier
+  ---
+  duration_ms: 0.5827
+  type: 'test'
+  ...
+# Subtest: UT-INPUT-004: all consumption limits and invalid values are validated
+ok 8 - UT-INPUT-004: all consumption limits and invalid values are validated
+  ---
+  duration_ms: 3.377
+  type: 'test'
+  ...
+# Subtest: UT-QUOTE-004: secondary consumptions and untrusted extra fields never set prices
+ok 9 - UT-QUOTE-004: secondary consumptions and untrusted extra fields never set prices
+  ---
+  duration_ms: 0.7416
+  type: 'test'
+  ...
+# Subtest: UT-QUOTE-004: policy validation and country support apply even for zero users
+ok 10 - UT-QUOTE-004: policy validation and country support apply even for zero users
+  ---
+  duration_ms: 1.1826
+  type: 'test'
+  ...
+# Subtest: UT-QUOTE-004: input errors precede invalid policy and unsupported country
+ok 11 - UT-QUOTE-004: input errors precede invalid policy and unsupported country
+  ---
+  duration_ms: 0.4171
+  type: 'test'
+  ...
+# Subtest: UT-QUOTE-004: overflow rejects both unsafe tax and unsafe total
+ok 12 - UT-QUOTE-004: overflow rejects both unsafe tax and unsafe total
+  ---
+  duration_ms: 0.6144
+  type: 'test'
+  ...
+# Subtest: UT-PROP-01: quote invariants and monotonicity hold for every count and demo country
+ok 13 - UT-PROP-01: quote invariants and monotonicity hold for every count and demo country
+  ---
+  duration_ms: 92.4361
+  type: 'test'
+  ...
+# Subtest: UT-PROP-01: frozen inputs remain intact and outputs are isolated between calls
+ok 14 - UT-PROP-01: frozen inputs remain intact and outputs are isolated between calls
+  ---
+  duration_ms: 0.7747
+  type: 'test'
+  ...
+# Subtest: UT-MONEY-01: tax rounds only once, with half-up around half a cent
+ok 15 - UT-MONEY-01: tax rounds only once, with half-up around half a cent
+  ---
+  duration_ms: 2.8096
+  type: 'test'
+  ...
+# Subtest: UT-MONEY-01: safe boundary and oversized intermediates retain exact cents
+ok 16 - UT-MONEY-01: safe boundary and oversized intermediates retain exact cents
+  ---
+  duration_ms: 1.3756
+  type: 'test'
+  ...
+# Subtest: UT-MONEY-01: invalid helper inputs reject without coercion
+ok 17 - UT-MONEY-01: invalid helper inputs reject without coercion
+  ---
+  duration_ms: 1.9057
+  type: 'test'
+  ...
+# Subtest: UT-TAX-01: versioned policy selects all four explicit rates without mutation
+ok 18 - UT-TAX-01: versioned policy selects all four explicit rates without mutation
+  ---
+  duration_ms: 2.4709
+  type: 'test'
+  ...
+# Subtest: UT-TAX-01: invalid policies and countries fail with stable codes
+ok 19 - UT-TAX-01: invalid policies and countries fail with stable codes
+  ---
+  duration_ms: 1.5558
+  type: 'test'
+  ...
+# Subtest: UT-TAX-01: valid version boundary and null-prototype rate maps are supported
+ok 20 - UT-TAX-01: valid version boundary and null-prototype rate maps are supported
+  ---
+  duration_ms: 0.5043
+  type: 'test'
+  ...
+# Subtest: UT-BILL-01: tiered base matches independent boundary oracles
+ok 21 - UT-BILL-01: tiered base matches independent boundary oracles
+  ---
+  duration_ms: 3.5363
+  type: 'test'
+  ...
+# Subtest: UT-BILL-01: every allowed count has a consistent, serializable breakdown
+ok 22 - UT-BILL-01: every allowed count has a consistent, serializable breakdown
+  ---
+  duration_ms: 35.0266
+  type: 'test'
+  ...
+# Subtest: UT-PROP-01: each added user costs only the applicable marginal price
+ok 23 - UT-PROP-01: each added user costs only the applicable marginal price
+  ---
+  duration_ms: 3.0357
+  type: 'test'
+  ...
+# Subtest: UT-INPUT-004: invalid users fail without coercion with a stable field and code
+ok 24 - UT-INPUT-004: invalid users fail without coercion with a stable field and code
+  ---
+  duration_ms: 1.6027
+  type: 'test'
+  ...
+# Subtest: UT-PROP-01: results are deterministic and mutations do not leak between calls
+ok 25 - UT-PROP-01: results are deterministic and mutations do not leak between calls
+  ---
+  duration_ms: 0.8159
+  type: 'test'
+  ...
+# Subtest: 006-T01: currency catalog is closed and immutable
+ok 26 - 006-T01: currency catalog is closed and immutable
+  ---
+  duration_ms: 3.4067
+  type: 'test'
+  ...
+# Subtest: 006-T01: errors expose stable domain codes
+ok 27 - 006-T01: errors expose stable domain codes
+  ---
+  duration_ms: 0.4877
+  type: 'test'
+  ...
+# Subtest: 006-T01: independent FX fixtures have coherent expected amounts
+ok 28 - 006-T01: independent FX fixtures have coherent expected amounts
+  ---
+  duration_ms: 0.3632
+  type: 'test'
+  ...
+# Subtest: 006-T02: conversion matches independent fixtures and returns minor units
+ok 29 - 006-T02: conversion matches independent fixtures and returns minor units
+  ---
+  duration_ms: 3.4815
+  type: 'test'
+  ...
+# Subtest: 006-T02: EUR is identity without a rate, including zero and safe maximum
+ok 30 - 006-T02: EUR is identity without a rate, including zero and safe maximum
+  ---
+  duration_ms: 0.3252
+  type: 'test'
+  ...
+# Subtest: 006-T02: half-up rounds only the final exact product
+ok 31 - 006-T02: half-up rounds only the final exact product
+  ---
+  duration_ms: 0.4052
+  type: 'test'
+  ...
+# Subtest: 006-T02: decimal and scientific forms are equivalent without monetary floating arithmetic
+ok 32 - 006-T02: decimal and scientific forms are equivalent without monetary floating arithmetic
+  ---
+  duration_ms: 0.3067
+  type: 'test'
+  ...
+# Subtest: 006-T02: invalid inputs and unsupported currencies fail without coercion
+ok 33 - 006-T02: invalid inputs and unsupported currencies fail without coercion
+  ---
+  duration_ms: 1.3929
+  type: 'test'
+  ...
+# Subtest: 006-T02: invalid or excessive rate representations fail before BigInt expansion
+ok 34 - 006-T02: invalid or excessive rate representations fail before BigInt expansion
+  ---
+  duration_ms: 0.4319
+  type: 'test'
+  ...
+# Subtest: 006-T02: safe-range checks occur after exact rounding, including large intermediates
+ok 35 - 006-T02: safe-range checks occur after exact rounding, including large intermediates
+  ---
+  duration_ms: 0.3001
+  type: 'test'
+  ...
+# Subtest: 006-T02: frozen inputs stay intact and calls are deterministic and independent
+ok 36 - 006-T02: frozen inputs stay intact and calls are deterministic and independent
+  ---
+  duration_ms: 0.1778
+  type: 'test'
+  ...
+1..36
+# tests 36
+# suites 0
+# pass 36
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 307.4768
+
+> @saas-o-matic/api@0.0.0 test:unit C:\Users\alope\Documents\saas-o-matic\apps\api
+> node --test test/tax-id.test.mjs test/customers-contract.test.mjs test/tax-policy.test.mjs test/simulations-contract.test.mjs
+
+TAP version 13
+# Subtest: UT-CONTRACT-01: cinco campos, normalización y longitudes
+ok 1 - UT-CONTRACT-01: cinco campos, normalización y longitudes
+  ---
+  duration_ms: 4.1154
+  type: 'test'
+  ...
+# Subtest: UT-CONTRACT-01: parámetros, UUID y query repetida/estructurada
+ok 2 - UT-CONTRACT-01: parámetros, UUID y query repetida/estructurada
+  ---
+  duration_ms: 1.3759
+  type: 'test'
+  ...
+# Subtest: UT-SIM-CONTRACT-005: exact request, UUID normalization and fresh results
+ok 3 - UT-SIM-CONTRACT-005: exact request, UUID normalization and fresh results
+  ---
+  duration_ms: 3.2534
+  type: 'test'
+  ...
+# Subtest: UT-SIM-CONTRACT-005: non-object bodies and missing fields reject
+ok 4 - UT-SIM-CONTRACT-005: non-object bodies and missing fields reject
+  ---
+  duration_ms: 1.1975
+  type: 'test'
+  ...
+# Subtest: UT-SIM-CONTRACT-005: caller cannot supply monetary or customer overrides
+ok 5 - UT-SIM-CONTRACT-005: caller cannot supply monetary or customer overrides
+  ---
+  duration_ms: 0.6405
+  type: 'test'
+  ...
+# Subtest: UT-SIM-CONTRACT-005: every consumption uses existing limits without coercion
+ok 6 - UT-SIM-CONTRACT-005: every consumption uses existing limits without coercion
+  ---
+  duration_ms: 3.1004
+  type: 'test'
+  ...
+# Subtest: UT-SIM-CONTRACT-005: malformed customer UUIDs reuse the existing error code
+ok 7 - UT-SIM-CONTRACT-005: malformed customer UUIDs reuse the existing error code
+  ---
+  duration_ms: 0.7781
+  type: 'test'
+  ...
+# Subtest: UT-SIM-CONTRACT-005: history pagination shares customer defaults and ranges
+ok 8 - UT-SIM-CONTRACT-005: history pagination shares customer defaults and ranges
+  ---
+  duration_ms: 1.2139
+  type: 'test'
+  ...
+# Subtest: UT-SIM-CONTRACT-005: history rejects extras, duplicate and noncanonical query values
+ok 9 - UT-SIM-CONTRACT-005: history rejects extras, duplicate and noncanonical query values
+  ---
+  duration_ms: 0.7478
+  type: 'test'
+  ...
+# Subtest: UT-FISC-01: fixtures independientes de todas las familias y control por prefijo
+ok 10 - UT-FISC-01: fixtures independientes de todas las familias y control por prefijo
+  ---
+  duration_ms: 3.1797
+  type: 'test'
+  ...
+# Subtest: UT-TAX-01: server policy has the agreed version, countries and rates
+ok 11 - UT-TAX-01: server policy has the agreed version, countries and rates
+  ---
+  duration_ms: 2.9473
+  type: 'test'
+  ...
+# Subtest: UT-TAX-01: published policy and rates cannot be mutated
+ok 12 - UT-TAX-01: published policy and rates cannot be mutated
+  ---
+  duration_ms: 0.3214
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 195.2323
+
+> saas-o-matic@0.0.0 test:integration C:\Users\alope\Documents\saas-o-matic
+> pnpm --filter @saas-o-matic/api... build && pnpm --filter @saas-o-matic/api test:integration
+
+Scope: 2 of 4 workspace projects
+packages/shared build$ tsc
+packages/shared build: Done
+apps/api build$ tsc && tsc -p tsconfig.config.json
+apps/api build: Done
+
+> @saas-o-matic/api@0.0.0 test:integration C:\Users\alope\Documents\saas-o-matic\apps\api
+> node --test test/health.test.mjs test/database.test.mjs test/database-operations.test.mjs test/customers.test.mjs test/server-lifecycle.test.mjs test/simulations-service.test.mjs test/simulations.test.mjs test/simulations-history.test.mjs test/billing-config.test.mjs
+
+TAP version 13
+# Subtest: IT-CONFIG-005: current configuration is complete, no-store and independent from DB
+ok 1 - IT-CONFIG-005: current configuration is complete, no-store and independent from DB
+  ---
+  duration_ms: 137.5066
+  type: 'test'
+  ...
+# Subtest: IT-CONFIG-005: shared pricing reader returns isolated copies of the actual rules
+ok 2 - IT-CONFIG-005: shared pricing reader returns isolated copies of the actual rules
+  ---
+  duration_ms: 0.5487
+  type: 'test'
+  ...
+# Subtest: IT-CONFIG-005: injected server policy is projected and invalid configuration returns safe 500
+ok 3 - IT-CONFIG-005: injected server policy is projected and invalid configuration returns safe 500
+  ---
+  duration_ms: 35.322
+  type: 'test'
+  ...
+# Subtest: IT-CUS-01: cinco campos, DTO, Location, normalización y detalle
+ok 4 - IT-CUS-01: cinco campos, DTO, Location, normalización y detalle
+  ---
+  duration_ms: 265.0569
+  type: 'test'
+  ...
+# Subtest: IT-INVALID-01/HTTP-01: errores antes de abrir DB, protocolo y requestId
+ok 5 - IT-INVALID-01/HTTP-01: errores antes de abrir DB, protocolo y requestId
+  ---
+  duration_ms: 90.77
+  type: 'test'
+  ...
+# Subtest: IT-DUP-01: carrera 201/409 y unicidad por país
+ok 6 - IT-DUP-01: carrera 201/409 y unicidad por país
+  ---
+  duration_ms: 71.1564
+  type: 'test'
+  ...
+# Subtest: IT-CUS-03: búsqueda literal, orden, páginas, filtros y parámetros
+ok 7 - IT-CUS-03: búsqueda literal, orden, páginas, filtros y parámetros
+  ---
+  duration_ms: 149.9544
+  type: 'test'
+  ...
+# Subtest: IT-LIFECYCLE-01/PRIVACY-01: DB ausente/reintento, health, busy y errores sanitizados
+ok 8 - IT-LIFECYCLE-01/PRIVACY-01: DB ausente/reintento, health, busy y errores sanitizados
+  ---
+  duration_ms: 1241.3389
+  type: 'test'
+  ...
+# Subtest: IT-CUS-01: seed anterior sigue legible
+ok 9 - IT-CUS-01: seed anterior sigue legible
+  ---
+  duration_ms: 33.9445
+  type: 'test'
+  ...
+# Subtest: IT-MIG-003: migrar conserva clientes referenciados, contacto e histórico
+ok 10 - IT-MIG-003: migrar conserva clientes referenciados, contacto e histórico
+  ---
+  duration_ms: 76.291
+  type: 'test'
+  ...
+# Subtest: IT-SEED-01: seed idempotente conserva filas ajenas, cero simulaciones y conflictos revierten todo
+ok 11 - IT-SEED-01: seed idempotente conserva filas ajenas, cero simulaciones y conflictos revierten todo
+  ---
+  duration_ms: 129.7563
+  type: 'test'
+  ...
+# Subtest: IT-SEED-01: rechaza bases no demo y demo:init sobre archivo existente
+ok 12 - IT-SEED-01: rechaza bases no demo y demo:init sobre archivo existente
+  ---
+  duration_ms: 32.6089
+  type: 'test'
+  ...
+# Subtest: IT-SAFETY-01: rutas inseguras, hardlinks, alias y centinelas no se abren
+ok 13 - IT-SAFETY-01: rutas inseguras, hardlinks, alias y centinelas no se abren
+  ---
+  duration_ms: 21.0762
+  type: 'test'
+  ...
+# Subtest: IT-MIG-01: base ajena y primera migración fallida no dejan cambios
+ok 14 - IT-MIG-01: base ajena y primera migración fallida no dejan cambios
+  ---
+  duration_ms: 59.4166
+  type: 'test'
+  ...
+# Subtest: IT-RECOVERY-01: SQLITE_BUSY finito sin escrituras parciales y posterior recuperación
+ok 15 - IT-RECOVERY-01: SQLITE_BUSY finito sin escrituras parciales y posterior recuperación
+  ---
+  duration_ms: 1225.5669
+  type: 'test'
+  ...
+# Subtest: IT-BACKUP-01: copia consistente, reapertura, destino existente/origen rechazados
+ok 16 - IT-BACKUP-01: copia consistente, reapertura, destino existente/origen rechazados
+  ---
+  duration_ms: 63.6392
+  type: 'test'
+  ...
+# Subtest: IT-CONSTRAINT-01: dos conexiones concurrentes solo aceptan una clave fiscal
+ok 17 - IT-CONSTRAINT-01: dos conexiones concurrentes solo aceptan una clave fiscal
+  ---
+  duration_ms: 171.9789
+  type: 'test'
+  ...
+# Subtest: IT-SAFETY-01: CLI raíz reenvía argumentos, seed exige autorización demo y errores no filtran PII
+ok 18 - IT-SAFETY-01: CLI raíz reenvía argumentos, seed exige autorización demo y errores no filtran PII
+  ---
+  duration_ms: 14974.5259
+  type: 'test'
+  ...
+# Subtest: IT-DB-01: esquema STRICT, FK por conexión, reconexión y migración idempotente
+ok 19 - IT-DB-01: esquema STRICT, FK por conexión, reconexión y migración idempotente
+  ---
+  duration_ms: 97.8896
+  type: 'test'
+  ...
+# Subtest: IT-MIG-01: deriva detectada y rollback de DDL, datos e historial
+ok 20 - IT-MIG-01: deriva detectada y rollback de DDL, datos e historial
+  ---
+  duration_ms: 42.9881
+  type: 'test'
+  ...
+# Subtest: IT-CONSTRAINT-01: UNIQUE por país, no por nombre/email, normalización sin perder ceros
+ok 21 - IT-CONSTRAINT-01: UNIQUE por país, no por nombre/email, normalización sin perder ceros
+  ---
+  duration_ms: 52.2756
+  type: 'test'
+  ...
+# Subtest: IT-CONSTRAINT-01: SQL directo rechaza FK, null, texto vacío, planes y fechas mal formadas
+ok 22 - IT-CONSTRAINT-01: SQL directo rechaza FK, null, texto vacío, planes y fechas mal formadas
+  ---
+  duration_ms: 45.4259
+  type: 'test'
+  ...
+# Subtest: IT-CONSTRAINT-01: CHECK y STRICT coinciden con los límites compartidos
+ok 23 - IT-CONSTRAINT-01: CHECK y STRICT coinciden con los límites compartidos
+  ---
+  duration_ms: 78.4864
+  type: 'test'
+  ...
+# Subtest: IT-SNAPSHOT-01: round-trip exacto, snapshots autoritativos e histórico inmutable
+ok 24 - IT-SNAPSHOT-01: round-trip exacto, snapshots autoritativos e histórico inmutable
+  ---
+  duration_ms: 62.5068
+  type: 'test'
+  ...
+# Subtest: IT-SNAPSHOT-01: estructura, sumas, productos y overflow rechazados en persistencia
+ok 25 - IT-SNAPSHOT-01: estructura, sumas, productos y overflow rechazados en persistencia
+  ---
+  duration_ms: 33.035
+  type: 'test'
+  ...
+# {"requestId":"db2e00e2-bff8-4c2f-b17f-6a7e1658649a","method":"GET","status":200,"code":"OK"}
+# {"requestId":"2e7763a8-a7c2-40bf-8579-9418f2afdd85","method":"GET","status":404,"code":"ROUTE_NOT_FOUND"}
+# {"requestId":"a9377cac-6934-4eb4-8ed7-9151fc045020","method":"POST","status":404,"code":"ROUTE_NOT_FOUND"}
+# Subtest: health responde JSON y las rutas desconocidas devuelven 404
+ok 26 - health responde JSON y las rutas desconocidas devuelven 404
+  ---
+  duration_ms: 140.1278
+  type: 'test'
+  ...
+# Subtest: el servidor rechaza PORT inválido y un puerto ocupado con salida no cero
+ok 27 - el servidor rechaza PORT inválido y un puerto ocupado con salida no cero
+  ---
+  duration_ms: 6729.82
+  type: 'test'
+  ...
+# Subtest: IT-LIFECYCLE-01: proceso HTTP cierra conexión al manejar SIGTERM simulado
+ok 28 - IT-LIFECYCLE-01: proceso HTTP cierra conexión al manejar SIGTERM simulado
+  ---
+  duration_ms: 2211.6029
+  type: 'test'
+  ...
+# Subtest: IT-HIST-01: SQL pagination, timestamp ties, total and customer isolation
+ok 29 - IT-HIST-01: SQL pagination, timestamp ties, total and customer isolation
+  ---
+  duration_ms: 292.9563
+  type: 'test'
+  ...
+# Subtest: IT-HIST-01: existing empty customer differs from absent or invalid customer
+ok 30 - IT-HIST-01: existing empty customer differs from absent or invalid customer
+  ---
+  duration_ms: 95.6687
+  type: 'test'
+  ...
+# Subtest: IT-HIST-01: invalid query is rejected before DB access
+ok 31 - IT-HIST-01: invalid query is rejected before DB access
+  ---
+  duration_ms: 47.7523
+  type: 'test'
+  ...
+# Subtest: IT-SNAPSHOT-005: history reads saved snapshots despite changed customer and invalid current policy
+ok 32 - IT-SNAPSHOT-005: history reads saved snapshots despite changed customer and invalid current policy
+  ---
+  duration_ms: 65.4523
+  type: 'test'
+  ...
+# Subtest: IT-HIST-01: read transaction reports busy safely and recovers
+ok 33 - IT-HIST-01: read transaction reports busy safely and recovers
+  ---
+  duration_ms: 1846.2752
+  type: 'test'
+  ...
+# Subtest: IT-SIM-01: service calculates ES 15/51, maps snapshots and survives reopening
+ok 34 - IT-SIM-01: service calculates ES 15/51, maps snapshots and survives reopening
+  ---
+  duration_ms: 96.0171
+  type: 'test'
+  ...
+# Subtest: IT-SIM-01: zero, maximum and all configured countries use authoritative calculation
+ok 35 - IT-SIM-01: zero, maximum and all configured countries use authoritative calculation
+  ---
+  duration_ms: 131.7041
+  type: 'test'
+  ...
+# Subtest: IT-SIM-01: repeat saves are distinct and runtime overrides cannot set calculated data
+ok 36 - IT-SIM-01: repeat saves are distinct and runtime overrides cannot set calculated data
+  ---
+  duration_ms: 46.6625
+  type: 'test'
+  ...
+# Subtest: IT-SIM-02: missing client, unsupported country and invalid policy leave no new rows
+ok 37 - IT-SIM-02: missing client, unsupported country and invalid policy leave no new rows
+  ---
+  duration_ms: 42.8753
+  type: 'test'
+  ...
+# Subtest: IT-SIM-02: AFTER INSERT failure rolls back and subsequent creation recovers
+ok 38 - IT-SIM-02: AFTER INSERT failure rolls back and subsequent creation recovers
+  ---
+  duration_ms: 45.6522
+  type: 'test'
+  ...
+# Subtest: IT-SIM-02: outer rollback removes nested save while previous commits remain
+ok 39 - IT-SIM-02: outer rollback removes nested save while previous commits remain
+  ---
+  duration_ms: 42.4624
+  type: 'test'
+  ...
+# Subtest: IT-SNAPSHOT-005: immediate transaction prevents customer drift on a second connection
+ok 40 - IT-SNAPSHOT-005: immediate transaction prevents customer drift on a second connection
+  ---
+  duration_ms: 55.6857
+  type: 'test'
+  ...
+# Subtest: IT-SNAPSHOT-005: future customer/policy changes affect new saves only
+ok 41 - IT-SNAPSHOT-005: future customer/policy changes affect new saves only
+  ---
+  duration_ms: 41.4995
+  type: 'test'
+  ...
+# Subtest: IT-SIM-02: DTO rejects corrupt stored breakdown rather than returning partial data
+ok 42 - IT-SIM-02: DTO rejects corrupt stored breakdown rather than returning partial data
+  ---
+  duration_ms: 33.5218
+  type: 'test'
+  ...
+# Subtest: IT-SIM-01: POST returns committed DTO for ES 15/51 and deliberate repeat saves
+ok 43 - IT-SIM-01: POST returns committed DTO for ES 15/51 and deliberate repeat saves
+  ---
+  duration_ms: 211.1028
+  type: 'test'
+  ...
+# Subtest: IT-INVALID-005: invalid body/protocol/UUID reject before connection is requested
+ok 44 - IT-INVALID-005: invalid body/protocol/UUID reject before connection is requested
+  ---
+  duration_ms: 115.1826
+  type: 'test'
+  ...
+# Subtest: IT-INVALID-005: missing customer and unsupported country with zero yield safe errors
+ok 45 - IT-INVALID-005: missing customer and unsupported country with zero yield safe errors
+  ---
+  duration_ms: 38.2686
+  type: 'test'
+  ...
+# Subtest: IT-LIFECYCLE-005: absent database stays lazy, then initialized DB allows retry
+ok 46 - IT-LIFECYCLE-005: absent database stays lazy, then initialized DB allows retry
+  ---
+  duration_ms: 43.3466
+  type: 'test'
+  ...
+# Subtest: IT-INVALID-005: locked DB returns 503 without partial insert and recovers
+ok 47 - IT-INVALID-005: locked DB returns 503 without partial insert and recovers
+  ---
+  duration_ms: 1205.904
+  type: 'test'
+  ...
+# Subtest: IT-SIM-02: insertion failure returns sanitized 500 and leaves prior commit unchanged
+ok 48 - IT-SIM-02: insertion failure returns sanitized 500 and leaves prior commit unchanged
+  ---
+  duration_ms: 52.7014
+  type: 'test'
+  ...
+# Subtest: IT-INVALID-005: invalid policy and monetary overflow are internal errors, not 422
+ok 49 - IT-INVALID-005: invalid policy and monetary overflow are internal errors, not 422
+  ---
+  duration_ms: 65.6894
+  type: 'test'
+  ...
+1..49
+# tests 49
+# suites 0
+# pass 49
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 18077.3584
+
+> saas-o-matic@0.0.0 test:web C:\Users\alope\Documents\saas-o-matic
+> pnpm --filter @saas-o-matic/web build && pnpm --filter @saas-o-matic/web test
+
+
+> @saas-o-matic/web@0.0.0 build C:\Users\alope\Documents\saas-o-matic\apps\web
+> tsc --noEmit && vite build
+
+vite v8.3.8 building client environment for production...
+transforming...
+✓ 15 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                  0.32 kB │ gzip:  0.23 kB
+dist/assets/index-BgjfUC6V.js  219.74 kB │ gzip: 68.71 kB
+
+✓ built in 168ms
+
+> @saas-o-matic/web@0.0.0 test C:\Users\alope\Documents\saas-o-matic\apps\web
+> pnpm --filter @saas-o-matic/shared build && tsc -p tsconfig.test.json && node --test test/*.test.mjs
+
+
+> @saas-o-matic/shared@0.0.0 build C:\Users\alope\Documents\saas-o-matic\packages\shared
+> tsc
+
+TAP version 13
+# (node:21040) ExperimentalWarning: The MockTimers API is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: 006-T04: EUR needs no provider, even while a foreign request is pending
+ok 1 - 006-T04: EUR needs no provider, even while a foreign request is pending
+  ---
+  duration_ms: 45.1132
+  type: 'test'
+  ...
+# Subtest: 006-T04: concurrent currencies and subsequent reads share a single immutable result
+ok 2 - 006-T04: concurrent currencies and subsequent reads share a single immutable result
+  ---
+  duration_ms: 3.2552
+  type: 'test'
+  ...
+# Subtest: 006-T04: exact expiry discards old cache and refreshes once for concurrent calls
+ok 3 - 006-T04: exact expiry discards old cache and refreshes once for concurrent calls
+  ---
+  duration_ms: 1.8152
+  type: 'test'
+  ...
+# Subtest: 006-T04: network, HTTP, JSON and logical failures are recoverable without automatic retries
+ok 4 - 006-T04: network, HTTP, JSON and logical failures are recoverable without automatic retries
+  ---
+  duration_ms: 8.6281
+  type: 'test'
+  ...
+# Subtest: 006-T04: failed refresh cannot return stale data
+ok 5 - 006-T04: failed refresh cannot return stale data
+  ---
+  duration_ms: 1.7135
+  type: 'test'
+  ...
+# Subtest: 006-T04: expiry during body download is checked at completion
+ok 6 - 006-T04: expiry during body download is checked at completion
+  ---
+  duration_ms: 0.8091
+  type: 'test'
+  ...
+# Subtest: 006-T04: timeout aborts even an uncooperative fetch and late data cannot overwrite recovery
+ok 7 - 006-T04: timeout aborts even an uncooperative fetch and late data cannot overwrite recovery
+  ---
+  duration_ms: 13.1673
+  type: 'test'
+  ...
+# Subtest: 006-T04: timeout also covers a stalled JSON body
+ok 8 - 006-T04: timeout also covers a stalled JSON body
+  ---
+  duration_ms: 1.1341
+  type: 'test'
+  ...
+# Subtest: 006-T04: clients have isolated caches and invalid currencies never trigger fetch
+ok 9 - 006-T04: clients have isolated caches and invalid currencies never trigger fetch
+  ---
+  duration_ms: 2.0688
+  type: 'test'
+  ...
+# Subtest: 006-T05: client and exact conversion compose without refetch on amount changes or mutation of EUR
+ok 10 - 006-T05: client and exact conversion compose without refetch on amount changes or mutation of EUR
+  ---
+  duration_ms: 37.1864
+  type: 'test'
+  ...
+# Subtest: 006-T05: failed FX leaves EUR identity usable and explicit recovery preserves total
+ok 11 - 006-T05: failed FX leaves EUR identity usable and explicit recovery preserves total
+  ---
+  duration_ms: 1.5222
+  type: 'test'
+  ...
+# Subtest: 006-T03: normalizes valid response and keeps only supported rates and trusted attribution
+ok 12 - 006-T03: normalizes valid response and keeps only supported rates and trusted attribution
+  ---
+  duration_ms: 5.3229
+  type: 'test'
+  ...
+# Subtest: 006-T03: all invalid provider fixtures fail with stable error codes
+ok 13 - 006-T03: all invalid provider fixtures fail with stable error codes
+  ---
+  duration_ms: 1.4423
+  type: 'test'
+  ...
+# Subtest: 006-T03: requires own fields, objects and explicit successful EUR base
+ok 14 - 006-T03: requires own fields, objects and explicit successful EUR base
+  ---
+  duration_ms: 0.5384
+  type: 'test'
+  ...
+# Subtest: 006-T03: both foreign rates must be finite positive JSON numbers, identity exactly numeric one
+ok 15 - 006-T03: both foreign rates must be finite positive JSON numbers, identity exactly numeric one
+  ---
+  duration_ms: 0.7208
+  type: 'test'
+  ...
+# Subtest: 006-T03: scientific numeric rates normalize without monetary arithmetic
+ok 16 - 006-T03: scientific numeric rates normalize without monetary arithmetic
+  ---
+  duration_ms: 0.3678
+  type: 'test'
+  ...
+# Subtest: 006-T03: timestamps must be safe Unix seconds representable as ISO dates
+ok 17 - 006-T03: timestamps must be safe Unix seconds representable as ISO dates
+  ---
+  duration_ms: 0.7189
+  type: 'test'
+  ...
+# Subtest: 006-T03: expiration boundary is strict and update cannot be in the future
+ok 18 - 006-T03: expiration boundary is strict and update cannot be in the future
+  ---
+  duration_ms: 0.8029
+  type: 'test'
+  ...
+# Subtest: 006-T03: normalized output is isolated and deeply frozen without mutating provider
+ok 19 - 006-T03: normalized output is isolated and deeply frozen without mutating provider
+  ---
+  duration_ms: 0.7959
+  type: 'test'
+  ...
+# Subtest: 006-T01: provider fixtures have fixed coherent timestamps and normalization
+ok 20 - 006-T01: provider fixtures have fixed coherent timestamps and normalization
+  ---
+  duration_ms: 3.0377
+  type: 'test'
+  ...
+# Subtest: 006-T01: fixture factories isolate mutation and enumerate failure scenarios
+ok 21 - 006-T01: fixture factories isolate mutation and enumerate failure scenarios
+  ---
+  duration_ms: 0.5801
+  type: 'test'
+  ...
+# Subtest: la web compilada sirve HTML y su módulo JavaScript
+ok 22 - la web compilada sirve HTML y su módulo JavaScript
+  ---
+  duration_ms: 144.3507
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 22
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 676.8281
+
+> saas-o-matic@0.0.0 test:gates C:\Users\alope\Documents\saas-o-matic
+> node --test test/gates.test.mjs
+
+TAP version 13
+# Subtest: los controles devuelven error ante tipos, lint y tests incorrectos
+ok 1 - los controles devuelven error ante tipos, lint y tests incorrectos
+  ---
+  duration_ms: 5618.3214
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5715.5547
+
+> saas-o-matic@0.0.0 test:docs C:\Users\alope\Documents\saas-o-matic
+> node --test test/docs.test.mjs
+
+TAP version 13
+# Subtest: los documentos y el índice enlazan archivos locales existentes
+ok 1 - los documentos y el índice enlazan archivos locales existentes
+  ---
+  duration_ms: 128.0278
+  type: 'test'
+  ...
+# Subtest: el contexto identifica la spec activa y los comandos documentados existen
+ok 2 - el contexto identifica la spec activa y los comandos documentados existen
+  ---
+  duration_ms: 1.8877
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 277.3493

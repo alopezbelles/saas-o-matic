@@ -49,9 +49,9 @@ Estructura NIF entidades: [BOE EHA/451/2008](https://www.boe.es/buscar/act.php?i
 ## BR05 — monedas
 
 Base e histórico EUR. Conversión de visualización usa tasa EUR→destino validada >0 y fecha del proveedor. No invertirla ni volver a convertir desde una moneda ya convertida.
-Propuesta usar decimal.js en packages/billing para FX, con precisión configurada y ROUND_HALF_UP. Parsear tasa como decimal, redondear una vez a unidades menores de destino. EUR/USD/GBP usan 2 decimales; admitir otra moneda exige catálogo explícito de exponente, por ejemplo JPY=0, KWD=3. No asumir todas a 2.
+006 implementa convertCurrency en packages/shared/src/currency, sin decimal.js ni paquetes nuevos. Tasa decimal transformada en razón BigInt y half-up una sola vez sobre total. Catálogo cerrado EUR/USD/GBP con exponente 2 explícito; otras monedas requieren nueva decisión. Límites de tasa en [plan 006](../specs/006-currency/plan.md).
 Fuente JSON da números: convertir representación recibida a decimal sin realizar operaciones binarias intermedias.
-Importe principal es conversión de total EUR; si se muestran líneas convertidas, ajustar/exponer diferencia de redondeo para que la suma visible sea coherente.
+Convertir únicamente total final EUR; sin líneas convertidas ni importes/tasas FX persistidos. UI y formato visual quedan para próximas specs.
 D05 establece no persistir FX: indicar “Conversión orientativa al tipo de [fecha]”. Tasa actual jamás modifica cents históricos.
 [Proveedor](https://www.exchangerate-api.com/docs/free): endpoint abierto sin clave, actualización diaria, atribución obligatoria, límite de peticiones. “Tiempo real” en UI significa respuesta inmediata al consumo/divisa, no cotización bursátil en directo.
 

@@ -1,5 +1,7 @@
 # Evidencias de pruebas
 
+- [006 — Resultados por tarea y cierre](006-currency.md), con [salida real T05](006-currency-t05.txt): 122 pruebas correctas en su ejecución original; registro posterior y CORS inconcluso.
+
 - [005-T01 — Contratos y parsers](005-simulations-api-t01.md): resumen retrospectivo autorizado, 37 unitarios y 2 documentales; no suite completa ni endpoints.
 
 - [001 — Resumen histórico](001-foundation.md): referencia a validación; sin log íntegro conservado.

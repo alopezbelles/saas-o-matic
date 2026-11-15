@@ -49,6 +49,10 @@ Después de T04, Alex autoriza T05: revisión y verificación global de 005, con
 
 ## 006 — Preparación e implementación incremental
 
+Después de T05, Alex autoriza registrar ahora en ai-workspace preparación, decisiones, implementación y verificaciones de 006. Se levanta la exclusión anterior para este registro, identificado como retrospectivo y con procedencia fiel. No implica nueva ejecución funcional, aceptación humana final ni autorización de commits/pushes.
+
+Después de T04, Alex autoriza T05: composición con fixtures, revisión, controles globales, documentación y smoke CORS si el entorno lo permite. No autoriza cambios de arquitectura/proxy, instalaciones, UI, datos reales ni commits/pushes. Sigue excluido ai-workspace.
+
 Tras T03, Alex autoriza T04: cliente HTTP/caché y pruebas con transporte inyectado, sin proveedor real. T05 pendiente; mantener exclusión ai-workspace, commits/pushes y datos reales.
 
 Tras T02, Alex autoriza T03: validación/normalización del proveedor y pruebas, incluido ajuste del runner sin dependencias externas. T04/T05 requieren indicación posterior. Se mantiene exclusión de ai-workspace y ausencia de autorización para commits/pushes o datos reales.

@@ -1,5 +1,11 @@
 # Decisiones
 
+## Conversión 006
+
+Registro posterior autorizado: [ADR-006](../ai-workspace/decisions/ADR-006-currency-infrastructure.md), con alternativas y consecuencias; no sustituye decisiones canónicas ni acredita aceptación humana final.
+
+Alex confirmó infraestructura sin UI, EUR/USD/GBP solo total, BigInt/half-up sin librerías nuevas y ExchangeRate-API directo con memoria por pestaña/timeout 5 s. D05 se mantiene: histórico EUR sin FX persistido. [Decisiones detalladas](../specs/006-currency/clarifications.md). T01–T05 completadas técnicamente; CORS no acreditado por fallo del navegador del entorno, sin autorización para proxy/cambio de proveedor ni aceptación humana final.
+
 | ID      | Decisión                                                                                                 |
 | ------- | -------------------------------------------------------------------------------------------------------- |
 | D11     | Conservar pnpm 10.33.4, Node 22 y packages/shared.                                                       |

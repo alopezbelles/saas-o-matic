@@ -1,5 +1,7 @@
 # Decisiones arquitectónicas
 
+- [ADR-006](ADR-006-currency-infrastructure.md): decisiones confirmadas de conversión exacta/proveedor aislado, registradas retrospectivamente tras T05.
+
 Estos ADR explican razones, alternativas documentadas y consecuencias; [docs/decisions.md](../../docs/decisions.md) mantiene el índice operativo.
 No duplicar el esquema ni los contratos.
 

@@ -1,6 +1,6 @@
 # Plan 006 — Infraestructura de conversión
 
-Estado: decisiones confirmadas; implementación pendiente por tarea.
+Estado: decisiones confirmadas y T01–T05 completadas técnicamente. El plan siguiente conserva la instrucción previa y el alcance aplicado; CORS inconcluso y aceptación humana final no registrada.
 
 ## Instrucción técnica previa
 
@@ -65,5 +65,7 @@ Controles: pnpm lint, pnpm typecheck, pnpm format:check, pnpm build y pnpm test.
 Revisar exports y empaquetado: web todavía no declara shared como dependencia directa; añadir solo el enlace workspace interno necesario si lo importa, sin librería externa.
 
 ## Documentación
+
+Actualización tras T05: Alex autoriza registrar ahora ai-workspace de forma retrospectiva. La restricción de preparación descrita debajo conserva el contexto original y no impide esta autorización posterior. Contratos/arquitectura globales se actualizaron durante implementación; no presentar la frase de preparación como estado actual del repositorio.
 
 No modificar docs/design.md por trabajo sin interfaz. No afirmar que docs/api-contracts.md contiene ya el contrato externo. Actualizar contexto y documentación global pertinente durante implementación autorizada. Esta preparación solo modifica la carpeta 006 y no se registra en ai-workspace.

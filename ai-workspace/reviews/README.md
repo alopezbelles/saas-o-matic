@@ -1,5 +1,7 @@
 # Revisiones
 
+- [006 — Revisión técnica final](006-currency.md): infraestructura conforme con límite CORS documentado; sin UI ni aceptación humana final.
+
 - [005-T01 — Revisión técnica](005-simulations-api-t01.md): contratos conformes, servicio/API pendientes; sin aceptación humana final.
 
 - [001](001-foundation.md) y [002](002-persistence.md): revisiones documentales retrospectivas de Codex, sin nueva ejecución de la aplicación.

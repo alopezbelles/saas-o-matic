@@ -1,5 +1,13 @@
 # Contratos API implementados
 
+## Servicio externo FX — 006
+
+Sin endpoint nuevo del backend. GET https://open.er-api.com/v6/latest/EUR desde cliente web, sin clave/datos privados. Validar result=success, base_code=EUR, rates.EUR=1, USD/GBP positivas finitas y timestamps Unix seguros. Rechazar actualización futura, caducidad incoherente o vencida; campos extra no amplían catálogo.
+
+parseExchangeRates(payload: unknown, nowMs) devuelve baseCurrency, rates (USD/GBP decimales en texto), updatedAt/expiresAt UTC ISO y source con atribución fija, profundamente congelados. getRates(EUR) devuelve null sin red; USD/GBP ese contrato. EXCHANGE_NETWORK_ERROR, EXCHANGE_TIMEOUT, EXCHANGE_HTTP_ERROR, EXCHANGE_PAYLOAD_INVALID y EXCHANGE_RATE_EXPIRED son errores locales, no envelope HTTP del backend.
+
+convertCurrency de shared recibe amountEurCents/targetCurrency y rate decimal para USD/GBP; devuelve amountMinor/currency/exponent. EUR identidad. Errores CURRENCY_AMOUNT_INVALID, CURRENCY_UNSUPPORTED, CURRENCY_RATE_INVALID y CURRENCY_MONEY_OVERFLOW. La futura UI mostrará fecha y atribución «Rates By Exchange Rate API» con enlace https://www.exchangerate-api.com. Guardado/histórico siguen en EUR.
+
 ## Clientes (003)
 
 | Método/ruta                      | Respuesta                                           |

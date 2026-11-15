@@ -1,6 +1,6 @@
 # 006 — Infraestructura de conversión de moneda
 
-Estado: alcance y decisiones confirmados por Alex. Preparación documental autorizada; implementación pendiente de indicación por tarea.
+Estado: alcance y decisiones confirmados por Alex; T01–T05 completadas técnicamente mediante autorización incremental. Registro retrospectivo autorizado después. CORS inconcluso, interfaz diferida y sin aceptación humana final.
 
 ## Objetivo y contexto
 
@@ -44,4 +44,4 @@ UI, hooks React, formularios, selector, simulador, formato visual, E2E de usuari
 
 T01–T05 verificadas con evidencia real, controles pertinentes correctos y límites externos explícitos. No equivale a aceptación humana ni autoriza implementar automáticamente. CORS real requiere comprobación desde navegador; un fallo exige consultar alternativa.
 
-No registrar esta preparación en ai-workspace hasta nueva indicación de Alex.
+La preparación y ejecución inicial excluyeron ai-workspace. Alex autorizó su registro retrospectivo después de T05; ver [validación](validation.md#restricción-vigente). Sin aceptación humana final.

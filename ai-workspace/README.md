@@ -1,5 +1,13 @@
 # Desarrollo asistido por IA — SaaS-O-Matic
 
+## 006 — Infraestructura de conversión
+
+T01–T05 completadas técnicamente, con CORS externo inconcluso y sin interfaz ni aceptación humana final. Registros creados después de T05 el 15 de noviembre de 2026 por autorización posterior: son retrospectivos, no conversación literal ni documentación contemporánea.
+
+[Spec](../specs/006-currency/spec.md), [plan/instrucción previa](../specs/006-currency/plan.md#instrucción-técnica-previa), [prompts reformulados](prompts/006-currency.md), [iteración](iterations/006-currency.md), [ADR-006](decisions/ADR-006-currency-infrastructure.md), [pruebas](testing/006-currency.md), [salida real T05](testing/006-currency-t05.txt), [revisión](reviews/006-currency.md) y [validación canónica](../specs/006-currency/validation.md).
+
+Las 122 pruebas corresponden a la ejecución funcional de T05. Esta incorporación documental no implica repetirlas. Incidencias y limitaciones se conservan sin convertirlas en resultados exitosos del proveedor.
+
 ## 005 — Preparación y contratos T01
 
 **Estado final 005:** T01–T05 completadas técnicamente. [Verificación global](testing/005-simulations-api-t05.md), [salida](testing/005-simulations-api-t05.txt) y [revisión final](reviews/005-simulations-api-t05.md). Todos los controles globales pasan y 90 pruebas correctas; aceptación humana final no registrada. Párrafos de tareas anteriores conservan sus estados históricos.

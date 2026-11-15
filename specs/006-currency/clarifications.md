@@ -1,6 +1,6 @@
 # Aclaraciones 006
 
-Alex excluyó toda interfaz y confirmó expresamente estas propuestas durante la preparación documental. Implementación pendiente por tarea.
+Alex excluyó toda interfaz y confirmó expresamente estas propuestas durante la preparación documental. T01–T05 se implementaron después por indicación incremental; registro retrospectivo autorizado tras T05.
 
 | ID      | Decisión confirmada                                                            | Consecuencia                                                                                                  |
 | ------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------- |
@@ -20,4 +20,4 @@ Alex excluyó toda interfaz y confirmó expresamente estas propuestas durante la
 
 No quedan decisiones funcionales abiertas para estas tareas. CORS es una comprobación pendiente, no un resultado conocido. Si bloquea el acceso, no añadir proxy ni sustituir proveedor sin decisión posterior.
 
-La autorización actual es documental: no incluye código, instalaciones, commits, datos existentes ni aceptación humana. No registrar esta preparación en ai-workspace.
+La autorización inicial fue documental; después Alex autorizó T01–T05 de forma incremental y, tras T05, el registro retrospectivo en ai-workspace. No autoriza commits, datos existentes ni aceptación humana final. CORS sigue inconcluso por fallo del navegador; detalle en [validación](validation.md).

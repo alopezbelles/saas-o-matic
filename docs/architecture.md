@@ -1,5 +1,9 @@
 # Arquitectura
 
+## Conversión 006
+
+shared/src/currency contiene conversión pura y reutiliza utilidades monetarias, sin red/reloj/SQL. web/src/features/currency separa contrato/validación externa de HTTP/caché. createExchangeClient inyecta fetch/reloj; exchangeClient comparte instancia por pestaña sin petición al importar. EUR devuelve null identidad; USD/GBP comparten petición y caché inmutable hasta expiresAt. Timeout 5 s cubre fetch/cuerpo; sin reintentos ni datos caducados. Sin proxy, persistencia FX, UI o librerías nuevas. El test web compila shared para pruebas de composición, sin dependencia runtime nueva en la web.
+
 ## Simulaciones 005 — T02
 
 T04 añade histórico con existencia/total/página en transacción de lectura SQL y mapper de snapshots, sin motor. Configuración GET sin DB en billing/routes proyecta getter puro getPricingConfiguration desde shared, política del servidor y límites existentes; solo copias y no-store. Un servicio de simulaciones comparte proveedor lazy/política con ambos routers; config no depende del proveedor. Sin cambios de schema ni duplicación de reglas.
