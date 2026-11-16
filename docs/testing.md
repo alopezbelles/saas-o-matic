@@ -1,5 +1,9 @@
 # Verificación
 
+## 008 — T01
+
+WEB-SIM-01/02 comprueban borrador entero, fronteras, vacío/fracción/exceso y sincronización; WEB-CONFIG-008 distingue formato/compatibilidad, política fiscal del servidor y estados/reintentos/carreras/retorno. 235 pruebas globales correctas, incluidas 113 componentes/transporte. Dos E2E añadidas al runner existente: nueva pantalla con API/Vite/SQLite temporal, límites/teclado/retorno/ausencia FX y POST, y país fuera de política. Total 13 Playwright correctas; cuatro anchos sin desbordamiento. [Evidencia canónica y fallos corregidos](../specs/008-simulator-ui/validation.md#t01--pantalla-clienteconfiguración-e-inputs). Precio, FX y guardado no acreditados por T01.
+
 ## 007 — Cierre T05
 
 pnpm test:e2e desde raíz compila API/shared y ejecuta 11 casos Playwright/Chromium: cuatro funcionales y siete visuales/teclado/contraste. DB/contexto propio por caso, puertos efímeros, migraciones/fixtures explícitos y limpieza de recursos. No requiere API/web personales arrancadas. Preparar navegador en instalación nueva con pnpm --filter @saas-o-matic/web test:e2e:install; caché local .cache/playwright. Resultados JSON/capturas/trazas bajo .cache/007-e2e. Vitest y node:test mantienen descubrimiento separado; pnpm test no incluye E2E.

@@ -39,9 +39,9 @@ test('los documentos y el índice enlazan archivos locales existentes', () => {
 test('el contexto identifica la spec activa y los comandos documentados existen', () => {
   const memory = readFileSync('MEMORY.md', 'utf8');
   const activeSpec = memory.match(
-    /^- Spec activa: \[007-customers-ui\]\((specs\/007-customers-ui\/spec\.md)\)/m,
+    /^- Spec activa: \[008-simulator-ui\]\((specs\/008-simulator-ui\/spec\.md)\)/m,
   );
-  assert.ok(activeSpec, 'MEMORY debe identificar 007 como spec activa');
+  assert.ok(activeSpec, 'MEMORY debe identificar 008 como spec activa');
   assert.ok(existsSync(activeSpec[1]), 'la spec activa debe existir');
   assert.match(readFileSync('AGENTS.md', 'utf8'), /MEMORY\.md/);
   assert.match(

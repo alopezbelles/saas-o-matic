@@ -1,5 +1,9 @@
 # Trazabilidad
 
+## Simulador 008 — T01
+
+RF1/RF2 parciales: inputs/configuración/navegación verificados, sin preview monetario ni POST. WEB-SIM-01/02, WEB-CONFIG-008 y dos E2E reales comprueban fronteras, contrato/compatibilidad, estado/retorno y país no soportado. RF3–RF5 siguen pendientes de tareas posteriores. [Validación T01](../specs/008-simulator-ui/validation.md#t01--pantalla-clienteconfiguración-e-inputs). Registro ai-workspace excluido por Alex; conformidad técnica distinta de aceptación humana.
+
 ## Clientes UI 007 — Cierre T05
 
 | RF  | Evidencia final                                                                                                           |

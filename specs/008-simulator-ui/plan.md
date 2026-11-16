@@ -1,8 +1,10 @@
 # Plan 008 — Simulador interactivo y guardado
 
-Estado: preparación documental consolidada, decisiones 008-C01…C07 confirmadas. Lista para ejecutar tareas por fases cuando Alex lo indique; sin código nuevo ni tareas ejecutadas.
+Estado: decisiones 008-C01…C07 confirmadas. T01 completada técnicamente; T02–T05 requieren indicación posterior. Resultados reales en validation.md; sin aceptación humana final.
 
 ## Reutilización y responsabilidades
+
+Instrucción técnica previa de T01 (16 de noviembre de 2026, antes de código): Alex autoriza pantalla, cliente/configuración e inputs. Implementar ruta/acceso/retorno, validar DTO completo y compatibilidad, gestionar ID/404/errores/país y borrador sincronizado desde cero/EUR. Reutilizar shared y transporte/recursos existentes sin nuevas dependencias, cálculos de presupuesto, FX o POST. Verificar formatos/fronteras, configuración incompatible/reintento conservando borrador, navegación/carreras y navegador con DB temporal. No registrar ai-workspace por exclusión vigente ni realizar commit/push.
 
 Conservar React/TypeScript strict/Vite, pnpm y packages/shared. Feature web simulations para pantalla, consumos, resumen y guardado. Separar transporte, contratos, estado y presentación; no nuevas capas backend.
 
@@ -13,6 +15,7 @@ Archivos existentes reutilizables o ampliables durante implementación:
 - features/customers/api/http.ts: GET/POST, envelope, abort/timeout API 10 s.
 - features/customers/api/customers.ts y simulations.ts: cliente/DTO/identidad; compartir validadores con POST sin ciclos entre features ni movimientos solo estéticos.
 - features/customers/api/billing-config.ts: actualmente solo valida proyección de países; ampliar o extraer contrato completo manteniendo compatibilidad del alta de cliente.
+- T01 incorpora features/customers/api/billing-configuration.ts para el DTO completo/compatibilidad; conserva la proyección de países de alta. Expone assertConsumption existente desde el índice público de shared para reutilizar guardas sin copiar reglas. No cambia tarifas/límites/motor.
 - features/customers/components/SimulationHistory.tsx: integrar historial existente, sin duplicarlo en simulations.
 - features/currency/exchange-client.ts y exchange-contract.ts: FX existente con caché/timeout, sin reescribir proveedor.
 - styles/tokens.css/global.css y módulos CSS: bordes accesibles, foco y reflujo de 007.

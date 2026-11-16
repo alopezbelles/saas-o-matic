@@ -1,5 +1,9 @@
 # Diseño funcional y visual
 
+## Simulador 008 — T01
+
+Base visual con título/contexto del cliente, tarjeta de consumos, slider/campo de usuarios, almacenamiento/llamadas y retorno a ficha. CSS Modules y tokens de 007, bordes accesibles y estados con errores asociados. Campos cero y EUR; ningún importe, selector FX o acción de guardado antes de sus tareas. Cuatro anchos sin desbordamiento y capturas de escritorio/móvil inspeccionadas en entorno temporal. La columna de resumen del PDF llega en T02. [Validación](../specs/008-simulator-ui/validation.md#t01--pantalla-clienteconfiguración-e-inputs). Sin registros ai-workspace por indicación vigente.
+
 ## Revisión final 007-T05
 
 Listar/crear/consultar cliente e historial revisados a 320/390/768/1440 px, con capturas reales; layout al 200 % y reflujo equivalente sin desbordamiento. Teclado cubre salto al contenido, navegación/alta, resumen fiscal y foco al paginar. Contraste medido en colores renderizados representativos: borde de campos corregido a 3,628:1, textos medidos ≥4,5:1 y foco ≥3:1. [Evidencia visual y límites](../ai-workspace/visuals/007-customers-ui-t05.md). No certificación global WCAG, prueba de lector de pantalla o zoom mediante menú nativo. Aceptación humana final no registrada.

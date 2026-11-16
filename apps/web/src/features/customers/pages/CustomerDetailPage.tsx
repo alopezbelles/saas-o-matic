@@ -33,17 +33,34 @@ export function CustomerDetailPage() {
     location.state.createdCustomerId === id;
   return (
     <section className={layout.page} aria-labelledby="page-heading">
-      <div className={layout.intro}>
-        <h1 id="page-heading" tabIndex={-1}>
-          {state.status === 'success'
-            ? state.value.companyName
-            : 'Ficha del cliente'}
-        </h1>
+      <div className={layout.pageHeader}>
+        <div className={layout.intro}>
+          <h1 id="page-heading" tabIndex={-1}>
+            {state.status === 'success'
+              ? state.value.companyName
+              : 'Ficha del cliente'}
+          </h1>
+          {state.status === 'success' && (
+            <p className={layout.description}>
+              {countryLabel(state.value.countryCode)} ·{' '}
+              {PLAN_LABELS[state.value.planCode]}
+            </p>
+          )}
+        </div>
         {state.status === 'success' && (
-          <p className={layout.description}>
-            {countryLabel(state.value.countryCode)} ·{' '}
-            {PLAN_LABELS[state.value.planCode]}
-          </p>
+          <Link
+            className={layout.action}
+            to={'/customers/' + state.value.id + '/simulations/new'}
+            state={{
+              returnTo: customersReturnTo(location.state),
+              customerSearch: location.search,
+            }}
+          >
+            <span className={layout.actionIcon} aria-hidden="true">
+              +
+            </span>{' '}
+            Nueva simulación
+          </Link>
         )}
       </div>
       {created && <p role="status">Cliente creado correctamente.</p>}

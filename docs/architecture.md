@@ -1,5 +1,11 @@
 # Arquitectura
 
+## Simulador 008 — T01
+
+SimulationCreatePage monta un borrador nuevo por cliente y reutiliza recursos GET cancelables de 007 para cliente/configuración. ConsumptionInputs presenta campos/slider; parsers reutilizan assertConsumption expuesto desde shared, sin copiar límites/reglas. El contrato completo de configuración reside en customers/api/billing-configuration.ts, junto a la proyección de países existente, y distingue formato de compatibilidad contra getPricingConfiguration/CONSUMPTION_LIMITS. Tasas fiscales del servidor, sin catálogo web paralelo.
+
+Navigation/return valida contexto de listado e historyOffset; acceso desde ficha y breadcrumbs reales. API/persistencia/lockfile sin cambios. No hay cálculo/FX/POST o nuevas dependencias en T01. [Verificación y límites](../specs/008-simulator-ui/validation.md#t01--pantalla-clienteconfiguración-e-inputs).
+
 ## Web 007 — Cierre T05
 
 Playwright tiene configuración y fixtures en apps/web/e2e, con descubrimiento independiente de src/test y test/*.test.mjs. Cada caso crea DB marcada/contexto temporal, API Express y Vite con puertos propios; valida la configuración real del proxy y sustituye solo target para aislarlo. La limpieza comprueba ruta/propiedad tras cerrar recursos. Runner fija caché local de Chromium; no usa perfil o servidores personales. Scripts root/web permiten ejecutar E2E y preparar navegador aparte de pnpm test.

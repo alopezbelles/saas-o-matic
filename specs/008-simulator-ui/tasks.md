@@ -1,16 +1,16 @@
 # Tareas 008
 
-Estado: preparación documental consolidada, decisiones 008-C01…C07 confirmadas. Ninguna tarea implementada; ejecutar por fases solo por indicación de Alex. IDs canónicos 008-T01…T05.
+Estado: decisiones 008-C01…C07 confirmadas. T01 completada técnicamente; T02–T05 pendientes de indicación. IDs canónicos 008-T01…T05. Sin aceptación humana final ni commits/pushes del agente.
 
 ## T01 — Pantalla, cliente/configuración e inputs
 
-- [ ] **008-T01**. RF1/RF2 y estados previos de RF3.
+- [x] **008-T01**. RF1/RF2 y estados previos de RF3, sin completar esos RF funcionales.
 - Dependencia: decisiones aplicables confirmadas e instrucción de ejecución.
 - Acciones: ruta/breadcrumbs/enlace desde ficha, cliente/configuración completa, ID/404/país, borrador string y controles sincronizados con límites shared. Slider 0..1000 paso 1; tres consumos iniciales a cero y EUR, sin guardado automático.
 - Destinos propuestos: SimulationCreatePage/ConsumptionInputs, adaptadores/hooks; rutas/ficha y contrato config existente. Sin endpoints/dependencias nuevas.
 - Pruebas: WEB-SIM-01/02 y WEB-CONFIG-008; conservar alta/listado/ficha.
 - Hecho cuando: pantalla contextual con estados, campos inválidos no guardables y sin divergencia de configuración silenciosa. Compatibilidad de pricingVersion/tramos/límites comprobada contra shared; incompatibilidad bloquea preview/guardado con aviso/recarga/reintento y borrador conservado. Política fiscal validada desde servidor, sin catálogo duplicado.
-- Evidencia: NO EJECUTADO.
+- Evidencia: [validación T01](validation.md#t01--pantalla-clienteconfiguración-e-inputs), 235 pruebas globales y 13 E2E correctas (2 nuevas de T01). Pantalla/inputs/configuración probados; cálculo/precio/FX/POST pendientes de sus tareas.
 
 ## T02 — Preview, desglose y conversión
 

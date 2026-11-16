@@ -1,5 +1,7 @@
 # Estado del proyecto
 
+- 008-T01 completada técnicamente: nueva pantalla/controles/configuración y retorno desde ficha; sin presupuesto/FX/POST todavía. 235 pruebas globales y 13 E2E correctas (2 nuevas), lint/typecheck/build pasan. [Validación T01](specs/008-simulator-ui/validation.md#t01--pantalla-clienteconfiguración-e-inputs). T02–T05 requieren indicación; mantener exclusión ai-workspace. Sin aceptación humana final ni commits/pushes.
+
 - 007 completada técnicamente tras T05: 209 pruebas globales y 11 E2E Playwright correctas, lint/typecheck/build pasan. Revisión responsive/zoom de layout/teclado/contraste con correcciones de borde de controles y foco al paginar. Recursos temporales cerrados/limpiados, sin datos existentes ni commits/pushes. [Cierre y límites](specs/007-customers-ui/validation.md#t05--e2e-real-revisión-visual-y-cierre-global). Aceptación humana final no registrada.
 
 - 007-T04 completada técnicamente: ficha real con tarjetas e historial EUR guardado, páginas de 20 con historyOffset, errores/reintentos independientes, ID inválido/404 y respuestas antiguas ignoradas. 208 pruebas globales, lint/typecheck/build y smoke Chromium con API/SQLite temporal correctos. T05 y aceptación humana final pendientes. [Validación T04](specs/007-customers-ui/validation.md#t04--ficha-e-historial-persistido).
@@ -16,7 +18,7 @@
 
 - 006-T02 completada técnicamente: convertCurrency puro, tasas decimales acotadas, BigInt y half-up reutilizado, identidad EUR y errores de entrada/overflow. RF1 conforme en dominio; T03–T05 pendientes. Sin red, UI, dependencias, DB ni registro ai-workspace. [Validación T02](specs/006-currency/validation.md#t02--conversión-pura).
 
-- Spec activa: [007-customers-ui](specs/007-customers-ui/spec.md), T01–T05 completadas técnicamente. Listado/búsqueda/alta/ficha e historial integrados mediante /api; datos guardados EUR y retorno contextual. 209 pruebas globales y 11 E2E pasan. [Registro](ai-workspace/iterations/007-customers-ui.md), [validación final](specs/007-customers-ui/validation.md#t05--e2e-real-revisión-visual-y-cierre-global). Aceptación humana final no registrada; no iniciar otra spec automáticamente.
+- Spec activa: [008-simulator-ui](specs/008-simulator-ui/spec.md). T01 completada técnicamente: pantalla/configuración/controles, sin preview/FX/POST. Decisiones C01…C07 confirmadas; T02–T05 requieren instrucción posterior. Excluir ai-workspace hasta nueva indicación. [Resultados de T01](specs/008-simulator-ui/validation.md#t01--pantalla-clienteconfiguración-e-inputs); aceptación humana final no registrada.
 - 006-currency completada técnicamente con evidencia histórica en su validación. Alex confirmó después consulta FX correcta desde su navegador local y aportó tasas/fechas normalizadas en conversación. La limitación del smoke automatizado de T05 es histórica, sin revisión de dominio de producción.
 - 005-simulations-api: T01–T05 completadas técnicamente; POST /simulations, histórico y configuración disponibles. Sin aceptación humana final ni commits del agente.
 - T05: lint/typecheck/format:check/build/test correctos; 90 pruebas (37 unitarias, 49 integración, 1 web, 1 gates, 2 docs). Auditoría sin cambios de schema/migraciones/lockfile/dependencias/frontend; DB temporales limpiadas. [Evidencia global](ai-workspace/testing/005-simulations-api-t05.md).

@@ -97,7 +97,10 @@ describe('WEB-DETAIL-01 and WEB-STATE-01', () => {
     expect(history).toHaveTextContent('10.000');
     expect(history).toHaveTextContent('EUR');
     expect(
-      screen.queryByRole('link', { name: /Nueva simulación|Ver detalle/ }),
+      screen.getByRole('link', { name: 'Nueva simulación' }),
+    ).toHaveAttribute('href', '/customers/' + id + '/simulations/new');
+    expect(
+      screen.queryByRole('link', { name: /Ver detalle/ }),
     ).not.toBeInTheDocument();
     expect(
       screen.getByRole('link', { name: 'Volver a clientes' }),

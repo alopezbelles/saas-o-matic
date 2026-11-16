@@ -1,5 +1,9 @@
 # Autorización y alcance
 
+## 008 — T01
+
+Alex autoriza T01: pantalla de nueva simulación, carga cliente/configuración, compatibilidad, controles/borrador y navegación. Mantener exclusión de ai-workspace hasta nueva indicación. Reutilizar límites/guardas y herramientas, sin cálculo/FX/POST todavía, sin nuevas dependencias o datos existentes. T02–T05 requieren indicación posterior; sin commits/pushes ni aceptación humana final.
+
 ## 007 — T05
 
 Alex autoriza T05 el 16 de noviembre de 2026: E2E mantenido, revisión visual/teclado/zoom/contraste y cierre técnico de 007. Incluye corregir problemas reproducidos dentro de su alcance, pruebas y actualización documental/ai-workspace. Usa herramientas ya autorizadas, servidores propios y DB temporal; sin datos existentes, nuevos servicios, dependencias, endpoints, commits/pushes ni aceptación humana final.
