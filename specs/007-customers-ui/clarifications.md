@@ -31,4 +31,4 @@ Los planes se obtienen de shared, no de GET /billing-config. El backend conserva
 
 No quedan decisiones funcionales imprescindibles abiertas para este alcance. En cada implementación comprobar compatibilidad real de versiones, respetar dependencias autorizadas y consultar cualquier ampliación fuera de estas decisiones. Las versiones concretas y configuración de herramientas se verificarán antes de instalar, no se presentan como ya instaladas.
 
-La preparación autorizó solo estos cinco documentos. Después, Alex autorizó T01 y progreso en ai-workspace, y posteriormente T02. Contexto global se actualiza durante ejecución. T03–T05 requieren indicación posterior. Sin commits/pushes, datos reales, despliegue ni aceptación humana final.
+La preparación autorizó solo estos cinco documentos. Después, Alex autorizó T01 y progreso en ai-workspace, y posteriormente T02–T04. Contexto global se actualiza durante ejecución. T05 requiere indicación posterior. Sin commits/pushes, datos reales, despliegue ni aceptación humana final.

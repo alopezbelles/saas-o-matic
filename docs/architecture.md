@@ -1,5 +1,11 @@
 # Arquitectura
 
+## Web 007 — T04
+
+CustomerDetailPage obtiene el cliente y CustomerCards presenta datos corporativos/contacto. SimulationHistory consulta su recurso por separado y conserva la ficha durante carga/fallo/reintento. historyOffset vive en URL; el contexto de retorno se conserva al paginar. ID inválido no provoca requests; 404 se distingue de error temporal.
+
+useApiResource centraliza vigencia, aborto y reintento explícito de GET; se reutiliza en listado/ficha/historial. parsePage comparte validación de envoltura y unicidad; los adaptadores validan identidad del cliente y DTO histórico completo antes de exponerlo. No se consulta configuración actual, motor ni FX para mostrar historial; formatEuro presenta céntimos mediante BigInt/Intl sin perder precisión. Backend, contratos, esquema y dependencias conservados.
+
 ## Web 007 — T03
 
 CustomerCreatePage conserva contexto de retorno y navega al ID persistido. CustomerForm presenta campos, errores asociados y acciones; useCustomerCreation gestiona borrador, validación compartida, envío único y resultado incierto. useCustomerCountries carga/reintenta configuración con cancelación; el adaptador valida la proyección EUR/política consumida y deriva las opciones del servidor. PLAN_CODES y etiquetas compartidas con el listado evitan catálogos duplicados.

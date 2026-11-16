@@ -1,5 +1,9 @@
 # Diseño funcional y visual
 
+## Ficha implementada en 007-T04
+
+Nombre de empresa como título y país/plan como descripción. Tarjetas «Datos corporativos» y «Contacto» en dos columnas de escritorio y una en móvil, según referencia del PDF. Historial con fecha, usuarios, almacenamiento, llamadas API, EUR y total guardado; páginas de 20 y estados independientes. No se añaden acciones de simulación sin flujo disponible. [Capturas reales y límites](../ai-workspace/visuals/007-customers-ui-t04.md).
+
 ## Alta implementada en 007-T03
 
 Tarjeta de cinco campos en secciones «Datos de empresa» y «Suscripción», con ancho central definido por el token --form-width. Países obtenidos de configuración y planes demo compartidos. Errores junto al campo y resumen enfocado con enlaces, controles bloqueados durante envío y cancelación contextual. El resultado incierto conserva el formulario y abre la comprobación en otra pestaña. [Capturas y límites de revisión](../ai-workspace/visuals/007-customers-ui-t03.md). Ficha completa e historial corresponden a T04.

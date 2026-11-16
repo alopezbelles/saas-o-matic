@@ -1,6 +1,6 @@
 # Tareas 007
 
-Estado global: T01–T03 completadas técnicamente, T04–T05 pendientes. Progreso registrado en ai-workspace. Cada fase posterior requiere instrucción. Sin aceptación humana final ni commits/pushes del agente.
+Estado global: T01–T04 completadas técnicamente, T05 pendiente. Progreso registrado en ai-workspace. Cada fase posterior requiere instrucción. Sin aceptación humana final ni commits/pushes del agente.
 
 ## T01 — Base visual, rutas y herramientas
 
@@ -34,13 +34,13 @@ Estado global: T01–T03 completadas técnicamente, T04–T05 pendientes. Progre
 
 ## T04 — Ficha e historial persistido
 
-- [ ] **007-T04**. RF: RF3/RF4/RF5 y final de navegación RF2.
+- [x] **007-T04**. RF: RF3/RF4/RF5 y final de navegación RF2.
 - Dependencia: T03.
 - Acciones: integrar detalle e historial con cargas/errores independientes; ID inválido y 404; tarjetas con campos reales; historial EUR paginado de 20 y historyOffset en URL; retorno preserva listado. Sin acciones de simulación futuras.
 - Destinos: CustomerDetailPage, tarjetas/SimulationHistory, adaptadores GET y pruebas.
 - Verificación: WEB-DETAIL-01/WEB-STATE-01; snapshot/importe guardado, sin recálculo/FX, vacío/historial fallido sin perder ficha, carreras al cambiar ID/página, clientes con país fuera del selector.
 - Hecho cuando: ficha e historial leen datos guardados y cumplen sus estados, accesibilidad y retorno; ningún enlace apunta a un simulador/detalle inexistente.
-- Evidencia real: NO EJECUTADO.
+- Evidencia real: [validación T04](validation.md#t04--ficha-e-historial-persistido), 208 pruebas globales y smoke Chromium sobre API/SQLite temporal correctos; historial 20/1, recarga, fallo independiente/reintento y alta→ficha real.
 
 ## T05 — E2E real, revisión visual y cierre global
 

@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useCallback } from 'react';
 import type { CustomerPage, CustomerQuery } from '@saas-o-matic/shared';
 import { listCustomers } from './api/customers';
 import { ApiRequestError } from './api/http';
+import { useApiResource } from './useApiResource';
 
 type CustomersState =
   | { key: string; status: 'loading' }
@@ -9,43 +10,29 @@ type CustomersState =
   | { key: string; status: 'error'; message: string };
 
 export function useCustomers(query: CustomerQuery | null) {
-  const [attempt, setAttempt] = useState(0);
-  const [state, setState] = useState<CustomersState>({
-    key: '',
-    status: 'loading',
-  });
-  const key = JSON.stringify([query, attempt]);
-
-  useEffect(() => {
-    if (!query) return;
-    const controller = new AbortController();
-    let active = true;
-    void listCustomers(query, controller.signal).then(
-      (page) => {
-        if (active) setState({ key, status: 'success', page });
-      },
-      (error: unknown) => {
-        if (!active) return;
-        setState({
-          key,
-          status: 'error',
-          message:
-            error instanceof ApiRequestError
-              ? error.message
-              : 'No se han podido cargar los clientes.',
-        });
-      },
-    );
-    return () => {
-      active = false;
-      controller.abort();
-    };
-  }, [query, key]);
-
+  const load = useCallback(
+    (signal: AbortSignal) => listCustomers(query!, signal),
+    [query],
+  );
+  const { state, retry } = useApiResource(
+    JSON.stringify(query),
+    query ? load : null,
+  );
   const current: CustomersState =
-    state.key === key ? state : { key, status: 'loading' };
+    state.status === 'success'
+      ? { key: state.key, status: 'success', page: state.value }
+      : state.status === 'error'
+        ? {
+            key: state.key,
+            status: 'error',
+            message:
+              state.error instanceof ApiRequestError
+                ? state.error.message
+                : 'No se han podido cargar los clientes.',
+          }
+        : state;
   return {
     state: current,
-    retry: () => setAttempt((previous) => previous + 1),
+    retry,
   };
 }

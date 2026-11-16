@@ -1,5 +1,17 @@
 # 007 — Instrucciones técnicas
 
+## T04 — Instrucción previa de implementación
+
+16 de noviembre de 2026. Reformulación técnica de la solicitud de Alex, redactada antes del código de T04; no transcripción literal.
+
+Contexto: listado y alta operativos, ficha provisional, contratos de clientes 003 e historial 005 existentes. Objetivo: ficha con tarjetas corporativa/contacto e historial persistido EUR de 20 por página.
+
+Acciones: integrar GET de cliente e historial con validación runtime de DTO/página, ID inválido/404 explícitos y cargas/reintentos independientes; validar historyOffset de URL, conservar contexto de retorno y descartar respuestas antiguas al cambiar cliente/página. Mostrar fecha, usuarios, almacenamiento, llamadas y total guardado en EUR; preservar snapshots sin aplicar configuración actual.
+
+Restricciones: sin cálculo/FX, nuevas dependencias, endpoints, SQL, datos existentes o acciones de simulación futuras. Pruebas deterministas y navegador con API/SQLite temporal. No registrar como originales mensajes reformulados ni atribuir aceptación humana.
+
+Verificación: estructura e identidad de DTO, historial vacío/fallido/fuera de rango, configuración histórica distinta, países fuera del selector, retorno/recarga, carreras/abortos, foco y responsive. Ejecutar controles pertinentes, conservar resultados y actualizar solo registros relacionados. Sin commit/push; proponer nombre al terminar.
+
 ## T03 — Instrucción previa de implementación
 
 16 de noviembre de 2026. Bloque redactado antes de modificar código, por autorización explícita de Alex para T03.

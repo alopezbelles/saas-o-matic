@@ -24,6 +24,8 @@ function mount() {
     vi.fn(async (url: string, options?: RequestInit) => {
       if (url.includes('billing-config'))
         return jsonResponse(billingConfigFixture());
+      if (url.includes('/customers/') && options?.method !== 'POST')
+        return jsonResponse(customerFixture());
       return options?.method === 'POST'
         ? jsonResponse(customerFixture(), 201)
         : jsonResponse(pageFixture(0));
@@ -72,7 +74,7 @@ it('navigates a successful creation to its persisted ID, announces success and r
     '/customers/' + customerFixture().id,
   );
   expect(
-    screen.getByRole('heading', { name: 'Ficha del cliente' }),
+    await screen.findByRole('heading', { name: 'Empresa 1' }),
   ).toHaveFocus();
   await user.click(screen.getByRole('link', { name: 'Volver a clientes' }));
   expect(screen.getByLabelText('Ubicación actual')).toHaveTextContent(

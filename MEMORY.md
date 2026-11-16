@@ -1,5 +1,7 @@
 # Estado del proyecto
 
+- 007-T04 completada técnicamente: ficha real con tarjetas e historial EUR guardado, páginas de 20 con historyOffset, errores/reintentos independientes, ID inválido/404 y respuestas antiguas ignoradas. 208 pruebas globales, lint/typecheck/build y smoke Chromium con API/SQLite temporal correctos. T05 y aceptación humana final pendientes. [Validación T04](specs/007-customers-ui/validation.md#t04--ficha-e-historial-persistido).
+
 - 007-T03 completada técnicamente: formulario de cinco campos, países de configuración, planes shared, alta POST y recuperación segura ante errores. 171 pruebas globales correctas; lint/typecheck/build y smoke Chromium con API/SQLite temporal pasan. T04–T05 y aceptación humana final pendientes. [Validación T03](specs/007-customers-ui/validation.md#t03--alta-integrada-y-recuperación-segura).
 
 - Ajuste de foco de 007-T01 solicitado por Alex: título sin contorno al cargar, foco lógico de navegación conservado e indicador de teclado en enlaces probado. 10 componentes y smoke Chromium correctos. [Evidencia](ai-workspace/visuals/007-customers-ui-t01.md#título-sin-contorno-al-cargar).
@@ -12,7 +14,7 @@
 
 - 006-T02 completada técnicamente: convertCurrency puro, tasas decimales acotadas, BigInt y half-up reutilizado, identidad EUR y errores de entrada/overflow. RF1 conforme en dominio; T03–T05 pendientes. Sin red, UI, dependencias, DB ni registro ai-workspace. [Validación T02](specs/006-currency/validation.md#t02--conversión-pura).
 
-- Spec activa: [007-customers-ui](specs/007-customers-ui/spec.md), T01–T03 completadas técnicamente. Listado/búsqueda/paginación y alta integrados mediante /api; campos conservados ante errores, validación fiscal en backend y retorno contextual. 171 pruebas globales y smoke Chromium con API/SQLite temporal a cuatro anchos pasan. T04–T05 y aceptación humana final pendientes. [Registro](ai-workspace/iterations/007-customers-ui.md), [validación T03](specs/007-customers-ui/validation.md#t03--alta-integrada-y-recuperación-segura).
+- Spec activa: [007-customers-ui](specs/007-customers-ui/spec.md), T01–T04 completadas técnicamente. Listado/búsqueda/alta/ficha e historial integrados mediante /api; datos guardados EUR, estados independientes y retorno contextual. 208 pruebas globales y smoke Chromium con API/SQLite temporal a cuatro anchos pasan. T05 y aceptación humana final pendientes. [Registro](ai-workspace/iterations/007-customers-ui.md), [validación T04](specs/007-customers-ui/validation.md#t04--ficha-e-historial-persistido).
 - 006-currency completada técnicamente con evidencia histórica en su validación. Alex confirmó después consulta FX correcta desde su navegador local y aportó tasas/fechas normalizadas en conversación. La limitación del smoke automatizado de T05 es histórica, sin revisión de dominio de producción.
 - 005-simulations-api: T01–T05 completadas técnicamente; POST /simulations, histórico y configuración disponibles. Sin aceptación humana final ni commits del agente.
 - T05: lint/typecheck/format:check/build/test correctos; 90 pruebas (37 unitarias, 49 integración, 1 web, 1 gates, 2 docs). Auditoría sin cambios de schema/migraciones/lockfile/dependencias/frontend; DB temporales limpiadas. [Evidencia global](ai-workspace/testing/005-simulations-api-t05.md).

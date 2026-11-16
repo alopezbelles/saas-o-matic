@@ -9,6 +9,7 @@ import {
   type CustomerQuery,
 } from '@saas-o-matic/shared';
 import { ApiRequestError, getJson, postJson, isRecord } from './http';
+import { parsePage } from './page';
 
 function invalidResponse(): never {
   throw new ApiRequestError('protocol');
@@ -58,27 +59,19 @@ export function parseCustomerPage(
   value: unknown,
   query: CustomerQuery,
 ): CustomerPage {
-  if (
-    !isRecord(value) ||
-    !Array.isArray(value.items) ||
-    typeof value.total !== 'number' ||
-    !Number.isSafeInteger(value.total) ||
-    value.total < 0 ||
-    value.limit !== query.limit ||
-    value.offset !== query.offset ||
-    value.items.length !==
-      Math.min(query.limit, Math.max(value.total - query.offset, 0))
-  )
-    return invalidResponse();
-  const items = value.items.map(parseCustomerDto);
-  if (new Set(items.map((item) => item.id)).size !== items.length)
-    return invalidResponse();
-  return {
-    items,
-    total: value.total,
-    limit: query.limit,
-    offset: query.offset,
-  };
+  return parsePage(value, query, parseCustomerDto);
+}
+
+export async function getCustomer(
+  id: string,
+  signal?: AbortSignal,
+): Promise<CustomerDto> {
+  const validatedId = parseCustomerId(id);
+  const customer = parseCustomerDto(
+    await getJson('/customers/' + validatedId, signal),
+  );
+  if (customer.id !== validatedId) return invalidResponse();
+  return customer;
 }
 
 export async function listCustomers(

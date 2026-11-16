@@ -1,18 +1,32 @@
 # Validación 007
 
-Estado: T01–T03 completadas técnicamente. RF1 conforme; RF2 conforme para alta, ficha completa en T04; RF4/RF5 parciales según pantallas disponibles. T04–T05 y aceptación humana final pendientes. Preparación documental histórica conservada debajo.
+Estado: T01–T04 completadas técnicamente. RF1–RF4 conformes en pruebas incrementales; RF5 parcial hasta revisión global T05. E2E mantenido, revisión exhaustiva y aceptación humana final pendientes. Preparación documental histórica conservada debajo.
 
 ## Matriz prevista
 
 | RF      | Tareas      | Pruebas previstas                                          | Resultado funcional real |
 | ------- | ----------- | ---------------------------------------------------------- | ------------------------ |
 | 007-RF1 | T02/T05     | WEB-API-01, WEB-SEARCH-01, WEB-STATE-01, E2E-CUSTOMERS-007 | CONFORME LISTADO         |
-| 007-RF2 | T03/T04/T05 | WEB-FORM-01, WEB-STATE-01, E2E-CUSTOMERS-007               | CONFORME ALTA; FICHA T04 |
-| 007-RF3 | T04/T05     | WEB-DETAIL-01, E2E-CUSTOMERS-007                           | NO EJECUTADO             |
-| 007-RF4 | T02/T04/T05 | WEB-SEARCH-01, WEB-DETAIL-01, E2E-CUSTOMERS-007            | PARCIAL: LISTADO         |
+| 007-RF2 | T03/T04/T05 | WEB-FORM-01, WEB-STATE-01, E2E-CUSTOMERS-007               | CONFORME ALTA Y FICHA    |
+| 007-RF3 | T04/T05     | WEB-DETAIL-01, E2E-CUSTOMERS-007                           | CONFORME INCREMENTAL     |
+| 007-RF4 | T02/T04/T05 | WEB-SEARCH-01, WEB-DETAIL-01, E2E-CUSTOMERS-007            | CONFORME INCREMENTAL     |
 | 007-RF5 | T01–T05     | WEB-SHELL-01, WEB-STATE-01, VISUAL-007 y E2E               | PARCIAL: SHELL PROBADO   |
 
-WEB-SHELL-01, WEB-API-01/02, listado y alta se ejecutan con Vitest/RTL. node:test de 006/smoke conservado. Ficha/historial y E2E final pendientes de T04–T05.
+WEB-SHELL-01, WEB-API-01/02, WEB-DETAIL-01, listado y alta se ejecutan con Vitest/RTL. node:test de 006/smoke conservado. E2E mantenido y revisión global pendientes de T05. Estados siguientes de T01–T03 conservan su contexto histórico.
+
+## T04 — Ficha e historial persistido
+
+16 de noviembre de 2026, base 010a716. T04 autorizada por Alex. [Instrucción previa](../../ai-workspace/prompts/007-customers-ui.md#t04--instrucción-previa-de-implementación), [iteración](../../ai-workspace/iterations/007-customers-ui.md#t04--inicio), [pruebas y salida global](../../ai-workspace/testing/007-customers-ui-t04.md), [revisión](../../ai-workspace/reviews/007-customers-ui-t04.md) y [capturas](../../ai-workspace/visuals/007-customers-ui-t04.md).
+
+Ficha de datos reales con tarjetas corporativa/contacto, ID inválido sin requests, 404 y reintento temporal. Historial independiente, URL historyOffset, páginas de 20, retorno contextual conservado y datos EUR guardados. Validación runtime de DTO/página/identidad/snapshots y coherencia aritmética; sin motor/configuración vigente/FX. Gestión cancelable y validación de páginas compartidas con listado, conservando su contrato de UI.
+
+Lint/typecheck/build y pnpm.cmd test correctos, código 0: 36 shared + 12 API unitarias + 49 integración + 22 node web + 86 componentes/transporte + 1 gates + 2 docs = 208 pruebas. Gates secuencial sin controles de código concurrentes. Primera ampliación de componentes 85 correctas/1 fallo por referencia a nav desmontado del test; corregida y repetición 86/86. Typecheck inicial del harness falló por pathname posiblemente undefined; corregido con URL y repetición correcta.
+
+Smoke Chromium con proxy/API/SQLite temporal: cliente PT fuera del selector, importes históricos ajenos a configuración actual, 21 registros en 20/1, orden/recarga, 503 de historial con ficha conservada/reintento, retorno contextual, query inválida/restablecimiento, ID inválido/404 y alta→ficha completa/historial vacío. Cuatro anchos 320/390/768/1440 sin desbordamiento; cero errores de página y capturas escritorio/móvil revisadas. Recursos cerrados/temporales limpiados. Sin cambios API/shared productivo/lockfile/dependencias ni datos existentes.
+
+RF2–RF4 conformes incrementalmente; RF5 y E2E mantenido/revisión exhaustiva quedan en T05. Sin aceptación humana final, commits o pushes del agente.
+
+Cierre documental: pnpm.cmd test:docs (2 pruebas), pnpm.cmd format:check y git diff --check correctos, código 0.
 
 ## T03 — Alta integrada y recuperación segura
 

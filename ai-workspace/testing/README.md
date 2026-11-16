@@ -1,5 +1,7 @@
 # Evidencias de pruebas
 
+- [007-T04 — Ficha e historial](007-customers-ui-t04.md): 208 pruebas globales y smoke con importes históricos, páginas 20/1 y errores independientes.
+
 - [007-T03 — Alta integrada](007-customers-ui-t03.md): 171 pruebas globales y flujo real 422→201→listado/409 sobre SQLite temporal.
 
 - [007-T02 — Adaptador/listado/búsqueda](007-customers-ui-t02.md): 152 pruebas globales y smoke con proxy/API/SQLite temporal, con logs conservados.

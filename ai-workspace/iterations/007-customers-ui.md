@@ -1,5 +1,19 @@
 # 007 — Iteración de desarrollo
 
+## T04 — Inicio
+
+16 de noviembre de 2026. Alex autoriza ficha e historial. Estado Git inicial limpio. Revisados spec/plan/tasks y contratos shared para reutilizar DTO y paginación, con importes guardados y backend autoritativo. [Instrucción previa](../prompts/007-customers-ui.md#t04--instrucción-previa-de-implementación). Resultados pendientes.
+
+Ficha, tarjetas e historial implementados con recursos independientes y historyOffset validado en URL. Se extraen validación de páginas y gestión GET cancelable para reutilizarlas entre listado/ficha/historial, manteniendo la interfaz de useCustomers. El histórico valida estructura/coherencia de datos guardados sin aplicar tarifas actuales; formato EUR exacto incluso en el límite entero seguro.
+
+Primera ampliación de componentes: 85 correctas/1 fallo por referencia del test al nav desmontado durante carga. Corregida consulta al nav vigente; repetición 86/86. Typecheck detectó pathname posiblemente undefined en el harness del test; corregido usando URL. Build posterior correcto. Estas incidencias fueron del harness, sin atribuir éxito a sus primeras ejecuciones.
+
+Smoke Chromium contra proxy/API/SQLite temporal pasa: historial de 21 registros en páginas 20/1, EUR histórico fuera de política actual, 503 de historial sin perder ficha/reintento, retorno contextual, recarga, URL inválida, ID inválido/404 y alta→ficha completa/historial vacío. Anchos 320/390/768/1440 sin desbordamiento; capturas escritorio/móvil inspeccionadas. Regresión global y cierre documental en curso.
+
+Regresión global posterior a reutilizar useApiResource en listado: 208/208 pruebas correctas, lint/typecheck/build pasan. [Salida y límites](../testing/007-customers-ui-t04.md), [revisión](../reviews/007-customers-ui-t04.md), [capturas](../visuals/007-customers-ui-t04.md). API/shared productivo/lockfile sin cambios, recursos temporales cerrados/limpiados. T05 pendiente de instrucción; aceptación humana final no registrada.
+
+Cierre documental con dos pruebas de docs, formato global y diff check correctos, código 0.
+
 ## T03 — Inicio
 
 16 de noviembre de 2026. Alex autoriza formulario de alta y continúa registro de progreso de 007. Se revisa transporte GET y contratos antes de implementar. [Instrucción previa](../prompts/007-customers-ui.md#t03--instrucción-previa-de-implementación). Estado inicial Git limpio; resultados pendientes.

@@ -1,5 +1,7 @@
 # Revisiones
 
+- [007-T04 — Ficha e historial](007-customers-ui-t04.md): identidad/contratos, histórico EUR, estados/carreras y cierre incremental.
+
 - [007-T03 — Alta integrada](007-customers-ui-t03.md): formulario, contratos, recuperación segura y límites de ficha/E2E posteriores.
 
 - [007-T02 — Listado integrado](007-customers-ui-t02.md): contratos/estados/carreras y evidencia en navegador real.

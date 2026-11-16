@@ -1,10 +1,10 @@
 # 007 — Listado, alta y ficha de clientes
 
-Estado: decisiones confirmadas por Alex; T01–T03 completadas técnicamente. T04–T05 pendientes de indicación. Sin aceptación humana final.
+Estado: decisiones confirmadas por Alex; T01–T04 completadas técnicamente. T05 pendiente de indicación. Sin aceptación humana final.
 
 ## Contexto y fuentes
 
-Hacer accesibles las operaciones de clientes mediante pantallas en español. T01–T03 aportan shell, listado/búsqueda y alta integrada; ficha e historial quedan para T04. Los módulos FX existentes continúan sin integración visual.
+Hacer accesibles las operaciones de clientes mediante pantallas en español. T01–T04 aportan shell, listado/búsqueda, alta, ficha e historial persistido. T05 realizará E2E mantenido y revisión global. Los módulos FX existentes continúan sin integración visual.
 
 Fuentes: decisiones de Alex en esta conversación y revisión visual completa de las cuatro páginas de interfaces.pdf, facilitado en `C:/Users/alope/Desktop/roams/interfaces.pdf`. Pantallas: listado, alta, ficha con historial y simulador. Las tres primeras guían 007; el simulador queda fuera. El PDF es referencia visual, no fuente de nuevos planes, tarifas, datos reales o endpoints. La ubicación es externa al repositorio; no se ha copiado el documento ni se garantiza su disponibilidad en otro equipo.
 

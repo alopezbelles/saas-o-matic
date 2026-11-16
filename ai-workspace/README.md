@@ -1,5 +1,9 @@
 # Desarrollo asistido por IA — SaaS-O-Matic
 
+## 007 — Ficha e historial T04
+
+[Instrucción previa](prompts/007-customers-ui.md#t04--instrucción-previa-de-implementación), [iteración](iterations/007-customers-ui.md#t04--inicio), [pruebas y salida global](testing/007-customers-ui-t04.md), [revisión](reviews/007-customers-ui-t04.md) y [capturas](visuals/007-customers-ui-t04.md). 208 pruebas globales y smoke real con API/SQLite temporal correctos. T05 y aceptación humana final pendientes. Entradas siguientes conservan resultados históricos.
+
 ## 007 — Alta integrada T03
 
 [Instrucción previa](prompts/007-customers-ui.md#t03--instrucción-previa-de-implementación), [iteración](iterations/007-customers-ui.md#t03--inicio), [pruebas y log global](testing/007-customers-ui-t03.md), [revisión](reviews/007-customers-ui-t03.md) y [capturas](visuals/007-customers-ui-t03.md). 171 pruebas globales y smoke con API/SQLite temporal correctos. T04–T05 y aceptación humana final pendientes. Las entradas siguientes conservan resultados históricos de cada fase.

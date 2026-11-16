@@ -1,5 +1,9 @@
 # Verificación
 
+## 007 — T04
+
+WEB-DETAIL-API-01 valida identidad/DTO/snapshots/paginación y coherencia de importes guardados sin aplicar tarifas vigentes. WEB-DETAIL-01/WEB-STATE-01 cubren ficha/404/ID inválido, estados independientes, reintento, historial vacío/fuera de rango/query inválida, historyOffset/atrás/retorno y carreras/abortos. Formato EUR probado en cero y máximo entero seguro. Suite global 208 correcta; smoke Chromium con 21 registros temporales acredita historial 20/1/recarga, 503 independiente, retorno y alta→ficha. [Evidencia y límites](../ai-workspace/testing/007-customers-ui-t04.md). T05 conserva E2E mantenido y revisión exhaustiva pendientes.
+
 ## 007 — T03
 
 WEB-API-02 y WEB-FORM-01 cubren POST de cinco campos/201/DTO, países del servidor, planes compartidos, validación local, errores asociados/foco, 422/409/503, envío único, red/timeout/201 ilegible, reintento explícito de configuración y aborto al desmontar. Pruebas de ruta verifican creación→ID persistido y cancelación/retorno conservando búsqueda y página. 49 pruebas de componentes/transporte y 171 globales correctas. Smoke Chromium con proxy/API/SQLite temporal comprueba 422 fiscal→corrección→201 persistido→listado y 409, a cuatro anchos sin desbordamiento. [Evidencia y límites](../ai-workspace/testing/007-customers-ui-t03.md). E2E mantenido y revisión exhaustiva corresponden a T05.

@@ -49,3 +49,55 @@ export function customerInputFixture() {
     planCode: 'DEMO_BASIC' as const,
   };
 }
+
+export function simulationFixture(
+  index = 1,
+  customerId = customerFixture().id,
+) {
+  return {
+    id: '10000000-0000-4000-8000-' + String(index).padStart(12, '0'),
+    customerId,
+    users: 2,
+    storageGb: 50,
+    apiCalls: 10000,
+    currency: 'EUR',
+    baseCents: 2468,
+    taxCents: 123,
+    totalCents: 2591,
+    taxRateBps: 500,
+    pricingVersion: 'historical-price-v0',
+    taxPolicyVersion: 'historical-tax-v0',
+    breakdown: [
+      {
+        tierFrom: 1,
+        tierTo: 2,
+        quantity: 2,
+        unitPriceCents: 1234,
+        subtotalCents: 2468,
+      },
+    ],
+    createdAt: '2026-01-01T12:00:00.000Z',
+    customerSnapshot: {
+      companyName: 'Nombre histórico',
+      taxIdNormalized: 'HISTORICAL',
+      countryCode: 'PT',
+      planCode: 'DEMO_PRO',
+    },
+  };
+}
+
+export function historyFixture(
+  count = 1,
+  total = count,
+  offset = 0,
+  customerId = customerFixture().id,
+) {
+  return {
+    items: Array.from({ length: count }, (_, index) =>
+      simulationFixture(offset + index + 1, customerId),
+    ),
+    total,
+    limit: 20,
+    offset,
+  };
+}

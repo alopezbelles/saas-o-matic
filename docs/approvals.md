@@ -1,5 +1,9 @@
 # Autorización y alcance
 
+## 007 — T04
+
+Alex autoriza T04 el 16 de noviembre de 2026: ficha, tarjetas, historial persistido paginado, estados independientes y pruebas aisladas. Registro continuo en ai-workspace autorizado. Sin nuevas dependencias, backend, migraciones, datos existentes ni acciones futuras de simulador. T05 requiere indicación posterior. Sin commits/pushes ni aceptación humana final.
+
 ## 007 — T03
 
 Alex autoriza T03 el 16 de noviembre de 2026: formulario de alta integrado, configuración de países, POST, recuperación ante errores y pruebas aisladas. Continúa el registro de progreso en ai-workspace. T04–T05 requieren indicación posterior. Sin nuevas dependencias, cambios de backend, datos existentes, commits/pushes ni aceptación humana final.
