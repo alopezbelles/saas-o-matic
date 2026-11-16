@@ -75,7 +75,9 @@ it('WEB-SIM-01 initializes the fields at zero/EUR, synchronizes slider and numbe
   expect(users()).toHaveValue('0');
   expect(screen.getByLabelText(/Almacenamiento contratado/)).toHaveValue('0');
   expect(screen.getByLabelText(/Llamadas API estimadas/)).toHaveValue('0');
-  expect(screen.getByText('Moneda de cálculo: EUR')).toBeInTheDocument();
+  expect(
+    screen.getByRole('combobox', { name: 'Divisa de visualización' }),
+  ).toHaveValue('EUR');
   const slider = screen.getByRole('slider', {
     name: 'Usuarios activos (deslizador)',
   });

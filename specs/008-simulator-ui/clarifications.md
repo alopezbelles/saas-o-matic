@@ -31,4 +31,4 @@ Referencias: [002](../002-persistence/clarifications.md), [004](../004-billing/c
 
 «Ver detalle»/pantalla individual de simulación fuera de 008; incorporarlos requiere decisión separada y revisión de contratos/rutas. No se deducen del PDF.
 
-La preparación se limitó a spec.md, plan.md, tasks.md, clarifications.md y validation.md. Después Alex autorizó T01 y sus cambios de implementación/contexto; se mantiene exclusión de ai-workspace hasta nueva indicación y de datos existentes. T02–T05 requieren instrucción posterior. Sin commits/pushes ni aceptación humana anticipada.
+La preparación se limitó a spec.md, plan.md, tasks.md, clarifications.md y validation.md. Después Alex autorizó T01 y T02 con cambios de implementación/contexto; se mantiene exclusión de ai-workspace hasta nueva indicación y de datos existentes. T03–T05 requieren instrucción posterior. Sin commits/pushes ni aceptación humana anticipada.

@@ -1,8 +1,7 @@
 .panel {
   display: grid;
-  gap: var(--space-6);
-  padding: var(--space-6);
-  max-width: var(--form-width);
+  grid-template-rows: auto 1fr;
+  min-width: 0;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-medium);
@@ -11,6 +10,31 @@
 .panel h2 {
   font-size: 1.25rem;
   margin: 0;
+  padding: var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.body {
+  display: grid;
+  gap: var(--space-6);
+  padding: var(--space-6);
+  align-content: start;
+  min-width: 0;
+}
+.usersRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 7rem;
+  align-items: center;
+  gap: var(--space-4);
+}
+.currency {
+  display: grid;
+  gap: var(--space-2);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+.currency label {
+  font-weight: 600;
 }
 .fields {
   display: grid;
@@ -53,7 +77,11 @@
   font-size: var(--font-size-small);
 }
 @media (max-width: 40rem) {
-  .panel {
+  .body,
+  .panel h2 {
     padding: var(--space-4);
+  }
+  .usersRow {
+    grid-template-columns: minmax(0, 1fr) 6rem;
   }
 }

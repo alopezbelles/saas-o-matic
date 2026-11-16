@@ -1,5 +1,9 @@
 # Autorización y alcance
 
+## 008 — T02
+
+Alex autoriza T02: preview/desglose/impuestos EUR y conversión de total mediante infraestructura existente; ajustar composición a referencia con dos tarjetas responsive y slider/número alineados. Mantener exclusión ai-workspace, sin POST, nuevas dependencias, datos existentes ni cambios de motor/tarifas. T03–T05 requieren indicación posterior. Sin commits/pushes ni aceptación humana final.
+
 ## 008 — T01
 
 Alex autoriza T01: pantalla de nueva simulación, carga cliente/configuración, compatibilidad, controles/borrador y navegación. Mantener exclusión de ai-workspace hasta nueva indicación. Reutilizar límites/guardas y herramientas, sin cálculo/FX/POST todavía, sin nuevas dependencias o datos existentes. T02–T05 requieren indicación posterior; sin commits/pushes ni aceptación humana final.

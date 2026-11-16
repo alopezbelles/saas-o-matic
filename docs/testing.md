@@ -1,5 +1,9 @@
 # Verificación
 
+## 008 — T02
+
+WEB-SIM-01/02 y WEB-FX-008 verifican oráculos EUR, plan/metadata sin cargos, borrador inválido/overflow, conversión solo total, fechas/atribución, caché, errores/reintento, caducidad/foco y respuestas antiguas. Regresiones específicas impiden reintento por vaciar/corregir y mostrar tasa caducada al volver desde EUR. 247 pruebas globales correctas (125 componentes/transporte) y 16 E2E, con tres nuevas de T02: API/SQLite temporal y proveedor FX controlado. Cuatro anchos/geometría/capturas comprobados. [Evidencia y límites](../specs/008-simulator-ui/validation.md#t02--preview-desglose-y-conversión). Sin prueba externa nueva de CORS ni guardado de simulación.
+
 ## 008 — T01
 
 WEB-SIM-01/02 comprueban borrador entero, fronteras, vacío/fracción/exceso y sincronización; WEB-CONFIG-008 distingue formato/compatibilidad, política fiscal del servidor y estados/reintentos/carreras/retorno. 235 pruebas globales correctas, incluidas 113 componentes/transporte. Dos E2E añadidas al runner existente: nueva pantalla con API/Vite/SQLite temporal, límites/teclado/retorno/ausencia FX y POST, y país fuera de política. Total 13 Playwright correctas; cuatro anchos sin desbordamiento. [Evidencia canónica y fallos corregidos](../specs/008-simulator-ui/validation.md#t01--pantalla-clienteconfiguración-e-inputs). Precio, FX y guardado no acreditados por T01.

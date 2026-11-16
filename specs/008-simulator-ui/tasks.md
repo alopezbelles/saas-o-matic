@@ -1,6 +1,6 @@
 # Tareas 008
 
-Estado: decisiones 008-C01…C07 confirmadas. T01 completada técnicamente; T02–T05 pendientes de indicación. IDs canónicos 008-T01…T05. Sin aceptación humana final ni commits/pushes del agente.
+Estado: decisiones 008-C01…C07 confirmadas. T01–T02 completadas técnicamente; T03–T05 pendientes de indicación. IDs canónicos 008-T01…T05. Sin aceptación humana final ni commits/pushes del agente.
 
 ## T01 — Pantalla, cliente/configuración e inputs
 
@@ -14,13 +14,13 @@ Estado: decisiones 008-C01…C07 confirmadas. T01 completada técnicamente; T02�
 
 ## T02 — Preview, desglose y conversión
 
-- [ ] **008-T02**. RF1/RF2/RF4.
+- [x] **008-T02**. RF1/RF2/RF4, con guardado/resultado confirmado pendientes de T03.
 - Dependencia: T01; decisiones FX/compatibilidad confirmadas.
 - Acciones: motor con firma real y política validada, desglose EUR, selector EUR/USD/GBP solo para total del simulador y resultado confirmado mediante 006; fechas/atribución/estados/carreras. Historial permanece EUR sin selector FX.
 - Destinos propuestos: PricingBreakdown/SimulationSummary y hooks; reutilizar motor/cliente sin tarifas nuevas.
 - Pruebas: WEB-SIM-01/02, WEB-CONFIG-008, WEB-FX-008 y monetarias conservadas; ante fallo/caducidad FX, total EUR identificado y reintento explícito, manteniendo guardado EUR disponible cuando el resto sea válido.
 - Hecho cuando: preview corresponde al borrador válido, sin cargos extra, conversión de líneas o configuración incompatible presentada como válida.
-- Evidencia: NO EJECUTADO.
+- Evidencia: [validación T02](validation.md#t02--preview-desglose-y-conversión), 247 pruebas globales y 16 E2E correctas; oráculos EUR, FX controlado/errores/caducidad/carreras, dos columnas y reflujo comprobados. Sin POST; integración del resultado guardado en T03.
 
 ## T03 — Guardado autoritativo y discrepancias
 

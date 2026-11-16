@@ -1,6 +1,10 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router';
-import { parseCustomerId } from '@saas-o-matic/shared';
+import { parseCustomerId, type CurrencyCode } from '@saas-o-matic/shared';
+import { useSimulationQuote } from '../useSimulationQuote';
+import { SimulationSummary } from '../components/SimulationSummary';
+import { CurrencySelector } from '../components/CurrencySelector';
+import page from './SimulationCreatePage.module.css';
 import { getCustomer } from '../../customers/api/customers';
 import {
   getBillingConfiguration,
@@ -41,7 +45,8 @@ function SimulationSetup() {
   );
   const customer = useApiResource(id ?? '', id ? loadCustomer : null);
   const config = useApiResource(id ?? '', id ? loadConfig : null);
-  const { draft, sliderValue, setField } = useConsumptionDraft();
+  const { draft, sliderValue, setField, consumption } = useConsumptionDraft();
+  const [currency, setCurrency] = useState<CurrencyCode>('EUR');
   const compatible =
     config.state.status === 'success' &&
     isBillingConfigurationCompatible(config.state.value);
@@ -58,6 +63,13 @@ function SimulationSetup() {
     compatible &&
     supported;
   const back = id ? simulationReturn(id, location.state) : null;
+  const preview = useSimulationQuote(
+    consumption,
+    ready && customer.state.status === 'success'
+      ? customer.state.value.countryCode
+      : null,
+    ready && config.state.status === 'success' ? config.state.value : null,
+  );
 
   return (
     <section className={layout.page} aria-labelledby="page-heading">
@@ -66,7 +78,7 @@ function SimulationSetup() {
           Simular suscripción
         </h1>
         <p className={layout.description}>
-          Introduce el consumo estimado de tu cliente.
+          Ajusta el consumo y revisa el coste mensual antes de guardar.
         </p>
         {customer.state.status === 'success' && (
           <p>
@@ -142,19 +154,38 @@ function SimulationSetup() {
             actual.
           </p>
         ) : null)}
-      <ConsumptionInputs
-        draft={draft}
-        sliderValue={sliderValue}
-        disabled={!ready}
-        onChange={setField}
-      />
-      {back ? (
-        <Link to={back.to} state={back.state}>
-          Volver al cliente
-        </Link>
-      ) : (
-        <Link to={customersReturnTo(location.state)}>Volver a clientes</Link>
-      )}
+      <div className={page.columns}>
+        <ConsumptionInputs
+          draft={draft}
+          sliderValue={sliderValue}
+          disabled={!ready}
+          onChange={setField}
+        >
+          <CurrencySelector
+            currency={currency}
+            onChange={setCurrency}
+            disabled={!ready}
+          />
+        </ConsumptionInputs>
+        <SimulationSummary
+          preview={preview}
+          countryCode={
+            customer.state.status === 'success'
+              ? customer.state.value.countryCode
+              : ''
+          }
+          currency={currency}
+        />
+      </div>
+      <div className={page.actions}>
+        {back ? (
+          <Link className={styles.button} to={back.to} state={back.state}>
+            Volver al cliente
+          </Link>
+        ) : (
+          <Link to={customersReturnTo(location.state)}>Volver a clientes</Link>
+        )}
+      </div>
     </section>
   );
 }

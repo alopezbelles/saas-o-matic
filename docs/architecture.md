@@ -1,5 +1,11 @@
 # Arquitectura
 
+## Simulador 008 — T02
+
+useSimulationQuote coordina borrador validado y calculateQuote de shared con TaxPolicy del servidor; devuelve estados explícitos para evitar presupuesto anterior ante inputs inválidos/overflow. PricingBreakdown presenta exclusivamente EUR; SimulationSummary coordina total y conversión mediante convertCurrency. El formato monetario exacto con Intl/BigInt se comparte para EUR/USD/GBP, manteniendo formatEuro para historial.
+
+useExchangeRates adapta cliente 006 a React sin otra caché ni cancelación de peticiones compartidas. La consulta depende de divisa/configuración disponible y reintento, no del importe o validez temporal del borrador; esto evita reintentos implícitos al editar. Timer/cambio de visibilidad/foco retiran tasas caducadas. Respuestas anteriores ignoradas y reintento explícito; resultado inválido/fallido vuelve a EUR. Sin cambios de motor/backend/persistencia o POST en T02.
+
 ## Simulador 008 — T01
 
 SimulationCreatePage monta un borrador nuevo por cliente y reutiliza recursos GET cancelables de 007 para cliente/configuración. ConsumptionInputs presenta campos/slider; parsers reutilizan assertConsumption expuesto desde shared, sin copiar límites/reglas. El contrato completo de configuración reside en customers/api/billing-configuration.ts, junto a la proyección de países existente, y distingue formato de compatibilidad contra getPricingConfiguration/CONSUMPTION_LIMITS. Tasas fiscales del servidor, sin catálogo web paralelo.

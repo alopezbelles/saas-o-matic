@@ -1,5 +1,9 @@
 # Trazabilidad
 
+## Simulador 008 — T02
+
+RF1/RF2 conformes para preview local: límites y motor compartido con oráculos, sin cargos por plan/storage/API. RF4 parcial: selector y total convertido, fechas/atribución, error/caducidad/reintento/carreras; resultado confirmado pendiente de T03. RF3/RF5 no implementados. WEB-SIM-01/02, WEB-FX-008 y tres E2E específicas verifican funcionalidades y geometría responsive. [Validación T02](../specs/008-simulator-ui/validation.md#t02--preview-desglose-y-conversión). Sin ai-workspace por indicación de Alex ni aceptación humana final.
+
 ## Simulador 008 — T01
 
 RF1/RF2 parciales: inputs/configuración/navegación verificados, sin preview monetario ni POST. WEB-SIM-01/02, WEB-CONFIG-008 y dos E2E reales comprueban fronteras, contrato/compatibilidad, estado/retorno y país no soportado. RF3–RF5 siguen pendientes de tareas posteriores. [Validación T01](../specs/008-simulator-ui/validation.md#t01--pantalla-clienteconfiguración-e-inputs). Registro ai-workspace excluido por Alex; conformidad técnica distinta de aceptación humana.

@@ -1,16 +1,36 @@
 # Validación 008
 
-Estado: decisiones 008-C01…C07 confirmadas, T01 completada técnicamente. Inputs/navegación/configuración probados; RF1/RF2 parciales hasta cálculo/guardado. T02–T05 pendientes. Los estados de preparación siguientes conservan su contexto histórico.
+Estado: decisiones 008-C01…C07 confirmadas, T01–T02 completadas técnicamente. RF1/RF2 conformes para preview; RF4 parcial en visualización, pendiente de resultado guardado/T03. RF3/RF5 y T03–T05 pendientes. Los estados anteriores conservan su contexto histórico.
 
 ## Matriz prevista
 
-| RF      | Tareas      | Pruebas previstas                                  | Resultado real         |
-| ------- | ----------- | -------------------------------------------------- | ---------------------- |
-| 008-RF1 | T01/T02/T05 | WEB-SIM-01, WEB-CONFIG-008, E2E-SIMULATIONS-008    | PARCIAL: INPUTS/CONFIG |
-| 008-RF2 | T01/T02/T05 | WEB-SIM-02, E2E-SIMULATIONS-008                    | PARCIAL: INPUTS        |
-| 008-RF3 | T03/T04/T05 | WEB-SAVE-008, WEB-HISTORY-008, E2E-SIMULATIONS-008 | NO EJECUTADO           |
-| 008-RF4 | T02/T04/T05 | WEB-FX-008, WEB-HISTORY-008, E2E-SIMULATIONS-008   | NO EJECUTADO           |
-| 008-RF5 | T03/T04/T05 | WEB-POLICY-008, E2E-SIMULATIONS-008                | NO EJECUTADO           |
+| RF      | Tareas      | Pruebas previstas                                  | Resultado real      |
+| ------- | ----------- | -------------------------------------------------- | ------------------- |
+| 008-RF1 | T01/T02/T05 | WEB-SIM-01, WEB-CONFIG-008, E2E-SIMULATIONS-008    | CONFORME PREVIEW    |
+| 008-RF2 | T01/T02/T05 | WEB-SIM-02, E2E-SIMULATIONS-008                    | CONFORME PREVIEW    |
+| 008-RF3 | T03/T04/T05 | WEB-SAVE-008, WEB-HISTORY-008, E2E-SIMULATIONS-008 | NO EJECUTADO        |
+| 008-RF4 | T02/T04/T05 | WEB-FX-008, WEB-HISTORY-008, E2E-SIMULATIONS-008   | PARCIAL: FX PREVIEW |
+| 008-RF5 | T03/T04/T05 | WEB-POLICY-008, E2E-SIMULATIONS-008                | NO EJECUTADO        |
+
+## T02 — Preview, desglose y conversión
+
+16 de noviembre de 2026, base 170187a, Git inicial limpio. Alex autoriza T02 y ajuste visual a referencia. [Instrucción previa](plan.md#conversión). Se mantiene exclusión ai-workspace. Conformidad técnica T02; aceptación humana final no registrada.
+
+useSimulationQuote integra calculateQuote de shared con política fiscal validada del servidor; no replica tramos, precios o impuestos. Preview inválido/overflow retira total anterior. PricingBreakdown mantiene EUR y SimulationSummary convierte solo total mediante 006. Formato exacto con Intl/BigInt reutilizado por historial, sin modificarlo. Tasas/caché/petición compartida del cliente existente; hook adapta carga/error/reintento/caducidad y descarta respuestas anteriores, sin cancelar solicitudes compartidas.
+
+La disponibilidad del recurso FX depende de configuración/divisa, no del valor o invalidez temporal de consumos; editar/vaciar/corregir tras fallo no provoca reintento implícito. Expiración mediante timer y revisión al recuperar foco/visibilidad. Cambio de selección limpia el resultado anterior antes de presentarlo, incluyendo volver de EUR a una divisa caducada. Fallo/caducidad/malformación/overflow de conversión vuelve a EUR identificado, sin tasa antigua ni POST. EUR no consulta proveedor.
+
+Dos tarjetas de escritorio con cabecera/separador, slider/número en fila, selector y total verde mediante token; una columna móvil y acción de retorno. Pantalla se aproxima a la referencia adaptada a tokens/fuente/límites acordados. Guardar y resultado confirmado siguen pendientes de T03; el componente de resumen será reutilizable para ese resultado, sin afirmar integración ya realizada.
+
+Oráculos independientes ES: usuarios 0→0,00; 10→121,00; 11→130,68; 15→169,40; 50→508,20; 51→514,25; 1000→6255,70 EUR. A 15: base 140,00/impuesto 29,40; con tasas de fixture USD 1,2 y GBP 0,8: 203,28 USD/135,52 GBP. Storage/API no alteran precio y plan profesional conserva tarifa. WEB-SIM-01/02 y WEB-FX-008 cubren invalidación, plan, overflow monetario, conversión/fecha/atribución, caché entre importes/divisas, fallo/reintento, datos inválidos/caducados, respuestas tardías y limpieza de timers/listeners. Regresiones específicas de vaciado/corrección sin retry y regreso a divisa caducada.
+
+Lint/typecheck/build correctos. pnpm.cmd test devuelve código 0: 36 shared + 12 API unitarias + 49 integración + 22 node web + 125 componentes/transporte + 1 gates + 2 docs = 247 pruebas. Gates sin otros controles de código simultáneos. pnpm.cmd test:e2e devuelve código 0: 16 correctas, sin retries/omisiones, 3 nuevas de T02. API/Vite/SQLite real temporal y FX interceptado con fixture controlado: preview/desglose, ausencia de cargos extra, moneda/caché/carreras/error/reintento y ningún POST. No se atribuye al proveedor real el resultado del fixture.
+
+Cuatro anchos 320/390/768/1440 sin desbordamiento; posiciones de tarjetas y slider/campo alineados comprobadas por geometría en navegador. Escritorio/móvil inspeccionados. Reportes/capturas y salida global temporales en .cache/007-e2e y .cache/008-t02-test.txt, sin trasladarlos a ai-workspace. Regresión de 007/T01 conservada. Primera ampliación de componentes 119/119 correcta; typecheck del harness detectó Promise de tipo unknown en mock diferido, se explicitó ExchangeRates y las ejecuciones posteriores pasan. Revisión posterior añadió regresiones/corrección de reintentos por borrador y selección caducada; no se ocultan esas iteraciones como si la primera versión fuera final.
+
+Sin cambios de motor/shared productivo/API/lockfile, dependencias nuevas, persistencia o datos existentes. Recursos temporales cerrados/limpiados. Compatibilidad y países de T01 mantenidos. Guardado/resultado autoritativo e historial tras guardar, revisión visual/contraste exhaustiva del conjunto y aceptación humana quedan en tareas posteriores. Sin commits/pushes.
+
+Cierre documental: pnpm.cmd test:docs (2 pruebas), pnpm.cmd format:check y git diff --check correctos, código 0. Auditoría git diff --exit-code -- ai-workspace apps/api packages/shared/src pnpm-lock.yaml devuelve 0; .cache/002-tests vacío.
 
 ## T01 — Pantalla, cliente/configuración e inputs
 

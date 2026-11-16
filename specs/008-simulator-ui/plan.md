@@ -1,6 +1,6 @@
 # Plan 008 — Simulador interactivo y guardado
 
-Estado: decisiones 008-C01…C07 confirmadas. T01 completada técnicamente; T02–T05 requieren indicación posterior. Resultados reales en validation.md; sin aceptación humana final.
+Estado: decisiones 008-C01…C07 confirmadas. T01–T02 completadas técnicamente; T03–T05 requieren indicación posterior. Resultados reales en validation.md; sin aceptación humana final.
 
 ## Reutilización y responsabilidades
 
@@ -34,6 +34,8 @@ TaxPolicy es una entrada validada del motor: versión y tasas proceden del servi
 Borrador string validado antes de motor/POST. Slider/número 0..1000 paso 1. Inicializar los tres consumos con el borrador «0» y seleccionar EUR; no solicitar FX para EUR ni guardar automáticamente al montar o cambiar campos. Borrador inválido no deja presupuesto anterior presentado como vigente ni guardar habilitado.
 
 ## Conversión
+
+Instrucción previa de T02 (16 de noviembre de 2026, antes de código): Alex autoriza preview/desglose/FX y ajuste visual a la referencia. Integrar calculateQuote/convertCurrency/cliente 006, dos tarjetas responsive, slider/número alineados y selector de total. Mantener importes EUR, retirar preview inválido y conversiones caducadas, gestionar red/error/reintento/carreras sin cancelar solicitudes compartidas ni consultar por importe. Validar fronteras/oráculos independientes y UI con proveedor simulado/controlado; navegador con DB temporal. Sin POST, dependencias nuevas, ai-workspace o commits/pushes.
 
 Usar convertCurrency desde totalCents EUR y tasa decimal validada, sin convertir líneas/base/impuesto ni encadenar monedas. EUR sin red; USD/GBP con cliente existente, fecha/atribución y estados. Ignorar respuestas antiguas al cambiar cliente/divisa; no cancelar destructivamente solicitudes FX compartidas.
 

@@ -1,5 +1,9 @@
 # Diseño funcional y visual
 
+## Simulador 008 — T02
+
+Composición de dos tarjetas alineadas en escritorio, «Consumo estimado» y «Resumen mensual», con cabeceras separadas, slider/campo en fila, selector de divisa y total destacado en verde mediante token semántico. Reflujo en una columna móvil, manteniendo fuente del sistema y límites acordados. Desglose EUR; solo total convertido con fecha/atribución, carga/error/reintento y equivalente EUR. No botón de guardado hasta T03. [Validación T02](../specs/008-simulator-ui/validation.md#t02--preview-desglose-y-conversión). Capturas temporales, sin registros ai-workspace por indicación vigente.
+
 ## Simulador 008 — T01
 
 Base visual con título/contexto del cliente, tarjeta de consumos, slider/campo de usuarios, almacenamiento/llamadas y retorno a ficha. CSS Modules y tokens de 007, bordes accesibles y estados con errores asociados. Campos cero y EUR; ningún importe, selector FX o acción de guardado antes de sus tareas. Cuatro anchos sin desbordamiento y capturas de escritorio/móvil inspeccionadas en entorno temporal. La columna de resumen del PDF llega en T02. [Validación](../specs/008-simulator-ui/validation.md#t01--pantalla-clienteconfiguración-e-inputs). Sin registros ai-workspace por indicación vigente.
