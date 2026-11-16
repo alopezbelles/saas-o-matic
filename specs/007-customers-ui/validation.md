@@ -1,18 +1,32 @@
 # Validación 007
 
-Estado: T01–T04 completadas técnicamente. RF1–RF4 conformes en pruebas incrementales; RF5 parcial hasta revisión global T05. E2E mantenido, revisión exhaustiva y aceptación humana final pendientes. Preparación documental histórica conservada debajo.
+Estado: T01–T05 completadas técnicamente. RF1–RF5 conformes en el alcance comprobado, con límites explícitos de accesibilidad/navegador. 209 pruebas globales y 11 E2E correctas. Aceptación humana final no registrada; fases anteriores conservadas como historial.
 
 ## Matriz prevista
 
-| RF      | Tareas      | Pruebas previstas                                          | Resultado funcional real |
-| ------- | ----------- | ---------------------------------------------------------- | ------------------------ |
-| 007-RF1 | T02/T05     | WEB-API-01, WEB-SEARCH-01, WEB-STATE-01, E2E-CUSTOMERS-007 | CONFORME LISTADO         |
-| 007-RF2 | T03/T04/T05 | WEB-FORM-01, WEB-STATE-01, E2E-CUSTOMERS-007               | CONFORME ALTA Y FICHA    |
-| 007-RF3 | T04/T05     | WEB-DETAIL-01, E2E-CUSTOMERS-007                           | CONFORME INCREMENTAL     |
-| 007-RF4 | T02/T04/T05 | WEB-SEARCH-01, WEB-DETAIL-01, E2E-CUSTOMERS-007            | CONFORME INCREMENTAL     |
-| 007-RF5 | T01–T05     | WEB-SHELL-01, WEB-STATE-01, VISUAL-007 y E2E               | PARCIAL: SHELL PROBADO   |
+| RF      | Tareas      | Pruebas previstas                                          | Resultado funcional real  |
+| ------- | ----------- | ---------------------------------------------------------- | ------------------------- |
+| 007-RF1 | T02/T05     | WEB-API-01, WEB-SEARCH-01, WEB-STATE-01, E2E-CUSTOMERS-007 | CONFORME LISTADO          |
+| 007-RF2 | T03/T04/T05 | WEB-FORM-01, WEB-STATE-01, E2E-CUSTOMERS-007               | CONFORME ALTA Y FICHA     |
+| 007-RF3 | T04/T05     | WEB-DETAIL-01, E2E-CUSTOMERS-007                           | CONFORME CON E2E          |
+| 007-RF4 | T02/T04/T05 | WEB-SEARCH-01, WEB-DETAIL-01, E2E-CUSTOMERS-007            | CONFORME CON E2E          |
+| 007-RF5 | T01–T05     | WEB-SHELL-01, WEB-STATE-01, VISUAL-007 y E2E               | CONFORME ALCANCE REVISADO |
 
-WEB-SHELL-01, WEB-API-01/02, WEB-DETAIL-01, listado y alta se ejecutan con Vitest/RTL. node:test de 006/smoke conservado. E2E mantenido y revisión global pendientes de T05. Estados siguientes de T01–T03 conservan su contexto histórico.
+WEB-SHELL-01, WEB-API-01/02 y WEB-DETAIL-01 se ejecutan con Vitest/RTL. node:test de 006/smoke conservado. E2E-CUSTOMERS-007/VISUAL-007 se ejecutan mediante pnpm test:e2e, por separado de pnpm test. Estados siguientes de T01–T04 conservan su contexto histórico.
+
+## T05 — E2E real, revisión visual y cierre global
+
+16 de noviembre de 2026, base 8a947eb. [Instrucción previa](../../ai-workspace/prompts/007-customers-ui.md#t05--instrucción-previa-de-implementación), [iteración](../../ai-workspace/iterations/007-customers-ui.md#t05--inicio), [pruebas y salidas reales](../../ai-workspace/testing/007-customers-ui-t05.md), [revisión final](../../ai-workspace/reviews/007-customers-ui-t05.md) y [capturas](../../ai-workspace/visuals/007-customers-ui-t05.md).
+
+Runner Playwright mantenido con DB por prueba, API/Vite en puertos propios y Chromium del proyecto. Scripts raíz/web y descarga local de navegador documentados; no requiere servidores personales. 11 E2E pasan, sin skips/retries/flaky: alta fiscal/corrección/201/persistencia/ficha/duplicado, búsqueda/paginación/atrás/adelante/retorno, historial EUR/503 independiente/recarga, vacíos/404/query inválida, tres pantallas a 320/390/768/1440, zoom de layout 200 %/reflujo equivalente, teclado/foco y contraste.
+
+Dos incidencias de producto corregidas: borde de input/select/búsqueda pasa de 1,355:1 a 3,628:1 mediante token específico; paginación/reintento restablece foco en encabezado si el control desapareció, sin robar foco elegido durante espera. Regresión específica de este límite añadida. Primera revisión E2E 9 correctas/2 fallos, siguiente 10/1; ambos históricos y correcciones conservados. Fallo inicial del harness al asumir foco en body y globals DOM del runner también corregidos.
+
+Lint/typecheck/build y pnpm.cmd test correctos, código 0. 36 shared + 12 API unitarias + 49 integración + 22 node web + 87 componentes/transporte + 1 gates + 2 docs = 209 pruebas. E2E se ejecuta aparte: 11, no sumarlo a una supuesta suite única. Gates sin otros controles de código simultáneos. Capturas reales escritorio/móvil/zoom inspeccionadas. API/shared productivo/lockfile sin cambios; sin dependencias nuevas ni DB existente, recursos propios cerrados/limpiados.
+
+Límites: Chromium local; no Safari/Firefox, lector de pantalla real, menú nativo de zoom o despliegue. Zoom se verifica mediante layout CSS 2× y reflujo equivalente de 640 px para 1280 físicos; no interacción con zoom del navegador. Contraste medido en textos/acciones/campos/error/foco representativos, no certificación exhaustiva WCAG. Conformidad técnica RF1–RF5 dentro de este alcance; aceptación humana final pendiente, sin commits/pushes.
+
+Cierre documental: pnpm.cmd test:docs (2 pruebas), pnpm.cmd format:check y git diff --check correctos, código 0. Reportes originales de Playwright excluidos de reformateo para conservar sus bytes.
 
 ## T04 — Ficha e historial persistido
 

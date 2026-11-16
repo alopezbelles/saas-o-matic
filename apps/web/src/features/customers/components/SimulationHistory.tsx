@@ -3,6 +3,7 @@ import { useLocation, useSearchParams } from 'react-router';
 import { listSimulations } from '../api/simulations';
 import { ApiRequestError } from '../api/http';
 import { useApiResource } from '../useApiResource';
+import { useQueryFocus } from '../useQueryFocus';
 import {
   HISTORY_PAGE_SIZE,
   historySearch,
@@ -31,12 +32,21 @@ export function SimulationHistory({ customerId }: { customerId: string }) {
     JSON.stringify([customerId, query]),
     query ? load : null,
   );
-  const changePage = (offset: number) =>
+  const requestFocus = useQueryFocus(
+    state.key,
+    state.status,
+    'history-heading',
+  );
+  const changePage = (offset: number) => {
+    requestFocus();
     setSearchParams(historySearch(offset), { state: location.state });
+  };
 
   return (
     <section className={detail.history} aria-labelledby="history-heading">
-      <h2 id="history-heading">Historial de simulaciones</h2>
+      <h2 id="history-heading" tabIndex={-1}>
+        Historial de simulaciones
+      </h2>
       {!query ? (
         <div className={styles.status} role="alert">
           <p>La dirección contiene parámetros de historial no válidos.</p>
@@ -54,7 +64,13 @@ export function SimulationHistory({ customerId }: { customerId: string }) {
               ? 'El historial de este cliente ya no está disponible.'
               : 'No se ha podido cargar el historial. Los datos del cliente siguen disponibles.'}
           </p>
-          <button className={styles.button} onClick={retry}>
+          <button
+            className={styles.button}
+            onClick={() => {
+              requestFocus();
+              retry();
+            }}
+          >
             Reintentar historial
           </button>
         </div>

@@ -304,4 +304,27 @@ describe('WEB-DETAIL-01 and WEB-STATE-01', () => {
     unmount();
     await waitFor(() => expect(signal?.aborted).toBe(true));
   });
+
+  it('keeps focus chosen by the user while a history page is pending', async () => {
+    let resolve!: (response: Response) => void;
+    mount(async (url) => {
+      if (!url.includes('simulations')) return jsonResponse(customerFixture());
+      const offset = Number(
+        new URL(url, 'http://local').searchParams.get('offset'),
+      );
+      if (offset === 20)
+        return new Promise((done) => {
+          resolve = done;
+        });
+      return jsonResponse(historyFixture(20, 21));
+    });
+    await screen.findByRole('table');
+    await userEvent.click(screen.getByRole('button', { name: 'Historial 20' }));
+    await screen.findByText('Cargando historial…');
+    const link = screen.getByRole('link', { name: 'Volver a clientes' });
+    link.focus();
+    await act(async () => resolve(jsonResponse(historyFixture(1, 21, 20))));
+    await screen.findByText('Mostrando 21–21 de 21');
+    expect(link).toHaveFocus();
+  });
 });

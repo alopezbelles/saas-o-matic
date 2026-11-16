@@ -1,5 +1,17 @@
 # 007 — Instrucciones técnicas
 
+## T05 — Instrucción previa de implementación
+
+16 de noviembre de 2026. Reformulación técnica de la solicitud de Alex, redactada antes de implementar T05; no transcripción literal.
+
+Contexto: T01–T04 completas técnicamente, shell/listado/alta/ficha/historial operativos y herramientas Playwright autorizadas. Objetivo: runner E2E mantenido contra API/Vite/SQLite temporales y revisión final verificable de RF1–RF5.
+
+Acciones: crear fixtures aislados con puertos propios y cierre de recursos, configurar descubrimiento independiente de Vitest/node:test y comandos raíz; cubrir alta fiscal/éxito/ficha, búsqueda/paginación/retorno/recarga e historial guardado. Revisar cuatro anchos, zoom 200 %, teclado/foco y contraste real. Corregir problemas reproducibles dentro de 007 y ejecutar regresión global.
+
+Restricciones: sin nuevas dependencias, servicios, endpoints, datos existentes, simulador/FX o acciones futuras. No usar servidores o perfiles personales, no reutilizar DB real y comprobar ruta antes de limpiar recursos propios. Sin retries que oculten fallos ni snapshots/capturas inventados. Gates secuencial sin otros controles de código simultáneos.
+
+Verificación: E2E reales y negativos, cierre/limpieza, controles globales, documentos enlazados y evidencias con resultados reales. Registrar fallos y correcciones; distinguir alcance comprobado de auditoría exhaustiva/certificación y aceptación humana. Proponer commit sin ejecutarlo.
+
 ## T04 — Instrucción previa de implementación
 
 16 de noviembre de 2026. Reformulación técnica de la solicitud de Alex, redactada antes del código de T04; no transcripción literal.

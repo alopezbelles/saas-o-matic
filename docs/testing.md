@@ -1,5 +1,11 @@
 # Verificación
 
+## 007 — Cierre T05
+
+pnpm test:e2e desde raíz compila API/shared y ejecuta 11 casos Playwright/Chromium: cuatro funcionales y siete visuales/teclado/contraste. DB/contexto propio por caso, puertos efímeros, migraciones/fixtures explícitos y limpieza de recursos. No requiere API/web personales arrancadas. Preparar navegador en instalación nueva con pnpm --filter @saas-o-matic/web test:e2e:install; caché local .cache/playwright. Resultados JSON/capturas/trazas bajo .cache/007-e2e. Vitest y node:test mantienen descubrimiento separado; pnpm test no incluye E2E.
+
+209 pruebas globales y 11 E2E correctas; gates secuencial sin otros controles concurrentes. Revisados 320/390/768/1440, layout 200 %/reflujo equivalente, teclado/foco y contraste representativo; corregidos borde de controles y foco al paginar. [Resultados reales, fallos iniciales y límites](../ai-workspace/testing/007-customers-ui-t05.md). Solo Chromium local, sin certificación exhaustiva ni aceptación humana final.
+
 ## 007 — T04
 
 WEB-DETAIL-API-01 valida identidad/DTO/snapshots/paginación y coherencia de importes guardados sin aplicar tarifas vigentes. WEB-DETAIL-01/WEB-STATE-01 cubren ficha/404/ID inválido, estados independientes, reintento, historial vacío/fuera de rango/query inválida, historyOffset/atrás/retorno y carreras/abortos. Formato EUR probado en cero y máximo entero seguro. Suite global 208 correcta; smoke Chromium con 21 registros temporales acredita historial 20/1/recarga, 503 independiente, retorno y alta→ficha. [Evidencia y límites](../ai-workspace/testing/007-customers-ui-t04.md). T05 conserva E2E mantenido y revisión exhaustiva pendientes.

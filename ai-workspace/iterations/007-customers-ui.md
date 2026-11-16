@@ -1,5 +1,19 @@
 # 007 — Iteración de desarrollo
 
+## T05 — Inicio
+
+16 de noviembre de 2026. Alex autoriza revisión global y E2E mantenido. Git inicial limpio. [Instrucción previa](../prompts/007-customers-ui.md#t05--instrucción-previa-de-implementación). Se revisan runners existentes para separar Playwright de Vitest/node:test y reutilizar aislamiento de DB/puertos. Resultados pendientes.
+
+Se añaden configuración/runner Playwright, fixtures con DB propia por caso y puertos efímeros, cuatro flujos funcionales y siete controles visuales/teclado/contraste. Los cuatro flujos iniciales pasan. Primera revisión ampliada: 9 correctas/2 fallos; el harness asumía foco inicial en body aunque la app enfoca h1, y los bordes de campos tenían contraste 1,355:1. Se corrige el harness con navegación real hacia atrás y se incorpora token de borde de control separado de bordes decorativos.
+
+Repetición: 10 correctas/1 fallo real de foco tras paginar historial. Se añade useQueryFocus compartido con listado para enfocar encabezado cuando el control desaparece durante carga, sin desplazar foco elegido después por el usuario. Prueba de teclado dirigida posterior correcta. Una regresión de componentes comprueba este último límite. Lint detectó globals DOM en callbacks de Playwright .mjs; se hacen explícitos mediante globalThis sin desactivar reglas. Intento de filtro con alternancia «keyboard|contrast» falló en el shell Windows antes de ejecutar pruebas; se repitió la suite y el filtro simple correctamente.
+
+Zoom verificado mediante layout CSS al 200 % y viewport de 640 px equivalente al reflujo de 1280 px físicos al 200 %; no se presenta como interacción con el menú nativo de zoom. Revisión final/controles globales en curso.
+
+Cierre funcional: 11 Playwright correctas, sin skips/retries/flaky; 209 pruebas globales correctas, lint/typecheck/build pasan. Se inspeccionan capturas de las tres pantallas a 1440/320 y zoom; contraste de borde corregido 3,628:1 y textos representativos ≥4,5:1. [Resultados](../testing/007-customers-ui-t05.md), [revisión](../reviews/007-customers-ui-t05.md) y [capturas](../visuals/007-customers-ui-t05.md). Sin cambios API/shared productivo/lockfile o datos existentes; recursos temporales cerrados/limpiados. Aceptación humana final no registrada.
+
+Cierre documental con test:docs (2), formato global y diff check correctos, código 0. Reportes JSON originales protegidos frente a reformateo automático; no se modifican sus resultados.
+
 ## T04 — Inicio
 
 16 de noviembre de 2026. Alex autoriza ficha e historial. Estado Git inicial limpio. Revisados spec/plan/tasks y contratos shared para reutilizar DTO y paginación, con importes guardados y backend autoritativo. [Instrucción previa](../prompts/007-customers-ui.md#t04--instrucción-previa-de-implementación). Resultados pendientes.

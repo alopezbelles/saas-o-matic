@@ -10,7 +10,9 @@
     "typecheck": "tsc --noEmit",
     "test": "pnpm test:node && pnpm test:components",
     "test:node": "pnpm --filter @saas-o-matic/shared build && tsc -p tsconfig.test.json && node --test test/*.test.mjs",
-    "test:components": "vitest run"
+    "test:components": "vitest run",
+    "test:e2e": "node e2e/run.mjs",
+    "test:e2e:install": "node e2e/run.mjs install"
   },
   "dependencies": {
     "@saas-o-matic/shared": "workspace:*",

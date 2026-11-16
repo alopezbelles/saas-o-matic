@@ -1,5 +1,9 @@
 # Autorización y alcance
 
+## 007 — T05
+
+Alex autoriza T05 el 16 de noviembre de 2026: E2E mantenido, revisión visual/teclado/zoom/contraste y cierre técnico de 007. Incluye corregir problemas reproducidos dentro de su alcance, pruebas y actualización documental/ai-workspace. Usa herramientas ya autorizadas, servidores propios y DB temporal; sin datos existentes, nuevos servicios, dependencias, endpoints, commits/pushes ni aceptación humana final.
+
 ## 007 — T04
 
 Alex autoriza T04 el 16 de noviembre de 2026: ficha, tarjetas, historial persistido paginado, estados independientes y pruebas aisladas. Registro continuo en ai-workspace autorizado. Sin nuevas dependencias, backend, migraciones, datos existentes ni acciones futuras de simulador. T05 requiere indicación posterior. Sin commits/pushes ni aceptación humana final.

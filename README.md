@@ -121,6 +121,14 @@ No se ha creado una DB persistente de desarrollo durante la implementación: los
 
 [Modelo y recuperación](docs/data-model.md), [spec 002](specs/002-persistence/spec.md) y [validación](specs/002-persistence/validation.md).
 
+## Interfaz de clientes (007)
+
+Con API y web ejecutándose mediante pnpm dev, abre http://127.0.0.1:5173/customers. Listado con búsqueda/paginación, alta, ficha e historial EUR guardado disponibles. La web consulta /api a través del proxy de desarrollo Vite; en producción será necesario resolver ese prefijo por separado.
+
+Pruebas de navegador desde raíz: pnpm test:e2e. Compila API/shared y ejecuta Playwright con API/Vite en puertos propios y una DB temporal por prueba; no requiere arrancar servidores ni usa registros existentes. En una instalación nueva, descarga primero Chromium en caché del proyecto con pnpm --filter @saas-o-matic/web test:e2e:install. No es una instalación global. Reporte JSON, capturas y trazas de fallo quedan en .cache/007-e2e; no se versionan automáticamente. pnpm test conserva suites unitarias/integración/componentes/gates/docs; E2E se ejecuta aparte.
+
+[Validación y límites de 007](specs/007-customers-ui/validation.md).
+
 ## API de clientes (003)
 
 Inicializa o actualiza la DB explícitamente con pnpm db:migrate antes de usar /customers. /health sigue funcionando sin ella; clientes devuelve 503 si falta el archivo o hay migraciones pendientes.

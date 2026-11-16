@@ -1,5 +1,7 @@
 # Revisiones
 
+- [007-T05 — Revisión final](007-customers-ui-t05.md): RF1–RF5 comprobados, foco/contraste corregidos y aceptación humana pendiente.
+
 - [007-T04 — Ficha e historial](007-customers-ui-t04.md): identidad/contratos, histórico EUR, estados/carreras y cierre incremental.
 
 - [007-T03 — Alta integrada](007-customers-ui-t03.md): formulario, contratos, recuperación segura y límites de ficha/E2E posteriores.

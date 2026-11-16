@@ -1,5 +1,9 @@
 # Diseño funcional y visual
 
+## Revisión final 007-T05
+
+Listar/crear/consultar cliente e historial revisados a 320/390/768/1440 px, con capturas reales; layout al 200 % y reflujo equivalente sin desbordamiento. Teclado cubre salto al contenido, navegación/alta, resumen fiscal y foco al paginar. Contraste medido en colores renderizados representativos: borde de campos corregido a 3,628:1, textos medidos ≥4,5:1 y foco ≥3:1. [Evidencia visual y límites](../ai-workspace/visuals/007-customers-ui-t05.md). No certificación global WCAG, prueba de lector de pantalla o zoom mediante menú nativo. Aceptación humana final no registrada.
+
 ## Ficha implementada en 007-T04
 
 Nombre de empresa como título y país/plan como descripción. Tarjetas «Datos corporativos» y «Contacto» en dos columnas de escritorio y una en móvil, según referencia del PDF. Historial con fecha, usuarios, almacenamiento, llamadas API, EUR y total guardado; páginas de 20 y estados independientes. No se añaden acciones de simulación sin flujo disponible. [Capturas reales y límites](../ai-workspace/visuals/007-customers-ui-t04.md).

@@ -1,0 +1,579 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\alope\\Documents\\saas-o-matic\\node_modules\\.pnpm\\@playwright+test@1.65.1\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\alope\\Documents\\saas-o-matic\\apps\\web\\playwright.config.mjs",
+    "rootDir": "C:/Users/alope/Documents/saas-o-matic/apps/web/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/alope/Documents/saas-o-matic/.cache/007-e2e/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/alope/Documents/saas-o-matic/apps/web/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.mjs"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\alope\\Documents\\saas-o-matic\\.cache\\007-e2e\\results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "C:\\Users\\alope\\Documents\\saas-o-matic\\apps\\web\\e2e",
+        "snapshotDir": "C:\\Users\\alope\\Documents\\saas-o-matic\\apps\\web\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.mjs",
+        "timeout": 30000,
+        "use": {
+          "browserName": "chromium",
+          "headless": true,
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\alope\\Documents\\saas-o-matic\\.cache\\007-e2e\\report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "customers.spec.mjs",
+      "file": "customers.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "E2E-CUSTOMERS-007: fiscal error, correction, persisted creation, detail and duplicate",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3007,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T13:04:46.832Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ae3e38a9c1bfd46c0f79-df1598ab0a89e2fc0e07",
+          "file": "customers.spec.mjs",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "E2E-CUSTOMERS-007: list search, pages, contextual return and back/forward",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2503,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T13:04:50.401Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ae3e38a9c1bfd46c0f79-a79b8d75bd90254467b6",
+          "file": "customers.spec.mjs",
+          "line": 58,
+          "column": 1
+        },
+        {
+          "title": "E2E-CUSTOMERS-007: stored history, independent failure, pagination and direct reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1944,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T13:04:52.939Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ae3e38a9c1bfd46c0f79-5058a4c9e7b0f3956ebc",
+          "file": "customers.spec.mjs",
+          "line": 95,
+          "column": 1
+        },
+        {
+          "title": "E2E-CUSTOMERS-007: empty search, invalid IDs/query and missing client are recoverable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2551,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T13:04:54.902Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ae3e38a9c1bfd46c0f79-f9acdfaf60866e27d641",
+          "file": "customers.spec.mjs",
+          "line": 134,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "visual.spec.mjs",
+      "file": "visual.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "VISUAL-007: list/form/detail reflow at 320px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2267,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T13:04:57.522Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a9e8504622c1797aedfc-8c90050499b6ce14607d",
+          "file": "visual.spec.mjs",
+          "line": 13,
+          "column": 3
+        },
+        {
+          "title": "VISUAL-007: list/form/detail reflow at 390px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2265,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T13:04:59.812Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a9e8504622c1797aedfc-a473cbff2a1ca066c517",
+          "file": "visual.spec.mjs",
+          "line": 13,
+          "column": 3
+        },
+        {
+          "title": "VISUAL-007: list/form/detail reflow at 768px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2083,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T13:05:02.098Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a9e8504622c1797aedfc-4eb3b74344d039da4908",
+          "file": "visual.spec.mjs",
+          "line": 13,
+          "column": 3
+        },
+        {
+          "title": "VISUAL-007: list/form/detail reflow at 1440px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2238,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T13:05:04.204Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a9e8504622c1797aedfc-dde793a630deebe8c504",
+          "file": "visual.spec.mjs",
+          "line": 13,
+          "column": 3
+        },
+        {
+          "title": "VISUAL-007: 200 percent layout zoom retains content and working controls",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3112,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T13:05:06.463Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a9e8504622c1797aedfc-06149d68a0aef19bd603",
+          "file": "visual.spec.mjs",
+          "line": 34,
+          "column": 1
+        },
+        {
+          "title": "VISUAL-007: keyboard navigation, skip link, validation summary and history focus",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6304,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('link', { name: 'Saltar al contenido' })\nExpected: focused\nReceived: inactive\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByRole('link', { name: 'Saltar al contenido' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('link', { name: 'Saltar al contenido' })\u001b[22m\n\u001b[2m    14 × locator resolved to <a href=\"#main-content\" class=\"_skipLink_1wjp2_53\">Saltar al contenido</a>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('link', { name: 'Saltar al contenido' })\nExpected: focused\nReceived: inactive\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByRole('link', { name: 'Saltar al contenido' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('link', { name: 'Saltar al contenido' })\u001b[22m\n\u001b[2m    14 × locator resolved to <a href=\"#main-content\" class=\"_skipLink_1wjp2_53\">Saltar al contenido</a>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n    at C:\\Users\\alope\\Documents\\saas-o-matic\\apps\\web\\e2e\\visual.spec.mjs:84:22",
+                    "location": {
+                      "file": "C:\\Users\\alope\\Documents\\saas-o-matic\\apps\\web\\e2e\\visual.spec.mjs",
+                      "column": 22,
+                      "line": 84
+                    },
+                    "snippet": " \u001b[90m 82 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mkeyboard\u001b[33m.\u001b[39mpress(\u001b[32m'Tab'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 83 |\u001b[39m   \u001b[36mconst\u001b[39m skip \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'link'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Saltar al contenido'\u001b[39m })\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 84 |\u001b[39m   \u001b[36mawait\u001b[39m expect(skip)\u001b[33m.\u001b[39mtoBeFocused()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 85 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mkeyboard\u001b[33m.\u001b[39mpress(\u001b[32m'Enter'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 86 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'main'\u001b[39m))\u001b[33m.\u001b[39mtoBeFocused()\u001b[33m;\u001b[39m\n \u001b[90m 87 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mkeyboard\u001b[33m.\u001b[39mpress(\u001b[32m'Tab'\u001b[39m)\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\alope\\Documents\\saas-o-matic\\apps\\web\\e2e\\visual.spec.mjs",
+                        "column": 22,
+                        "line": 84
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('link', { name: 'Saltar al contenido' })\nExpected: focused\nReceived: inactive\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByRole('link', { name: 'Saltar al contenido' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('link', { name: 'Saltar al contenido' })\u001b[22m\n\u001b[2m    14 × locator resolved to <a href=\"#main-content\" class=\"_skipLink_1wjp2_53\">Saltar al contenido</a>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n\n  82 |   await page.keyboard.press('Tab');\n  83 |   const skip = page.getByRole('link', { name: 'Saltar al contenido' });\n> 84 |   await expect(skip).toBeFocused();\n     |                      ^\n  85 |   await page.keyboard.press('Enter');\n  86 |   await expect(page.getByRole('main')).toBeFocused();\n  87 |   await page.keyboard.press('Tab');\n    at C:\\Users\\alope\\Documents\\saas-o-matic\\apps\\web\\e2e\\visual.spec.mjs:84:22"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T13:05:09.593Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\alope\\Documents\\saas-o-matic\\.cache\\007-e2e\\results\\visual-VISUAL-007-keyboard-0b798-n-summary-and-history-focus\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\alope\\Documents\\saas-o-matic\\.cache\\007-e2e\\results\\visual-VISUAL-007-keyboard-0b798-n-summary-and-history-focus\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\alope\\Documents\\saas-o-matic\\.cache\\007-e2e\\results\\visual-VISUAL-007-keyboard-0b798-n-summary-and-history-focus\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\alope\\Documents\\saas-o-matic\\apps\\web\\e2e\\visual.spec.mjs",
+                    "column": 22,
+                    "line": 84
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a9e8504622c1797aedfc-30e071b9af20283adf1a",
+          "file": "visual.spec.mjs",
+          "line": 72,
+          "column": 1
+        },
+        {
+          "title": "VISUAL-007: rendered text, actions, controls and focus meet measured contrast thresholds",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1952,
+                  "error": {
+                    "message": "Error: input boundary contrast\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m3\u001b[39m\nReceived:    \u001b[31m1.3552023096715469\u001b[39m",
+                    "stack": "Error: input boundary contrast\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m3\u001b[39m\nReceived:    \u001b[31m1.3552023096715469\u001b[39m\n    at C:\\Users\\alope\\Documents\\saas-o-matic\\apps\\web\\e2e\\visual.spec.mjs:194:53",
+                    "location": {
+                      "file": "C:\\Users\\alope\\Documents\\saas-o-matic\\apps\\web\\e2e\\visual.spec.mjs",
+                      "column": 53,
+                      "line": 194
+                    },
+                    "snippet": " \u001b[90m 192 |\u001b[39m       \u001b[36mconst\u001b[39m boundary \u001b[33m=\u001b[39m contrast(rendered\u001b[33m.\u001b[39mborder\u001b[33m,\u001b[39m rendered\u001b[33m.\u001b[39mbackground)\u001b[33m;\u001b[39m\n \u001b[90m 193 |\u001b[39m       measurements\u001b[33m.\u001b[39mpush({ name\u001b[33m,\u001b[39m kind\u001b[33m:\u001b[39m \u001b[32m'boundary'\u001b[39m\u001b[33m,\u001b[39m ratio\u001b[33m:\u001b[39m boundary })\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 194 |\u001b[39m       expect(boundary\u001b[33m,\u001b[39m name \u001b[33m+\u001b[39m \u001b[32m' boundary contrast'\u001b[39m)\u001b[33m.\u001b[39mtoBeGreaterThanOrEqual(\u001b[35m3\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 195 |\u001b[39m     }\n \u001b[90m 196 |\u001b[39m   }\n \u001b[90m 197 |\u001b[39m   \u001b[36mawait\u001b[39m submit\u001b[33m.\u001b[39mfocus()\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\alope\\Documents\\saas-o-matic\\apps\\web\\e2e\\visual.spec.mjs",
+                        "column": 53,
+                        "line": 194
+                      },
+                      "message": "Error: input boundary contrast\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m3\u001b[39m\nReceived:    \u001b[31m1.3552023096715469\u001b[39m\n\n  192 |       const boundary = contrast(rendered.border, rendered.background);\n  193 |       measurements.push({ name, kind: 'boundary', ratio: boundary });\n> 194 |       expect(boundary, name + ' boundary contrast').toBeGreaterThanOrEqual(3);\n      |                                                     ^\n  195 |     }\n  196 |   }\n  197 |   await submit.focus();\n    at C:\\Users\\alope\\Documents\\saas-o-matic\\apps\\web\\e2e\\visual.spec.mjs:194:53"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T13:05:18.396Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\alope\\Documents\\saas-o-matic\\.cache\\007-e2e\\results\\visual-VISUAL-007-rendered-522b1-easured-contrast-thresholds\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\alope\\Documents\\saas-o-matic\\.cache\\007-e2e\\results\\visual-VISUAL-007-rendered-522b1-easured-contrast-thresholds\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\alope\\Documents\\saas-o-matic\\.cache\\007-e2e\\results\\visual-VISUAL-007-rendered-522b1-easured-contrast-thresholds\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\alope\\Documents\\saas-o-matic\\apps\\web\\e2e\\visual.spec.mjs",
+                    "column": 53,
+                    "line": 194
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a9e8504622c1797aedfc-ecda1a402193b24804ce",
+          "file": "visual.spec.mjs",
+          "line": 161,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-16T13:04:43.055Z",
+    "duration": 38043.48,
+    "expected": 9,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

@@ -1,5 +1,17 @@
 # Trazabilidad
 
+## Clientes UI 007 — Cierre T05
+
+| RF  | Evidencia final                                                                                                           |
+| --- | ------------------------------------------------------------------------------------------------------------------------- |
+| RF1 | E2E listado/búsqueda/paginación/atrás/adelante/retorno y suites WEB-SEARCH/API                                            |
+| RF2 | E2E fiscal incorrecto→corrección→201 persistido→ficha/recarga/duplicado y WEB-FORM                                        |
+| RF3 | E2E historial guardado 20/1, 503 independiente/reintento/recarga, vacíos/404 y WEB-DETAIL                                 |
+| RF4 | E2E estado URL/retorno y regresiones de carreras/abortos conservadas                                                      |
+| RF5 | VISUAL-007: tres pantallas/cuatro anchos, layout 200 %, teclado/foco/contraste y regresión de foco elegido durante espera |
+
+Conformidad técnica RF1–RF5 dentro del alcance comprobado; 209 pruebas globales + 11 E2E ejecutadas por separado. [Validación final](../specs/007-customers-ui/validation.md#t05--e2e-real-revisión-visual-y-cierre-global), [revisión](../ai-workspace/reviews/007-customers-ui-t05.md). Límites de Chromium/zoom/contraste explícitos; aceptación humana final pendiente. Entradas siguientes conservan estados de sus fases históricas.
+
 ## Clientes UI 007 — T04
 
 RF2 completa navegación alta→ficha real; RF3/RF4 conformes en pruebas incrementales de lectura/estados/carreras. RF5 añade tarjetas e historial responsive; revisión global T05 pendiente. WEB-DETAIL-API-01/WEB-DETAIL-01/WEB-STATE-01 y navegador real verifican ID inválido/404, historial vacío/fuera de rango, reintentos independientes, URL/retorno, aborto/respuestas antiguas e importes EUR históricos sin recálculo. [Validación](../specs/007-customers-ui/validation.md#t04--ficha-e-historial-persistido), [pruebas](../ai-workspace/testing/007-customers-ui-t04.md), [revisión](../ai-workspace/reviews/007-customers-ui-t04.md).

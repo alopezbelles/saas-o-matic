@@ -5,3 +5,5 @@ dist
 pnpm-lock.yaml
 .agents/
 .codex/
+# Reportes originales de Playwright conservados sin reformatear.
+ai-workspace/testing/007-customers-ui-t05-*.json

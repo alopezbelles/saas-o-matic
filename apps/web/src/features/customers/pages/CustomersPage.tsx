@@ -7,6 +7,7 @@ import {
   parseListLocation,
 } from '../list-location';
 import { useCustomers } from '../useCustomers';
+import { useQueryFocus } from '../useQueryFocus';
 import { CustomerList } from '../components/CustomerList';
 import styles from '../components/Customers.module.css';
 import layout from '../../../app/AppLayout.module.css';
@@ -27,6 +28,11 @@ export function CustomersPage() {
   if (search.query !== q) setSearch({ query: q, value: q });
   const draft = search.query === q ? search.value : q;
   const { state, retry } = useCustomers(query);
+  const requestFocus = useQueryFocus(state.key, state.status, 'page-heading');
+  const changePage = (offset: number) => {
+    requestFocus();
+    setSearchParams(listSearch(q, offset));
+  };
 
   useEffect(() => {
     if (!query || draft === q) return;
@@ -105,7 +111,14 @@ export function CustomersPage() {
       ) : state.status === 'error' ? (
         <div className={styles.status} role="alert">
           <p>{state.message}</p>
-          <button type="button" className={styles.button} onClick={retry}>
+          <button
+            type="button"
+            className={styles.button}
+            onClick={() => {
+              requestFocus();
+              retry();
+            }}
+          >
             Reintentar
           </button>
         </div>
@@ -148,12 +161,7 @@ export function CustomersPage() {
                 type="button"
                 disabled={query.offset === 0}
                 onClick={() =>
-                  setSearchParams(
-                    listSearch(
-                      query.q,
-                      Math.max(0, query.offset - CUSTOMER_PAGE_SIZE),
-                    ),
-                  )
+                  changePage(Math.max(0, query.offset - CUSTOMER_PAGE_SIZE))
                 }
               >
                 Anterior
@@ -162,11 +170,7 @@ export function CustomersPage() {
                 className={styles.button}
                 type="button"
                 disabled={!nextPageAllowed(query, state.page.total)}
-                onClick={() =>
-                  setSearchParams(
-                    listSearch(query.q, query.offset + CUSTOMER_PAGE_SIZE),
-                  )
-                }
+                onClick={() => changePage(query.offset + CUSTOMER_PAGE_SIZE)}
               >
                 Siguiente
               </button>

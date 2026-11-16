@@ -1,6 +1,6 @@
 # Plan 007 — Interfaz de clientes
 
-Estado: decisiones confirmadas y T01–T04 completadas técnicamente, con registro en ai-workspace durante implementación. T05 requiere indicación posterior.
+Estado: T01–T05 completadas técnicamente, con registro continuo en ai-workspace. Runner E2E desde raíz mediante pnpm test:e2e; resultados y límites en validation.md. Aceptación humana final no registrada.
 
 ## Instrucción técnica previa
 
@@ -28,7 +28,7 @@ React Router para navegación. Vitest, @testing-library/react, @testing-library/
 
 Añadir enlace interno web→shared workspace:* cuando se consuma shared en runtime/tipos, con build reproducible. No importar rutas fuente internas de otro paquete. Mantener los tests node:test de FX y smoke, añadiendo ejecución de componentes sin retirarlos ni duplicarlos accidentalmente. Vitest no debe recoger archivos de node:test ni estos recoger pruebas de componentes. No usar passWithNoTests.
 
-Playwright tendrá configuración/flujo real en T05. No crear un test:e2e vacío en T01. Preparar navegador dedicado del runner sin perfiles personales ni instalación global; documentar bloqueo si el entorno no permite arrancar. No sustituir una prueba de navegador pendiente por mocks exitosos.
+Playwright dispone desde T05 de configuración y flujos reales en apps/web/e2e, separados de Vitest/node:test. pnpm test:e2e compila API/shared y ejecuta Chromium con fixtures aislados; no usa perfiles personales ni instalación global. La caché del navegador vive en .cache/playwright. No sustituir pruebas de navegador por mocks exitosos.
 
 ## Tokens y presentación
 

@@ -67,6 +67,7 @@ test('el contexto identifica la spec activa y los comandos documentados existen'
     'test:web',
     'test:gates',
     'test:docs',
+    'test:e2e',
     'db:generate',
     'db:migrate',
     'db:demo:init',

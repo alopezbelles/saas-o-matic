@@ -1,5 +1,7 @@
 # Evidencias de pruebas
 
+- [007-T05 — Cierre global/E2E](007-customers-ui-t05.md): 209 pruebas globales y 11 Playwright, reportes originales, fallos corregidos y límites explícitos.
+
 - [007-T04 — Ficha e historial](007-customers-ui-t04.md): 208 pruebas globales y smoke con importes históricos, páginas 20/1 y errores independientes.
 
 - [007-T03 — Alta integrada](007-customers-ui-t03.md): 171 pruebas globales y flujo real 422→201→listado/409 sobre SQLite temporal.

@@ -22,6 +22,7 @@
     "test:web": "pnpm --filter @saas-o-matic/web build && pnpm --filter @saas-o-matic/web test",
     "test:gates": "node --test test/gates.test.mjs",
     "test:docs": "node --test test/docs.test.mjs",
+    "test:e2e": "pnpm --filter @saas-o-matic/api... build && pnpm --filter @saas-o-matic/web test:e2e",
     "db:generate": "pnpm --filter @saas-o-matic/shared build && pnpm --filter @saas-o-matic/api db:generate",
     "db:migrate": "pnpm --filter @saas-o-matic/api... build && pnpm --filter @saas-o-matic/api db:migrate",
     "db:demo:init": "pnpm --filter @saas-o-matic/api... build && pnpm --filter @saas-o-matic/api db:demo:init",

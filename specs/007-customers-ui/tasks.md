@@ -1,6 +1,6 @@
 # Tareas 007
 
-Estado global: T01–T04 completadas técnicamente, T05 pendiente. Progreso registrado en ai-workspace. Cada fase posterior requiere instrucción. Sin aceptación humana final ni commits/pushes del agente.
+Estado global: T01–T05 completadas técnicamente. Progreso registrado en ai-workspace. Sin aceptación humana final ni commits/pushes del agente.
 
 ## T01 — Base visual, rutas y herramientas
 
@@ -44,13 +44,13 @@ Estado global: T01–T04 completadas técnicamente, T05 pendiente. Progreso regi
 
 ## T05 — E2E real, revisión visual y cierre global
 
-- [ ] **007-T05**. RF: RF1–RF5.
+- [x] **007-T05**. RF: RF1–RF5.
 - Dependencia: T04.
 - Acciones: configurar Playwright y script E2E real; flujo alta→ficha y listado/retorno/historial contra backend/SQLite temporales; verificar recargas directas y proxy de desarrollo. Revisar PDF adaptado, estados y responsive/teclado; actualizar docs globales/validación con resultados reales.
 - Destinos: configuración/fixtures/tests Playwright, scripts, docs pertinentes y validation.md. Capturas reales y registro ai-workspace autorizado desde T01.
 - Verificación: E2E-CUSTOMERS-007, VISUAL-007 y controles globales del plan. No ejecutar test:gates en paralelo con otros controles de código. No tocar DB existente.
 - Hecho cuando: RF trazados a evidencia, suites anteriores conservadas, navegadores/recursos temporales cerrados, limitaciones declaradas y revisión técnica diferenciada de aceptación humana. Un fallo del navegador no acredita responsive/E2E por inspección.
-- Evidencia real: NO EJECUTADO.
+- Evidencia real: [validación T05](validation.md#t05--e2e-real-revisión-visual-y-cierre-global); 209 pruebas globales y 11 Playwright correctas sin retries/omisiones. Cuatro anchos, zoom de layout 200 %/reflujo equivalente, teclado y contraste medidos. Bordes de controles y foco al paginar corregidos. Sin certificación global ni aceptación humana final.
 
 ## Procedimiento común
 

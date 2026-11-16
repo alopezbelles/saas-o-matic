@@ -1,5 +1,11 @@
 # Arquitectura
 
+## Web 007 — Cierre T05
+
+Playwright tiene configuración y fixtures en apps/web/e2e, con descubrimiento independiente de src/test y test/*.test.mjs. Cada caso crea DB marcada/contexto temporal, API Express y Vite con puertos propios; valida la configuración real del proxy y sustituye solo target para aislarlo. La limpieza comprueba ruta/propiedad tras cerrar recursos. Runner fija caché local de Chromium; no usa perfil o servidores personales. Scripts root/web permiten ejecutar E2E y preparar navegador aparte de pnpm test.
+
+useQueryFocus comparte recuperación de foco tras paginación/reintento de listado e historial; solo enfoca el encabezado si el control se retiró y el usuario no eligió otro foco durante la espera. Token --color-control-border separa el contraste de inputs/selects/búsqueda de bordes decorativos. No hay cambios de contratos/backend/DB ni nuevas dependencias.
+
 ## Web 007 — T04
 
 CustomerDetailPage obtiene el cliente y CustomerCards presenta datos corporativos/contacto. SimulationHistory consulta su recurso por separado y conserva la ficha durante carga/fallo/reintento. historyOffset vive en URL; el contexto de retorno se conserva al paginar. ID inválido no provoca requests; 404 se distingue de error temporal.

@@ -1,5 +1,9 @@
 # Desarrollo asistido por IA — SaaS-O-Matic
 
+## 007 — Cierre técnico T05
+
+[Instrucción previa](prompts/007-customers-ui.md#t05--instrucción-previa-de-implementación), [iteración](iterations/007-customers-ui.md#t05--inicio), [pruebas y reportes originales](testing/007-customers-ui-t05.md), [revisión final](reviews/007-customers-ui-t05.md), [capturas](visuals/007-customers-ui-t05.md) y [validación canónica](../specs/007-customers-ui/validation.md#t05--e2e-real-revisión-visual-y-cierre-global). 209 pruebas globales y 11 E2E correctas. Correcciones reales de contraste/foco documentadas, con límites de navegador/zoom/accesibilidad. Aceptación humana final no registrada; entradas siguientes conservan estados históricos.
+
 ## 007 — Ficha e historial T04
 
 [Instrucción previa](prompts/007-customers-ui.md#t04--instrucción-previa-de-implementación), [iteración](iterations/007-customers-ui.md#t04--inicio), [pruebas y salida global](testing/007-customers-ui-t04.md), [revisión](reviews/007-customers-ui-t04.md) y [capturas](visuals/007-customers-ui-t04.md). 208 pruebas globales y smoke real con API/SQLite temporal correctos. T05 y aceptación humana final pendientes. Entradas siguientes conservan resultados históricos.

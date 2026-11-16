@@ -1,0 +1,505 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\alope\\Documents\\saas-o-matic\\node_modules\\.pnpm\\@playwright+test@1.65.1\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\alope\\Documents\\saas-o-matic\\apps\\web\\playwright.config.mjs",
+    "rootDir": "C:/Users/alope/Documents/saas-o-matic/apps/web/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/alope/Documents/saas-o-matic/.cache/007-e2e/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/alope/Documents/saas-o-matic/apps/web/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.mjs"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\alope\\Documents\\saas-o-matic\\.cache\\007-e2e\\results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "C:\\Users\\alope\\Documents\\saas-o-matic\\apps\\web\\e2e",
+        "snapshotDir": "C:\\Users\\alope\\Documents\\saas-o-matic\\apps\\web\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.mjs",
+        "timeout": 30000,
+        "use": {
+          "browserName": "chromium",
+          "headless": true,
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\alope\\Documents\\saas-o-matic\\.cache\\007-e2e\\report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "customers.spec.mjs",
+      "file": "customers.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "E2E-CUSTOMERS-007: fiscal error, correction, persisted creation, detail and duplicate",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2942,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T13:09:38.630Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ae3e38a9c1bfd46c0f79-df1598ab0a89e2fc0e07",
+          "file": "customers.spec.mjs",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "E2E-CUSTOMERS-007: list search, pages, contextual return and back/forward",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2544,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T13:09:42.059Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ae3e38a9c1bfd46c0f79-a79b8d75bd90254467b6",
+          "file": "customers.spec.mjs",
+          "line": 58,
+          "column": 1
+        },
+        {
+          "title": "E2E-CUSTOMERS-007: stored history, independent failure, pagination and direct reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1782,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T13:09:44.621Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ae3e38a9c1bfd46c0f79-5058a4c9e7b0f3956ebc",
+          "file": "customers.spec.mjs",
+          "line": 95,
+          "column": 1
+        },
+        {
+          "title": "E2E-CUSTOMERS-007: empty search, invalid IDs/query and missing client are recoverable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2401,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T13:09:46.422Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ae3e38a9c1bfd46c0f79-f9acdfaf60866e27d641",
+          "file": "customers.spec.mjs",
+          "line": 134,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "visual.spec.mjs",
+      "file": "visual.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "VISUAL-007: list/form/detail reflow at 320px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2039,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T13:09:48.863Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a9e8504622c1797aedfc-8c90050499b6ce14607d",
+          "file": "visual.spec.mjs",
+          "line": 13,
+          "column": 3
+        },
+        {
+          "title": "VISUAL-007: list/form/detail reflow at 390px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2013,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T13:09:50.918Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a9e8504622c1797aedfc-a473cbff2a1ca066c517",
+          "file": "visual.spec.mjs",
+          "line": 13,
+          "column": 3
+        },
+        {
+          "title": "VISUAL-007: list/form/detail reflow at 768px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2055,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T13:09:52.955Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a9e8504622c1797aedfc-4eb3b74344d039da4908",
+          "file": "visual.spec.mjs",
+          "line": 13,
+          "column": 3
+        },
+        {
+          "title": "VISUAL-007: list/form/detail reflow at 1440px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2112,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T13:09:55.030Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a9e8504622c1797aedfc-dde793a630deebe8c504",
+          "file": "visual.spec.mjs",
+          "line": 13,
+          "column": 3
+        },
+        {
+          "title": "VISUAL-007: 200 percent layout zoom retains content and working controls",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2572,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T13:09:57.159Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a9e8504622c1797aedfc-06149d68a0aef19bd603",
+          "file": "visual.spec.mjs",
+          "line": 34,
+          "column": 1
+        },
+        {
+          "title": "VISUAL-007: keyboard navigation, skip link, validation summary and history focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2242,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T13:09:59.753Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a9e8504622c1797aedfc-30e071b9af20283adf1a",
+          "file": "visual.spec.mjs",
+          "line": 72,
+          "column": 1
+        },
+        {
+          "title": "VISUAL-007: rendered text, actions, controls and focus meet measured contrast thresholds",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1549,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T13:10:02.014Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "contrast-measurements",
+                      "contentType": "application/json",
+                      "body": "WwogIHsKICAgICJuYW1lIjogImRlc2NyaXB0aW9uIiwKICAgICJraW5kIjogInRleHQiLAogICAgInJhdGlvIjogNS43NDkxNTExOTMxODQ4MjQKICB9LAogIHsKICAgICJuYW1lIjogImhpbnQiLAogICAgImtpbmQiOiAidGV4dCIsCiAgICAicmF0aW8iOiA2LjI3ODUxMzg3OTU1MDEyOQogIH0sCiAgewogICAgIm5hbWUiOiAiaW5wdXQiLAogICAgImtpbmQiOiAidGV4dCIsCiAgICAicmF0aW8iOiAxNC4xMDIwMzQ0NDg0NTY4OTEKICB9LAogIHsKICAgICJuYW1lIjogImlucHV0IiwKICAgICJraW5kIjogImJvdW5kYXJ5IiwKICAgICJyYXRpbyI6IDMuNjI4Mjk2NjAzNTgwODE5CiAgfSwKICB7CiAgICAibmFtZSI6ICJjb3VudHJ5IiwKICAgICJraW5kIjogInRleHQiLAogICAgInJhdGlvIjogMTQuMTAyMDM0NDQ4NDU2ODkxCiAgfSwKICB7CiAgICAibmFtZSI6ICJjb3VudHJ5IiwKICAgICJraW5kIjogImJvdW5kYXJ5IiwKICAgICJyYXRpbyI6IDMuNjI4Mjk2NjAzNTgwODE5CiAgfSwKICB7CiAgICAibmFtZSI6ICJwcmltYXJ5IiwKICAgICJraW5kIjogInRleHQiLAogICAgInJhdGlvIjogNi4wMjAxNjI4OTI3MjY3ODUKICB9LAogIHsKICAgICJuYW1lIjogImNhbmNlbCIsCiAgICAia2luZCI6ICJ0ZXh0IiwKICAgICJyYXRpbyI6IDYuMDIwMTYyODkyNzI2Nzg1CiAgfSwKICB7CiAgICAibmFtZSI6ICJpbmxpbmUgZXJyb3IiLAogICAgImtpbmQiOiAidGV4dCIsCiAgICAicmF0aW8iOiA2LjU3NDI4ODYxNTU3NzA3CiAgfQpd"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a9e8504622c1797aedfc-ecda1a402193b24804ce",
+          "file": "visual.spec.mjs",
+          "line": 174,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-16T13:09:35.087Z",
+    "duration": 28674.220999999998,
+    "expected": 11,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
