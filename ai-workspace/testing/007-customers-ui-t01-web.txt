@@ -1,0 +1,187 @@
+﻿
+> saas-o-matic@0.0.0 test:web C:\Users\alope\Documents\saas-o-matic
+> pnpm --filter @saas-o-matic/web build && pnpm --filter @saas-o-matic/web test
+
+
+> @saas-o-matic/web@0.0.0 build C:\Users\alope\Documents\saas-o-matic\apps\web
+> tsc --noEmit && vite build
+
+vite v8.3.8 building client environment for production...
+transforming...
+✓ 27 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.39 kB │ gzip:  0.26 kB
+dist/assets/index-BLwGHsdP.css    3.77 kB │ gzip:  1.23 kB
+dist/assets/index-DiSw8cHw.js   262.01 kB │ gzip: 83.08 kB
+
+✓ built in 312ms
+
+> @saas-o-matic/web@0.0.0 test C:\Users\alope\Documents\saas-o-matic\apps\web
+> pnpm test:node && pnpm test:components
+
+
+> @saas-o-matic/web@0.0.0 test:node C:\Users\alope\Documents\saas-o-matic\apps\web
+> pnpm --filter @saas-o-matic/shared build && tsc -p tsconfig.test.json && node --test test/*.test.mjs
+
+
+> @saas-o-matic/shared@0.0.0 build C:\Users\alope\Documents\saas-o-matic\packages\shared
+> tsc
+
+TAP version 13
+# (node:20804) ExperimentalWarning: The MockTimers API is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: 006-T04: EUR needs no provider, even while a foreign request is pending
+ok 1 - 006-T04: EUR needs no provider, even while a foreign request is pending
+  ---
+  duration_ms: 37.8863
+  type: 'test'
+  ...
+# Subtest: 006-T04: concurrent currencies and subsequent reads share a single immutable result
+ok 2 - 006-T04: concurrent currencies and subsequent reads share a single immutable result
+  ---
+  duration_ms: 3.1747
+  type: 'test'
+  ...
+# Subtest: 006-T04: exact expiry discards old cache and refreshes once for concurrent calls
+ok 3 - 006-T04: exact expiry discards old cache and refreshes once for concurrent calls
+  ---
+  duration_ms: 1.9871
+  type: 'test'
+  ...
+# Subtest: 006-T04: network, HTTP, JSON and logical failures are recoverable without automatic retries
+ok 4 - 006-T04: network, HTTP, JSON and logical failures are recoverable without automatic retries
+  ---
+  duration_ms: 9.8035
+  type: 'test'
+  ...
+# Subtest: 006-T04: failed refresh cannot return stale data
+ok 5 - 006-T04: failed refresh cannot return stale data
+  ---
+  duration_ms: 1.6625
+  type: 'test'
+  ...
+# Subtest: 006-T04: expiry during body download is checked at completion
+ok 6 - 006-T04: expiry during body download is checked at completion
+  ---
+  duration_ms: 0.8925
+  type: 'test'
+  ...
+# Subtest: 006-T04: timeout aborts even an uncooperative fetch and late data cannot overwrite recovery
+ok 7 - 006-T04: timeout aborts even an uncooperative fetch and late data cannot overwrite recovery
+  ---
+  duration_ms: 15.9025
+  type: 'test'
+  ...
+# Subtest: 006-T04: timeout also covers a stalled JSON body
+ok 8 - 006-T04: timeout also covers a stalled JSON body
+  ---
+  duration_ms: 1.7523
+  type: 'test'
+  ...
+# Subtest: 006-T04: clients have isolated caches and invalid currencies never trigger fetch
+ok 9 - 006-T04: clients have isolated caches and invalid currencies never trigger fetch
+  ---
+  duration_ms: 1.8541
+  type: 'test'
+  ...
+# Subtest: 006-T05: client and exact conversion compose without refetch on amount changes or mutation of EUR
+ok 10 - 006-T05: client and exact conversion compose without refetch on amount changes or mutation of EUR
+  ---
+  duration_ms: 51.9639
+  type: 'test'
+  ...
+# Subtest: 006-T05: failed FX leaves EUR identity usable and explicit recovery preserves total
+ok 11 - 006-T05: failed FX leaves EUR identity usable and explicit recovery preserves total
+  ---
+  duration_ms: 1.6302
+  type: 'test'
+  ...
+# Subtest: 006-T03: normalizes valid response and keeps only supported rates and trusted attribution
+ok 12 - 006-T03: normalizes valid response and keeps only supported rates and trusted attribution
+  ---
+  duration_ms: 5.3746
+  type: 'test'
+  ...
+# Subtest: 006-T03: all invalid provider fixtures fail with stable error codes
+ok 13 - 006-T03: all invalid provider fixtures fail with stable error codes
+  ---
+  duration_ms: 1.9688
+  type: 'test'
+  ...
+# Subtest: 006-T03: requires own fields, objects and explicit successful EUR base
+ok 14 - 006-T03: requires own fields, objects and explicit successful EUR base
+  ---
+  duration_ms: 0.7988
+  type: 'test'
+  ...
+# Subtest: 006-T03: both foreign rates must be finite positive JSON numbers, identity exactly numeric one
+ok 15 - 006-T03: both foreign rates must be finite positive JSON numbers, identity exactly numeric one
+  ---
+  duration_ms: 0.7624
+  type: 'test'
+  ...
+# Subtest: 006-T03: scientific numeric rates normalize without monetary arithmetic
+ok 16 - 006-T03: scientific numeric rates normalize without monetary arithmetic
+  ---
+  duration_ms: 0.4796
+  type: 'test'
+  ...
+# Subtest: 006-T03: timestamps must be safe Unix seconds representable as ISO dates
+ok 17 - 006-T03: timestamps must be safe Unix seconds representable as ISO dates
+  ---
+  duration_ms: 1.0113
+  type: 'test'
+  ...
+# Subtest: 006-T03: expiration boundary is strict and update cannot be in the future
+ok 18 - 006-T03: expiration boundary is strict and update cannot be in the future
+  ---
+  duration_ms: 0.6953
+  type: 'test'
+  ...
+# Subtest: 006-T03: normalized output is isolated and deeply frozen without mutating provider
+ok 19 - 006-T03: normalized output is isolated and deeply frozen without mutating provider
+  ---
+  duration_ms: 0.8148
+  type: 'test'
+  ...
+# Subtest: 006-T01: provider fixtures have fixed coherent timestamps and normalization
+ok 20 - 006-T01: provider fixtures have fixed coherent timestamps and normalization
+  ---
+  duration_ms: 2.8383
+  type: 'test'
+  ...
+# Subtest: 006-T01: fixture factories isolate mutation and enumerate failure scenarios
+ok 21 - 006-T01: fixture factories isolate mutation and enumerate failure scenarios
+  ---
+  duration_ms: 0.5767
+  type: 'test'
+  ...
+# Subtest: la web compilada sirve HTML y su módulo JavaScript
+ok 22 - la web compilada sirve HTML y su módulo JavaScript
+  ---
+  duration_ms: 147.7454
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 22
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 670.6083
+
+> @saas-o-matic/web@0.0.0 test:components C:\Users\alope\Documents\saas-o-matic\apps\web
+> vitest run
+
+
+ RUN  v5.1.0 C:/Users/alope/Documents/saas-o-matic/apps/web
+
+
+ Test Files  1 passed (1)
+      Tests  10 passed (10)
+   Start at  12:24:19
+   Duration  3.40s (environment 47%, tests 23%, setup 21%, import 7%, transform 3%)
+

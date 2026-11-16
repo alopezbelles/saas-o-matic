@@ -1,5 +1,9 @@
 # Decisiones
 
+## Interfaz de clientes 007
+
+Decisiones confirmadas de navegación superior, CSS Modules/tokens globales, fuente del sistema, rutas, países/planes y herramientas en [aclaraciones](../specs/007-customers-ui/clarifications.md). T01 aplica esas decisiones al shell y runners. [Registro durante implementación](../ai-workspace/iterations/007-customers-ui.md). T02–T05 pendientes; aceptación humana final no registrada.
+
 ## Conversión 006
 
 Registro posterior autorizado: [ADR-006](../ai-workspace/decisions/ADR-006-currency-infrastructure.md), con alternativas y consecuencias; no sustituye decisiones canónicas ni acredita aceptación humana final.

@@ -1,5 +1,9 @@
 # Verificación
 
+## 007 — T01
+
+test:web conserva las 22 pruebas node:test de 006/smoke y añade componentes con Vitest/RTL en jsdom. test:node y test:components separan descubrimiento y limpieza. WEB-SHELL-01 cubre rutas, raíz/404, retorno, teclado, breadcrumbs y foco. Smoke Chromium independiente comprueba cuatro viewports y navegación/recarga; [evidencia T01](../ai-workspace/testing/007-customers-ui-t01.md).
+
 ## 006 — T05: cierre global
 
 Actualización posterior: Alex autorizó registrar ai-workspace tras T05; [resumen retrospectivo y salida real](../ai-workspace/testing/006-currency.md). La exclusión mencionada en el relato de ejecución describe el estado histórico, no la autorización vigente.

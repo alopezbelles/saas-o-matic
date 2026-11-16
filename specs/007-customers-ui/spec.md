@@ -1,6 +1,6 @@
 # 007 — Listado, alta y ficha de clientes
 
-Estado: decisiones confirmadas por Alex; consolidación documental autorizada. Ninguna tarea implementada ni aceptación humana final. Implementar por fases, únicamente cuando Alex indique la tarea correspondiente.
+Estado: decisiones confirmadas por Alex; T01 completada técnicamente. T02–T05 pendientes de indicación. Sin aceptación humana final.
 
 ## Contexto y fuentes
 
@@ -62,4 +62,4 @@ Simulador, hooks/selector FX, conversión del histórico, detalle de simulación
 
 RF enlazados a pruebas reales, controles globales pertinentes correctos y navegación/alta/historial verificados con datos aislados. Distinguir aprobación de decisiones, conformidad técnica y aceptación humana de la entrega. Dependencias autorizadas en [aclaraciones](clarifications.md), ejecución incremental en [tareas](tasks.md).
 
-Solo se modifican ahora los cinco documentos de esta carpeta. No registrar esta preparación ni decisiones en ai-workspace, ni implementar/instalar/hacer commits por esta autorización.
+La preparación se limitó a los cinco documentos y excluyó ai-workspace. Alex autorizó después T01 y el registro del progreso, sin autorización de commits/pushes. Las tareas posteriores siguen sujetas a su indicación.

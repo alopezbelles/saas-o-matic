@@ -1,5 +1,11 @@
 # Arquitectura
 
+## Web 007 — T01
+
+BrowserRouter en App y rutas declarativas en app/AppRoutes separan shell y destinos. AppLayout comparte cabecera, breadcrumbs y contenido; las páginas base informan de su disponibilidad hasta T02–T04. Tokens/global y CSS Modules concentran estilos sin dependencias UI. Shared queda enlazado mediante workspace para contratos posteriores.
+
+Vitest/RTL ejecutan pruebas src/**/_.test.tsx en jsdom; node:test conserva test/_.test.mjs con FX y smoke. Scripts separados se componen en el test de web. Playwright está instalado y Chromium se guarda en caché del proyecto para smoke visual del shell; los E2E de alta reales corresponden a T05.
+
 ## Conversión 006
 
 shared/src/currency contiene conversión pura y reutiliza utilidades monetarias, sin red/reloj/SQL. web/src/features/currency separa contrato/validación externa de HTTP/caché. createExchangeClient inyecta fetch/reloj; exchangeClient comparte instancia por pestaña sin petición al importar. EUR devuelve null identidad; USD/GBP comparten petición y caché inmutable hasta expiresAt. Timeout 5 s cubre fetch/cuerpo; sin reintentos ni datos caducados. Sin proxy, persistencia FX, UI o librerías nuevas. El test web compila shared para pruebas de composición, sin dependencia runtime nueva en la web.

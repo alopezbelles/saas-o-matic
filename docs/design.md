@@ -1,5 +1,11 @@
 # Diseño funcional y visual
 
+## Base implementada en 007-T01
+
+Navegación superior, breadcrumbs y contenido centrado basados en interfaces.pdf, revisado en cuatro páginas. Tipografía del sistema, tema claro y estilos por CSS Modules. [tokens.css](../apps/web/src/styles/tokens.css) es la fuente ejecutable de colores/espacios/tamaños y [global.css](../apps/web/src/styles/global.css) contiene la base transversal. Las tablas siguientes conservan propuestas iniciales; la fuente Inter y componentes de fases futuras siguen pendientes de su alcance correspondiente.
+
+El shell ofrece salto al contenido, foco en encabezado tras cambiar ruta y layout comprobable desde 320 px. Las páginas de T01 presentan disponibilidad futura de listado/alta/ficha. T02–T04 aportarán sus datos y formularios. [Capturas reales](../ai-workspace/visuals/007-customers-ui-t01.md).
+
 ## Tokens
 
 | Token                                                                                                                                                                                                                                                                                                                                                           | Valor propuesto | Uso                              |

@@ -1,12 +1,17 @@
 # Estado del proyecto
 
+- Ajuste de foco de 007-T01 solicitado por Alex: título sin contorno al cargar, foco lógico de navegación conservado e indicador de teclado en enlaces probado. 10 componentes y smoke Chromium correctos. [Evidencia](ai-workspace/visuals/007-customers-ui-t01.md#título-sin-contorno-al-cargar).
+
+- Ajuste visual posterior de 007-T01: «+ Nuevo cliente» alineado al título, con reflujo móvil; 10 pruebas de componentes y smoke Chromium a cuatro anchos pasan. [Evidencia](ai-workspace/visuals/007-customers-ui-t01.md#ajuste-del-encabezado).
+
 - Registro 006 en ai-workspace autorizado después de T05: [índice](ai-workspace/README.md#006--infraestructura-de-conversión), [procedencia](ai-workspace/prompts/006-currency.md) y [evidencia](ai-workspace/testing/006-currency.md). Retrospectiva posterior, sin nueva ejecución funcional ni aceptación humana final. La exclusión descrita en cierres históricos queda levantada por esta indicación.
 
 - 006-T04 completada técnicamente: cliente HTTP, caché por pestaña, timeout 5 s, petición compartida y recuperación. T05 pendiente, CORS no comprobado; 20 pruebas web pasan. [Validación T04](specs/006-currency/validation.md#t04--cliente-http-y-caché). Mantener exclusión ai-workspace.
 
 - 006-T02 completada técnicamente: convertCurrency puro, tasas decimales acotadas, BigInt y half-up reutilizado, identidad EUR y errores de entrada/overflow. RF1 conforme en dominio; T03–T05 pendientes. Sin red, UI, dependencias, DB ni registro ai-workspace. [Validación T02](specs/006-currency/validation.md#t02--conversión-pura).
 
-- Spec activa: [006-currency](specs/006-currency/spec.md), T01–T05 completadas técnicamente: 122 pruebas y controles globales correctos. CORS inconcluso por fallo GPU de Edge headless, sin resultado del proveedor. Sin UI, dependencias nuevas ni cambios de DB/API/lockfile. ai-workspace registrado retrospectivamente por autorización posterior; sin aceptación humana final ni commits del agente. [Validación T05](specs/006-currency/validation.md#t05--revisión-y-regresión-global). Entradas anteriores T02/T04 describen sus cierres históricos.
+- Spec activa: [007-customers-ui](specs/007-customers-ui/spec.md), T01 completada técnicamente. Tokens/CSS Modules, shell superior, rutas y herramientas; 22 pruebas node web y 10 componentes correctas, smoke Chromium a cuatro anchos. Suite global inicial 130/130, regresiones posteriores verificadas en suite web final. T02–T05 y aceptación humana final pendientes. [Registro](ai-workspace/iterations/007-customers-ui.md), [validación](specs/007-customers-ui/validation.md#t01--base-visual-rutas-y-herramientas).
+- 006-currency completada técnicamente con evidencia histórica en su validación. Alex confirmó después consulta FX correcta desde su navegador local y aportó tasas/fechas normalizadas en conversación. La limitación del smoke automatizado de T05 es histórica, sin revisión de dominio de producción.
 - 005-simulations-api: T01–T05 completadas técnicamente; POST /simulations, histórico y configuración disponibles. Sin aceptación humana final ni commits del agente.
 - T05: lint/typecheck/format:check/build/test correctos; 90 pruebas (37 unitarias, 49 integración, 1 web, 1 gates, 2 docs). Auditoría sin cambios de schema/migraciones/lockfile/dependencias/frontend; DB temporales limpiadas. [Evidencia global](ai-workspace/testing/005-simulations-api-t05.md).
 - T04: lint/typecheck/formato, 37 unitarios, 49 integración, 2 docs y diff check correctos; fixture inicial de 503 corregido, evidencia conservada. Histórico sin recalcular y config sin DB, no-store/fuentes únicas. [Evidencia](ai-workspace/testing/005-simulations-api-t04.md). Sin schema, dependencias o DB real.

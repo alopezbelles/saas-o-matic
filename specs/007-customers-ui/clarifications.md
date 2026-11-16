@@ -1,6 +1,6 @@
 # Aclaraciones 007
 
-Las decisiones siguientes fueron confirmadas expresamente por Alex antes de adaptar la spec. Se registran aquí por autorización documental; sin implementación ni registro en ai-workspace.
+Las decisiones siguientes fueron confirmadas expresamente por Alex antes de adaptar la spec. Después de consolidarlas, autorizó ejecutar T01 y registrar progreso en ai-workspace. El resumen de preparación anterior se identifica como retrospectivo.
 
 | ID            | Decisión confirmada                                      | Consecuencia                                                                                                                                         |
 | ------------- | -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -31,4 +31,4 @@ Los planes se obtienen de shared, no de GET /billing-config. El backend conserva
 
 No quedan decisiones funcionales imprescindibles abiertas para este alcance. En cada implementación comprobar compatibilidad real de versiones, respetar dependencias autorizadas y consultar cualquier ampliación fuera de estas decisiones. Las versiones concretas y configuración de herramientas se verificarán antes de instalar, no se presentan como ya instaladas.
 
-Alex autoriza ahora consolidar solo los cinco documentos de 007. T01–T05 requieren indicación posterior; sin commits/pushes, datos reales, despliegue, aceptación humana final ni registros ai-workspace. Contexto global se actualizará al iniciar implementación autorizada, sin modificarlo en esta preparación.
+La preparación autorizó solo estos cinco documentos. Después, Alex autorizó T01 y progreso en ai-workspace; contexto global se actualiza durante esa ejecución. T02–T05 requieren indicación posterior. Sin commits/pushes, datos reales, despliegue ni aceptación humana final.

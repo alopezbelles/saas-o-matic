@@ -1,5 +1,9 @@
 # Trazabilidad
 
+## Clientes UI 007 — T01
+
+RF5 parcial mediante shell, tokens y navegación, probado en WEB-SHELL-01 y smoke Chromium. RF1–RF4 y flujos finales siguen pendientes de T02–T05. [Validación](../specs/007-customers-ui/validation.md), [registro](../ai-workspace/iterations/007-customers-ui.md) y [revisión T01](../ai-workspace/reviews/007-customers-ui-t01.md).
+
 ## Conversión 006 — cierre técnico
 
 | RF      | Tareas      | Evidencia ejecutada                                                   |

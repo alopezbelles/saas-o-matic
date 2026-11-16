@@ -1,6 +1,6 @@
 # Plan 007 — Interfaz de clientes
 
-Estado: decisiones confirmadas, implementación pendiente por tarea. Alcance actual exclusivamente documental dentro de esta carpeta.
+Estado: decisiones confirmadas y T01 completada técnicamente, con registro en ai-workspace desde su inicio. T02–T05 requieren indicación posterior.
 
 ## Instrucción técnica previa
 
@@ -83,4 +83,4 @@ Controles de cierre: pnpm lint, pnpm typecheck, pnpm format:check, pnpm build, p
 
 ## Documentación y límites
 
-[Decisiones](clarifications.md), [fases](tasks.md) y [validación](validation.md). Los archivos globales conservan hoy el estado de 006; actualizar contexto, aprobaciones, diseño, testing y trazabilidad cuando se autorice iniciar implementación. No cambiar esos archivos ni registrar ai-workspace ahora. No prometer despliegue, certificación WCAG o aceptación humana por pasar pruebas.
+[Decisiones](clarifications.md), [fases](tasks.md) y [validación](validation.md). Actualizar contexto, aprobaciones, diseño, testing y trazabilidad al implementar cada tarea. Alex autorizó registrar progreso en ai-workspace al iniciar T01. La restricción documental anterior describe la preparación. No prometer despliegue, certificación WCAG o aceptación humana por pasar pruebas.

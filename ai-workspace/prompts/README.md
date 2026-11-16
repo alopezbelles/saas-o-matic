@@ -1,5 +1,7 @@
 # Instrucciones técnicas para la IA
 
+- [007 — Preparación y T01](007-customers-ui.md): síntesis retrospectiva de preparación y bloque de instrucción redactado antes del código de T01.
+
 - [006 — Preparación y T01–T05](006-currency.md): reformulaciones técnicas retrospectivas autorizadas después de T05; enlace separado a la instrucción previa real del plan.
 
 - [005 — Preparación y T01](005-simulations-api.md): reformulaciones retrospectivas autorizadas después, con enlace a la instrucción real escrita en el plan antes del código.

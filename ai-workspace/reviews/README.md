@@ -1,5 +1,7 @@
 # Revisiones
 
+- [007-T01 — Base visual y rutas](007-customers-ui-t01.md): revisión técnica y límites de pantallas pendientes.
+
 - [006 — Revisión técnica final](006-currency.md): infraestructura conforme con límite CORS documentado; sin UI ni aceptación humana final.
 
 - [005-T01 — Revisión técnica](005-simulations-api-t01.md): contratos conformes, servicio/API pendientes; sin aceptación humana final.

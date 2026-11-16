@@ -1,16 +1,16 @@
 # Tareas 007
 
-Estado global: PENDIENTE. Ninguna tarea implementada. Alex ha confirmado decisiones y autoriza consolidar estos cinco documentos; cada fase requiere instrucción posterior. Cada tarea se cierra con evidencia real y nombre de commit propuesto, sin ejecutar commit/push.
+Estado global: T01 completada técnicamente, T02–T05 pendientes. Progreso registrado en ai-workspace. Cada fase posterior requiere instrucción. Sin aceptación humana final ni commits/pushes del agente.
 
 ## T01 — Base visual, rutas y herramientas
 
-- [ ] **007-T01**. RF: base de RF5, sin completar pantallas funcionales.
+- [x] **007-T01**. RF: base de RF5, sin completar pantallas funcionales.
 - Dependencias: decisiones de clarifications y autorización de T01 antes de instalaciones.
 - Acciones: comprobar compatibilidad y añadir React Router/herramientas aprobadas; conectar shared mediante workspace; crear tokens/global, shell superior/breadcrumbs y rutas base con 404. Configurar Vitest/RTL sin perder node:test de 006/smoke. Actualizar contexto global al iniciar implementación.
 - Destinos previstos: apps/web/package.json, pnpm-lock.yaml, App/main, app/, styles/, configuración Vite/Vitest y pruebas del shell. Crear solo componentes/rutas con responsabilidad actual.
 - Verificación: instalación reproducible, lint/typecheck/build, WEB-SHELL-01, pruebas previas de web y tests documentales. No crear runner E2E vacío.
 - Hecho cuando: shell/tokens/rutas son comprobables y responsive básico, dependencias compatibles, sin simulación de RF1–RF4 como terminados.
-- Evidencia real: NO EJECUTADO.
+- Evidencia real: [validación T01](validation.md#t01--base-visual-rutas-y-herramientas). Suite web final 22 node + 10 componentes y smoke Chromium correctos; suite global inicial 130/130 conservada.
 
 ## T02 — Adaptador API, listado y búsqueda
 
@@ -47,7 +47,7 @@ Estado global: PENDIENTE. Ninguna tarea implementada. Alex ha confirmado decisio
 - [ ] **007-T05**. RF: RF1–RF5.
 - Dependencia: T04.
 - Acciones: configurar Playwright y script E2E real; flujo alta→ficha y listado/retorno/historial contra backend/SQLite temporales; verificar recargas directas y proxy de desarrollo. Revisar PDF adaptado, estados y responsive/teclado; actualizar docs globales/validación con resultados reales.
-- Destinos: configuración/fixtures/tests Playwright, scripts, docs pertinentes y validation.md. Capturas solo reales; registros ai-workspace siguen excluidos hasta nueva indicación.
+- Destinos: configuración/fixtures/tests Playwright, scripts, docs pertinentes y validation.md. Capturas reales y registro ai-workspace autorizado desde T01.
 - Verificación: E2E-CUSTOMERS-007, VISUAL-007 y controles globales del plan. No ejecutar test:gates en paralelo con otros controles de código. No tocar DB existente.
 - Hecho cuando: RF trazados a evidencia, suites anteriores conservadas, navegadores/recursos temporales cerrados, limitaciones declaradas y revisión técnica diferenciada de aceptación humana. Un fallo del navegador no acredita responsive/E2E por inspección.
 - Evidencia real: NO EJECUTADO.
@@ -56,4 +56,4 @@ Estado global: PENDIENTE. Ninguna tarea implementada. Alex ha confirmado decisio
 
 Antes de cada fase: leer contexto/contratos y alcance autorizado, concretar instrucción técnica y verificar solo responsabilidades de la tarea. No añadir carpetas vacías ni librerías fuera de las aprobadas. Registrar resultados en validation.md; no marcar pruebas planeadas como ejecutadas.
 
-No registrar esta preparación o decisiones en ai-workspace. Mantener esa exclusión hasta nueva indicación de Alex. Sin commits/pushes, despliegues ni aceptación humana anticipada.
+Alex levantó la exclusión de ai-workspace al autorizar T01. Registrar ahora progreso real, manteniendo como retrospectivo cualquier resumen de preparación anterior. Sin commits/pushes, despliegues ni aceptación humana anticipada.

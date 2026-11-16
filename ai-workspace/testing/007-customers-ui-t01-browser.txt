@@ -1,0 +1,5 @@
+﻿{"viewport":320,"width":320,"scroll":320,"background":"rgb(242, 245, 251)","focus":"page-heading"}
+{"viewport":390,"width":390,"scroll":390,"background":"rgb(242, 245, 251)","focus":"page-heading"}
+{"viewport":768,"width":768,"scroll":768,"background":"rgb(242, 245, 251)","focus":"page-heading"}
+{"viewport":1440,"width":1440,"scroll":1440,"background":"rgb(242, 245, 251)","focus":"page-heading"}
+PASS: direct routes, reload, navigation, focus, skip link and four viewports.
