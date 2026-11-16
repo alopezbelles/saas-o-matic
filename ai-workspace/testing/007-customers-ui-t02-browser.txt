@@ -1,0 +1,6 @@
+﻿12:49:38 [vite] (client) Re-optimizing dependencies because vite config has changed
+{"viewport":320,"width":320,"scroll":320,"rows":20}
+{"viewport":390,"width":390,"scroll":390,"rows":20}
+{"viewport":768,"width":768,"scroll":768,"rows":20}
+{"viewport":1440,"width":1440,"scroll":1440,"rows":20}
+PASS: Vite proxy rewrite to real API, isolated SQLite, 21 customers, search, pagination, return, reload, 503/retry, empty and invalid query.

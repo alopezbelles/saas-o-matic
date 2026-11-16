@@ -1,5 +1,11 @@
 # Arquitectura
 
+## Web 007 — T02
+
+features/customers separa transporte GET con timeout/abort y envelope, validación de DTO/página, reglas de URL, estado de consultas y presentación. La respuesta se valida estructuralmente conservando campos históricos, sin aplicar validación de alta a filas antiguas. useCustomers protege vigencia y aborta al cambiar consulta/desmontar; estado URL y debounce residen en la página. CustomerList presenta tabla/cards con datos reales.
+
+Vite reenvía /api a 127.0.0.1:3000 retirando prefijo. El proxy es desarrollo; producción debe configurar su ruta /api aparte. Dev/build web compilan shared, y dev raíz lo compila antes de arrancar aplicaciones en paralelo para evitar falta de dist en instalación limpia. Sin cambios de endpoints o esquema. El contexto de retorno solo acepta URL local de listado validada.
+
 ## Web 007 — T01
 
 BrowserRouter en App y rutas declarativas en app/AppRoutes separan shell y destinos. AppLayout comparte cabecera, breadcrumbs y contenido; las páginas base informan de su disponibilidad hasta T02–T04. Tokens/global y CSS Modules concentran estilos sin dependencias UI. Shared queda enlazado mediante workspace para contratos posteriores.

@@ -1,5 +1,11 @@
 # Verificación
 
+## 007 — T02
+
+WEB-API-01 prueba URL/DTO/envelope, red, JSON/Content-Type, timeout de cuerpo, aborto y compatibilidad de campos históricos. WEB-SEARCH-01/WEB-STATE-01 cubren debounce 249/250 ms, URL/páginas, retorno/atrás/adelante, vacíos diferenciados, 503/reintento y respuesta antigua ignorada. Primera ejecución: 29 correctas/1 fallo por selección de role status del harness; corregido selector y repetición 30/30.
+
+Smoke Chromium con API real/SQLite temporal de 21 clientes y proxy Vite en puertos aislados. Se comprueba configuración de destino 3000 y se sustituye solo el puerto del backend de pruebas. Cuatro anchos, búsqueda, paginación, retorno, recarga y recuperación 503 correctos. [Evidencia T02](../ai-workspace/testing/007-customers-ui-t02.md).
+
 ## 007 — T01
 
 test:web conserva las 22 pruebas node:test de 006/smoke y añade componentes con Vitest/RTL en jsdom. test:node y test:components separan descubrimiento y limpieza. WEB-SHELL-01 cubre rutas, raíz/404, retorno, teclado, breadcrumbs y foco. Smoke Chromium independiente comprueba cuatro viewports y navegación/recarga; [evidencia T01](../ai-workspace/testing/007-customers-ui-t01.md).

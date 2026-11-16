@@ -1,18 +1,28 @@
 # Validación 007
 
-Estado: T01 completada técnicamente, RF5 parcial. T02–T05 y aceptación humana final pendientes. Preparación documental histórica conservada debajo.
+Estado: T01–T02 completadas técnicamente. RF1 conforme; RF4/RF5 parciales según alcance de listado. T03–T05 y aceptación humana final pendientes. Preparación documental histórica conservada debajo.
 
 ## Matriz prevista
 
 | RF      | Tareas      | Pruebas previstas                                          | Resultado funcional real |
 | ------- | ----------- | ---------------------------------------------------------- | ------------------------ |
-| 007-RF1 | T02/T05     | WEB-API-01, WEB-SEARCH-01, WEB-STATE-01, E2E-CUSTOMERS-007 | NO EJECUTADO             |
+| 007-RF1 | T02/T05     | WEB-API-01, WEB-SEARCH-01, WEB-STATE-01, E2E-CUSTOMERS-007 | CONFORME LISTADO         |
 | 007-RF2 | T03/T04/T05 | WEB-FORM-01, WEB-STATE-01, E2E-CUSTOMERS-007               | NO EJECUTADO             |
 | 007-RF3 | T04/T05     | WEB-DETAIL-01, E2E-CUSTOMERS-007                           | NO EJECUTADO             |
-| 007-RF4 | T02/T04/T05 | WEB-SEARCH-01, WEB-DETAIL-01, E2E-CUSTOMERS-007            | NO EJECUTADO             |
+| 007-RF4 | T02/T04/T05 | WEB-SEARCH-01, WEB-DETAIL-01, E2E-CUSTOMERS-007            | PARCIAL: LISTADO         |
 | 007-RF5 | T01–T05     | WEB-SHELL-01, WEB-STATE-01, VISUAL-007 y E2E               | PARCIAL: SHELL PROBADO   |
 
-WEB-SHELL-01 se ejecuta con Vitest/RTL. node:test de 006/smoke se conserva; herramientas de componentes/Playwright instaladas en T01. Flujos de datos y E2E pendientes de T02–T05.
+WEB-SHELL-01, WEB-API-01 y pruebas de listado se ejecutan con Vitest/RTL. node:test de 006/smoke conservado. Alta/ficha/historial y E2E final pendientes de T03–T05.
+
+## T02 — Adaptador API, listado y búsqueda
+
+16 de noviembre de 2026. Base 0436e20, T02 autorizada por Alex. [Instrucción previa](../../ai-workspace/prompts/007-customers-ui.md#t02--instrucción-previa-de-implementación), [iteración](../../ai-workspace/iterations/007-customers-ui.md#t02--inicio), [pruebas/log](../../ai-workspace/testing/007-customers-ui-t02.md), [revisión](../../ai-workspace/reviews/007-customers-ui-t02.md) y [capturas](../../ai-workspace/visuals/007-customers-ui-t02.md).
+
+Adaptador GET con timeout 10 s, cancelación y validación DTO/página/envelope; proxy /api; listado responsive con búsqueda 250 ms, páginas de 20, q/offset en URL, latest-wins y retorno contextual desde destinos existentes. Vacío, sin coincidencias y página fuera de rango diferenciados; reintento explícito conserva búsqueda. Dev/build compilan shared antes de consumirlo. Alta/ficha siguen en sus tareas posteriores.
+
+Lint/typecheck/build y pnpm.cmd test correctos, código 0. Suite global: 36 shared + 12 unitarias API + 49 integración + 22 node web + 30 componentes + 1 gates + 2 docs = 152 correctas. Gates sin otros controles de código concurrentes. Primera prueba de componentes 29 correctas/1 fallo por selector ambiguo de status en harness; corregido test, repetición 30/30.
+
+Smoke Chromium real con API/SQLite temporales de 21 clientes y proxy a puerto aislado: búsqueda, paginación, retorno, recarga, 503/reintento, vacío e invalid URL correctos. Cuatro anchos 320/390/768/1440 sin desbordamiento; capturas revisadas y dos conservadas. DB temporal cerrada/limpiada y .cache/002-tests vacío. Diff API/shared productivo/lockfile vacío, sin instalaciones ni datos reales. Cierre documental: pnpm.cmd test:docs (2), pnpm.cmd format:check y git diff --check correctos, código 0. Conformidad técnica T02, aceptación humana final pendiente.
 
 ## T01 — Base visual, rutas y herramientas
 

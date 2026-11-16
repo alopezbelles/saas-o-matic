@@ -4,8 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --host 127.0.0.1 --port 5173 --strictPort",
-    "build": "tsc --noEmit && vite build",
+    "dev": "pnpm --filter @saas-o-matic/shared build && vite --host 127.0.0.1 --port 5173 --strictPort",
+    "build": "pnpm --filter @saas-o-matic/shared build && tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1",
     "typecheck": "tsc --noEmit",
     "test": "pnpm test:node && pnpm test:components",

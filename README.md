@@ -1,5 +1,7 @@
 # saas-o-matic
 
+La interfaz de clientes de 007 dispone de listado/búsqueda paginada en /customers. pnpm dev arranca web y API desde raíz, compilando shared antes; pnpm dev:web arranca solo frontend. Vite conecta /api con el backend local en puerto 3000. Una API/DB no disponible se presenta con opción de reintento. Alta y ficha funcionales se incorporan en sus tareas siguientes.
+
 Infraestructura inicial Full-Stack para la prueba técnica de Roams. Incluye infraestructura y persistencia SQLite; incluye API de clientes; el motor de simulaciones/facturación y las pantallas de negocio todavía no están implementados.
 
 ## Requisitos

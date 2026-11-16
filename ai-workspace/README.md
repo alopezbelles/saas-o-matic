@@ -1,5 +1,9 @@
 # Desarrollo asistido por IA — SaaS-O-Matic
 
+## 007 — Listado y búsqueda T02
+
+[Instrucción previa](prompts/007-customers-ui.md#t02--instrucción-previa-de-implementación), [iteración](iterations/007-customers-ui.md#t02--inicio), [pruebas y log global](testing/007-customers-ui-t02.md), [revisión](reviews/007-customers-ui-t02.md) y [capturas](visuals/007-customers-ui-t02.md). 152 pruebas globales y smoke real con API/SQLite temporal correctos. T03–T05 y aceptación humana final pendientes.
+
 ## 007 — Base visual T01
 
 Registro de progreso autorizado al iniciar T01 el 16 de noviembre de 2026. [Instrucción previa](prompts/007-customers-ui.md#t01--instrucción-previa-de-implementación), [iteración](iterations/007-customers-ui.md), [pruebas](testing/007-customers-ui-t01.md), [revisión](reviews/007-customers-ui-t01.md), [capturas reales](visuals/007-customers-ui-t01.md) y [validación canónica](../specs/007-customers-ui/validation.md). Las decisiones anteriores se resumen retrospectivamente y enlazan sus aclaraciones. T02–T05 pendientes de indicación; aceptación humana final pendiente.

@@ -1,5 +1,15 @@
 # 007 — Iteración de desarrollo
 
+## T02 — Inicio
+
+16 de noviembre de 2026. Alex autoriza adaptador API, listado y búsqueda. Estado inicial Git limpio, base 0436e20. [Instrucción previa](../prompts/007-customers-ui.md#t02--instrucción-previa-de-implementación). Se revisaron DTO/parsers antes de código y se mantuvo validación estructural compatible con filas históricas.
+
+Transporte GET, proxy, listado responsive, búsqueda con debounce/URL y retorno contextual implementados. Se protege vigencia ante abortos/respuestas tardías y se distinguen vacío/error/página fuera de rango. Build/dev compilan shared para su consumo runtime reproducible.
+
+Primera suite de componentes 29 correctas/1 fallo: output del harness también tenía role status. Se ajustó el selector del test de carga; repetición 30/30. Smoke con API real y SQLite temporal de 21 clientes pasa en cuatro anchos, paginación/búsqueda/retorno/recarga y 503/reintento. Suite global 152/152 correcta. [Resultados](../testing/007-customers-ui-t02.md), [revisión](../reviews/007-customers-ui-t02.md) y [capturas](../visuals/007-customers-ui-t02.md).
+
+Sin cambios API/shared productivo/lockfile, dependencias nuevas o DB real. T03–T05 pendientes y aceptación humana final no registrada. Formato global, dos pruebas documentales y diff check correctos al cerrar registros.
+
 ## Contorno de foco del título
 
 16 de noviembre de 2026. Alex solicita eliminar el rectángulo azul del título al cargar. Se identifica como :focus-visible por foco programático de navegación y se aplica una excepción visual a h1 con tabindex=-1. El foco lógico sigue en encabezado; enlaces/controles conservan indicador de teclado.

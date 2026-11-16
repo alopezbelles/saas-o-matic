@@ -1,6 +1,6 @@
 # 007 — Listado, alta y ficha de clientes
 
-Estado: decisiones confirmadas por Alex; T01 completada técnicamente. T02–T05 pendientes de indicación. Sin aceptación humana final.
+Estado: decisiones confirmadas por Alex; T01–T02 completadas técnicamente. T03–T05 pendientes de indicación. Sin aceptación humana final.
 
 ## Contexto y fuentes
 

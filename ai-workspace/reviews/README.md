@@ -1,5 +1,7 @@
 # Revisiones
 
+- [007-T02 — Listado integrado](007-customers-ui-t02.md): contratos/estados/carreras y evidencia en navegador real.
+
 - [007-T01 — Base visual y rutas](007-customers-ui-t01.md): revisión técnica y límites de pantallas pendientes.
 
 - [006 — Revisión técnica final](006-currency.md): infraestructura conforme con límite CORS documentado; sin UI ni aceptación humana final.

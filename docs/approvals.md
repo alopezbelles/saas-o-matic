@@ -1,5 +1,9 @@
 # Autorización y alcance
 
+## 007 — T02
+
+Alex autoriza T02 el 16 de noviembre de 2026: adaptador GET, proxy /api, listado/búsqueda/paginación, navegación contextual y sus pruebas. Registro ai-workspace continúa autorizado. Comprobación real con API/SQLite temporales, sin datos existentes. T03–T05 requieren indicación posterior; sin commits/pushes ni aceptación humana final.
+
 ## 007 — T01
 
 Alex autorizó T01 y el registro continuo de progreso en ai-workspace el 16 de noviembre de 2026. Las decisiones previas y dependencias autorizadas constan en clarifications de 007. Alcance de esta tarea: compatibilidad/instalación, shared workspace, tokens/global/CSS Modules, shell/rutas base, Vitest/RTL y verificación. Chromium de Playwright se descarga en caché del proyecto para comprobar el shell. T02–T05 requieren indicación posterior. Sin commits/pushes, datos existentes ni aceptación humana final.

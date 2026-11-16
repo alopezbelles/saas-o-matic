@@ -1,6 +1,6 @@
 # Tareas 007
 
-Estado global: T01 completada técnicamente, T02–T05 pendientes. Progreso registrado en ai-workspace. Cada fase posterior requiere instrucción. Sin aceptación humana final ni commits/pushes del agente.
+Estado global: T01–T02 completadas técnicamente, T03–T05 pendientes. Progreso registrado en ai-workspace. Cada fase posterior requiere instrucción. Sin aceptación humana final ni commits/pushes del agente.
 
 ## T01 — Base visual, rutas y herramientas
 
@@ -14,13 +14,13 @@ Estado global: T01 completada técnicamente, T02–T05 pendientes. Progreso regi
 
 ## T02 — Adaptador API, listado y búsqueda
 
-- [ ] **007-T02**. RF: RF1/RF4 y navegación de RF5.
+- [x] **007-T02**. RF: RF1/RF4 y navegación de RF5.
 - Dependencia: T01.
 - Acciones: preparar transporte/validación de respuestas para operaciones necesarias antes de usarlas; configurar /api y proxy Vite; integrar GET clientes con búsqueda/paginación/estados y contexto en URL. Sin columna última simulación ni N+1.
 - Destinos: features/customers/api/, CustomersPage y componentes/styles de lista, transporte compartido si procede, vite.config.ts y tests.
 - Verificación: WEB-API-01, WEB-SEARCH-01, WEB-STATE-01; requests reales contra entorno temporal o smoke aislado del proxy, sin DB existente.
 - Hecho cuando: páginas de 20, debounce 250 ms, latest-wins, vacío/error/total y atrás/adelante funcionan; contrato/peticiones correctos, no basta una lista con fixtures de producción.
-- Evidencia real: NO EJECUTADO.
+- Evidencia real: [validación T02](validation.md#t02--adaptador-api-listado-y-búsqueda), 152 pruebas globales y smoke Chromium con proxy/API/SQLite temporal correctos.
 
 ## T03 — Alta integrada y recuperación segura
 

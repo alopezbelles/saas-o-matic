@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router';
 import styles from './AppLayout.module.css';
+import { customersReturnTo } from '../features/customers/list-location';
 
 export function Breadcrumbs() {
   const location = useLocation();
@@ -14,7 +15,7 @@ export function Breadcrumbs() {
       <ol className={styles.breadcrumbs}>
         {current !== 'Clientes' && (
           <li>
-            <Link to="/customers">Clientes</Link>
+            <Link to={customersReturnTo(location.state)}>Clientes</Link>
           </li>
         )}
         <li aria-current="page">{current}</li>

@@ -1,33 +1,9 @@
-import { Link } from 'react-router';
+import { Link, useLocation } from 'react-router';
+import { customersReturnTo } from '../features/customers/list-location';
 import styles from './AppLayout.module.css';
 
-export function CustomersRoutePage() {
-  return (
-    <section className={styles.page} aria-labelledby="page-heading">
-      <div className={styles.pageHeader}>
-        <div className={styles.intro}>
-          <h1 id="page-heading" tabIndex={-1}>
-            Clientes
-          </h1>
-          <p className={styles.description}>
-            Consulta y gestiona tus clientes corporativos.
-          </p>
-        </div>
-        <Link className={styles.action} to="/customers/new">
-          <span className={styles.actionIcon} aria-hidden="true">
-            +
-          </span>
-          Nuevo cliente
-        </Link>
-      </div>
-      <div className={styles.surface}>
-        <p>El listado de clientes estará disponible próximamente.</p>
-      </div>
-    </section>
-  );
-}
-
 export function CustomerCreateRoutePage() {
+  const { state } = useLocation();
   return (
     <section className={styles.page} aria-labelledby="page-heading">
       <h1 id="page-heading" tabIndex={-1}>
@@ -36,12 +12,13 @@ export function CustomerCreateRoutePage() {
       <div className={styles.surface}>
         <p>El formulario de alta estará disponible próximamente.</p>
       </div>
-      <Link to="/customers">Volver a clientes</Link>
+      <Link to={customersReturnTo(state)}>Volver a clientes</Link>
     </section>
   );
 }
 
 export function CustomerDetailRoutePage() {
+  const { state } = useLocation();
   return (
     <section className={styles.page} aria-labelledby="page-heading">
       <h1 id="page-heading" tabIndex={-1}>
@@ -52,7 +29,7 @@ export function CustomerDetailRoutePage() {
           Los datos del cliente y su historial estarán disponibles próximamente.
         </p>
       </div>
-      <Link to="/customers">Volver a clientes</Link>
+      <Link to={customersReturnTo(state)}>Volver a clientes</Link>
     </section>
   );
 }

@@ -1,5 +1,19 @@
 # 007 — Instrucciones técnicas
 
+## T02 — Instrucción previa de implementación
+
+16 de noviembre de 2026. Redactada antes del código de T02, tras autorización explícita de Alex.
+
+Contexto: shell/tokens/rutas de T01 disponibles, con acción «+ Nuevo cliente» en encabezado y foco de título sin contorno. API 003 aporta listado paginado real y contratos shared; Vite aún necesita proxy.
+
+Objetivo: integrar listado/búsqueda con /api, DTO validado, timeout/cancelación y páginas de 20. Conservar consulta al visitar ficha/alta y volver, con estado URL y latest-wins ante respuestas fuera de orden.
+
+Acciones: crear transporte GET y validación de CustomerPage antes de consumidor; configurar proxy Vite hacia puerto 3000; construir listado responsive, búsqueda accesible/debounce 250 ms, estados diferenciados y paginación. Probar adaptador y carreras con fetch/reloj controlados y verificar proxy/navegador real con datos temporales.
+
+Restricciones: sin instalar librerías, modificar API/DB existente, inventar filas o columna de última simulación. Alta/ficha siguen en sus próximas tareas. Mantener markup/estilos legibles y responsabilidades cohesionadas.
+
+Criterios: URL/payload/envelope correctos, aborto/timeout/protocolo diferenciados, páginas/total y retorno fiables, cero publicación de respuestas obsoletas, UI móvil/teclado revisada. Ejecutar controles pertinentes, guardar evidencia/incidencias durante trabajo y proponer commit. No afirmar aceptación humana final.
+
 Registro iniciado el 16 de noviembre de 2026 al autorizar Alex T01 y el registro de progreso en ai-workspace. La preparación anterior quedó excluida de registro. Su resumen siguiente es retrospectivo, basado en conversación y [aclaraciones](../../specs/007-customers-ui/clarifications.md).
 
 ## Preparación — síntesis retrospectiva

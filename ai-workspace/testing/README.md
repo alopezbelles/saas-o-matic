@@ -1,5 +1,7 @@
 # Evidencias de pruebas
 
+- [007-T02 — Adaptador/listado/búsqueda](007-customers-ui-t02.md): 152 pruebas globales y smoke con proxy/API/SQLite temporal, con logs conservados.
+
 - [007-T01 — Shell y herramientas](007-customers-ui-t01.md), con suite global inicial, web final y smoke Chromium conservados.
 
 - [006 — Resultados por tarea y cierre](006-currency.md), con [salida real T05](006-currency-t05.txt): 122 pruebas correctas en su ejecución original; registro posterior y CORS inconcluso.

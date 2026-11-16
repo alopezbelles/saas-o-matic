@@ -8,7 +8,7 @@
     "pnpm": ">=10 <11"
   },
   "scripts": {
-    "dev": "pnpm --parallel --filter @saas-o-matic/web --filter @saas-o-matic/api dev",
+    "dev": "pnpm --filter @saas-o-matic/shared build && pnpm --parallel --filter @saas-o-matic/web --filter @saas-o-matic/api dev",
     "dev:web": "pnpm --filter @saas-o-matic/web dev",
     "dev:api": "pnpm --filter @saas-o-matic/api dev",
     "build": "pnpm -r build",

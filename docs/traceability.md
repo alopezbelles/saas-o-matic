@@ -1,5 +1,9 @@
 # Trazabilidad
 
+## Clientes UI 007 — T02
+
+RF1 y parte de RF4 de listado probados con adaptador GET, búsqueda/paginación URL, latest-wins y retorno contextual. RF5 parcial con tabla/card responsive y navegación. RF2/RF3 y carreras de ficha/historial siguen pendientes de T03/T04. [Validación](../specs/007-customers-ui/validation.md#t02--adaptador-api-listado-y-búsqueda), [pruebas](../ai-workspace/testing/007-customers-ui-t02.md) y [revisión](../ai-workspace/reviews/007-customers-ui-t02.md).
+
 ## Clientes UI 007 — T01
 
 RF5 parcial mediante shell, tokens y navegación, probado en WEB-SHELL-01 y smoke Chromium. RF1–RF4 y flujos finales siguen pendientes de T02–T05. [Validación](../specs/007-customers-ui/validation.md), [registro](../ai-workspace/iterations/007-customers-ui.md) y [revisión T01](../ai-workspace/reviews/007-customers-ui-t01.md).

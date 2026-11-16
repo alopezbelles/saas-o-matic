@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router';
@@ -13,6 +13,18 @@ function renderRoute(path: string) {
 }
 
 describe('WEB-SHELL-01', () => {
+  beforeEach(() => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(
+        async () =>
+          new Response(
+            JSON.stringify({ items: [], total: 0, limit: 20, offset: 0 }),
+            { headers: { 'Content-Type': 'application/json' } },
+          ),
+      ),
+    );
+  });
   it.each([
     ['/', 'Clientes'],
     ['/customers', 'Clientes'],
