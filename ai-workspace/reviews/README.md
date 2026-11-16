@@ -1,5 +1,7 @@
 # Revisiones
 
+- [007-T03 — Alta integrada](007-customers-ui-t03.md): formulario, contratos, recuperación segura y límites de ficha/E2E posteriores.
+
 - [007-T02 — Listado integrado](007-customers-ui-t02.md): contratos/estados/carreras y evidencia en navegador real.
 
 - [007-T01 — Base visual y rutas](007-customers-ui-t01.md): revisión técnica y límites de pantallas pendientes.

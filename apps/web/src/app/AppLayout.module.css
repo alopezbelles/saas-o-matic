@@ -92,6 +92,10 @@
   gap: var(--space-6);
 }
 
+.narrowMain {
+  max-width: var(--form-width);
+}
+
 .intro {
   display: grid;
   gap: var(--space-2);

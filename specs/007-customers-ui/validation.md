@@ -1,18 +1,30 @@
 # Validación 007
 
-Estado: T01–T02 completadas técnicamente. RF1 conforme; RF4/RF5 parciales según alcance de listado. T03–T05 y aceptación humana final pendientes. Preparación documental histórica conservada debajo.
+Estado: T01–T03 completadas técnicamente. RF1 conforme; RF2 conforme para alta, ficha completa en T04; RF4/RF5 parciales según pantallas disponibles. T04–T05 y aceptación humana final pendientes. Preparación documental histórica conservada debajo.
 
 ## Matriz prevista
 
 | RF      | Tareas      | Pruebas previstas                                          | Resultado funcional real |
 | ------- | ----------- | ---------------------------------------------------------- | ------------------------ |
 | 007-RF1 | T02/T05     | WEB-API-01, WEB-SEARCH-01, WEB-STATE-01, E2E-CUSTOMERS-007 | CONFORME LISTADO         |
-| 007-RF2 | T03/T04/T05 | WEB-FORM-01, WEB-STATE-01, E2E-CUSTOMERS-007               | NO EJECUTADO             |
+| 007-RF2 | T03/T04/T05 | WEB-FORM-01, WEB-STATE-01, E2E-CUSTOMERS-007               | CONFORME ALTA; FICHA T04 |
 | 007-RF3 | T04/T05     | WEB-DETAIL-01, E2E-CUSTOMERS-007                           | NO EJECUTADO             |
 | 007-RF4 | T02/T04/T05 | WEB-SEARCH-01, WEB-DETAIL-01, E2E-CUSTOMERS-007            | PARCIAL: LISTADO         |
 | 007-RF5 | T01–T05     | WEB-SHELL-01, WEB-STATE-01, VISUAL-007 y E2E               | PARCIAL: SHELL PROBADO   |
 
-WEB-SHELL-01, WEB-API-01 y pruebas de listado se ejecutan con Vitest/RTL. node:test de 006/smoke conservado. Alta/ficha/historial y E2E final pendientes de T03–T05.
+WEB-SHELL-01, WEB-API-01/02, listado y alta se ejecutan con Vitest/RTL. node:test de 006/smoke conservado. Ficha/historial y E2E final pendientes de T04–T05.
+
+## T03 — Alta integrada y recuperación segura
+
+16 de noviembre de 2026, base 83b9432. T03 autorizada por Alex. [Instrucción previa](../../ai-workspace/prompts/007-customers-ui.md#t03--instrucción-previa-de-implementación), [iteración](../../ai-workspace/iterations/007-customers-ui.md#t03--inicio), [pruebas y log](../../ai-workspace/testing/007-customers-ui-t03.md), [revisión](../../ai-workspace/reviews/007-customers-ui-t03.md) y [capturas](../../ai-workspace/visuals/007-customers-ui-t03.md).
+
+Formulario de cinco campos con parseCreateCustomer, países derivados de GET /billing-config y PLAN_CODES/etiquetas demo compartidos. POST exige 201/DTO válido. Errores asociados/resumen enfocado; valores conservados ante 422/409/503, envío único, cancelación contextual y éxito al ID persistido. Red/timeout/201 ilegible informa resultado incierto, sin reenvío automático, y ofrece comprobar por identificador en otra pestaña. Fiscal y unicidad siguen en backend. Ficha provisional coherente con aviso de éxito; datos completos e historial quedan en T04.
+
+Lint/typecheck/build y pnpm.cmd test correctos, código 0. Suite global: 36 shared + 12 API unitarias + 49 integración + 22 node web + 49 componentes/transporte + 1 gates + 2 docs = 171 correctas. Gates secuencial sin otros controles concurrentes. Primera ampliación de componentes 47/47; dos regresiones posteriores de navegación incluidas en las 49 finales. Sin fallos funcionales detectados en estas ejecuciones.
+
+Smoke Chromium real con Vite/API/SQLite temporales pasa: configuración, fiscal inválido/422/foco y campos retenidos → corrección/201/persistencia/ID/anuncio/listado → duplicado/409, total uno. Anchos 320/390/768/1440 sin desbordamiento, cero errores de página. Escritorio/móvil/error inspeccionados; capturas conservadas. Recursos cerrados y DB temporal limpiada. No cambios API/shared productivo/lockfile ni dependencias nuevas. T04–T05, E2E mantenido, zoom/contraste/teclado exhaustivos y aceptación humana final pendientes.
+
+Cierre documental de T03: pnpm.cmd test:docs (2 pruebas), pnpm.cmd format:check y git diff --check correctos, código 0.
 
 ## T02 — Adaptador API, listado y búsqueda
 

@@ -1,6 +1,6 @@
 # Tareas 007
 
-Estado global: T01–T02 completadas técnicamente, T03–T05 pendientes. Progreso registrado en ai-workspace. Cada fase posterior requiere instrucción. Sin aceptación humana final ni commits/pushes del agente.
+Estado global: T01–T03 completadas técnicamente, T04–T05 pendientes. Progreso registrado en ai-workspace. Cada fase posterior requiere instrucción. Sin aceptación humana final ni commits/pushes del agente.
 
 ## T01 — Base visual, rutas y herramientas
 
@@ -24,13 +24,13 @@ Estado global: T01–T02 completadas técnicamente, T03–T05 pendientes. Progre
 
 ## T03 — Alta integrada y recuperación segura
 
-- [ ] **007-T03**. RF: RF2/RF5.
+- [x] **007-T03**. RF: RF2/RF5.
 - Dependencia: T02.
 - Acciones: formulario de cinco campos; formato compartido/fiscal backend; configuración real para países y PLAN_CODES para etiquetas demo. Errores inline/resumen, bloqueo doble envío, cancelar contextual y creación→ficha. Registrar resultado incierto sin retry automático.
 - Destinos: CustomerCreatePage, CustomerForm, adaptadores config/POST y pruebas de interacción.
 - Verificación: WEB-FORM-01/WEB-STATE-01: 201, 422, 409, 503, timeout/red/201 ilegible, configuración no disponible, conservación de valores y una sola petición.
 - Hecho cuando: alta usa contratos reales, no inventa planes/países, navegación de éxito tiene destino coherente y formulario no pierde campos al fallar. La ficha completa llegará en T04.
-- Evidencia real: NO EJECUTADO.
+- Evidencia real: [validación T03](validation.md#t03--alta-integrada-y-recuperación-segura); pruebas de formulario/transporte y smoke Chromium con API/SQLite temporal, incluyendo 422 fiscal, 201 persistido y 409. La ficha completa continúa en T04.
 
 ## T04 — Ficha e historial persistido
 

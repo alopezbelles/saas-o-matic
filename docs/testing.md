@@ -1,5 +1,9 @@
 # Verificación
 
+## 007 — T03
+
+WEB-API-02 y WEB-FORM-01 cubren POST de cinco campos/201/DTO, países del servidor, planes compartidos, validación local, errores asociados/foco, 422/409/503, envío único, red/timeout/201 ilegible, reintento explícito de configuración y aborto al desmontar. Pruebas de ruta verifican creación→ID persistido y cancelación/retorno conservando búsqueda y página. 49 pruebas de componentes/transporte y 171 globales correctas. Smoke Chromium con proxy/API/SQLite temporal comprueba 422 fiscal→corrección→201 persistido→listado y 409, a cuatro anchos sin desbordamiento. [Evidencia y límites](../ai-workspace/testing/007-customers-ui-t03.md). E2E mantenido y revisión exhaustiva corresponden a T05.
+
 ## 007 — T02
 
 WEB-API-01 prueba URL/DTO/envelope, red, JSON/Content-Type, timeout de cuerpo, aborto y compatibilidad de campos históricos. WEB-SEARCH-01/WEB-STATE-01 cubren debounce 249/250 ms, URL/páginas, retorno/atrás/adelante, vacíos diferenciados, 503/reintento y respuesta antigua ignorada. Primera ejecución: 29 correctas/1 fallo por selección de role status del harness; corregido selector y repetición 30/30.

@@ -28,3 +28,24 @@ export function jsonResponse(value: unknown, status = 200) {
     headers: { 'Content-Type': 'application/json' },
   });
 }
+
+export function billingConfigFixture() {
+  return {
+    currency: 'EUR',
+    pricingVersion: 'users-tiered-v1',
+    taxPolicyVersion: 'demo-standard-v1',
+    ratesByCountry: { ES: 2100, FR: 2000, DE: 1900, GB: 2000 },
+    tiers: [],
+    consumptionLimits: { users: 1000, storageGb: 10000, apiCalls: 10000000 },
+  };
+}
+
+export function customerInputFixture() {
+  return {
+    companyName: 'Empresa Nueva',
+    taxId: '12345678Z',
+    contactEmail: 'nueva@example.invalid',
+    countryCode: 'ES',
+    planCode: 'DEMO_BASIC' as const,
+  };
+}

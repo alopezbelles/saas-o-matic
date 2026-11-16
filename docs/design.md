@@ -1,5 +1,9 @@
 # Diseño funcional y visual
 
+## Alta implementada en 007-T03
+
+Tarjeta de cinco campos en secciones «Datos de empresa» y «Suscripción», con ancho central definido por el token --form-width. Países obtenidos de configuración y planes demo compartidos. Errores junto al campo y resumen enfocado con enlaces, controles bloqueados durante envío y cancelación contextual. El resultado incierto conserva el formulario y abre la comprobación en otra pestaña. [Capturas y límites de revisión](../ai-workspace/visuals/007-customers-ui-t03.md). Ficha completa e historial corresponden a T04.
+
 ## Base implementada en 007-T01
 
 Navegación superior, breadcrumbs y contenido centrado basados en interfaces.pdf, revisado en cuatro páginas. Tipografía del sistema, tema claro y estilos por CSS Modules. [tokens.css](../apps/web/src/styles/tokens.css) es la fuente ejecutable de colores/espacios/tamaños y [global.css](../apps/web/src/styles/global.css) contiene la base transversal. Las tablas siguientes conservan propuestas iniciales; la fuente Inter y componentes de fases futuras siguen pendientes de su alcance correspondiente.

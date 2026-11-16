@@ -9,7 +9,11 @@ import userEvent from '@testing-library/user-event';
 import { MemoryRouter, useLocation, useNavigate } from 'react-router';
 import { describe, expect, it, vi } from 'vitest';
 import { AppRoutes } from '../../../app/AppRoutes';
-import { jsonResponse, pageFixture } from '../test-fixtures';
+import {
+  billingConfigFixture,
+  jsonResponse,
+  pageFixture,
+} from '../test-fixtures';
 
 function NavigationProbe() {
   const location = useLocation();
@@ -88,6 +92,8 @@ describe('WEB-SEARCH-01 and WEB-STATE-01', () => {
     vi.stubGlobal(
       'fetch',
       vi.fn(async (url: string) => {
+        if (url.includes('billing-config'))
+          return jsonResponse(billingConfigFixture());
         const offset = Number(
           new URL(url, 'http://test').searchParams.get('offset'),
         );
@@ -106,7 +112,7 @@ describe('WEB-SEARCH-01 and WEB-STATE-01', () => {
     await screen.findByText('Empresa 21');
     expect(screen.getByRole('searchbox')).toHaveValue('Empresa');
     await user.click(screen.getByRole('link', { name: 'Nuevo cliente' }));
-    await user.click(screen.getByRole('link', { name: 'Volver a clientes' }));
+    await user.click(screen.getByRole('button', { name: 'Cancelar' }));
     await screen.findByText('Empresa 21');
     await user.click(screen.getByRole('button', { name: 'Anterior' }));
     await screen.findByText('Empresa 1');

@@ -2,11 +2,7 @@ import { Link } from 'react-router';
 import type { CustomerDto } from '@saas-o-matic/shared';
 import styles from './Customers.module.css';
 
-const countryNames = new Intl.DisplayNames(['es'], { type: 'region' });
-const planNames = {
-  DEMO_BASIC: 'Básico (demo)',
-  DEMO_PRO: 'Profesional (demo)',
-};
+import { countryLabel, PLAN_LABELS } from '../customer-labels';
 
 export function CustomerList({
   items,
@@ -36,10 +32,8 @@ export function CustomerList({
               {customer.companyName}
             </td>
             <td data-label="Identificador fiscal">{customer.taxId}</td>
-            <td data-label="País">
-              {countryNames.of(customer.countryCode) ?? customer.countryCode}
-            </td>
-            <td data-label="Plan">{planNames[customer.planCode]}</td>
+            <td data-label="País">{countryLabel(customer.countryCode)}</td>
+            <td data-label="Plan">{PLAN_LABELS[customer.planCode]}</td>
             <td data-label="Acción">
               <Link
                 to={'/customers/' + customer.id}

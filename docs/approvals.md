@@ -1,5 +1,9 @@
 # Autorización y alcance
 
+## 007 — T03
+
+Alex autoriza T03 el 16 de noviembre de 2026: formulario de alta integrado, configuración de países, POST, recuperación ante errores y pruebas aisladas. Continúa el registro de progreso en ai-workspace. T04–T05 requieren indicación posterior. Sin nuevas dependencias, cambios de backend, datos existentes, commits/pushes ni aceptación humana final.
+
 ## 007 — T02
 
 Alex autoriza T02 el 16 de noviembre de 2026: adaptador GET, proxy /api, listado/búsqueda/paginación, navegación contextual y sus pruebas. Registro ai-workspace continúa autorizado. Comprobación real con API/SQLite temporales, sin datos existentes. T03–T05 requieren indicación posterior; sin commits/pushes ni aceptación humana final.

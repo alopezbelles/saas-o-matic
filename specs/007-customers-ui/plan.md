@@ -1,6 +1,6 @@
 # Plan 007 — Interfaz de clientes
 
-Estado: decisiones confirmadas y T01–T02 completadas técnicamente, con registro en ai-workspace durante implementación. T03–T05 requieren indicación posterior.
+Estado: decisiones confirmadas y T01–T03 completadas técnicamente, con registro en ai-workspace durante implementación. T04–T05 requieren indicación posterior.
 
 ## Instrucción técnica previa
 

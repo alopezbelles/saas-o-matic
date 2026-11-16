@@ -1,5 +1,19 @@
 # 007 — Instrucciones técnicas
 
+## T03 — Instrucción previa de implementación
+
+16 de noviembre de 2026. Bloque redactado antes de modificar código, por autorización explícita de Alex para T03.
+
+Contexto: listado/adaptador GET/proxy de T02 operativos, contratos de alta 003 y configuración 005 existentes. Ficha completa pendiente de T04.
+
+Objetivo: formulario de cinco campos conectado a POST /customers, países reales y planes shared, con validación compartida, errores accesibles y navegación de éxito.
+
+Acciones: ampliar transporte con POST JSON reutilizando timeout/cancelación/envelope, validar 201/DTO y proyección de países; construir formulario y estados separados por responsabilidad; bloquear doble envío, conservar campos con 422/409/503 y resultado incierto; cancelar con contexto y anunciar éxito en destino.
+
+Restricciones: algoritmo fiscal autoritativo en backend, sin librerías/planes/países inventados ni cambios DB/servicios existentes. Pruebas con datos temporales exclusivos; no usar la base local del usuario. No reenviar POST automáticamente tras red/timeout/201 ilegible.
+
+Verificación: DTO/payload exactos, configuración inválida/indisponible, etiquetas y errores asociados, formato/fiscal/duplicidad, una sola petición, conservación/retorno, estado incierto y creación→destino. Tests componentes/API y navegador con API/SQLite temporal, controles y evidencias reales. Cierre incremental con nombre de commit, sin commits/pushes ni aceptación humana anticipada.
+
 ## T02 — Instrucción previa de implementación
 
 16 de noviembre de 2026. Redactada antes del código de T02, tras autorización explícita de Alex.

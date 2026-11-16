@@ -1,5 +1,11 @@
 # Arquitectura
 
+## Web 007 — T03
+
+CustomerCreatePage conserva contexto de retorno y navega al ID persistido. CustomerForm presenta campos, errores asociados y acciones; useCustomerCreation gestiona borrador, validación compartida, envío único y resultado incierto. useCustomerCountries carga/reintenta configuración con cancelación; el adaptador valida la proyección EUR/política consumida y deriva las opciones del servidor. PLAN_CODES y etiquetas compartidas con el listado evitan catálogos duplicados.
+
+El transporte GET/POST comparte timeout, cancelación y errores. El alta exige 201 y DTO válido; red/timeout/respuesta de éxito ilegible conserva valores y ofrece buscar por identificador en otra pestaña, sin reenvío automático. La validación fiscal sigue en el backend. No hay cambios de endpoints, esquema, dominio o dependencias.
+
 ## Web 007 — T02
 
 features/customers separa transporte GET con timeout/abort y envelope, validación de DTO/página, reglas de URL, estado de consultas y presentación. La respuesta se valida estructuralmente conservando campos históricos, sin aplicar validación de alta a filas antiguas. useCustomers protege vigencia y aborta al cambiar consulta/desmontar; estado URL y debounce residen en la página. CustomerList presenta tabla/cards con datos reales.

@@ -1,5 +1,9 @@
 # Desarrollo asistido por IA — SaaS-O-Matic
 
+## 007 — Alta integrada T03
+
+[Instrucción previa](prompts/007-customers-ui.md#t03--instrucción-previa-de-implementación), [iteración](iterations/007-customers-ui.md#t03--inicio), [pruebas y log global](testing/007-customers-ui-t03.md), [revisión](reviews/007-customers-ui-t03.md) y [capturas](visuals/007-customers-ui-t03.md). 171 pruebas globales y smoke con API/SQLite temporal correctos. T04–T05 y aceptación humana final pendientes. Las entradas siguientes conservan resultados históricos de cada fase.
+
 ## 007 — Listado y búsqueda T02
 
 [Instrucción previa](prompts/007-customers-ui.md#t02--instrucción-previa-de-implementación), [iteración](iterations/007-customers-ui.md#t02--inicio), [pruebas y log global](testing/007-customers-ui-t02.md), [revisión](reviews/007-customers-ui-t02.md) y [capturas](visuals/007-customers-ui-t02.md). 152 pruebas globales y smoke real con API/SQLite temporal correctos. T03–T05 y aceptación humana final pendientes.

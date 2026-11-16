@@ -31,7 +31,16 @@ export function AppLayout() {
           </nav>
         </div>
       </header>
-      <main id="main-content" className={styles.main} tabIndex={-1}>
+      <main
+        id="main-content"
+        className={
+          styles.main +
+          (pathname.replace(/\/+$/, '') === '/customers/new'
+            ? ' ' + styles.narrowMain
+            : '')
+        }
+        tabIndex={-1}
+      >
         <Breadcrumbs />
         <Outlet />
       </main>

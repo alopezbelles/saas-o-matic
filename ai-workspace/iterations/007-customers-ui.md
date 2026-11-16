@@ -1,5 +1,15 @@
 # 007 — Iteración de desarrollo
 
+## T03 — Inicio
+
+16 de noviembre de 2026. Alex autoriza formulario de alta y continúa registro de progreso de 007. Se revisa transporte GET y contratos antes de implementar. [Instrucción previa](../prompts/007-customers-ui.md#t03--instrucción-previa-de-implementación). Estado inicial Git limpio; resultados pendientes.
+
+Se separan presentación, estado de creación, carga de países y adaptadores HTTP. Se reutilizan parseCreateCustomer, PLAN_CODES y validateTaxPolicy; etiquetas de países/planes extraídas para compartirlas con el listado. El backend conserva control fiscal y unicidad. Campos retenidos ante 422/409/503; resultado incierto ofrece búsqueda en otra pestaña sin reenvío automático. Cancelar/salir conserva contexto; éxito utiliza el ID persistido y la ficha provisional existente.
+
+Primera suite ampliada 47/47 correcta; tras añadir dos regresiones de navegación, suite global 171/171 correcta (49 componentes/transporte). Lint/typecheck/build pasan. Smoke Chromium real valida alta, fiscal inválido/corrección, duplicado y cuatro anchos sin errores de página; capturas inspeccionadas. No hubo fallos funcionales detectados en estas ejecuciones. Los registros históricos de T01/T02 mantienen sus incidencias previas.
+
+[Pruebas](../testing/007-customers-ui-t03.md), [revisión](../reviews/007-customers-ui-t03.md) y [capturas](../visuals/007-customers-ui-t03.md). Sin dependencias nuevas ni cambios API/shared productivo/lockfile. T04–T05 pendientes; aceptación humana final no registrada.
+
 ## T02 — Inicio
 
 16 de noviembre de 2026. Alex autoriza adaptador API, listado y búsqueda. Estado inicial Git limpio, base 0436e20. [Instrucción previa](../prompts/007-customers-ui.md#t02--instrucción-previa-de-implementación). Se revisaron DTO/parsers antes de código y se mantuvo validación estructural compatible con filas históricas.

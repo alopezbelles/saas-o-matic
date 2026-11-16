@@ -3,6 +3,11 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router';
 import { AppRoutes } from './AppRoutes';
+import {
+  billingConfigFixture,
+  jsonResponse,
+  pageFixture,
+} from '../features/customers/test-fixtures';
 
 function renderRoute(path: string) {
   return render(
@@ -16,12 +21,12 @@ describe('WEB-SHELL-01', () => {
   beforeEach(() => {
     vi.stubGlobal(
       'fetch',
-      vi.fn(
-        async () =>
-          new Response(
-            JSON.stringify({ items: [], total: 0, limit: 20, offset: 0 }),
-            { headers: { 'Content-Type': 'application/json' } },
-          ),
+      vi.fn(async (url: string) =>
+        jsonResponse(
+          url.includes('billing-config')
+            ? billingConfigFixture()
+            : pageFixture(0),
+        ),
       ),
     );
   });
@@ -60,7 +65,7 @@ describe('WEB-SHELL-01', () => {
     expect(
       screen.getByRole('navigation', { name: 'Ruta de navegación' }),
     ).toHaveTextContent('Nuevo cliente');
-    await user.click(screen.getByRole('link', { name: 'Volver a clientes' }));
+    await user.click(screen.getByRole('button', { name: 'Cancelar' }));
     expect(screen.getByRole('heading', { name: 'Clientes' })).toHaveFocus();
   });
 

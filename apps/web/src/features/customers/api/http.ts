@@ -61,6 +61,23 @@ export async function getJson(
   path: string,
   signal?: AbortSignal,
 ): Promise<unknown> {
+  return requestJson(path, 'GET', undefined, signal);
+}
+
+export async function postJson(
+  path: string,
+  body: unknown,
+  signal?: AbortSignal,
+): Promise<unknown> {
+  return requestJson(path, 'POST', body, signal);
+}
+
+async function requestJson(
+  path: string,
+  method: 'GET' | 'POST',
+  body: unknown,
+  signal?: AbortSignal,
+): Promise<unknown> {
   if (signal?.aborted) throw new DOMException('Aborted', 'AbortError');
   const controller = new AbortController();
   let abortRequest = () => {};
@@ -83,9 +100,13 @@ export async function getJson(
     let response: Response;
     try {
       response = await fetch('/api' + path, {
-        method: 'GET',
+        method,
         signal: controller.signal,
-        headers: { Accept: 'application/json' },
+        headers: {
+          Accept: 'application/json',
+          ...(method === 'POST' ? { 'Content-Type': 'application/json' } : {}),
+        },
+        ...(method === 'POST' ? { body: JSON.stringify(body) } : {}),
         cache: 'no-store',
       });
     } catch {
@@ -115,6 +136,9 @@ export async function getJson(
         response.status,
         errorEnvelope(payload),
       );
+    if (method === 'POST' && response.status !== 201) {
+      throw new ApiRequestError('protocol', response.status);
+    }
     return payload;
   })();
   try {

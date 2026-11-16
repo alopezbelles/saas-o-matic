@@ -28,5 +28,6 @@
   --shadow-surface: 0 1px 3px rgb(23 43 77 / 6%);
   --focus-width: 3px;
   --content-width: 72rem;
+  --form-width: 42rem;
   --control-height: 2.75rem;
 }

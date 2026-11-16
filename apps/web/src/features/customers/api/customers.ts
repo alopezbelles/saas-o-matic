@@ -2,11 +2,13 @@ import {
   PLAN_CODES,
   parseCustomerId,
   parseCustomerQuery,
+  parseCreateCustomer,
+  type CreateCustomer,
   type CustomerDto,
   type CustomerPage,
   type CustomerQuery,
 } from '@saas-o-matic/shared';
-import { ApiRequestError, getJson, isRecord } from './http';
+import { ApiRequestError, getJson, postJson, isRecord } from './http';
 
 function invalidResponse(): never {
   throw new ApiRequestError('protocol');
@@ -93,4 +95,17 @@ export async function listCustomers(
     await getJson('/customers?' + params.toString(), signal),
     validated,
   );
+}
+
+export async function createCustomer(
+  input: CreateCustomer,
+  signal?: AbortSignal,
+): Promise<CustomerDto> {
+  const body = parseCreateCustomer(input);
+  const payload = await postJson('/customers', body, signal);
+  try {
+    return parseCustomerDto(payload);
+  } catch {
+    throw new ApiRequestError('protocol', 201);
+  }
 }

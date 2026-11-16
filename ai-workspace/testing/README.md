@@ -1,5 +1,7 @@
 # Evidencias de pruebas
 
+- [007-T03 — Alta integrada](007-customers-ui-t03.md): 171 pruebas globales y flujo real 422→201→listado/409 sobre SQLite temporal.
+
 - [007-T02 — Adaptador/listado/búsqueda](007-customers-ui-t02.md): 152 pruebas globales y smoke con proxy/API/SQLite temporal, con logs conservados.
 
 - [007-T01 — Shell y herramientas](007-customers-ui-t01.md), con suite global inicial, web final y smoke Chromium conservados.

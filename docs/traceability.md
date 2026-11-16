@@ -1,5 +1,9 @@
 # Trazabilidad
 
+## Clientes UI 007 — T03
+
+RF2 conforme para el alta y su destino de éxito; ficha completa pendiente de T04. RF5 amplía estados, formularios y foco. WEB-API-02, WEB-FORM-01 y pruebas de navegación verifican configuración, cinco campos, 201, 422/409/503, red/timeout/201 ilegible, conservación de valores y envío único. Smoke Chromium comprueba persistencia real, validación fiscal y duplicado sobre SQLite temporal. [Validación](../specs/007-customers-ui/validation.md#t03--alta-integrada-y-recuperación-segura), [pruebas](../ai-workspace/testing/007-customers-ui-t03.md).
+
 ## Clientes UI 007 — T02
 
 RF1 y parte de RF4 de listado probados con adaptador GET, búsqueda/paginación URL, latest-wins y retorno contextual. RF5 parcial con tabla/card responsive y navegación. RF2/RF3 y carreras de ficha/historial siguen pendientes de T03/T04. [Validación](../specs/007-customers-ui/validation.md#t02--adaptador-api-listado-y-búsqueda), [pruebas](../ai-workspace/testing/007-customers-ui-t02.md) y [revisión](../ai-workspace/reviews/007-customers-ui-t02.md).
