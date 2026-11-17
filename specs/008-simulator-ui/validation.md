@@ -1,16 +1,36 @@
 # Validación 008
 
-Estado: decisiones 008-C01…C07 confirmadas, T01–T04 completadas técnicamente. RF1/RF2 conformes para preview. RF3–RF5 conformes en guardado, conversión del total, integración de historial y recuperación. Revisión global y aceptación humana final pendientes de T05. Los estados anteriores conservan su contexto histórico.
+Estado: decisiones 008-C01…C07 confirmadas. T01–T05 completadas técnicamente. RF1–RF5 conformes dentro del alcance comprobado. Revisión global del agente completada, aceptación humana final pendiente. Los estados de cierres parciales conservan su contexto histórico.
 
-## Matriz prevista
+## Matriz de validación final
 
-| RF      | Tareas      | Pruebas previstas                                  | Resultado real                  |
-| ------- | ----------- | -------------------------------------------------- | ------------------------------- |
-| 008-RF1 | T01/T02/T05 | WEB-SIM-01, WEB-CONFIG-008, E2E-SIMULATIONS-008    | CONFORME PREVIEW                |
-| 008-RF2 | T01/T02/T05 | WEB-SIM-02, E2E-SIMULATIONS-008                    | CONFORME PREVIEW                |
-| 008-RF3 | T03/T04/T05 | WEB-SAVE-008, WEB-HISTORY-008, E2E-SIMULATIONS-008 | CONFORME INTEGRACIÓN T04        |
-| 008-RF4 | T02/T04/T05 | WEB-FX-008, WEB-HISTORY-008, E2E-SIMULATIONS-008   | CONFORME TOTAL PREVIEW/GUARDADO |
-| 008-RF5 | T03/T04/T05 | WEB-POLICY-008, E2E-SIMULATIONS-008                | CONFORME GUARDADO               |
+| RF      | Tareas      | Pruebas previstas                                  | Resultado real |
+| ------- | ----------- | -------------------------------------------------- | -------------- |
+| 008-RF1 | T01/T02/T05 | WEB-SIM-01, WEB-CONFIG-008, E2E-SIMULATIONS-008    | CONFORME T05   |
+| 008-RF2 | T01/T02/T05 | WEB-SIM-02, E2E-SIMULATIONS-008                    | CONFORME T05   |
+| 008-RF3 | T03/T04/T05 | WEB-SAVE-008, WEB-HISTORY-008, E2E-SIMULATIONS-008 | CONFORME T05   |
+| 008-RF4 | T02/T04/T05 | WEB-FX-008, WEB-HISTORY-008, E2E-SIMULATIONS-008   | CONFORME T05   |
+| 008-RF5 | T03/T04/T05 | WEB-POLICY-008, E2E-SIMULATIONS-008                | CONFORME T05   |
+
+## T05 — Flujo comercial, revisión visual y cierre global
+
+17 de noviembre de 2026, base df7a409, Git inicial limpio. Alex autoriza T05. [Instrucción previa](plan.md#pruebas-previstas). Se mantiene exclusión ai-workspace. Aceptación humana final pendiente.
+
+E2E-SIMULATIONS-008 completa alta corporativa mediante formulario, ficha vacía, nueva simulación, preview 16940 EUR, fallo FX, cambio fiscal de fixture, guardado autoritativo 16800 y recuperación FX. El resultado convierte a 201,60 USD y 134,40 GBP con fixture 1,2/0,8. Dos consultas FX contando el fallo y un solo POST de simulación. Retorno y recarga consultan el historial EUR. La API confirma consumos, importes, versión y snapshot del cliente creado.
+
+VISUAL-008 añade siete casos. Cuatro verifican preview, borrador inválido con guardado deshabilitado, resultado/discrepancia e historial a 320/390/768/1440 px con capturas reales y ausencia de desbordamiento. Otro comprueba layout CSS al 200 %, guardado y reflujo equivalente a 640 px. Teclado comprueba flecha del slider, sincronización, error asociado, orden de tabulación, envío con Enter, foco de confirmación y recuperación de foco al actualizar historial. Se inspeccionaron capturas representativas de escritorio, móvil, ficha a 768 y layout ampliado. Composición de dos tarjetas, navegación superior, fuente del sistema y tokens acordados conservados.
+
+Contraste medido en colores renderizados mediante helper reutilizado de 007. Texto de campos 14,102:1, ayudas 6,279:1, total 6,084:1, acción principal 6,020:1 y error 6,574:1. Bordes de campos/select 3,628:1 y foco de acción 9,357:1. Medidas en attachment contrast-measurements-008 del reporte JSON. Las pruebas conservan las medidas anteriores de 007 con el mismo cálculo extraído a contrast.mjs.
+
+pnpm.cmd test:e2e devuelve código 0, 31 correctas con ocho nuevas de T05 y sin retries/omisiones. Salida .cache/008-t05-e2e.txt, reporte .cache/007-e2e/report.json y capturas bajo .cache/007-e2e/results/simulator-visual-*. Las 31 pruebas usan sus APIs/Vite/SQLite temporales y terminan con cierre/limpieza del fixture. Después de E2E se observó .cache/002-tests sin directorios residuales.
+
+Node v22.19.0 y pnpm 10.33.4 comprobados. pnpm.cmd lint, typecheck y build correctos. pnpm.cmd test devuelve código 0 con 36 shared + 12 API unitarias + 49 integración + 22 node web + 151 componentes/transporte + 1 gates + 2 docs = 273 pruebas correctas. Gates ejecutado sin otros controles de código concurrentes. Salida .cache/008-t05-test.txt. Tras la suite global, .cache/002-tests también se observó sin directorios residuales.
+
+Tras actualizar documentación, pnpm.cmd format:check, test:docs (2/2) y git diff --check devuelven código 0. Revisión del agente, CUMPLE TÉCNICAMENTE dentro del alcance y límites descritos.
+
+Límites de la revisión, Chromium local y proveedor FX interceptado con fixtures. Layout CSS ampliado y viewport equivalente comprobados. Zoom del menú nativo, lectores de pantalla, otros navegadores y dominio de producción sin ejecutar en esta tarea. Las medidas son representativas de elementos renderizados. No se certifica accesibilidad exhaustiva ni integración externa nueva de CORS. La revisión del agente no equivale a aceptación humana.
+
+El README describía alta/ficha, motor y pantalla FX como futuros. Se actualizó a las funcionalidades disponibles y al recorrido de simulación, guardado, recuperación e historial. No se detectaron fallos funcionales en la primera ejecución E2E de T05. Sin cambios de código de producto, backend/shared, dependencias, schema, lockfile o datos existentes. Sin registros ai-workspace ni commits/pushes.
 
 ## T04 — Integración con historial y recuperación
 

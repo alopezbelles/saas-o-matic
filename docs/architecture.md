@@ -1,5 +1,9 @@
 # Arquitectura
 
+## Simulador 008 — Cierre T05
+
+La revisión final verifica la composición web/dominio/API/persistencia con el recorrido completo y fallos controlados. El cálculo compartido, guardado autoritativo y proyección histórica mantienen sus responsabilidades. Las medidas de contraste de 007 y 008 reutilizan el helper e2e/contrast.mjs. Fixtures comunes permiten completar consumos y responder FX controlado. [Verificación final](../specs/008-simulator-ui/validation.md#t05--flujo-comercial-revisión-visual-y-cierre-global).
+
 ## Simulador 008 — T04
 
 SimulationHistory conserva su recurso GET y paginación de 007, con actualización explícita mediante useApiResource y recuperación de foco existente. Volver a la ficha monta una consulta nueva. El simulador transmite solo los importes comparados y el cliente en el estado de navegación cuando existe discrepancia. simulationComparison valida identidad y enteros seguros antes de presentar el aviso compartido SimulationDiscrepancy. Las filas siempre proceden del DTO de la API. La consulta en otra pestaña conserva el formulario incierto en su pestaña original.

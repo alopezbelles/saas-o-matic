@@ -1,5 +1,9 @@
 # Autorización y alcance
 
+## 008 — T05
+
+Alex autoriza T05 el 17 de noviembre de 2026, flujo comercial completo, revisión visual/accesibilidad, pruebas globales, correcciones necesarias y cierre documental de 008. Continúan la exclusión de ai-workspace y los límites sobre commits/pushes, datos existentes y dependencias nuevas. Conformidad técnica y aceptación humana final se registran por separado.
+
 ## 008 — T04
 
 Alex autoriza T04 el 17 de noviembre de 2026, integración del historial y recuperación después del guardado. Incluye retorno/contexto, consulta actualizada, comprobación de resultados inciertos y pruebas aisladas. T05 requiere indicación posterior. Continúan la exclusión de ai-workspace y los límites sobre commits/pushes, datos existentes y dependencias nuevas.

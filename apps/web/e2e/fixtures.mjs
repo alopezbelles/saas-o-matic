@@ -31,3 +31,25 @@ export async function fillCustomer(page, companyName = 'Empresa E2E') {
   await page.getByLabel(/País/).selectOption('ES');
   await page.getByLabel(/Plan elegido/).selectOption('DEMO_BASIC');
 }
+
+export async function fillSimulation(page) {
+  const users = page.getByRole('textbox', {
+    name: 'Usuarios activos',
+    exact: true,
+  });
+  await expect(users).toBeEnabled();
+  await users.fill('15');
+  await page.getByLabel(/Almacenamiento contratado/).fill('500');
+  await page.getByLabel(/Llamadas API estimadas/).fill('1000000');
+}
+
+export function exchangeRatesFixture() {
+  const now = Math.floor(Date.now() / 1000);
+  return {
+    result: 'success',
+    base_code: 'EUR',
+    rates: { EUR: 1, USD: 1.2, GBP: 0.8 },
+    time_last_update_unix: now - 10,
+    time_next_update_unix: now + 3600,
+  };
+}

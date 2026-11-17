@@ -1,8 +1,8 @@
 # saas-o-matic
 
-La interfaz de clientes de 007 dispone de listado/búsqueda paginada en /customers. pnpm dev arranca web y API desde raíz, compilando shared antes; pnpm dev:web arranca solo frontend. Vite conecta /api con el backend local en puerto 3000. Una API/DB no disponible se presenta con opción de reintento. Alta y ficha funcionales se incorporan en sus tareas siguientes.
+SaaS-O-Matic permite registrar clientes, consultar su ficha e historial y simular una suscripción con facturación por tramos, impuesto y conversión orientativa del total. pnpm dev arranca web y API desde raíz, compilando shared antes. El listado está en /customers y Vite conecta /api con el backend local en puerto 3000. Los fallos de servicio disponen de estados de error y recuperación.
 
-Infraestructura inicial Full-Stack para la prueba técnica de Roams. Incluye infraestructura y persistencia SQLite; incluye API de clientes; el motor de simulaciones/facturación y las pantallas de negocio todavía no están implementados.
+Aplicación Full-Stack para la prueba técnica de Roams, con React/TypeScript/Vite, Express, contratos y dominio compartidos y persistencia SQLite.
 
 ## Requisitos
 
@@ -63,16 +63,16 @@ apps/
   web/                 React + TypeScript + Vite
   api/                 Express + TypeScript; desarrollo con tsx
 packages/
-  shared/              Planes y límites técnicos compartidos
+  shared/              Contratos, validación y dominio de facturación/divisas
 ```
 
-La configuración raíz contiene los workspaces, TypeScript estricto, ESLint y Prettier. `shared` emite JavaScript y declaraciones al compilar; exporta planes y límites usados por la persistencia de API. `pnpm-lock.yaml` fija las versiones resueltas y debe mantenerse versionado.
+La configuración raíz contiene los workspaces, TypeScript estricto, ESLint y Prettier. `shared` emite JavaScript y declaraciones al compilar y centraliza contratos, validaciones y cálculo monetario. `pnpm-lock.yaml` fija las versiones resueltas y debe mantenerse versionado.
 
 Web utiliza React/React DOM. API utiliza Express, Drizzle y better-sqlite3. No se han añadido librerías de UI ni Prisma.
 
 ## Pruebas y documentación
 
-`pnpm test` ejecuta integración de API, smoke HTTP de web, comprobaciones negativas de los controles y enlaces documentales. Compila las aplicaciones antes de sus pruebas. Usa bases SQLite temporales aisladas; no abre la base de desarrollo.
+`pnpm test` ejecuta pruebas unitarias, integración de API, transporte/componentes web, comprobaciones negativas de los controles y enlaces documentales. Compila las aplicaciones antes de sus pruebas. Usa bases SQLite temporales aisladas.
 
 También existen `test:unit` (contratos/fiscal de clientes), `test:integration`, `test:web`, `test:gates` y `test:docs`. No ejecutar `test:gates` en paralelo con lint, tipos o build: introduce errores temporales y comprueba que los controles los rechazan. El smoke web no sustituye pruebas de navegador.
 
@@ -117,7 +117,7 @@ El seed contiene solo clientes ficticios; no representa identificadores fiscales
 Las rutas relativas son respecto a la raíz del repo, independientes del directorio de trabajo.
 DB y backups solo pueden situarse bajo apps/api/data o .cache. Nunca en web, código ni fuera del proyecto.
 No hay carga automática de .env: exportar las variables en la terminal.
-No se ha creado una DB persistente de desarrollo durante la implementación: los tests usan .cache/002-tests.
+Las pruebas automatizadas crean contextos temporales propios bajo .cache/002-tests.
 
 [Modelo y recuperación](docs/data-model.md), [spec 002](specs/002-persistence/spec.md) y [validación](specs/002-persistence/validation.md).
 
@@ -142,7 +142,7 @@ pnpm test:unit ejecuta contratos, fiscal y motor monetario; pnpm test:integratio
 
 ## Simulaciones e histórico (005)
 
-La infraestructura FX de [006](specs/006-currency/spec.md) añade conversión orientativa del total EUR a USD/GBP y cliente de tasas con caché/timeout. No modifica guardado ni histórico; no hay todavía selector, hook o pantalla. La futura interfaz deberá mostrar fecha y atribución del proveedor. Contratos y límites en [API](docs/api-contracts.md#servicio-externo-fx--006).
+La infraestructura FX de [006](specs/006-currency/spec.md) proporciona conversión orientativa del total EUR a USD/GBP y cliente de tasas con caché/timeout. El simulador de 008 integra el selector y muestra fecha y atribución del proveedor. Contratos y límites en [API](docs/api-contracts.md#servicio-externo-fx--006).
 
 Con la DB inicializada mediante los comandos existentes, POST /simulations acepta exactamente customerId (UUID de cliente registrado), users, storageGb y apiCalls. El servidor calcula y guarda EUR, versiones y snapshots; responde 201 después del commit. No enviar precios, país, plan ni importes calculados.
 GET /customers/:id/simulations?limit=20&offset=0 devuelve historial paginado con total, desde datos guardados sin recalcular; cliente inexistente devuelve 404 y cliente sin registros devuelve lista vacía.
@@ -150,3 +150,11 @@ GET /billing-config publica tramos, versiones, tasas por país y límites; funci
 Límites: users 0..1000, storageGb 0..10000, apiCalls 0..10000000, enteros. Solo users genera coste. Motor acumulativo users-tiered-v1 y política demo-standard-v1 (ES 21%, FR 20%, DE 19%, GB 20%); política simplificada, sin fiscalidad completa ni FX.
 No se crea ni migra DB al arrancar y 005 no añade migraciones. Dos guardados deliberados pueden crear dos registros; no hay reintento POST automático ni idempotencia avanzada.
 [Contratos](docs/api-contracts.md), [spec](specs/005-simulations-api/spec.md) y [verificación global](ai-workspace/testing/005-simulations-api-t05.md). T01–T05 completadas técnicamente; aceptación humana final no registrada.
+
+## Simulador interactivo (008)
+
+Desde la ficha del cliente, pulsa «Nueva simulación» para acceder a /customers/:id/simulations/new. Usuarios, almacenamiento y llamadas API comienzan en cero. Ajusta los consumos, revisa el desglose EUR y selecciona EUR/USD/GBP para el total. Al guardar se muestra el resultado confirmado por el servidor y cualquier diferencia respecto al presupuesto previo.
+
+«Volver al cliente» consulta el historial conservando su contexto. «Actualizar historial» permite comprobar registros después de un resultado incierto. Los errores de red conservan el formulario y ofrecen consultar el historial en otra pestaña. El fallo del proveedor de divisas muestra EUR y permite guardar una simulación válida.
+
+Ejecuta pnpm test:e2e para verificar el flujo completo y las revisiones de navegador con API/Vite/SQLite temporales. [Validación de 008](specs/008-simulator-ui/validation.md).

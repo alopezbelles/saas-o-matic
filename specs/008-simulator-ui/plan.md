@@ -1,6 +1,6 @@
 # Plan 008 — Simulador interactivo y guardado
 
-Estado: decisiones 008-C01…C07 confirmadas. T01–T04 completadas técnicamente; T05 requiere indicación posterior. Resultados reales en validation.md; sin aceptación humana final.
+Estado: decisiones 008-C01…C07 confirmadas. T01–T05 completadas técnicamente. Resultados reales y límites de revisión en validation.md. Aceptación humana final pendiente.
 
 ## Reutilización y responsabilidades
 
@@ -60,6 +60,8 @@ Tras 201 permanecer en pantalla, anunciar éxito y presentar el DTO autoritativo
 Ruta /customers/:id/simulations/new desde ficha; breadcrumbs y retorno contextual. PDF adaptado, dos columnas desktop/una móvil, tokens/CSS Modules/sistema y semántica accesible. Sin nuevas dependencias previstas.
 
 ## Pruebas previstas
+
+Instrucción previa de T05 (17 de noviembre de 2026, antes del código): completar el flujo alta→ficha→simulación→resultado→historial con API/SQLite temporal, fallo/reintento FX controlado y cambio de política entre preview y guardado. Revisar preview, errores, resultado y ficha a 320/390/768/1440, reflujo/layout al 200 %, controles por teclado, foco y contraste renderizado. Reutilizar runners y medidas existentes, corregir regresiones que se detecten y conservar evidencias temporales reproducibles. Ejecutar controles globales con gates secuencial, comprobar limpieza de recursos y cerrar documentación canónica con resultados reales y límites. Mantener exclusión ai-workspace, datos existentes y commits/pushes.
 
 - WEB-SIM-01: controles sincronizados, entradas temporales y fronteras/límites reales.
 - WEB-SIM-02: storage/API conservados/enviados sin alterar precio ni multiplicador por plan.

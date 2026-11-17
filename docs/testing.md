@@ -1,5 +1,9 @@
 # Verificación
 
+## 008 — Cierre T05
+
+E2E-SIMULATIONS-008 recorre alta→ficha→simulación→resultado→historial con fallo/reintento FX y precio del servidor distinto del preview. VISUAL-008 verifica cuatro anchos, estados, teclado/foco, layout ampliado/reflujo y contraste renderizado. Playwright ejecuta 31 casos, ocho nuevos de T05, conservando regresiones de 007 y 008. Helper de contraste compartido por ambas specs. [Evidencia y límites](../specs/008-simulator-ui/validation.md#t05--flujo-comercial-revisión-visual-y-cierre-global). Bases/puertos temporales por caso y proveedor FX controlado.
+
 ## 008 — T04
 
 WEB-HISTORY-008 verifica retorno/paginación/contexto, comprobación incierta en otra pestaña, actualización/reintento y aviso de discrepancia conservado con importes EUR persistidos. Tres E2E nuevas con API/Vite/SQLite temporal y 12 pruebas de estado de navegación añadidas. El runner existente ejecuta 23 casos de navegador. [Resultados e incidencias](../specs/008-simulator-ui/validation.md#t04--integración-con-historial-y-recuperación). Revisión global de T05 pendiente.

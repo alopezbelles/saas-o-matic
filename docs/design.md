@@ -1,5 +1,9 @@
 # Diseño funcional y visual
 
+## Simulador 008 — Revisión T05
+
+Preview, errores, confirmación con discrepancia y ficha/historial comprobados a 320/390/768/1440 px. Layout CSS al 200 % y reflujo equivalente permiten completar el guardado. Teclado cubre slider, campos, divisa, acciones, confirmación y actualización de historial. Contraste representativo medido en texto, errores, bordes y foco. [Resultados y límites](../specs/008-simulator-ui/validation.md#t05--flujo-comercial-revisión-visual-y-cierre-global). Capturas reales temporales en .cache/007-e2e. Aceptación humana final pendiente.
+
 ## Simulador 008 — T04
 
 La ficha mantiene el aviso de discrepancia al regresar desde el resultado guardado. «Actualizar historial» permite comprobar nuevos registros con la página actual conservada. Carga, error y «Reintentar historial» reutilizan los estados independientes de la ficha. Comprobar un guardado incierto abre el historial en otra pestaña y permite conservar los consumos originales durante la comprobación.

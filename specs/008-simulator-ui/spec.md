@@ -1,10 +1,10 @@
 # 008 — Simulador interactivo y guardado
 
-Estado: decisiones 008-C01…C07 confirmadas; T01–T04 completadas técnicamente. T05 requiere indicación posterior. Sin aceptación humana final.
+Estado: decisiones 008-C01…C07 confirmadas. T01–T05 completadas técnicamente con pruebas globales y de navegador. Aceptación humana final pendiente.
 
 ## Contexto y fuentes
 
-Completar el flujo comercial con consumos, previsualización y guardado autoritativo. T01–T04 integran cliente/configuración, controles, presupuesto, conversión visual del total, guardado con resultado confirmado y recuperación contextual del historial. Revisión global del flujo pendiente de T05. Motor/API/persistencia existentes conservados.
+Flujo comercial implementado con consumos, previsualización y guardado autoritativo. T01–T05 integran cliente/configuración, controles, presupuesto, conversión visual del total, resultado confirmado, recuperación contextual del historial y revisión global del flujo. Motor/API/persistencia existentes conservados.
 
 Fuentes: contratos y decisiones confirmadas de 002–007 y conversación de preparación de 008. docs/requirements.md define infraestructura: no contiene R05/R09/R12/R13/N06 y no se le atribuyen esos identificadores. La cuarta pantalla de interfaces.pdf, revisada desde C:/Users/alope/Desktop/roams/interfaces.pdf, sirve de referencia visual adaptada; documento externo no copiado al repositorio. No se certifica revisión del enunciado oficial completo.
 

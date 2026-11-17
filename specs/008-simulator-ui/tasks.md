@@ -1,6 +1,6 @@
 # Tareas 008
 
-Estado: decisiones 008-C01…C07 confirmadas. T01–T04 completadas técnicamente; T05 pendiente de indicación. IDs canónicos 008-T01…T05. Sin aceptación humana final ni commits/pushes del agente.
+Estado: decisiones 008-C01…C07 confirmadas. T01–T05 completadas técnicamente. IDs canónicos 008-T01…T05. Resultados de cierres parciales conservados como historial. Aceptación humana final pendiente. Sin commits/pushes del agente.
 
 ## T01 — Pantalla, cliente/configuración e inputs
 
@@ -44,13 +44,13 @@ Estado: decisiones 008-C01…C07 confirmadas. T01–T04 completadas técnicament
 
 ## T05 — Flujo comercial, revisión visual y cierre
 
-- [ ] **008-T05**. RF1/RF2/RF3/RF4/RF5.
+- [x] **008-T05**. RF1/RF2/RF3/RF4/RF5.
 - Dependencia: T04.
 - Acciones: extender apps/web/e2e/fixtures, flujo comercial/errores/discrepancias/FX y diseño/teclado/contraste/reflujo; documentación autorizada con resultados reales.
 - Pruebas: E2E-SIMULATIONS-008/VISUAL-008 y controles del plan; gates sin otros controles concurrentes.
 - Hecho cuando: evidencias reales, regresiones conservadas, recursos temporales cerrados/limpiados y límites explícitos. Conformidad técnica separada de aceptación humana.
-- Evidencia: NO EJECUTADO.
+- Evidencia: [cierre T05](validation.md#t05--flujo-comercial-revisión-visual-y-cierre-global), 273 pruebas globales y 31 E2E correctas. Flujo alta→historial con FX/discrepancia, cuatro anchos, teclado/foco, contraste y layout ampliado revisados. Aceptación humana final pendiente.
 
 ## Registro
 
-No registrar esta preparación en ai-workspace por indicación de Alex. Las pruebas anteriores son previsiones. Sin commits/pushes ni cambios de datos existentes.
+Se mantiene la exclusión de ai-workspace por indicación de Alex. Los resultados ejecutados constan en validation.md y se distinguen de las previsiones originales. Sin commits/pushes ni cambios de datos existentes.

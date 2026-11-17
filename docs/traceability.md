@@ -1,5 +1,9 @@
 # Trazabilidad
 
+## Simulador 008 — Cierre T05
+
+RF1–RF5 conformes técnicamente en el alcance comprobado mediante suites de consumos/configuración, guardado/discrepancia, FX e historial y el flujo E2E alta→ficha→simulación→resultado→historial. 273 pruebas globales y 31 Playwright correctas, ocho nuevas de T05. VISUAL-008 añade cuatro anchos/estados, teclado/foco, contraste y layout ampliado/reflujo. [Resultados y límites](../specs/008-simulator-ui/validation.md#t05--flujo-comercial-revisión-visual-y-cierre-global). Aceptación humana final pendiente. Entradas siguientes conservan el contexto de cierres parciales.
+
 ## Simulador 008 — T04
 
 RF3 completa integración con historial consultado de nuevo, actualización explícita, retorno paginado y comprobación de resultado incierto en otra pestaña. RF4 conserva EUR y RF5 mantiene el aviso de discrepancia en ficha, actualización y recarga. WEB-HISTORY-008 incluye validación de estado y tres E2E con API/SQLite temporales, conservando el borrador y evitando reenvíos automáticos. [Validación T04](../specs/008-simulator-ui/validation.md#t04--integración-con-historial-y-recuperación). Revisión global y aceptación humana final pendientes.
