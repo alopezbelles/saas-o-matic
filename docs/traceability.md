@@ -1,5 +1,9 @@
 # Trazabilidad
 
+## Entrega 010 — T03
+
+DELIVERY-01 y QA-ALL-010 ejecutados desde exportación limpia del commit 33774eb, con pnpm/dependencias/Chromium propios y DB demo nueva. Arranque raíz y flujo alta→simulación→historial correctos, 276 pruebas generales y 36 E2E pasan. Se recuperaron restricciones de red y cleanup del harness; el fallo inicial queda documentado. Base original sin cambios por hash y fixtures/puertos cerrados. [Método, resultados e incidencias](../specs/010-delivery/validation.md#t03--ensayo-de-instalación-limpia). Mismo Windows/Node/npm, sin acreditar otro SO o máquina. T04/T05 y aceptación humana pendientes.
+
 ## Entrega 010 — T02
 
 DOC-AUDIT-010: índice y registros pertinentes actualizados por autorización de Alex, con instrucciones canónicas enlazadas, retrospectivas identificadas, evidencia histórica/actual separada y prompts excluidos respetados. Dos pruebas documentales correctas; sin reejecución funcional. [Verificación, procedencia y límites](../specs/010-delivery/validation.md#t02--índice-y-evidencia-del-desarrollo-asistido). T03–T05 y aceptación humana final pendientes.

@@ -1,15 +1,29 @@
 # Validación 010
 
-T01–T02 completadas técnicamente. T03–T05 NO EJECUTADAS. El cierre técnico de 009 es evidencia previa, no prueba de instalación limpia de 010. Aceptación humana pendiente.
+T01–T03 completadas técnicamente. T04–T05 NO EJECUTADAS. El cierre técnico de 009 es evidencia previa, no prueba de instalación limpia de 010. Aceptación humana pendiente.
 
 ## Matriz prevista
 
 | RF      | Tareas y controles                                         | Resultado real de implementación                               |
 | ------- | ---------------------------------------------------------- | -------------------------------------------------------------- |
-| 010-RF1 | T01/T03/T05, DOC-README-010, DELIVERY-01, QA-ALL-010       | PARCIAL T01, instrucciones y demo; ensayo limpio pendiente     |
+| 010-RF1 | T01/T03/T05, DOC-README-010, DELIVERY-01, QA-ALL-010       | CONFORME T03, ensayo desde exportación limpia en Windows       |
 | 010-RF2 | T01/T02/T05, DOC-README-010, DOC-AUDIT-010                 | CONFORME alcance documental T02, índice/procedencia/evidencias |
-| 010-RF3 | T01–T05, procedencia/versión/límites y revisión documental | PARCIAL T01, resultados y límites documentados                 |
+| 010-RF3 | T01–T05, procedencia/versión/límites y revisión documental | CONFORME alcance T03, resultados/versión/incidencias y límites |
 | 010-RF4 | T04/T05, DELIVERY-02                                       | NO EJECUTADO; sin publicación/despliegue autorizado            |
+
+## T03 — Ensayo de instalación limpia
+
+17 de noviembre de 2026, fuente 33774eb inicialmente limpia, exportada por git archive bajo .cache sin .git/dependencias/cachés/DB heredadas. [Instrucción previa](plan.md#t03--ensayo-reproducible) y [registro detallado](../../ai-workspace/testing/010-delivery-t03.md). El snapshot no contiene los cambios documentales de T03 posteriores a la exportación. Método C07 concretado por el ensayo autorizado; mismo Windows y Node/npm del host, no otra máquina/SO ni clon remoto.
+
+DELIVERY-01: bootstrap pnpm 10.33.4 propio, install --frozen-lockfile (373 paquetes descargados, cero reutilizados por pnpm), Chromium 159.0.8154.6 en caché propia, demo nueva y pnpm dev desde raíz. Health/proxy correctos, tres clientes iniciales, alta de un cuarto por UI, preview 169,40 EUR, guardado e historial persistente tras recarga; cero pageerror y consulta final de una simulación/16940 céntimos. Lockfile conserva hash. No se identificaron pasos ocultos que requieran cambiar las instrucciones de arranque del README.
+
+Se conservan las incidencias reales: bootstrap inicial lanzado desde la raíz y cancelado, EACCES de red en sandbox y fallo por cuota de la primera revisión automática antes de ejecutar. La reanudación permitió descargar con acceso aprobado. El script de flujo superó sus aserciones funcionales, pero devolvió estado fallido por cleanup taskkill; se detuvo la sesión propia y un bind independiente verificó puertos 3000/5173 libres. El registro detallado distingue esos fallos de entorno/harness de defectos de aplicación, sin ocultar el resultado inicial.
+
+Lint, typecheck, format:check, build, test y test:e2e sobre la copia devuelven código 0. Pasan 276 pruebas generales (36 shared, 12 API unitarias, 52 integración, 22 web node:test, 151 componentes, un gate y dos docs) y 36 E2E, sin fallos inesperados, omitidos o inestables. Logs en .cache/010-t03-*. No se ejecutan controles de código en paralelo con test:gates.
+
+Límites: instalación dependiente de red, configuración/herramientas del host compartidas y cachés nativas globales no auditadas exhaustivamente; no máquina limpia, otros SO, proveedor FX nuevo o despliegue. Copia/archivo fuente y logs se conservan como artefactos temporales ignorados. Veredicto T03 CUMPLE TÉCNICAMENTE. Hash de la base original conservado, cero directorios residuales de fixtures en origen y copia, y puertos propios cerrados. T04/T05 y aceptación humana pendientes.
+
+El [resumen estructurado](../../ai-workspace/testing/010-delivery-t03-results.json) conserva fuente/hash, resultados observados y recuperación del cleanup sin ocultar el primer estado fallido. Tras actualizar los registros originales, pnpm.cmd format:check y pnpm.cmd test:docs pasan con código 0 y dos pruebas documentales; git diff --check sin errores. Salidas .cache/010-t03-format-final.txt y -docs-final.txt. No hubo cambios de código de producto, dependencias, lockfile, schema o instrucciones de arranque por el ensayo.
 
 ## T02 — Índice y evidencia del desarrollo asistido
 

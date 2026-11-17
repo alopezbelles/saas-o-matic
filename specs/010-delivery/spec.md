@@ -1,6 +1,6 @@
 # 010 — Documentación, auditoría y entrega
 
-T01–T02 completadas técnicamente: README/demo/capturas e índice de auditoría. Registro ai-workspace autorizado en T02 con procedencia y exclusiones de mensajes respetadas. T03–T05 pendientes de indicación. Aceptación humana separada del cierre técnico. [Evidencia T01](validation.md#t01--readme-técnico-y-demo-reproducible).
+T01–T03 completadas técnicamente: README/demo/capturas, auditoría y ensayo limpio en Windows. Registro ai-workspace autorizado en T02 con procedencia y exclusiones de mensajes respetadas. T04–T05 pendientes de indicación. Aceptación humana separada del cierre técnico. [Evidencia T01](validation.md#t01--readme-técnico-y-demo-reproducible).
 
 ## Contexto y fuentes
 

@@ -240,7 +240,7 @@ pnpm test:e2e
 - Sin autenticación/autorización, catálogo comercial real, idempotencia avanzada o despliegue de producción. Dos guardados deliberados pueden crear dos simulaciones.
 - Conversión dependiente de disponibilidad/CORS del proveedor. La comprobación local puntual no garantiza el funcionamiento en un futuro dominio público. Importes guardados siempre EUR.
 - Validación de interfaz en Chromium a cuatro anchos y ampliación CSS/reflujo; no certificación completa de accesibilidad, otros navegadores, lectores de pantalla o zoom nativo.
-- El ensayo de instalación limpia de 010-T03 y la preparación externa de T04 siguen pendientes. Entrega local y repositorio son el alcance obligatorio; demo desplegada opcional, sin hosting elegido.
+- El ensayo de 010-T03 se completó desde una exportación limpia en este Windows: 276 pruebas generales y 36 E2E correctas; no acredita otro SO o máquina. La preparación externa de T04 sigue pendiente. Entrega local y repositorio son el alcance obligatorio; demo desplegada opcional, sin hosting elegido.
 - Se excluyen secretos, .env reales, DB/backups, node_modules y cachés. Los PDF aportados se consultaron como fuentes externas y no se incorporan automáticamente. No se publica ni se hace commit/push desde estas instrucciones.
 
 La conformidad técnica y la aceptación humana final se registran por separado. El objetivo es que el evaluador pueda comprobar el comportamiento y recorrer las decisiones con evidencia, incluidos los límites que quedan fuera de esta prueba.

@@ -1,6 +1,6 @@
 # Tareas 010
 
-T01–T02 completadas técnicamente; T03–T05 pendientes de indicación de Alex. IDs 010-T01–T05. Registro ai-workspace autorizado en T02, respetando mensajes excluidos.
+T01–T03 completadas técnicamente; T04–T05 pendientes de indicación de Alex. IDs 010-T01–T05. Registro ai-workspace autorizado en T02, respetando mensajes excluidos.
 
 ## T01 — README técnico y demo reproducible
 
@@ -25,13 +25,13 @@ T01–T02 completadas técnicamente; T03–T05 pendientes de indicación de Alex
 
 ## T03 — Ensayo de instalación limpia y paquete
 
-- [ ] **010-T03** — RF1/RF3. Depende de T02, comando demo de T01 y método de ensayo C07 definido.
+- [x] **010-T03** — RF1/RF3. T02 y comando demo T01 disponibles; método C07 aplicado.
 - Identificar versión y cambios incluidos; crear copia aislada dentro del proyecto sin dependencias, cachés, secretos ni DB heredadas; conservar configuración necesaria. No modificar .git ni datos existentes.
 - Seguir README para instalación frozen-lockfile, Chromium, DB nueva/datos acordados y arranque web/API desde raíz. Comprobar /health, alta, simulación, persistencia e historial.
 - Ejecutar lint, typecheck, format:check, build, test y test:e2e sin gates concurrentes. Corregir pasos ocultos y repetir controles afectados.
 - Archivos: validation.md; evidencia pertinente en ai-workspace/testing tras autorización; README si el ensayo detecta instrucciones incorrectas. Recursos efímeros bajo .cache.
 - Controles: DELIVERY-01, QA-ALL-010. Registrar sistema operativo real, red, reutilización de herramientas/almacén, códigos, incidencias y cleanup.
-- Hecho cuando el recorrido sea reproducible en la copia limpia y los límites de aislamiento estén explícitos, sin afirmar otra máquina/SO no probados. Estado/evidencia: NO EJECUTADO.
+- Ensayo correcto desde exportación 33774eb en el mismo Windows: dependencias/Chromium propios, demo nueva, dev y flujo real, 276 pruebas generales y 36 E2E correctas. Incidencias de red/cleanup y recuperación documentadas. [Evidencia y límites T03](validation.md#t03--ensayo-de-instalación-limpia). T04/T05 y aceptación humana pendientes.
 
 ## T04 — Preparación de entrega externa
 

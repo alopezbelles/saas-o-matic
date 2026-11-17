@@ -13,6 +13,8 @@ Preparado el 17 de noviembre de 2026 durante 010-T02. Es un índice posterior, n
 
 Las cifras pertenecen a suites/alcances distintos: 270 funcionales de T02 no incluían gates/docs; 273 generales sí. Los tres casos demo de 010 incrementan la integración de 49 a 52 y el total general de 273 a 276. No sumar ejecuciones repetidas como cobertura nueva ni atribuir 36 E2E a T01 de 010.
 
+Actualización durante 010-T03: [ensayo desde exportación limpia](010-delivery-t03.md) del commit 33774eb, con instalación/dependencias/navegador propios, demo nueva y flujo real. Pasan 276 pruebas generales y 36 E2E en esa copia, con límites de mismo Windows y recuperación de incidencias de red/cleanup. [Resultados estructurados](010-delivery-t03-results.json); la nueva ejecución sí tiene evidencia propia y no se deduce de los resultados históricos anteriores.
+
 El reporte común .cache/007-e2e/report.json no es un archivo inmutable de todas las specs. La documentación canónica conserva el contexto; donde un artefacto haya desaparecido, corresponde repetir la comprobación o declarar su ausencia, no reconstruir la salida original. No se copian rutas personales, contenido de bases o secretos al registro.
 
 La preservación de datos y limpieza de recursos se comprobaron en 009-T05 y 010-T01, según sus validaciones. Esta tarea documental no abre esas bases ni convierte dichas comprobaciones previas en una auditoría actual de datos.

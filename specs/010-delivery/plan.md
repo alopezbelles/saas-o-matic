@@ -1,6 +1,6 @@
 # Plan 010 — Documentación, auditoría y entrega
 
-T01–T02 completadas técnicamente por indicación de Alex; T03–T05 pendientes. La instrucción de preparación siguiente conserva su alcance histórico. T02 autoriza actualizar ai-workspace sin reproducir mensajes excluidos. Usar [aclaraciones](clarifications.md) para decisiones pendientes.
+T01–T03 completadas técnicamente por indicación de Alex; T04–T05 pendientes. La instrucción de preparación siguiente conserva su alcance histórico. T02 autoriza actualizar ai-workspace sin reproducir mensajes excluidos. Usar [aclaraciones](clarifications.md) para decisiones pendientes.
 
 ## Instrucción de preparación
 
@@ -29,6 +29,8 @@ Instrucción previa de ejecución T02 (17 de noviembre de 2026): la petición de
 Solo tras autorización para escribir ai-workspace: revisar índice y registros pertinentes, incorporar enlaces a 008/009 y 010 y resolver afirmaciones operativas obsoletas sobre CORS, fuentes y capturas. Conservar resultados históricos como históricos y hacer visible el estado actual. No reescribir retrospectivas como conversaciones originales. Resumir desde validaciones y artefactos conservados; si falta una salida o captura, no inventarla ni afirmar conservación. Respetar exclusión de prompts que Alex haya mantenido fuera del registro.
 
 ## T03 — Ensayo reproducible
+
+Instrucción previa de ejecución T03 (17 de noviembre de 2026): exportar con git archive el HEAD 33774eb, inicialmente limpio, a una carpeta nueva bajo .cache, sin .git ni archivos ignorados. Usar Node/npm del equipo y bootstrap pnpm 10.33.4 en .tools propio de la copia, caché npm local, instalación frozen-lockfile y Chromium descargado allí. Conservar manifest/hash del archivo fuente y rutas verificadas; no heredar DB/cachés/servidores. Seguir README para demo nueva y dev desde raíz, comprobar health y alta→simulación→historial por navegador, cerrar solo procesos propios y ejecutar controles secuenciales. Registrar red/limitaciones y evidencias reales; modificar README solo ante pasos ocultos o incorrectos. El snapshot exportado no incluye estos cambios documentales posteriores de T03.
 
 Identificar versión fuente y modificaciones incluidas. Preparar copia aislada bajo .cache dentro del proyecto, sin node_modules, .tools, .cache heredados, .env reales, DB/backups o secretos; mantener dotfiles necesarios como .npmrc y configuración. No copiar recursivamente la propia carpeta de destino. Verificar destino absoluto dentro del área temporal antes de cualquier limpieza y borrar solo recursos propios. Una copia/exportación limpia no es un clon remoto: documentar método y limitación. No modificar .git ni requerir commit/push para el ensayo.
 

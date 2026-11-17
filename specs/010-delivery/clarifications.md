@@ -1,6 +1,6 @@
 # Aclaraciones 010
 
-T01–T02 completadas técnicamente, con demo/capturas e índice de auditoría; T03–T05 pendientes. Las decisiones siguientes distinguen instrucciones recibidas de propuestas pendientes y conservan la procedencia de su confirmación.
+T01–T03 completadas técnicamente, con demo/capturas, auditoría y ensayo limpio en Windows; T04–T05 pendientes. Las decisiones siguientes distinguen instrucciones recibidas de propuestas pendientes y conservan la procedencia de su confirmación.
 
 | ID      | Tema                     | Resolución y estado                                                                                                                                                                                                                                                              |
 | ------- | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -10,7 +10,7 @@ T01–T02 completadas técnicamente, con demo/capturas e índice de auditoría; 
 | 010-C04 | Datos demo               | Confirmado por Alex: preparar demo completa mediante comando explícito y seguro, con clientes ficticios válidos y simulaciones en una DB demo nueva. Implementación asignada a T01 cuando se autorice ejecutarla; sin modificar datos existentes.                                |
 | 010-C05 | Modalidad de entrega     | Confirmado por Alex: instalación local y repositorio como entrega obligatoria; demo desplegada opcional, sin elegir hosting. La decisión no autoriza publicación, commits/pushes ni despliegue.                                                                                  |
 | 010-C06 | Registro IA              | Alex autoriza ejecutar T02 y su actualización de ai-workspace. Se permite registrar implementación/evidencia 008/009/010 con retrospectivas explícitas; se mantienen excluidos los mensajes concretos que Alex había reservado. La adaptación anterior no concedía este permiso. |
-| 010-C07 | Ensayo limpio            | Propuesta: copia aislada en el equipo disponible, sin dependencias, cachés o DB heredadas, identificando versión y contenido. No afirmar validación en otra máquina/SO por ensayar una carpeta limpia. Método concreto se revisará antes de T03 sin modificar .git.              |
+| 010-C07 | Ensayo limpio            | Método aplicado en T03 autorizada por Alex: git archive del commit 33774eb a copia nueva bajo .cache, dependencias y Chromium propios; Node/npm y Windows del host compartidos. Instalación/flujo/controles correctos; no se afirma otro SO/máquina. Sin modificación de .git.   |
 
 ## Referencias antiguas resueltas
 

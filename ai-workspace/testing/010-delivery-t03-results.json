@@ -1,0 +1,62 @@
+﻿{
+  "date": "2026-11-17",
+  "sourceCommit": "33774eb",
+  "sourceArchiveSha256": "611191F1FDF18977345E45FF4D6FD78586A15BF906C6D20E0FF003D906E1118A",
+  "method": "git archive, copia aislada en el mismo Windows",
+  "node": "22.19.0",
+  "npm": "10.9.3",
+  "pnpm": "10.33.4",
+  "chromium": "159.0.8154.6",
+  "packagesDownloaded": 373,
+  "packagesReusedByPnpm": 0,
+  "checks": {
+    "lint": 0,
+    "typecheck": 0,
+    "format": 0,
+    "build": 0,
+    "test": 0,
+    "e2e": 0
+  },
+  "tests": {
+    "shared": 36,
+    "apiUnit": 12,
+    "integration": 52,
+    "webNode": 22,
+    "components": 151,
+    "gates": 1,
+    "docs": 2,
+    "total": 276
+  },
+  "e2e": {
+    "passed": 36,
+    "unexpected": 0,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "smoke": {
+    "initialHarnessStatus": "failed",
+    "functionalSteps": [
+      "pnpm dev desde raÃ­z y GET /health correctos",
+      "Proxy /api y tres clientes demo visibles",
+      "Alta UI con control fiscal y detalle real",
+      "Preview 169,40 EUR, POST confirmado e historial conservado al recargar"
+    ],
+    "pageErrors": [],
+    "totalCents": 16940,
+    "initialCleanupExit": 1,
+    "recovery": "session interrupted",
+    "independentClosedPorts": [3000, 5173]
+  },
+  "cleanup": {
+    "originalDataDifferences": 0,
+    "originalTemporaryTests": 0,
+    "copyTemporaryTests": 0,
+    "copyRetainedUnderIgnoredCache": true
+  },
+  "limitations": [
+    "No es otra máquina ni otro SO",
+    "Node/npm y configuración del host compartidos",
+    "Cachés nativas globales no auditadas exhaustivamente",
+    "Sin despliegue ni nueva consulta FX real"
+  ]
+}

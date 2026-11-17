@@ -1,5 +1,9 @@
 # Autorización y alcance
 
+## 010 — T03
+
+Alex autoriza el ensayo de instalación limpia en copia aislada, comandos del README, DB demo nueva, navegador y controles globales. Método C07 concretado como exportación local del commit 33774eb bajo .cache, sin modificar .git, usar datos existentes o publicar. Node/npm del equipo; pnpm/dependencias/cachés/Chromium propios de la copia. Registro ai-workspace autorizado; T04–T05 requieren indicación posterior.
+
 ## 010 — T02
 
 Alex solicita ejecutar T02, cuyo alcance explícito es actualizar ai-workspace. Se autoriza el índice y los registros pertinentes de implementación/evidencia 008/009/010, con retrospectivas identificadas y respeto a mensajes previamente excluidos. Esta autorización levanta la exclusión para dicho registro; no cambia las restricciones históricas con las que se ejecutaron las tareas anteriores. T03–T05 pendientes, sin publicación, datos existentes o commits/pushes.

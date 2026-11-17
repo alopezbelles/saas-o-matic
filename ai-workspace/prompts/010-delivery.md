@@ -15,3 +15,7 @@ La atribución de Codex a implementación/ejecución y ChatGPT Work con Product 
 [Plan T02](../../specs/010-delivery/plan.md#t02--auditoría-enlazada-y-procedencia): actualizar el índice y registros pertinentes desde validaciones/artefactos reales, separar evidencia histórica/actual, mantener las exclusiones de mensajes y resolver referencias obsoletas de CORS/fuentes/capturas. No repetir suites de producto para un cambio documental. Comprobar enlaces/formato y distinguir aceptación humana de conformidad técnica.
 
 [Iteración](../iterations/010-delivery.md), [verificación](../testing/008-010-evidence-index.md) y [revisión T02](../reviews/010-delivery-t02.md).
+
+## T03 — Instrucción previa y método aplicado
+
+Registro durante ejecución, 17 de noviembre de 2026. [Plan T03](../../specs/010-delivery/plan.md#t03--ensayo-reproducible): exportar 33774eb con git archive, conservar dotfiles necesarios y excluir .git/dependencias/cachés/DB. Instalar pnpm y dependencias/Chromium en la copia, seguir README para demo y dev desde raíz, comprobar alta→simulación→historial y controles secuenciales. Identificar Windows/Node/npm compartidos y límites del aislamiento; cerrar procesos propios, conservar datos originales y registrar fallos de entorno sin convertirlos en resultados exitosos. La instrucción se escribió en el plan antes del ensayo; este enlace no reproduce un prompt original de conversación.
