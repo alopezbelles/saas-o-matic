@@ -1,5 +1,9 @@
 # Autorización y alcance
 
+## 008 — T04
+
+Alex autoriza T04 el 17 de noviembre de 2026, integración del historial y recuperación después del guardado. Incluye retorno/contexto, consulta actualizada, comprobación de resultados inciertos y pruebas aisladas. T05 requiere indicación posterior. Continúan la exclusión de ai-workspace y los límites sobre commits/pushes, datos existentes y dependencias nuevas.
+
 ## 008 — T03
 
 Alex autoriza implementar T03 el 16 de noviembre de 2026: POST, resultado autoritativo, discrepancias, errores y pruebas. T04–T05 requieren indicación posterior. Se mantiene la exclusión de ai-workspace y de commits/pushes, datos existentes, nuevas dependencias y cambios de backend/schema. La aceptación humana final no se presupone.

@@ -1,6 +1,6 @@
 # Validación 008
 
-Estado: decisiones 008-C01…C07 confirmadas, T01–T03 completadas técnicamente. RF1/RF2 conformes para preview; RF4 incorpora total guardado y fallback EUR. RF3/RF5 conformes para guardado/resultado; integración contextual de historial y cierre global pendientes de T04–T05. Los estados anteriores conservan su contexto histórico.
+Estado: decisiones 008-C01…C07 confirmadas, T01–T04 completadas técnicamente. RF1/RF2 conformes para preview. RF3–RF5 conformes en guardado, conversión del total, integración de historial y recuperación. Revisión global y aceptación humana final pendientes de T05. Los estados anteriores conservan su contexto histórico.
 
 ## Matriz prevista
 
@@ -8,9 +8,27 @@ Estado: decisiones 008-C01…C07 confirmadas, T01–T03 completadas técnicament
 | ------- | ----------- | -------------------------------------------------- | ------------------------------- |
 | 008-RF1 | T01/T02/T05 | WEB-SIM-01, WEB-CONFIG-008, E2E-SIMULATIONS-008    | CONFORME PREVIEW                |
 | 008-RF2 | T01/T02/T05 | WEB-SIM-02, E2E-SIMULATIONS-008                    | CONFORME PREVIEW                |
-| 008-RF3 | T03/T04/T05 | WEB-SAVE-008, WEB-HISTORY-008, E2E-SIMULATIONS-008 | PARCIAL: HISTORIAL T04          |
+| 008-RF3 | T03/T04/T05 | WEB-SAVE-008, WEB-HISTORY-008, E2E-SIMULATIONS-008 | CONFORME INTEGRACIÓN T04        |
 | 008-RF4 | T02/T04/T05 | WEB-FX-008, WEB-HISTORY-008, E2E-SIMULATIONS-008   | CONFORME TOTAL PREVIEW/GUARDADO |
 | 008-RF5 | T03/T04/T05 | WEB-POLICY-008, E2E-SIMULATIONS-008                | CONFORME GUARDADO               |
+
+## T04 — Integración con historial y recuperación
+
+17 de noviembre de 2026, base 2038796, Git inicial limpio. Alex autoriza T04. [Instrucción anterior al código](plan.md#guardado-y-recuperación). Exclusión ai-workspace vigente. Conformidad técnica de esta tarea, aceptación humana final pendiente.
+
+El historial de 007 ya obtenía datos de nuevo al montar la ficha. Se conserva esa consulta y se incorpora «Actualizar historial» mediante el recurso GET existente, con offset y foco gestionados por los mecanismos existentes. La comprobación incierta en otra pestaña conserva el formulario original. El aviso de discrepancia usa un componente compartido y se transmite al volver mediante estado de navegación validado por cliente e importes enteros seguros. Las filas continúan procediendo de la API.
+
+WEB-HISTORY-008 añade 12 pruebas de retorno/contexto y rechazo de estado incompleto, ajeno, negativo, fraccionario o inseguro. Las 151 pruebas de componentes/transporte pasan. Tres E2E nuevas comprueban retorno desde offset 20 con 21→22 simulaciones, orden reciente/recarga y búsqueda previa conservada. También verifican un commit real con 201 ilegible, consulta en otra pestaña, 503 del historial con ficha disponible, recuperación y actualización después de otro registro de fixture. Se comprueba que el formulario original conserva sus tres consumos y que realiza un solo POST. La tercera E2E guarda 16800 tras preview 16940 y conserva aviso/importe EUR al volver, actualizar y recargar después de otra modificación de política de fixture.
+
+pnpm.cmd test:e2e devuelve código 0 con 23 correctas, sin retries/omisiones. Regresiones de 007 y T01–T03 conservadas. Cada caso usa API/Vite/SQLite temporal y limpieza del runner existente. Política de fixture modificada únicamente en su API temporal. Salida .cache/008-t04-e2e.txt. Proveedor FX controlado en regresiones, sin consulta externa nueva. Revisión completa del flujo comercial y visual de T05 pendiente.
+
+La primera suite de componentes pasó 151/151. La primera ejecución global falló en una comprobación de foco de T03, con 150/151 componentes correctos. Se ajustó la aserción para esperar el foco del efecto de React después de aparecer el alert. La salida inicial se conserva en .cache/008-t04-test.txt.
+
+La ejecución global posterior pnpm.cmd test devuelve código 0, con 36 shared + 12 API unitarias + 49 integración + 22 node web + 151 componentes/transporte + 1 gates + 2 docs = 273 pruebas correctas. Gates ejecutado sin otros controles de código concurrentes. Lint, typecheck y build correctos. Salida final .cache/008-t04-test-final.txt.
+
+Revisión final posterior a la documentación y al ajuste de la prueba de foco correcta con pnpm.cmd lint, typecheck, format:check, test:docs (2/2) y git diff --check.
+
+Cambios limitados a web, pruebas y documentación canónica. Sin nuevas dependencias, backend/shared/schema, lockfile, datos existentes ni registros ai-workspace. Sin commits/pushes ni aceptación humana final.
 
 ## T03 — Guardado autoritativo y discrepancias
 

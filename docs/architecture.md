@@ -1,5 +1,9 @@
 # Arquitectura
 
+## Simulador 008 — T04
+
+SimulationHistory conserva su recurso GET y paginación de 007, con actualización explícita mediante useApiResource y recuperación de foco existente. Volver a la ficha monta una consulta nueva. El simulador transmite solo los importes comparados y el cliente en el estado de navegación cuando existe discrepancia. simulationComparison valida identidad y enteros seguros antes de presentar el aviso compartido SimulationDiscrepancy. Las filas siempre proceden del DTO de la API. La consulta en otra pestaña conserva el formulario incierto en su pestaña original.
+
 ## Simulador 008 — T03
 
 create-simulation reutiliza postJson, parser compartido de entrada y parseSimulationDto del historial; exige 201, identidad del cliente y consumos coincidentes. useSimulationSave congela payload/preview y coordina envío único, cancelación y estados. saved-result proyecta el DTO persistido sin motor y compara versiones/importes/tasa/desglose. SimulationSaveFeedback presenta confirmación enfocada, snapshot, discrepancias y errores asociados; incertidumbre ofrece consultar historial sin reenvío automático. El resultado confirmado permanece bloqueado hasta preparar explícitamente otro borrador cero/EUR con nueva consulta de configuración/cliente. Conversión solo del total guardado mediante 006. Sin cambios de backend/shared/DB/dependencias; fixture E2E permite cambiar política únicamente en su API temporal.

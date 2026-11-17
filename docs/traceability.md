@@ -1,5 +1,9 @@
 # Trazabilidad
 
+## Simulador 008 — T04
+
+RF3 completa integración con historial consultado de nuevo, actualización explícita, retorno paginado y comprobación de resultado incierto en otra pestaña. RF4 conserva EUR y RF5 mantiene el aviso de discrepancia en ficha, actualización y recarga. WEB-HISTORY-008 incluye validación de estado y tres E2E con API/SQLite temporales, conservando el borrador y evitando reenvíos automáticos. [Validación T04](../specs/008-simulator-ui/validation.md#t04--integración-con-historial-y-recuperación). Revisión global y aceptación humana final pendientes.
+
 ## Simulador 008 — T03
 
 RF3 conforme para POST exacto, envío único, resultado, errores/retención e incertidumbre sin reintentos automáticos; integración contextual completa del historial pendiente de T04. RF5 conforme en comparación y proyección del DTO autoritativo incluso con versiones nuevas. RF4 incorpora conversión del total confirmado y guardado EUR ante fallo FX. WEB-SAVE-008/WEB-POLICY-008, pruebas de saved-result y cuatro E2E reales con SQLite aislado. [Validación T03](../specs/008-simulator-ui/validation.md#t03--guardado-autoritativo-y-discrepancias). Sin registros ai-workspace ni aceptación humana final.

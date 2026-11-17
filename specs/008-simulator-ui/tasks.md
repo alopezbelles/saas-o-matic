@@ -1,6 +1,6 @@
 # Tareas 008
 
-Estado: decisiones 008-C01…C07 confirmadas. T01–T03 completadas técnicamente; T04–T05 pendientes de indicación. IDs canónicos 008-T01…T05. Sin aceptación humana final ni commits/pushes del agente.
+Estado: decisiones 008-C01…C07 confirmadas. T01–T04 completadas técnicamente; T05 pendiente de indicación. IDs canónicos 008-T01…T05. Sin aceptación humana final ni commits/pushes del agente.
 
 ## T01 — Pantalla, cliente/configuración e inputs
 
@@ -34,13 +34,13 @@ Estado: decisiones 008-C01…C07 confirmadas. T01–T03 completadas técnicament
 
 ## T04 — Integración con historial y recuperación
 
-- [ ] **008-T04**. RF3/RF4/RF5; resultado confirmado permanece en el simulador.
+- [x] **008-T04**. RF3/RF4/RF5; resultado confirmado permanece en el simulador.
 - Dependencia: T03.
 - Acciones: integrar historial de 007, actualización/retorno y comprobación tras resultado incierto; conservar paginación/contexto/EUR. No otro SimulationHistory ni «Ver detalle».
 - Destinos existentes según necesidad: CustomerDetailPage, SimulationHistory y navegación de pantalla nueva.
 - Pruebas: WEB-HISTORY-008; persistencia/orden/recarga, sin filas optimistas ni pérdida del aviso de discrepancia al navegar.
 - Hecho cuando: guardado confirmado aparece consultando API y el posible guardado puede comprobarse sin reenvío automático.
-- Evidencia: NO EJECUTADO.
+- Evidencia: [validación T04](validation.md#t04--integración-con-historial-y-recuperación), WEB-HISTORY-008 con retorno/paginación/recarga, comprobación en otra pestaña, actualización/reintento y discrepancia persistente. Tres E2E nuevas, 23 Playwright correctas en total. T05 pendiente.
 
 ## T05 — Flujo comercial, revisión visual y cierre
 

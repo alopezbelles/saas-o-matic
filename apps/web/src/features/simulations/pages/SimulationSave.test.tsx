@@ -152,7 +152,7 @@ it.each([422, 404, 503, 500])(
     );
     submit();
     const alert = await screen.findByRole('alert');
-    expect(alert).toHaveFocus();
+    await vi.waitFor(() => expect(alert).toHaveFocus());
     expect(users()).toHaveValue('15');
     expect(screen.getByLabelText(/Almacenamiento contratado/)).toHaveValue(
       '500',

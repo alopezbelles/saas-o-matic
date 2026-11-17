@@ -76,6 +76,15 @@ export function SimulationHistory({ customerId }: { customerId: string }) {
         </div>
       ) : (
         <>
+          <button
+            className={styles.button + ' ' + detail.refresh}
+            onClick={() => {
+              requestFocus();
+              retry();
+            }}
+          >
+            Actualizar historial
+          </button>
           <p role="status">
             {state.value.total}{' '}
             {state.value.total === 1 ? 'simulación' : 'simulaciones'}

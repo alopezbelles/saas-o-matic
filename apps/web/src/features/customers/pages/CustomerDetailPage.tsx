@@ -8,6 +8,8 @@ import { customersReturnTo } from '../list-location';
 import { countryLabel, PLAN_LABELS } from '../customer-labels';
 import { CustomerCards } from '../components/CustomerCards';
 import { SimulationHistory } from '../components/SimulationHistory';
+import { simulationComparison } from '../../simulations/simulation-location';
+import { SimulationDiscrepancy } from '../../simulations/components/SimulationDiscrepancy';
 import styles from '../components/Customers.module.css';
 import layout from '../../../app/AppLayout.module.css';
 
@@ -26,6 +28,7 @@ export function CustomerDetailPage() {
     [id],
   );
   const { state, retry } = useApiResource(id ?? '', id ? load : null);
+  const comparison = id ? simulationComparison(location.state, id) : null;
   const created =
     location.state &&
     typeof location.state === 'object' &&
@@ -64,6 +67,11 @@ export function CustomerDetailPage() {
         )}
       </div>
       {created && <p role="status">Cliente creado correctamente.</p>}
+      {comparison && (
+        <div className={styles.status} role="status">
+          <SimulationDiscrepancy {...comparison} />
+        </div>
+      )}
       {!id ? (
         <div className={styles.status} role="alert">
           <p>El identificador del cliente no es válido.</p>

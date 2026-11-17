@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router';
 import type { SaveState } from '../useSimulationSave';
-import { formatDate, formatEuro } from '../../customers/format';
+import { formatDate } from '../../customers/format';
+import { SimulationDiscrepancy } from './SimulationDiscrepancy';
 import styles from '../../customers/components/Customers.module.css';
 
 const labels = {
@@ -40,12 +41,10 @@ export function SimulationSaveFeedback({
           .
         </p>
         {state.changed && (
-          <p>
-            El servidor ha actualizado el presupuesto. Total previo:{' '}
-            {formatEuro(state.previous.totalCents)}. Total guardado:{' '}
-            {formatEuro(state.result.totalCents)}. Se muestra el cálculo
-            definitivo guardado.
-          </p>
+          <SimulationDiscrepancy
+            previousTotalCents={state.previous.totalCents}
+            savedTotalCents={state.result.totalCents}
+          />
         )}
       </div>
     );

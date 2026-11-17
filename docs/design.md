@@ -1,5 +1,9 @@
 # Diseño funcional y visual
 
+## Simulador 008 — T04
+
+La ficha mantiene el aviso de discrepancia al regresar desde el resultado guardado. «Actualizar historial» permite comprobar nuevos registros con la página actual conservada. Carga, error y «Reintentar historial» reutilizan los estados independientes de la ficha. Comprobar un guardado incierto abre el historial en otra pestaña y permite conservar los consumos originales durante la comprobación.
+
 ## Simulador 008 — T03
 
 «Guardar simulación» acompaña a «Volver al cliente». Durante el envío se bloquean consumos/divisa y se anuncia progreso. Tras confirmar, el resumen se titula «Resultado guardado», mantiene los importes del servidor y ofrece «Preparar otra simulación»; la divisa puede cambiar sin alterar el registro. Confirmación y errores reciben foco; los errores de consumo enlazan los campos. Aviso de discrepancia muestra total previo y guardado en EUR. Red/timeout/201 ilegible conservan el formulario y ofrecen comprobar historial en otra pestaña. Integración contextual completa con historial pendiente de T04; revisión global de T05 pendiente.

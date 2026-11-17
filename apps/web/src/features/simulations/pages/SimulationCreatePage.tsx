@@ -224,7 +224,22 @@ function SimulationSetup() {
         </div>
         <div className={page.actions}>
           {back ? (
-            <Link className={styles.button} to={back.to} state={back.state}>
+            <Link
+              className={styles.button}
+              to={back.to}
+              state={{
+                ...back.state,
+                ...(save.state.status === 'success' && save.state.changed
+                  ? {
+                      simulationComparison: {
+                        customerId: id,
+                        previousTotalCents: save.state.previous.totalCents,
+                        savedTotalCents: save.state.result.totalCents,
+                      },
+                    }
+                  : {}),
+              }}
+            >
               Volver al cliente
             </Link>
           ) : (

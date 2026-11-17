@@ -16,6 +16,9 @@
   font-weight: 700;
   font-variant-numeric: tabular-nums;
 }
+.refresh {
+  justify-self: start;
+}
 @media (max-width: 40rem) {
   .history {
     padding: var(--space-4);
