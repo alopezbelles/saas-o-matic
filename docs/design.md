@@ -1,5 +1,9 @@
 # Diseño funcional y visual
 
+## Simulador 008 — T03
+
+«Guardar simulación» acompaña a «Volver al cliente». Durante el envío se bloquean consumos/divisa y se anuncia progreso. Tras confirmar, el resumen se titula «Resultado guardado», mantiene los importes del servidor y ofrece «Preparar otra simulación»; la divisa puede cambiar sin alterar el registro. Confirmación y errores reciben foco; los errores de consumo enlazan los campos. Aviso de discrepancia muestra total previo y guardado en EUR. Red/timeout/201 ilegible conservan el formulario y ofrecen comprobar historial en otra pestaña. Integración contextual completa con historial pendiente de T04; revisión global de T05 pendiente.
+
 ## Simulador 008 — T02
 
 Composición de dos tarjetas alineadas en escritorio, «Consumo estimado» y «Resumen mensual», con cabeceras separadas, slider/campo en fila, selector de divisa y total destacado en verde mediante token semántico. Reflujo en una columna móvil, manteniendo fuente del sistema y límites acordados. Desglose EUR; solo total convertido con fecha/atribución, carga/error/reintento y equivalente EUR. No botón de guardado hasta T03. [Validación T02](../specs/008-simulator-ui/validation.md#t02--preview-desglose-y-conversión). Capturas temporales, sin registros ai-workspace por indicación vigente.

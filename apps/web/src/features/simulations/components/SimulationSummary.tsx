@@ -16,10 +16,12 @@ export function SimulationSummary({
   preview,
   countryCode,
   currency,
+  title = 'Resumen mensual',
 }: {
   preview: Preview;
   countryCode: string;
   currency: CurrencyCode;
+  title?: string;
 }) {
   const { state, retry } = useExchangeRates(
     currency,
@@ -44,7 +46,7 @@ export function SimulationSummary({
   }
   return (
     <section className={panel.panel} aria-labelledby="summary-heading">
-      <h2 id="summary-heading">Resumen mensual</h2>
+      <h2 id="summary-heading">{title}</h2>
       <div className={panel.body}>
         {!quote ? (
           <p role="status">

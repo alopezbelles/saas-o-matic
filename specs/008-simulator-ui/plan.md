@@ -1,6 +1,6 @@
 # Plan 008 — Simulador interactivo y guardado
 
-Estado: decisiones 008-C01…C07 confirmadas. T01–T02 completadas técnicamente; T03–T05 requieren indicación posterior. Resultados reales en validation.md; sin aceptación humana final.
+Estado: decisiones 008-C01…C07 confirmadas. T01–T03 completadas técnicamente; T04–T05 requieren indicación posterior. Resultados reales en validation.md; sin aceptación humana final.
 
 ## Reutilización y responsabilidades
 
@@ -44,6 +44,8 @@ Selector EUR/USD/GBP solo para el total del simulador y el resultado confirmado.
 Fallo/caducidad FX: retirar conversión no válida y mostrar total identificado como EUR, aviso y «Reintentar conversión». Un fallo del proveedor no bloquea calcular/guardar EUR si cliente, configuración y consumos son válidos. No cambiar importes persistidos ni presentar EUR con etiqueta USD/GBP. El reintento de FX no repite POST; volver a EUR no requiere red. El mismo comportamiento aplica al resultado confirmado tras guardar.
 
 ## Guardado y recuperación
+
+Instrucción técnica previa de T03 (16 de noviembre de 2026, antes de código): Alex autoriza POST/resultado/discrepancias y estados de error. Congelar payload/preview al enviar, validar 201/DTO/identidad/consumos y comparar sin recalcular resultado. Mantener pantalla con resultado/snapshots autoritativos, confirmación accesible y aviso; consumos bloqueados durante envío y lectura de resultado. «Preparar otra simulación» inicia borrador cero/EUR y recarga configuración/cliente explícitamente, sin guardar ni borrar registros. Conservar borrador ante errores, ofrecer comprobación de historial ante incertidumbre y no reenviar automáticamente. Verificar doble envío, 422/404/503/red/timeout/201 ilegible, políticas distintas y FX del total confirmado con DB temporal. Sin ai-workspace, nuevas dependencias, cambios backend/schema o commits/pushes.
 
 Congelar preview/datos al enviar. POST con exactamente cuatro campos, sin precios/país/plan. Una petición pendiente, sin guardado en efectos ni retries automáticos. Exigir 201 y validar SimulationDto/identidad. Comparar pricingVersion, taxPolicyVersion, baseCents, taxCents y totalCents con preview congelado, no un borrador posterior.
 

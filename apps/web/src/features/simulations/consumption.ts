@@ -1,6 +1,7 @@
 import { assertConsumption } from '@saas-o-matic/shared';
 
 export type ConsumptionField = 'users' | 'storageGb' | 'apiCalls';
+export type ConsumptionErrors = Partial<Record<ConsumptionField, string>>;
 export type ConsumptionDraft = Record<ConsumptionField, string>;
 
 export function parseConsumptionField(

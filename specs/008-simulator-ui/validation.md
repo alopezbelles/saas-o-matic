@@ -1,16 +1,34 @@
 # Validación 008
 
-Estado: decisiones 008-C01…C07 confirmadas, T01–T02 completadas técnicamente. RF1/RF2 conformes para preview; RF4 parcial en visualización, pendiente de resultado guardado/T03. RF3/RF5 y T03–T05 pendientes. Los estados anteriores conservan su contexto histórico.
+Estado: decisiones 008-C01…C07 confirmadas, T01–T03 completadas técnicamente. RF1/RF2 conformes para preview; RF4 incorpora total guardado y fallback EUR. RF3/RF5 conformes para guardado/resultado; integración contextual de historial y cierre global pendientes de T04–T05. Los estados anteriores conservan su contexto histórico.
 
 ## Matriz prevista
 
-| RF      | Tareas      | Pruebas previstas                                  | Resultado real      |
-| ------- | ----------- | -------------------------------------------------- | ------------------- |
-| 008-RF1 | T01/T02/T05 | WEB-SIM-01, WEB-CONFIG-008, E2E-SIMULATIONS-008    | CONFORME PREVIEW    |
-| 008-RF2 | T01/T02/T05 | WEB-SIM-02, E2E-SIMULATIONS-008                    | CONFORME PREVIEW    |
-| 008-RF3 | T03/T04/T05 | WEB-SAVE-008, WEB-HISTORY-008, E2E-SIMULATIONS-008 | NO EJECUTADO        |
-| 008-RF4 | T02/T04/T05 | WEB-FX-008, WEB-HISTORY-008, E2E-SIMULATIONS-008   | PARCIAL: FX PREVIEW |
-| 008-RF5 | T03/T04/T05 | WEB-POLICY-008, E2E-SIMULATIONS-008                | NO EJECUTADO        |
+| RF      | Tareas      | Pruebas previstas                                  | Resultado real                  |
+| ------- | ----------- | -------------------------------------------------- | ------------------------------- |
+| 008-RF1 | T01/T02/T05 | WEB-SIM-01, WEB-CONFIG-008, E2E-SIMULATIONS-008    | CONFORME PREVIEW                |
+| 008-RF2 | T01/T02/T05 | WEB-SIM-02, E2E-SIMULATIONS-008                    | CONFORME PREVIEW                |
+| 008-RF3 | T03/T04/T05 | WEB-SAVE-008, WEB-HISTORY-008, E2E-SIMULATIONS-008 | PARCIAL: HISTORIAL T04          |
+| 008-RF4 | T02/T04/T05 | WEB-FX-008, WEB-HISTORY-008, E2E-SIMULATIONS-008   | CONFORME TOTAL PREVIEW/GUARDADO |
+| 008-RF5 | T03/T04/T05 | WEB-POLICY-008, E2E-SIMULATIONS-008                | CONFORME GUARDADO               |
+
+## T03 — Guardado autoritativo y discrepancias
+
+16 de noviembre de 2026, base 49a9933, Git inicial limpio. Alex autoriza T03. [Instrucción previa](plan.md#guardado-y-recuperación). Se mantiene exclusión ai-workspace. Conformidad técnica T03, sin aceptación humana final.
+
+Adaptador POST con parser compartido de entrada, payload exacto y validación de 201/DTO/identidad/consumos. Hook congela payload y copia profunda de preview, bloquea doble envío y conserva resultado confirmado hasta preparar otra simulación explícitamente. El resumen proyecta importes, tasa, versiones y desglose persistidos sin ejecutar el motor sobre ellos; muestra snapshot/fecha y discrepancia frente al preview. Preparar otra simulación reinicia cero/EUR y recarga configuración/cliente, sin POST automático. Retorno contextual al cliente conservado.
+
+WEB-SAVE-008 cubre envío duplicado incluso tras confirmación, payload de cuatro campos, foco, reinicio, HTTP 422/404/503/500, campos whitelist/asociados y valores retenidos, red/timeout/201 ilegible o incoherente, consulta de historial sin reenviar, aborto al abandonar e identidad/status incorrectos. WEB-POLICY-008 acepta versiones nuevas y muestra importes autoritativos. saved-result prueba proyección sin recálculo, copias de desglose y discrepancias de versiones con total cero, tasa y tramos.
+
+Cuatro E2E específicas usan API real y SQLite temporal por caso: POST persistido con base 14000/impuesto 2940/total 16940; política modificada tras preview que guarda 16800 y convierte a 201,60 USD con fixture 1,2; 503 sin fila y recuperación manual, fallo FX que permite guardar EUR; respuesta 201 ilegible después de commit real que permanece incierta sin duplicados. Sin proveedor real: transporte FX controlado. Capturas de resultado a 320/1440 y comprobación de reflujo; integración completa de historial y revisión visual global siguen en T04/T05.
+
+Incidencias de verificación corregidas: ESLint exigió globalThis.document en contexto navegador del test; TypeScript requirió variantes separadas idle/pending para estrechar la unión y corregir opciones/índices del test. Primer E2E confundía dos alerts simultáneos; se acotó el aviso de guardado. Segundo esperaba el código EUR dentro del importe, que usa símbolo €, y se corrigió al oráculo monetario. No se presentan esas primeras ejecuciones como correctas.
+
+Verificación final: pnpm.cmd lint, typecheck y build correctos. pnpm.cmd test devuelve código 0: 36 shared + 12 API unitarias + 49 integración + 22 node web + 139 componentes/transporte + 1 gates + 2 docs = 261 pruebas. Gates sin otros controles de código concurrentes. pnpm.cmd test:e2e devuelve código 0: 20 correctas, sin retries/omisiones, cuatro nuevas de T03. Salidas temporales .cache/008-t03-test.txt y .cache/008-t03-e2e-pass.txt; capturas/reporte .cache/007-e2e. Capturas reales de resultado a 320/1440 inspeccionadas, sin desbordamiento; no se atribuye revisión global de T05 ni prueba con proveedor real.
+
+pnpm.cmd format:check, nueva ejecución de test:docs (2/2) y git diff --check correctos tras actualizar documentación.
+
+Sin nuevas dependencias, backend, shared, schema, lockfile, DB existente ni registros ai-workspace. La política mutable existe solo en el fixture E2E; no cambia configuración de producto. Sin commits/pushes. T04/T05 y aceptación humana final pendientes.
 
 ## T02 — Preview, desglose y conversión
 

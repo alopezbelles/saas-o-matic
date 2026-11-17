@@ -1,5 +1,9 @@
 # Trazabilidad
 
+## Simulador 008 — T03
+
+RF3 conforme para POST exacto, envío único, resultado, errores/retención e incertidumbre sin reintentos automáticos; integración contextual completa del historial pendiente de T04. RF5 conforme en comparación y proyección del DTO autoritativo incluso con versiones nuevas. RF4 incorpora conversión del total confirmado y guardado EUR ante fallo FX. WEB-SAVE-008/WEB-POLICY-008, pruebas de saved-result y cuatro E2E reales con SQLite aislado. [Validación T03](../specs/008-simulator-ui/validation.md#t03--guardado-autoritativo-y-discrepancias). Sin registros ai-workspace ni aceptación humana final.
+
 ## Simulador 008 — T02
 
 RF1/RF2 conformes para preview local: límites y motor compartido con oráculos, sin cargos por plan/storage/API. RF4 parcial: selector y total convertido, fechas/atribución, error/caducidad/reintento/carreras; resultado confirmado pendiente de T03. RF3/RF5 no implementados. WEB-SIM-01/02, WEB-FX-008 y tres E2E específicas verifican funcionalidades y geometría responsive. [Validación T02](../specs/008-simulator-ui/validation.md#t02--preview-desglose-y-conversión). Sin ai-workspace por indicación de Alex ni aceptación humana final.

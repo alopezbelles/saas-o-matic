@@ -104,8 +104,8 @@ it('WEB-SIM-01 initializes the fields at zero/EUR, synchronizes slider and numbe
     ),
   ).toBe(true);
   expect(
-    screen.queryByRole('button', { name: /Guardar/ }),
-  ).not.toBeInTheDocument();
+    screen.getByRole('button', { name: 'Guardar simulación' }),
+  ).toBeEnabled();
 });
 
 it('WEB-SIM-02 validates storage/API boundaries and preserves their separate draft values', async () => {

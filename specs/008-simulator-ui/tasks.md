@@ -1,6 +1,6 @@
 # Tareas 008
 
-Estado: decisiones 008-C01…C07 confirmadas. T01–T02 completadas técnicamente; T03–T05 pendientes de indicación. IDs canónicos 008-T01…T05. Sin aceptación humana final ni commits/pushes del agente.
+Estado: decisiones 008-C01…C07 confirmadas. T01–T03 completadas técnicamente; T04–T05 pendientes de indicación. IDs canónicos 008-T01…T05. Sin aceptación humana final ni commits/pushes del agente.
 
 ## T01 — Pantalla, cliente/configuración e inputs
 
@@ -24,13 +24,13 @@ Estado: decisiones 008-C01…C07 confirmadas. T01–T02 completadas técnicament
 
 ## T03 — Guardado autoritativo y discrepancias
 
-- [ ] **008-T03**. RF3/RF5.
+- [x] **008-T03**. RF3/RF5; integración completa del historial pendiente de T04.
 - Dependencia: T02; destino tras 201 confirmado en 008-C05.
 - Acciones: POST exacto/201/DTO/identidad, envío único, preview congelado/comparación con servidor y aviso. 422/404/503/red/timeout/201 ilegible con valores retenidos, sin retries.
 - Destinos propuestos: adaptador POST, hook/estado y resultado/aviso en el propio simulador, con confirmación accesible y «Volver al cliente»; sin redirección automática.
 - Pruebas: WEB-SAVE-008/WEB-POLICY-008, cambio entre preview/201 y resultado incierto. Un 201 con versiones/importes diferentes sigue siendo éxito confirmado con DTO/aviso, sin rechazo por compatibilidad local del preview.
 - Hecho cuando: resultado del servidor visible y discrepancia explicada sin modificar guardado.
-- Evidencia: NO EJECUTADO.
+- Evidencia: [validación T03](validation.md#t03--guardado-autoritativo-y-discrepancias), WEB-SAVE-008/WEB-POLICY-008 y navegador con API/SQLite temporal. Resultado confirmado, errores e incertidumbre comprobados; T04/T05 pendientes.
 
 ## T04 — Integración con historial y recuperación
 

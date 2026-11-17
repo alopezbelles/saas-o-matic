@@ -4,6 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createServer, loadConfigFromFile } from 'vite';
 import { createApp } from '../../api/dist/app.js';
+import { taxPolicy } from '../../api/dist/config/tax-policy.js';
 import { HttpError } from '../../api/dist/http/errors.js';
 import { createTestContext, within } from '../../api/dist/db/paths.js';
 import { migrateDatabase } from '../../api/dist/db/migrate.js';
@@ -58,6 +59,10 @@ function seed(db) {
 
 export async function createEnvironment() {
   const context = createTestContext();
+  const billingPolicy = {
+    version: taxPolicy.version,
+    ratesByCountry: { ...taxPolicy.ratesByCountry },
+  };
   let db,
     api,
     vite,
@@ -87,6 +92,7 @@ export async function createEnvironment() {
     db = openDatabase(options);
     seed(db);
     api = createApp({
+      billingPolicy,
       connection: () => {
         if (unavailable) throw new HttpError(503, 'DATABASE_UNAVAILABLE');
         return db;
@@ -125,6 +131,10 @@ export async function createEnvironment() {
       baseURL: 'http://127.0.0.1:' + vite.httpServer.address().port,
       setUnavailable(value) {
         unavailable = value;
+      },
+      setTaxPolicy(version, ratesByCountry) {
+        billingPolicy.version = version;
+        billingPolicy.ratesByCountry = { ...ratesByCountry };
       },
       close,
     };

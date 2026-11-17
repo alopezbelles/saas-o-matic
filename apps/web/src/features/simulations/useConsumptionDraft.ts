@@ -17,6 +17,10 @@ export function useConsumptionDraft() {
     draft,
     sliderValue,
     consumption: parseConsumptionDraft(draft),
+    reset() {
+      setDraft({ users: '0', storageGb: '0', apiCalls: '0' });
+      setSliderValue(0);
+    },
     setField(field: ConsumptionField, value: string) {
       setDraft((previous) => ({ ...previous, [field]: value }));
       const parsed = parseConsumptionField(value, field);

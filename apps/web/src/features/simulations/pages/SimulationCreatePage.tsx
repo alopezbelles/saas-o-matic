@@ -1,9 +1,12 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useId, useMemo, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router';
 import { parseCustomerId, type CurrencyCode } from '@saas-o-matic/shared';
 import { useSimulationQuote } from '../useSimulationQuote';
 import { SimulationSummary } from '../components/SimulationSummary';
 import { CurrencySelector } from '../components/CurrencySelector';
+import { SimulationSaveFeedback } from '../components/SimulationSaveFeedback';
+import { useSimulationSave } from '../useSimulationSave';
+import { savedQuote } from '../saved-result';
 import page from './SimulationCreatePage.module.css';
 import { getCustomer } from '../../customers/api/customers';
 import {
@@ -45,7 +48,12 @@ function SimulationSetup() {
   );
   const customer = useApiResource(id ?? '', id ? loadCustomer : null);
   const config = useApiResource(id ?? '', id ? loadConfig : null);
-  const { draft, sliderValue, setField, consumption } = useConsumptionDraft();
+  const { draft, sliderValue, setField, consumption, reset } =
+    useConsumptionDraft();
+  const save = useSimulationSave();
+  const inputPrefix = useId();
+  const pending = save.state.status === 'pending';
+  const confirmed = save.state.status === 'success' ? save.state.result : null;
   const [currency, setCurrency] = useState<CurrencyCode>('EUR');
   const compatible =
     config.state.status === 'success' &&
@@ -70,6 +78,13 @@ function SimulationSetup() {
       : null,
     ready && config.state.status === 'success' ? config.state.value : null,
   );
+  const prepareAnother = () => {
+    save.reset();
+    reset();
+    setCurrency('EUR');
+    config.retry();
+    customer.retry();
+  };
 
   return (
     <section className={layout.page} aria-labelledby="page-heading">
@@ -154,38 +169,93 @@ function SimulationSetup() {
             actual.
           </p>
         ) : null)}
-      <div className={page.columns}>
-        <ConsumptionInputs
-          draft={draft}
-          sliderValue={sliderValue}
-          disabled={!ready}
-          onChange={setField}
-        >
-          <CurrencySelector
-            currency={currency}
-            onChange={setCurrency}
-            disabled={!ready}
-          />
-        </ConsumptionInputs>
-        <SimulationSummary
-          preview={preview}
-          countryCode={
-            customer.state.status === 'success'
-              ? customer.state.value.countryCode
-              : ''
-          }
-          currency={currency}
+      <form
+        className={page.form}
+        aria-label="Simulación de consumo"
+        noValidate
+        onSubmit={(event) => {
+          event.preventDefault();
+          void save.submit(
+            ready && consumption && id
+              ? { customerId: id, ...consumption }
+              : null,
+            preview.status === 'success' ? preview.quote : null,
+          );
+        }}
+      >
+        <SimulationSaveFeedback
+          state={save.state}
+          customerId={id}
+          inputPrefix={inputPrefix}
         />
-      </div>
-      <div className={page.actions}>
-        {back ? (
-          <Link className={styles.button} to={back.to} state={back.state}>
-            Volver al cliente
-          </Link>
-        ) : (
-          <Link to={customersReturnTo(location.state)}>Volver a clientes</Link>
-        )}
-      </div>
+        <div className={page.columns}>
+          <ConsumptionInputs
+            draft={draft}
+            sliderValue={sliderValue}
+            disabled={!ready || pending || Boolean(confirmed)}
+            onChange={setField}
+            idPrefix={inputPrefix}
+            serverErrors={
+              save.state.status === 'error' ? save.state.failure.fields : {}
+            }
+          >
+            <CurrencySelector
+              currency={currency}
+              onChange={setCurrency}
+              disabled={pending || (!ready && !confirmed)}
+            />
+          </ConsumptionInputs>
+          <SimulationSummary
+            preview={
+              confirmed
+                ? { status: 'success', quote: savedQuote(confirmed) }
+                : preview
+            }
+            title={confirmed ? 'Resultado guardado' : 'Resumen mensual'}
+            countryCode={
+              confirmed
+                ? confirmed.customerSnapshot.countryCode
+                : customer.state.status === 'success'
+                  ? customer.state.value.countryCode
+                  : ''
+            }
+            currency={currency}
+          />
+        </div>
+        <div className={page.actions}>
+          {back ? (
+            <Link className={styles.button} to={back.to} state={back.state}>
+              Volver al cliente
+            </Link>
+          ) : (
+            <Link to={customersReturnTo(location.state)}>
+              Volver a clientes
+            </Link>
+          )}
+          {confirmed ? (
+            <button
+              type="button"
+              className={styles.button}
+              onClick={prepareAnother}
+            >
+              Preparar otra simulación
+            </button>
+          ) : (
+            <button
+              className={layout.action}
+              type="submit"
+              disabled={
+                pending ||
+                !ready ||
+                !consumption ||
+                preview.status !== 'success'
+              }
+            >
+              {pending ? 'Guardando…' : 'Guardar simulación'}
+            </button>
+          )}
+        </div>
+      </form>
     </section>
   );
 }

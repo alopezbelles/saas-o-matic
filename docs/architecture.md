@@ -1,5 +1,9 @@
 # Arquitectura
 
+## Simulador 008 — T03
+
+create-simulation reutiliza postJson, parser compartido de entrada y parseSimulationDto del historial; exige 201, identidad del cliente y consumos coincidentes. useSimulationSave congela payload/preview y coordina envío único, cancelación y estados. saved-result proyecta el DTO persistido sin motor y compara versiones/importes/tasa/desglose. SimulationSaveFeedback presenta confirmación enfocada, snapshot, discrepancias y errores asociados; incertidumbre ofrece consultar historial sin reenvío automático. El resultado confirmado permanece bloqueado hasta preparar explícitamente otro borrador cero/EUR con nueva consulta de configuración/cliente. Conversión solo del total guardado mediante 006. Sin cambios de backend/shared/DB/dependencias; fixture E2E permite cambiar política únicamente en su API temporal.
+
 ## Simulador 008 — T02
 
 useSimulationQuote coordina borrador validado y calculateQuote de shared con TaxPolicy del servidor; devuelve estados explícitos para evitar presupuesto anterior ante inputs inválidos/overflow. PricingBreakdown presenta exclusivamente EUR; SimulationSummary coordina total y conversión mediante convertCurrency. El formato monetario exacto con Intl/BigInt se comparte para EUR/USD/GBP, manteniendo formatEuro para historial.

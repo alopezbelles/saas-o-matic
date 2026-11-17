@@ -8,6 +8,7 @@ import {
 } from '../consumption';
 import styles from './ConsumptionInputs.module.css';
 import shared from '../../customers/components/Customers.module.css';
+import type { ConsumptionErrors } from '../consumption';
 
 const fields = [
   { key: 'users', label: 'Usuarios activos', suffix: 'usuarios' },
@@ -21,14 +22,19 @@ export function ConsumptionInputs({
   disabled,
   onChange,
   children,
+  idPrefix,
+  serverErrors = {},
 }: {
   draft: ConsumptionDraft;
   sliderValue: number;
   disabled: boolean;
   onChange: (field: ConsumptionField, value: string) => void;
   children?: ReactNode;
+  idPrefix?: string;
+  serverErrors?: ConsumptionErrors;
 }) {
-  const prefix = useId();
+  const generatedPrefix = useId();
+  const prefix = idPrefix ?? generatedPrefix;
   return (
     <section className={styles.panel} aria-labelledby={prefix + '-heading'}>
       <h2 id={prefix + '-heading'}>Consumo estimado</h2>
@@ -36,7 +42,9 @@ export function ConsumptionInputs({
         <fieldset className={styles.fields} disabled={disabled}>
           <legend className={shared.srOnly}>Consumos de la simulación</legend>
           {fields.map(({ key, label, suffix }) => {
-            const invalid = parseConsumptionField(draft[key], key) === null;
+            const invalid =
+              parseConsumptionField(draft[key], key) === null ||
+              Boolean(serverErrors[key]);
             const fieldId = prefix + '-' + key;
             return (
               <div key={key} className={styles.field}>
@@ -98,8 +106,10 @@ export function ConsumptionInputs({
                 </p>
                 {invalid && (
                   <p className={styles.error} id={fieldId + '-error'}>
-                    Introduce un entero entre 0 y{' '}
-                    {formatCount(CONSUMPTION_LIMITS[key])}.
+                    {serverErrors[key] ??
+                      'Introduce un entero entre 0 y ' +
+                        formatCount(CONSUMPTION_LIMITS[key]) +
+                        '.'}
                   </p>
                 )}
               </div>

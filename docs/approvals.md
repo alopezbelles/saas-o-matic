@@ -1,5 +1,9 @@
 # Autorización y alcance
 
+## 008 — T03
+
+Alex autoriza implementar T03 el 16 de noviembre de 2026: POST, resultado autoritativo, discrepancias, errores y pruebas. T04–T05 requieren indicación posterior. Se mantiene la exclusión de ai-workspace y de commits/pushes, datos existentes, nuevas dependencias y cambios de backend/schema. La aceptación humana final no se presupone.
+
 ## 008 — T02
 
 Alex autoriza T02: preview/desglose/impuestos EUR y conversión de total mediante infraestructura existente; ajustar composición a referencia con dos tarjetas responsive y slider/número alineados. Mantener exclusión ai-workspace, sin POST, nuevas dependencias, datos existentes ni cambios de motor/tarifas. T03–T05 requieren indicación posterior. Sin commits/pushes ni aceptación humana final.
