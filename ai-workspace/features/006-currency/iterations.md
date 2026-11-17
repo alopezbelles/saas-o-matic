@@ -1,6 +1,5 @@
 # 006 Currency — Iteraciones del trabajo con IA
 
-Síntesis del [registro de desarrollo](../../iterations/006-currency.md), la [validación](../../../specs/006-currency/validation.md) y la confirmación posterior conservada en [memoria](../../../MEMORY.md). Los resultados citados son históricos; esta reorganización no vuelve a ejecutar la funcionalidad.
 
 ## Delimitación antes de implementar
 

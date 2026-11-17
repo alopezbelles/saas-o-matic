@@ -1,7 +1,5 @@
 # 006 Currency — Prompts consolidados
 
-Selección consolidada durante esta reorganización a partir del [registro de instrucciones](../../prompts/006-currency.md) y el [plan](../../../specs/006-currency/plan.md). Resume encargos y directrices conservados; no reproduce mensajes literales ni presenta esta redacción posterior como instrucciones originales previas al código.
-
 ## 1. Delimitar la conversión y sus responsabilidades
 
 **Contexto y objetivo.** El sistema ya calcula y guarda resultados EUR. Prepara conversión orientativa sin alterar facturación o persistencia.
