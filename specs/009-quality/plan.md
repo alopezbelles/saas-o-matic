@@ -1,8 +1,10 @@
 # Plan 009 — QA transversal
 
-Estado de preparación documental. Implementación pendiente de indicación por tarea. ai-workspace excluido hasta nueva autorización.
+T01 completada técnicamente. T02–T05 pendientes de indicación por tarea. ai-workspace excluido hasta nueva autorización.
 
 ## Partir del estado existente
+
+Instrucción previa de 009-T01 (17 de noviembre de 2026, antes de cambios de implementación): inventariar scripts y suites, comprobar descubrimiento y aislamiento del runner existente con un flujo representativo, y construir la matriz en validation.md a partir de los requisitos del PDF, código y pruebas reales. Actualizar la spec activa en MEMORY.md y el gate documental a 009. Identificar huecos y trabajo de T02–T05/010 sin atribuirles validación anticipada. Verificar lint, documentos y formato del cambio. Conservar evidencia temporal y exclusión ai-workspace, datos existentes y commits/pushes.
 
 Inventariar suites y mapear RF a casos concretos antes de añadir pruebas. Reutilizar los 273 casos globales y 31 Playwright registrados al cerrar 008 como referencia histórica. Ejecutarlos sobre la versión que se revise y registrar diferencias.
 
@@ -19,9 +21,9 @@ Contrastar los apartados del enunciado Prueba Devs con IA.pdf aportado por Alex.
 - apps/web/e2e/visual.spec.mjs, simulator-visual.spec.mjs y contrast.mjs cubren responsive, teclado, foco y medidas renderizadas.
 - apps/web/src contiene pruebas Vitest/RTL de transporte, componentes, estados y carreras. apps/web/test contiene node:test de FX/transporte.
 - packages/shared/test y apps/api/test cubren contratos, fiscal, cálculo monetario, persistencia, transacciones, errores y locks.
-- test/gates.test.mjs comprueba que los controles rechazan errores. test/docs.test.mjs valida enlaces/scripts y actualmente exige 008 como spec activa.
+- test/gates.test.mjs comprueba que los controles rechazan errores. test/docs.test.mjs valida enlaces/scripts y, después de T01, exige 009 como spec activa.
 
-En 009-T01, actualizar la referencia activa de MEMORY.md y el gate documental de forma coherente con el inicio de 009. Esta adaptación preparatoria conserva esos archivos.
+T01 actualiza la referencia activa de MEMORY.md y el gate documental de forma coherente con el inicio de 009. La preparación anterior había conservado ambos archivos.
 
 ## Entorno y aislamiento
 

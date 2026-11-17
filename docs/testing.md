@@ -1,5 +1,9 @@
 # Verificación
 
+## 009 — T01
+
+Inventario de suites y matriz inicial en [validación T01](../specs/009-quality/validation.md#t01--inventario-entorno-y-matriz). Playwright descubre 31 casos en 8 archivos. Se ejecuta simulator-flow.spec.mjs como comprobación representativa de entorno/persistencia con FX controlado, conservando el runner y su aislamiento. Reejecución funcional completa, seguridad, FX real y accesibilidad corresponden a tareas posteriores. MEMORY.md y gate documental identifican 009 como spec activa.
+
 ## 008 — Cierre T05
 
 E2E-SIMULATIONS-008 recorre alta→ficha→simulación→resultado→historial con fallo/reintento FX y precio del servidor distinto del preview. VISUAL-008 verifica cuatro anchos, estados, teclado/foco, layout ampliado/reflujo y contraste renderizado. Playwright ejecuta 31 casos, ocho nuevos de T05, conservando regresiones de 007 y 008. Helper de contraste compartido por ambas specs. [Evidencia y límites](../specs/008-simulator-ui/validation.md#t05--flujo-comercial-revisión-visual-y-cierre-global). Bases/puertos temporales por caso y proveedor FX controlado.

@@ -1,6 +1,6 @@
 # 009 — QA transversal, accesibilidad y resiliencia
 
-Estado de preparación adaptado al código existente el 17 de noviembre de 2026. Esta indicación autoriza analizar y editar los cinco documentos de 009. Las tareas se ejecutarán por indicación posterior de Alex. Registro ai-workspace excluido.
+T01 completada técnicamente el 17 de noviembre de 2026, inventario, matriz y comprobación del entorno. T02–T05 requieren indicación posterior de Alex. Registro ai-workspace excluido. Aceptación humana final pendiente.
 
 ## Objetivo
 

@@ -1,17 +1,17 @@
 # Tareas 009
 
-Estado de preparación adaptado. 009-T01…T05 pendientes de ejecución por indicación de Alex. La cobertura existente de 007–008 se reutilizará y verificará antes de ampliarla. Sin registro ai-workspace.
+009-T01 completada técnicamente. T02–T05 pendientes de indicación de Alex. La cobertura existente de 007–008 se reutiliza con resultados actuales separados de su evidencia histórica. Sin registro ai-workspace.
 
 ## T01 — Inventario, entorno y trazabilidad de cobertura
 
-- [ ] **009-T01**. RF1/RF4.
+- [x] **009-T01**. RF1/RF4 parciales, inventario/matriz/entorno.
 - Revisar scripts, fixtures, runner, aislamiento/limpieza y casos reales contra los RF de 009.
 - Preparar matriz de cobertura reutilizada y huecos concretos. Referenciar las evidencias históricas de 008.
 - Vincular requisitos explícitos del enunciado aportado con implementación, pruebas y resultados. Identificar los entregables asignados a 010.
 - Actualizar MEMORY.md y la referencia de spec activa codificada en test/docs.test.mjs al iniciar 009.
 - Archivos existentes, apps/web/e2e/environment.mjs, fixtures.mjs, run.mjs, apps/web/playwright.config.mjs, test/docs.test.mjs y documentos de contexto según necesidad.
 - Hecho cuando el entorno y los casos reutilizables estén identificados y verificados, con diferencias frente a 008 visibles.
-- Evidencia prevista QA-ENV-009 y QA-MATRIX-009. Resultado actual NO EJECUTADO.
+- QA-ENV-009 y QA-MATRIX-009 comprobados, 31 E2E descubiertos en 8 archivos y un flujo representativo correcto con API/Vite/SQLite temporal. Inventario, matriz y límites en [validación T01](validation.md#t01--inventario-entorno-y-matriz).
 
 ## T02 — Flujos y resiliencia integrada
 

@@ -1,6 +1,6 @@
 # Aclaraciones 009
 
-Preparación adaptada al estado posterior a 008. La instrucción actual autoriza el análisis y los cinco documentos. La ejecución será incremental por tarea.
+Preparación adaptada al estado posterior a 008. Alex ha autorizado T01 después de confirmar C01–C04. T02–T05 requieren indicación posterior. La ejecución continúa incremental por tarea.
 
 ## Decisiones heredadas
 

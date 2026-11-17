@@ -1,5 +1,9 @@
 # Autorización y alcance
 
+## 009 — T01
+
+Alex autoriza T01, inventario de scripts/suites y cobertura, revisión del entorno aislado y matriz de requisitos del enunciado. Incluye actualizar la spec activa y el gate documental, con comprobaciones pertinentes del entorno existente. T02–T05 requieren indicación posterior. Se mantienen exclusión de ai-workspace, datos existentes, nuevas dependencias y commits/pushes.
+
 ## 008 — T05
 
 Alex autoriza T05 el 17 de noviembre de 2026, flujo comercial completo, revisión visual/accesibilidad, pruebas globales, correcciones necesarias y cierre documental de 008. Continúan la exclusión de ai-workspace y los límites sobre commits/pushes, datos existentes y dependencias nuevas. Conformidad técnica y aceptación humana final se registran por separado.
