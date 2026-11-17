@@ -1,5 +1,9 @@
 # Autorización y alcance
 
+## 010 — T02
+
+Alex solicita ejecutar T02, cuyo alcance explícito es actualizar ai-workspace. Se autoriza el índice y los registros pertinentes de implementación/evidencia 008/009/010, con retrospectivas identificadas y respeto a mensajes previamente excluidos. Esta autorización levanta la exclusión para dicho registro; no cambia las restricciones históricas con las que se ejecutaron las tareas anteriores. T03–T05 pendientes, sin publicación, datos existentes o commits/pushes.
+
 ## 010 — T01
 
 Alex autoriza T01: README técnico con necesidades/arquitectura/SDD/IA, comando seguro de demo completa en DB nueva, capturas reales y controles pertinentes. C04/C05 confirmadas: demo local completa y entrega local/repositorio; hosting opcional sin elegir. Sin datos existentes, nuevas dependencias, commits/pushes o publicación. ai-workspace sigue excluido; T02–T05 requieren indicación posterior.

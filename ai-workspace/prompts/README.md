@@ -1,5 +1,7 @@
 # Instrucciones técnicas para la IA
 
+[008 — Instrucciones previas enlazadas](008-simulator-ui.md), [009 — Calidad](009-quality.md) y [010 — Entrega](010-delivery.md): índices incorporados en 010-T02, con procedencia retrospectiva y enlaces a instrucciones canónicas. Sin mensajes de preparación excluidos.
+
 - [007 — Preparación y T01](007-customers-ui.md): síntesis retrospectiva de preparación y bloque de instrucción redactado antes del código de T01.
 
 - [006 — Preparación y T01–T05](006-currency.md): reformulaciones técnicas retrospectivas autorizadas después de T05; enlace separado a la instrucción previa real del plan.

@@ -1,5 +1,9 @@
 # Verificación
 
+## Entrega 010 — T02
+
+DOC-AUDIT-010: índice y registros pertinentes actualizados por autorización de Alex, con instrucciones canónicas enlazadas, retrospectivas identificadas, evidencia histórica/actual separada y prompts excluidos respetados. Dos pruebas documentales correctas; sin reejecución funcional. [Verificación, procedencia y límites](../specs/010-delivery/validation.md#t02--índice-y-evidencia-del-desarrollo-asistido). T03–T05 y aceptación humana final pendientes.
+
 ## Entrega 010 — T01
 
 RF1/RF2/RF3 parciales: README técnico con necesidades/decisiones/SDD/IA, cuatro capturas reales y comando db:demo:setup para DB nueva. IT-DEMO-010 añade tres casos de persistencia/importes/snapshots, CLI y protección de destinos/rutas. 276 pruebas globales correctas; lint/typecheck/formato/build pasan. [Comandos, incidencias, capturas y límites](../specs/010-delivery/validation.md#t01--readme-técnico-y-demo-reproducible). T02–T05 y aceptación humana pendientes; ai-workspace excluido. No se acredita todavía instalación limpia.

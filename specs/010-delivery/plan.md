@@ -1,6 +1,6 @@
 # Plan 010 — Documentación, auditoría y entrega
 
-T01 completada técnicamente por indicación de Alex; T02–T05 pendientes. La instrucción de preparación siguiente conserva su alcance histórico. ai-workspace excluido hasta nueva autorización. Usar [aclaraciones](clarifications.md) para decisiones pendientes.
+T01–T02 completadas técnicamente por indicación de Alex; T03–T05 pendientes. La instrucción de preparación siguiente conserva su alcance histórico. T02 autoriza actualizar ai-workspace sin reproducir mensajes excluidos. Usar [aclaraciones](clarifications.md) para decisiones pendientes.
 
 ## Instrucción de preparación
 
@@ -23,6 +23,8 @@ Documentar requisitos exactos de engines y packageManager, instalación frozen-l
 Seleccionar capturas de listado, alta, ficha/historial y simulador mediante Chromium existente, datos/servidores temporales. Guardar imágenes revisadas en docs/images, solo cuando se generen; no crear carpetas vacías. Se pueden reutilizar capturas existentes únicamente si siguen representando la aplicación actual y su contexto está comprobado. No añadir dependencias o herramientas visuales para esta tarea.
 
 ## T02 — Auditoría enlazada y procedencia
+
+Instrucción previa de ejecución T02 (17 de noviembre de 2026): la petición de ejecutar T02 autoriza escribir los registros previstos en ai-workspace. Actualizar su recorrido actual sin alterar la procedencia histórica; enlazar instrucciones canónicas previas y crear síntesis retrospectivas de implementación 008/009/010-T01 a partir de sus validaciones y artefactos disponibles. No reproducir mensajes de análisis/adaptación expresamente excluidos ni inventar prompts o aceptación humana. Resolver afirmaciones operativas obsoletas sobre fuentes, CORS y capturas. Conservar evidencia mediante enlaces/versiones, documentar límites de logs efímeros y verificar índice/enlaces/formato sin repetir suites de producto por este cambio documental.
 
 Solo tras autorización para escribir ai-workspace: revisar índice y registros pertinentes, incorporar enlaces a 008/009 y 010 y resolver afirmaciones operativas obsoletas sobre CORS, fuentes y capturas. Conservar resultados históricos como históricos y hacer visible el estado actual. No reescribir retrospectivas como conversaciones originales. Resumir desde validaciones y artefactos conservados; si falta una salida o captura, no inventarla ni afirmar conservación. Respetar exclusión de prompts que Alex haya mantenido fuera del registro.
 

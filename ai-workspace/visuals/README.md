@@ -1,5 +1,7 @@
 # visuals
 
+[010 — Pantallas principales actuales](010-delivery.md): cuatro capturas reales generadas en T01, conservadas en docs/images y enlazadas desde README. Incorporación posterior en T02.
+
 [Revisión final T05](007-customers-ui-t05.md): listado/alta/ficha en escritorio/móvil y layout al 200 %, con teclado/contraste medidos.
 
 [Ficha e historial T04](007-customers-ui-t04.md): capturas reales de escritorio/móvil con datos temporales.

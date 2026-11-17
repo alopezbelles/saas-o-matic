@@ -1,5 +1,25 @@
 # Desarrollo asistido por IA — SaaS-O-Matic
 
+## Recorrido actual para el evaluador
+
+Actualizado el 17 de noviembre de 2026 en 010-T02. El registro de 008/009/010-T01 se incorpora después de su ejecución y se etiqueta como retrospectivo. La autorización de T02 permite esta actualización, sin convertir los mensajes excluidos en prompts publicables. No hay aceptación humana final registrada.
+
+| Spec/estado técnico             | Planificación e instrucciones                                                                                                                                                                             | Iteración y evidencia                                                                                                                   |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| 008 completada                  | [Spec](../specs/008-simulator-ui/spec.md), [decisiones](../specs/008-simulator-ui/clarifications.md), [tasks](../specs/008-simulator-ui/tasks.md), [índice de instrucciones](prompts/008-simulator-ui.md) | [Retrospectiva](iterations/008-simulator-ui.md), [validación canónica](../specs/008-simulator-ui/validation.md)                         |
+| 009 completada                  | [Spec](../specs/009-quality/spec.md), [decisiones](../specs/009-quality/clarifications.md), [tasks](../specs/009-quality/tasks.md), [índice de instrucciones](prompts/009-quality.md)                     | [Defecto y corrección](iterations/009-quality.md), [validación canónica](../specs/009-quality/validation.md)                            |
+| 010 T01–T02; T03–T05 pendientes | [Spec](../specs/010-delivery/spec.md), [decisiones](../specs/010-delivery/clarifications.md), [tasks](../specs/010-delivery/tasks.md), [instrucciones/procedencia](prompts/010-delivery.md)               | [Iteración](iterations/010-delivery.md), [validación](../specs/010-delivery/validation.md), [revisión T02](reviews/010-delivery-t02.md) |
+
+1. **Planificación:** specs/planes/tareas enlazados y requisitos del enunciado en la [matriz de 009](../specs/009-quality/validation.md#qa-review-009--matriz-final-del-enunciado).
+2. **Arquitectura:** [explicación de decisiones](../README.md#arquitectura-y-decisiones-de-software), [modelo](../docs/data-model.md), [constitución](../docs/constitution.md) y aclaraciones por spec.
+3. **Iteración y calidad:** retrospectivas anteriores, [inventario de resultados](testing/008-010-evidence-index.md), [capturas reales](visuals/010-delivery.md) y revisiones con límites explícitos.
+
+Codex se utilizó para implementación/ejecución; ChatGPT Work con Product para diseño general, según declaración de Alex. No se conserva aquí un hilo original de Product. Los bloques siguientes recogen incorporaciones anteriores y sus cifras pertenecen a sus versiones; no describen funciones todavía pendientes en el producto actual.
+
+Estado de CORS: 006 tuvo una comprobación inconclusa; [009-T02](../specs/009-quality/validation.md#qa-fx-live-009) observó después respuesta real/CORS desde Chromium local. No garantiza un dominio de producción. El enunciado y interfaces.pdf fueron aportados y consultados; siguen siendo fuentes externas, sin copiar los PDF privados a este índice.
+
+## Incorporaciones anteriores
+
 ## 007 — Cierre técnico T05
 
 [Instrucción previa](prompts/007-customers-ui.md#t05--instrucción-previa-de-implementación), [iteración](iterations/007-customers-ui.md#t05--inicio), [pruebas y reportes originales](testing/007-customers-ui-t05.md), [revisión final](reviews/007-customers-ui-t05.md), [capturas](visuals/007-customers-ui-t05.md) y [validación canónica](../specs/007-customers-ui/validation.md#t05--e2e-real-revisión-visual-y-cierre-global). 209 pruebas globales y 11 E2E correctas. Correcciones reales de contraste/foco documentadas, con límites de navegador/zoom/accesibilidad. Aceptación humana final no registrada; entradas siguientes conservan estados históricos.
@@ -22,7 +42,7 @@ Registro de progreso autorizado al iniciar T01 el 16 de noviembre de 2026. [Inst
 
 ## 006 — Infraestructura de conversión
 
-T01–T05 completadas técnicamente, con CORS externo inconcluso y sin interfaz ni aceptación humana final. Registros creados después de T05 el 15 de noviembre de 2026 por autorización posterior: son retrospectivos, no conversación literal ni documentación contemporánea.
+Estado histórico de 006: T01–T05 completadas técnicamente, con CORS externo inconcluso y sin interfaz en aquella spec. La integración UI posterior está en 008 y la comprobación real local en 009; aceptación humana final pendiente. Registros creados después de T05 el 15 de noviembre de 2026 por autorización posterior: son retrospectivos, no conversación literal ni documentación contemporánea.
 
 [Spec](../specs/006-currency/spec.md), [plan/instrucción previa](../specs/006-currency/plan.md#instrucción-técnica-previa), [prompts reformulados](prompts/006-currency.md), [iteración](iterations/006-currency.md), [ADR-006](decisions/ADR-006-currency-infrastructure.md), [pruebas](testing/006-currency.md), [salida real T05](testing/006-currency-t05.txt), [revisión](reviews/006-currency.md) y [validación canónica](../specs/006-currency/validation.md).
 
@@ -69,8 +89,8 @@ Los documentos actuales pueden contener ajustes posteriores; no son copias inmut
 - [Arquitectura](../docs/architecture.md), [modelo](../docs/data-model.md), [decisiones](../docs/decisions.md), [contratos actuales](../docs/api-contracts.md).
 - [Producto](../docs/product.md), [reglas](../docs/business-rules.md), [requisitos disponibles](../docs/requirements.md), [trazabilidad](../docs/traceability.md).
 - [AGENTS.md](../AGENTS.md), [constitución](../docs/constitution.md), [procedimiento SDD](../docs/sdd-harness.md) y [alcance autorizado](../docs/approvals.md).
-- [ADR-003](decisions/ADR-003-preview-fx.md) es propuesta de funcionalidades futuras, no evidencia de implementación.
-- Las fuentes oficiales completas de producto no están en este repositorio; no se certifica revisión de materiales ausentes.
+- [ADR-003](decisions/ADR-003-preview-fx.md) conserva una propuesta histórica; la implementación posterior se acredita con specs 004–008 y sus validaciones, no por ese ADR.
+- Los PDF oficiales aportados se consultaron como fuentes externas; no están incluidos automáticamente en el repositorio. La matriz de 009 recoge el cotejo realizado.
 
 ## Organización
 
@@ -79,7 +99,7 @@ Los documentos actuales pueden contener ajustes posteriores; no son copias inmut
 - [iterations](iterations/README.md): relato de cambios, incidencias y comprobaciones.
 - [testing](testing/README.md): resúmenes y salidas conservadas, sin duplicar validaciones.
 - [reviews](reviews/README.md): revisiones técnicas; aceptación humana distinguida.
-- [visuals](visuals/README.md): sin capturas de aplicación registradas; no necesarias para esta retrospectiva.
+- [visuals](visuals/README.md): capturas de 007 y enlaces a las pantallas actuales de 010, con procedencia; las retrospectivas iniciales de 001/002 no requerían imágenes.
 - [templates](templates/README.md): ayudas vacías, nunca evidencia.
 
 El [antecedente importado de planificación](reviews/planning-document-review.md) describe otro paquete. Sus cifras y comprobaciones no se han verificado aquí ni acreditan el estado actual.

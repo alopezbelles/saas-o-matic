@@ -1,5 +1,7 @@
 # Revisiones
 
+[010-T02 — Revisión del índice y evidencia](010-delivery-t02.md): coherencia/procedencia documental, con aceptación humana separada y límites explícitos.
+
 - [007-T05 — Revisión final](007-customers-ui-t05.md): RF1–RF5 comprobados, foco/contraste corregidos y aceptación humana pendiente.
 
 - [007-T04 — Ficha e historial](007-customers-ui-t04.md): identidad/contratos, histórico EUR, estados/carreras y cierre incremental.

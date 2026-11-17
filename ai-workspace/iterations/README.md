@@ -1,5 +1,7 @@
 # Iteraciones
 
+[008 — Implementación del simulador](008-simulator-ui.md), [009 — Revisión y corrección](009-quality.md) y [010 — Entrega](010-delivery.md): retrospectivas identificadas; T02 de 010 se registra durante su ejecución.
+
 - [007 — Progreso desde T01](007-customers-ui.md): compatibilidad, implementación, incidencias y verificación durante el trabajo.
 
 - [006 — Preparación y ejecución incremental](006-currency.md): retrospectiva posterior autorizada, commits observados, incidencias y límite CORS.

@@ -1,6 +1,6 @@
 # Tareas 010
 
-T01 completada técnicamente; T02–T05 pendientes de indicación de Alex. IDs 010-T01–T05. ai-workspace excluido hasta autorización explícita.
+T01–T02 completadas técnicamente; T03–T05 pendientes de indicación de Alex. IDs 010-T01–T05. Registro ai-workspace autorizado en T02, respetando mensajes excluidos.
 
 ## T01 — README técnico y demo reproducible
 
@@ -16,12 +16,12 @@ T01 completada técnicamente; T02–T05 pendientes de indicación de Alex. IDs 0
 
 ## T02 — Índice y evidencia del desarrollo asistido
 
-- [ ] **010-T02** — RF2/RF3. Depende de T01 y autorización expresa para escribir ai-workspace, hoy pendiente.
+- [x] **010-T02** — RF2/RF3. T01 completada y registro ai-workspace autorizado al solicitar Alex ejecutar T02.
 - Actualizar índice y registros pertinentes con enlaces a evidencia canónica de 008/009/010 y resolver estados operativos obsoletos sobre fuentes/CORS/capturas conservando historia.
 - Distinguir instrucciones previas, reformulaciones y retrospectivas; respetar prompts excluidos. No inventar salidas, aceptación humana ni registros contemporáneos.
 - Archivos: ai-workspace/README.md y únicamente registros pertinentes de prompts/iterations/testing/reviews/visuals según evidencia disponible, sin carpetas vacías por obligación.
 - Controles: DOC-AUDIT-010, test:docs y formato.
-- Hecho cuando el evaluador pueda recorrer planificación, arquitectura, intervención IA y calidad con procedencia verificable. Estado/evidencia: NO EJECUTADO.
+- Recorrido e índices actualizados, retrospectivas/procedencia diferenciadas y evidencias canónicas enlazadas. Dos pruebas documentales pasan; sin nuevas suites funcionales. [Evidencia y límites T02](validation.md#t02--índice-y-evidencia-del-desarrollo-asistido). Aceptación humana pendiente.
 
 ## T03 — Ensayo de instalación limpia y paquete
 

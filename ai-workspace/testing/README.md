@@ -1,5 +1,7 @@
 # Evidencias de pruebas
 
+[008–010 — Índice de resultados y artefactos](008-010-evidence-index.md): ejecuciones históricas separadas, versiones/límites y verificación documental actual de 010-T02. No son nuevas suites funcionales.
+
 - [007-T05 — Cierre global/E2E](007-customers-ui-t05.md): 209 pruebas globales y 11 Playwright, reportes originales, fallos corregidos y límites explícitos.
 
 - [007-T04 — Ficha e historial](007-customers-ui-t04.md): 208 pruebas globales y smoke con importes históricos, páginas 20/1 y errores independientes.

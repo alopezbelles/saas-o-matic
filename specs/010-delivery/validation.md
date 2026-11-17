@@ -1,15 +1,25 @@
 # Validación 010
 
-T01 completada técnicamente. T02–T05 NO EJECUTADAS. El cierre técnico de 009 es evidencia previa, no prueba de instalación limpia de 010. Aceptación humana pendiente.
+T01–T02 completadas técnicamente. T03–T05 NO EJECUTADAS. El cierre técnico de 009 es evidencia previa, no prueba de instalación limpia de 010. Aceptación humana pendiente.
 
 ## Matriz prevista
 
-| RF      | Tareas y controles                                         | Resultado real de implementación                           |
-| ------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| 010-RF1 | T01/T03/T05, DOC-README-010, DELIVERY-01, QA-ALL-010       | PARCIAL T01, instrucciones y demo; ensayo limpio pendiente |
-| 010-RF2 | T01/T02/T05, DOC-README-010, DOC-AUDIT-010                 | PARCIAL T01, README/IA/capturas; ai-workspace excluido     |
-| 010-RF3 | T01–T05, procedencia/versión/límites y revisión documental | PARCIAL T01, resultados y límites documentados             |
-| 010-RF4 | T04/T05, DELIVERY-02                                       | NO EJECUTADO; sin publicación/despliegue autorizado        |
+| RF      | Tareas y controles                                         | Resultado real de implementación                               |
+| ------- | ---------------------------------------------------------- | -------------------------------------------------------------- |
+| 010-RF1 | T01/T03/T05, DOC-README-010, DELIVERY-01, QA-ALL-010       | PARCIAL T01, instrucciones y demo; ensayo limpio pendiente     |
+| 010-RF2 | T01/T02/T05, DOC-README-010, DOC-AUDIT-010                 | CONFORME alcance documental T02, índice/procedencia/evidencias |
+| 010-RF3 | T01–T05, procedencia/versión/límites y revisión documental | PARCIAL T01, resultados y límites documentados                 |
+| 010-RF4 | T04/T05, DELIVERY-02                                       | NO EJECUTADO; sin publicación/despliegue autorizado            |
+
+## T02 — Índice y evidencia del desarrollo asistido
+
+17 de noviembre de 2026, base 41a6454 y Git inicial limpio. Alex autoriza ejecutar T02, cuyo alcance incluye actualizar ai-workspace; C06 queda resuelta para ese registro. La exclusión vigente durante 008/009/010-T01 se conserva como contexto histórico y no se reproducen mensajes de análisis/adaptación excluidos. [Instrucción previa](plan.md#t02--auditoría-enlazada-y-procedencia).
+
+DOC-AUDIT-010: se actualizan recorrido actual e índices por carpeta, tres índices de instrucciones previas, tres síntesis de iteración, un inventario de evidencias 008–010, una revisión técnica y un índice de capturas ya conservadas. No se añaden decisiones arquitectónicas o ADR artificiales. README raíz refleja el registro autorizado. Fuentes consultadas frente a PDF distribuidos, CORS histórico frente a comprobación posterior y capturas existentes quedan diferenciados.
+
+Los registros de 008/009/010-T01 se identifican como posteriores; T02 tiene instrucción previa en plan y registro durante ejecución. Los resultados funcionales 273/31 E2E de 008, 273/36 E2E de 009 y 276 generales de 010-T01 se enlazan sin atribuir nuevas ejecuciones a T02. Salidas históricas consultadas en caché disponibles en esta revisión; su carácter efímero/sobrescribible queda declarado. Las cuatro imágenes se enlazan a docs/images, sin duplicarlas ni generar capturas nuevas.
+
+pnpm.cmd test:docs pasa con código 0, dos pruebas correctas, después de crear los registros e índices. Salida .cache/010-t02-docs.txt. pnpm.cmd format:check pasa, salida .cache/010-t02-format-final.txt; git diff --check sin errores. No se repiten pruebas de producto, FX real o instalación por este cambio documental. Veredicto T02 CUMPLE TÉCNICAMENTE dentro de su alcance. T03–T05, ensayo limpio y aceptación humana final pendientes. Sin código de producto, dependencias, migraciones, datos existentes, commits/pushes o publicación modificados.
 
 ## T01 — README técnico y demo reproducible
 

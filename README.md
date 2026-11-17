@@ -187,7 +187,7 @@ El trabajo se dividió en entregas pequeñas, con requisitos, aclaraciones, plan
 
 La intervención humana definió alcance, resolvió decisiones, autorizó tareas y revisó resultados. Las instrucciones para la IA están en [AGENTS.md](AGENTS.md), [constitución](docs/constitution.md) y [procedimiento SDD](docs/sdd-harness.md): dominio puro, backend autoritativo, dinero exacto, datos preservados y pruebas observables.
 
-El [índice de auditoría](ai-workspace/README.md) reúne planificación, arquitectura, instrucciones, iteraciones y evidencias. Los prompts reformulados y registros retrospectivos deben identificarse como tales; no son transcripciones originales. La incorporación de 008/009/010 a ese índice sigue pendiente de la autorización de registro y T02. Entretanto, sus specs/validaciones canónicas están disponibles. No se atribuyen sesiones, versiones de herramientas o prompts de diseño que no estén conservados.
+El [índice de auditoría](ai-workspace/README.md) reúne planificación, arquitectura, instrucciones, iteraciones y evidencias. Los prompts reformulados y registros retrospectivos deben identificarse como tales; no son transcripciones originales. La incorporación de 008/009/010 se realiza en T02 por autorización de Alex, con retrospectivas identificadas y enlaces a sus specs/validaciones canónicas. No se atribuyen sesiones, versiones de herramientas o prompts de diseño que no estén conservados.
 
 ## Configuración y operación
 
