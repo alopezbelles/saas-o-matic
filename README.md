@@ -248,3 +248,5 @@ Si más adelante se despliega, el servidor deberá servir apps/web/dist con fall
 - Se excluyen secretos, .env reales, DB/backups, node_modules y cachés. Los PDF aportados se consultaron como fuentes externas y no se incorporan automáticamente. No se publica ni se hace commit/push desde estas instrucciones.
 
 La conformidad técnica y la aceptación humana final se registran por separado. El objetivo es que el evaluador pueda comprobar el comportamiento y recorrer las decisiones con evidencia, incluidos los límites que quedan fuera de esta prueba.
+
+El [cierre técnico de 010](specs/010-delivery/validation.md#t05--cierre-técnico-de-la-entrega) consolida documentación, auditoría y ensayo local, con resultados y límites identificados. La [revisión final](ai-workspace/reviews/010-delivery-t05.md) mantiene separadas la aceptación humana y las acciones externas pendientes; el cierre no equivale a una publicación o despliegue.

@@ -1,5 +1,9 @@
 # Trazabilidad
 
+## Entrega 010 — Cierre T05
+
+RF1–RF4 conformes dentro del alcance acordado. README/ai-workspace concentran la lectura y evidencia. T03 ensayó 33774eb con 276 pruebas generales y 36 E2E; no hubo cambios ejecutables posteriores ni reejecución funcional en T05. Pasan controles actuales de documentos, anclas locales y formato. [Cierre, versiones y pendientes](../specs/010-delivery/validation.md#t05--cierre-técnico-de-la-entrega) y [revisión final](../ai-workspace/reviews/010-delivery-t05.md). Publicación, revisión de rutas locales/historial/visibilidad, hosting y aceptación humana mantienen estados separados. Los apartados siguientes son históricos.
+
 ## Entrega 010 — T04
 
 DELIVERY-02 completa preparación revisable con inventario, exclusiones, escaneo acotado y condiciones SPA/API/SQLite. Sin coincidencias de credenciales seleccionadas o DB excluidas en 407 archivos base; 22 archivos con rutas locales quedan como decisión de publicación. Historial completo/visibilidad sin verificar. Dos pruebas documentales pasan, sin suites funcionales nuevas. [Presentación y entrega](../README.md#limitaciones-y-entrega) y [evidencia/límites](../specs/010-delivery/validation.md#t04--preparación-externa-revisable). Sin publicación o despliegue; T05 y aceptación humana pendientes.

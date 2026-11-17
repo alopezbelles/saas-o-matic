@@ -1,5 +1,9 @@
 # Autorización y alcance
 
+## 010 — T05
+
+Alex autoriza cerrar técnicamente 010 consolidando resultados, límites y pendientes externos, con validación documental y registros ai-workspace. README y ai-workspace mantienen el recorrido solicitado, sin recrear la guía eliminada. No se autoriza publicación, despliegue, cambio de remotos/visibilidad, datos existentes o commits/pushes. Aceptación humana final separada.
+
 ## 010 — T04
 
 Alex autoriza preparar la entrega externa revisable: contenido/exclusiones, revisión local de datos/secretos, destino configurado y riesgos de publicación o despliegue. No autoriza publicar, cambiar remotos/visibilidad, contratar hosting, desplegar, modificar datos existentes o hacer commits/pushes. Registro ai-workspace autorizado; T05 requiere indicación posterior.

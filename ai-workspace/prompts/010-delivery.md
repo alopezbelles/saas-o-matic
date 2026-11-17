@@ -23,3 +23,7 @@ Registro durante ejecución, 17 de noviembre de 2026. [Plan T03](../../specs/010
 ## T04 — Preparación externa
 
 Registro durante ejecución, 17 de noviembre de 2026. [Instrucción previa de elaboración](../../specs/010-delivery/plan.md#t04--preparación-externa-revisable): inventariar contenido versionado sin exponer valores de secretos, preparar lista incluida/excluida y riesgos, y documentar condiciones SPA/API/SQLite a partir del código. Conservar límites de escaneo/historial, destino conocido solo por configuración local y decisiones de publicación separadas. No alterar salidas históricas silenciosamente, publicar, elegir hosting o introducir cambios de infraestructura. Verificar documentos y mantener aceptación humana pendiente.
+
+## T05 — Cierre técnico
+
+Registro durante ejecución, 17 de noviembre de 2026. [Instrucción previa](../../specs/010-delivery/plan.md#t05--cierre): consolidar los cuatro RF desde sus versiones y evidencias, distinguir pruebas de T03 de controles actuales y conservar los pendientes externos. Comprobar README/ai-workspace, archivos/anclas y formato sin recrear la guía eliminada; no atribuir aceptación humana ni ejecutar publicación. La instrucción del plan se escribió antes de los cambios de cierre; este índice no es una transcripción de conversación.

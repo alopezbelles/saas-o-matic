@@ -1,15 +1,27 @@
 # Validación 010
 
-T01–T04 completadas técnicamente. T05 NO EJECUTADA. El cierre técnico de 009 es evidencia previa, no prueba de instalación limpia de 010. Aceptación humana pendiente.
+T01–T05 completadas técnicamente. RF1–RF4 conformes dentro del alcance y límites acordados. El cierre técnico de 009 es evidencia previa, no prueba de instalación limpia de 010. Aceptación humana pendiente.
 
-## Matriz prevista
+## Matriz final
 
-| RF      | Tareas y controles                                         | Resultado real de implementación                               |
-| ------- | ---------------------------------------------------------- | -------------------------------------------------------------- |
-| 010-RF1 | T01/T03/T05, DOC-README-010, DELIVERY-01, QA-ALL-010       | CONFORME T03, ensayo desde exportación limpia en Windows       |
-| 010-RF2 | T01/T02/T05, DOC-README-010, DOC-AUDIT-010                 | CONFORME alcance documental T02, índice/procedencia/evidencias |
-| 010-RF3 | T01–T05, procedencia/versión/límites y revisión documental | CONFORME alcance T03, resultados/versión/incidencias y límites |
-| 010-RF4 | T04/T05, DELIVERY-02                                       | CONFORME preparación T04, acciones externas sin autorizar      |
+| RF      | Tareas y controles                                         | Resultado real de implementación                                       |
+| ------- | ---------------------------------------------------------- | ---------------------------------------------------------------------- |
+| 010-RF1 | T01/T03/T05, DOC-README-010, DELIVERY-01, QA-ALL-010       | CONFORME T05, evidencia T01/T03, exportación limpia Windows            |
+| 010-RF2 | T01/T02/T05, DOC-README-010, DOC-AUDIT-010                 | CONFORME T05, recorrido README/ai-workspace e índice T02               |
+| 010-RF3 | T01–T05, procedencia/versión/límites y revisión documental | CONFORME T05, versiones/resultados/límites y revisión humana separados |
+| 010-RF4 | T04/T05, DELIVERY-02                                       | CONFORME T05, preparación T04, acciones externas pendientes            |
+
+## T05 — Cierre técnico de la entrega
+
+17 de noviembre de 2026, base c9b6420 y Git inicial limpio. Alex autoriza T05. [Instrucción previa](plan.md#t05--cierre) y [revisión técnica](../../ai-workspace/reviews/010-delivery-t05.md). Se consolidan RF1–RF4, estado de tareas, memoria, README/índice y trazabilidad; se mantiene eliminado el archivo de entrega separado.
+
+RF1 conforme por instrucciones/demo T01 y ensayo T03 del commit 33774eb: dependencias y Chromium propios, DB nueva, arranque desde raíz y flujo real con persistencia. RF2 conforme por README y auditoría T02 con procedencia. RF3 conforme por versiones/resultados/límites e incidencias explícitos. RF4 conforme como preparación T04, con decisiones externas pendientes y sin publicación.
+
+No hay diferencias de código/dependencias/configuración ejecutable entre 33774eb y c9b6420 en apps, packages, package.json, pnpm-lock.yaml, test o .env.example. Los 276 tests generales y 36 E2E correctos siguen siendo evidencia de T03, no una ejecución nueva de T05. El alcance actual es documental; no se vuelven a ejecutar suites funcionales, FX, instalación o acceso a DB.
+
+Se comprueba el recorrido README/ai-workspace, referencias a imágenes/documentos y anclas locales. Las restricciones de publicación, historial completo no auditado, rutas locales en 22 archivos y limitación al mismo Windows/host permanecen explícitas. No se afirma aprobación de una entrega pública ni aceptación humana. Controles propios T05: pnpm.cmd test:docs pasa (dos pruebas), pnpm.cmd format:check pasa y comprobación adicional de anclas Markdown locales sin fallos. Salidas temporales .cache/010-t05-docs.txt, -format-final.txt y -anchors.json. git diff --check sin errores. Las anclas se comprueban sobre encabezados/IDs locales; no disponibilidad de páginas externas.
+
+Veredicto técnico de 010: CUMPLE TÉCNICAMENTE dentro del alcance y límites acordados. Aceptación humana final y acciones externas pendientes; no se hacen commits/pushes, cambios de remoto/visibilidad o despliegue.
 
 ## T04 — Preparación externa revisable
 
@@ -93,8 +105,8 @@ Para entrega: lista de archivos/destino/riesgos, revisión de secretos y datos c
 
 17 de noviembre de 2026: adaptación de los cinco documentos de specs/010-delivery según instrucciones de Alex y cierre de 009. pnpm.cmd test:docs devuelve código 0, dos pruebas correctas. Salida temporal .cache/010-preparation-docs.txt. Prettier aplicado a los cinco documentos. No se ejecutan suites de código porque el cambio es exclusivamente documental. No se implementan README, capturas, fixtures, comandos demo, hosting ni tareas durante esta fase. No se escribe en ai-workspace.
 
-## Cierre futuro
+## Condiciones históricas de preparación
 
 C04/C05 confirmadas posteriormente por Alex: demo completa en base nueva y entrega local/repositorio; despliegue opcional sin hosting elegido. Se actualizan spec, plan y tareas para incluir el comando demo en T01. Esta confirmación no ejecuta tareas ni levanta la exclusión ai-workspace.
 
-Veredicto técnico pendiente. Cerrar únicamente con evidencia real de los RF, decisiones necesarias resueltas y límites declarados. Revisión/aceptación humana y acciones externas siempre separadas.
+Durante la preparación, el veredicto técnico estaba pendiente y se exigía evidencia real de los RF, decisiones resueltas y límites declarados. El cierre vigente está en T05; aceptación humana y acciones externas siguen separadas.

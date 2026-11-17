@@ -1,6 +1,6 @@
 # Plan 010 — Documentación, auditoría y entrega
 
-T01–T04 completadas técnicamente por indicación de Alex; T05 pendiente. La instrucción de preparación siguiente conserva su alcance histórico. T02 autoriza actualizar ai-workspace sin reproducir mensajes excluidos. Usar [aclaraciones](clarifications.md) para decisiones pendientes.
+T01–T05 completadas técnicamente por indicación de Alex; aceptación humana y acciones externas pendientes. La instrucción de preparación siguiente conserva su alcance histórico. T02 autoriza actualizar ai-workspace sin reproducir mensajes excluidos. Usar [aclaraciones](clarifications.md) para decisiones pendientes.
 
 ## Instrucción de preparación
 
@@ -46,7 +46,9 @@ Cambio de organización posterior solicitado por Alex: se elimina el documento d
 
 ## T05 — Cierre
 
-Consolidar RF→prueba→versión→resultado, actualizar MEMORY.md, validación y trazabilidad. Al iniciar implementación de 010, sincronizar spec activa y referencia del gate test/docs.test.mjs hoy fijadas a 009. Verificar enlaces después de documentación, repetir controles afectados por cambios reales y distinguir el cierre 009 del ensayo nuevo. No repetir toda la suite por cada edición documental si no hay un motivo técnico.
+Instrucción previa de ejecución T05 (17 de noviembre de 2026): consolidar RF1–RF4 con evidencias/versiones de T01–T04 y veredicto técnico, mantener aceptación humana y decisiones externas separadas. Comprobar que no hubo cambios de código desde el snapshot probado 33774eb; usar sus 276 pruebas/36 E2E como evidencia identificada, sin reatribuirlas a esta tarea documental. Verificar recorrido README/ai-workspace, archivos/enlaces/anclas relevantes, formato y estado de tareas/memoria/trazabilidad. Respetar eliminación del archivo de entrega separado. Registrar límites de Windows, escaneo/historial y 22 rutas locales pendientes antes de publicar. No ejecutar publicación, nuevos ensayos o cambios de datos.
+
+Consolidar RF→prueba→versión→resultado, actualizar MEMORY.md, validación y trazabilidad. La sincronización de la spec activa y el gate test/docs.test.mjs a 010 quedó realizada en T01; conservar su coherencia al cerrar. Verificar enlaces después de documentación, repetir controles afectados por cambios reales y distinguir el cierre 009 del ensayo nuevo. No repetir toda la suite por cada edición documental si no hay un motivo técnico.
 
 ## Correspondencia de controles
 

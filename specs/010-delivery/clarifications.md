@@ -1,6 +1,6 @@
 # Aclaraciones 010
 
-T01–T04 completadas técnicamente, incluida preparación externa revisable; T05 pendiente. Publicación/hosting y tratamiento de rutas históricas mantienen decisiones separadas. Las decisiones siguientes distinguen instrucciones recibidas de propuestas pendientes y conservan la procedencia de su confirmación.
+T01–T05 completadas técnicamente, con cierre documental y límites explícitos; aceptación humana pendiente. Publicación/hosting y tratamiento de rutas históricas mantienen decisiones separadas. Las decisiones siguientes distinguen instrucciones recibidas de propuestas pendientes y conservan la procedencia de su confirmación.
 
 | ID      | Tema                     | Resolución y estado                                                                                                                                                                                                                                                              |
 | ------- | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

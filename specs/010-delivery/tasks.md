@@ -1,6 +1,6 @@
 # Tareas 010
 
-T01–T04 completadas técnicamente; T05 pendiente de indicación de Alex. IDs 010-T01–T05. Registro ai-workspace autorizado en T02, respetando mensajes excluidos.
+T01–T05 completadas técnicamente; aceptación humana final y acciones externas pendientes. IDs 010-T01–T05. Registro ai-workspace autorizado en T02, respetando mensajes excluidos.
 
 ## T01 — README técnico y demo reproducible
 
@@ -44,9 +44,9 @@ T01–T04 completadas técnicamente; T05 pendiente de indicación de Alex. IDs 0
 
 ## T05 — Cierre técnico de la entrega
 
-- [ ] **010-T05** — RF1–RF4. Depende de T04.
+- [x] **010-T05** — RF1–RF4. T04 completada.
 - Consolidar resultados/versiones, límites y pendientes externos; actualizar validation.md, MEMORY.md y docs/traceability.md. Revisar documentos tras sus cambios y repetir controles de código solo cuando proceda.
 - Archivos: validación/memoria/trazabilidad y revisión pertinente en ai-workspace si continúa autorizado.
 - Controles: DOC-AUDIT-010, DELIVERY-02 y test:docs, con referencia a QA-ALL-010 de T03 y controles posteriores necesarios.
 - Hecho cuando cada RF tenga resultado real y veredicto técnico. La aceptación humana puede seguir pendiente. Publicación, commits/pushes y despliegue requieren autorización específica y no son requisito de cierre técnico.
-- Estado/evidencia: NO EJECUTADO.
+- Cierre técnico conforme: cuatro RF enlazados a versiones/resultados, recorrido README/ai-workspace coherente, dos pruebas documentales/anclas/formato correctos. Se conserva la evidencia 276/36 de T03 sin reejecución funcional en T05. [Cierre y pendientes externos](validation.md#t05--cierre-técnico-de-la-entrega).
