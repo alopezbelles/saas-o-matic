@@ -1,5 +1,9 @@
 # Trazabilidad
 
+## Calidad 009 — Cierre T05
+
+RF1–RF6 conformes técnicamente dentro del alcance acordado. 273 pruebas globales y 36 E2E Chromium correctas, sin fallos esperados. Lint, TypeScript, formato, compilación y documentos pasan. 009-QA-01 resuelto; base de desarrollo sin cambios y recursos temporales cerrados/limpiados. FX real conserva la evidencia puntual de T02; el cierre usa fixtures. [Matriz final, comandos, resultados y límites](../specs/009-quality/validation.md#t05--verificación-final-y-cierre-técnico). Aceptación humana final pendiente. README definitivo, auditoría de entrega, checkout limpio y publicación corresponden a 010. Los registros siguientes conservan su alcance histórico.
+
 ## Calidad 009 — T04
 
 009-QA-01 resuelto técnicamente mediante ajuste local de texto largo en el simulador y su confirmación. Cuatro regresiones con el mismo cliente largo pasan sin fallos esperados; las 14 pruebas visuales existentes también pasan. RF2 conforme dentro del alcance Chromium documentado. [Corrección, resultados y límites](../specs/009-quality/validation.md#t04--corrección-y-regresiones). T05 y aceptación humana final pendientes. Los apartados anteriores de ejecución se conservan como historial.

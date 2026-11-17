@@ -1,6 +1,6 @@
 # 009 — QA transversal, accesibilidad y resiliencia
 
-T01–T04 completadas técnicamente; T03 identificó 009-QA-01 y T04 corrigió el reflujo del simulador con regresiones en cuatro anchos. T05 y aceptación humana final pendientes. Registro ai-workspace excluido.
+T01–T05 completadas técnicamente. 009-QA-01 resuelto. Cierre con 273 pruebas globales y 36 E2E correctas, controles de código y documentos correctos. Aceptación humana final pendiente. Registro ai-workspace excluido; entrega reproducible y publicación corresponden a 010.
 
 ## Objetivo
 

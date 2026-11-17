@@ -1,21 +1,61 @@
 # Validación 009
 
-T01–T04 completadas técnicamente; T03 identificó 009-QA-01 y T04 corrigió el reflujo del simulador con regresiones en cuatro anchos. T05 y aceptación humana final pendientes. Registro ai-workspace excluido.
+T01–T05 completadas técnicamente. 009-QA-01 resuelto. Cierre con 273 pruebas globales y 36 E2E correctas, controles de código y documentos correctos. Aceptación humana final pendiente. Registro ai-workspace excluido; entrega reproducible y publicación corresponden a 010.
 
 ## Referencia histórica
 
 008 cerró técnicamente con 273 pruebas globales y 31 E2E, dentro de sus límites documentados. Esa ejecución pertenece a 008 y no acredita por sí sola la validación de 009. [Evidencia anterior](../008-simulator-ui/validation.md#t05--flujo-comercial-revisión-visual-y-cierre-global).
 
-## Matriz de ejecución prevista
+## Matriz de requisitos
 
 | RF      | Tareas          | Evidencia prevista                                     | Resultado de 009                                  |
 | ------- | --------------- | ------------------------------------------------------ | ------------------------------------------------- |
-| 009-RF1 | T01/T02/T04/T05 | QA-ENV-009, QA-FLOW-009, QA-REGRESSION-009, QA-ALL-009 | PARCIAL T02, suites y flujos correctos            |
+| 009-RF1 | T01/T02/T04/T05 | QA-ENV-009, QA-FLOW-009, QA-REGRESSION-009, QA-ALL-009 | CONFORME T05, 273 pruebas globales y 36 E2E       |
 | 009-RF2 | T03/T04/T05     | QA-A11Y-009, QA-REGRESSION-009, QA-ALL-009             | CONFORME alcance Chromium T04, 009-QA-01 resuelto |
 | 009-RF3 | T02/T04/T05     | QA-RESILIENCE-009, QA-REGRESSION-009, QA-ALL-009       | CONFORME escenarios T02                           |
-| 009-RF4 | T01/T05         | QA-MATRIX-009, QA-REVIEW-009                           | PARCIAL T01, matriz inicial                       |
+| 009-RF4 | T01/T05         | QA-MATRIX-009, QA-REVIEW-009                           | CONFORME T05, matriz final y límites explícitos   |
 | 009-RF5 | T02/T04/T05     | QA-SECURITY-009, QA-REGRESSION-009                     | CONFORME revisión básica T02                      |
 | 009-RF6 | T02/T04/T05     | QA-FX-LIVE-009                                         | CONFORME comprobación real T02                    |
+
+## T05 — Verificación final y cierre técnico
+
+17 de noviembre de 2026, base df8202d y Git inicial limpio. Alex autoriza T05. [Instrucción previa](plan.md#secuencia). Entorno Windows, Node 22.19.0 y pnpm 10.33.4. Esta tarea revisa el código resultante de T04; no añade funcionalidades, dependencias, cambios monetarios o migraciones.
+
+### QA-ALL-009 — Controles sobre el código de cierre
+
+Desde la raíz se ejecutan secuencialmente pnpm.cmd lint, pnpm.cmd typecheck, pnpm.cmd format:check, pnpm.cmd build y pnpm.cmd test; todos devuelven código 0. test:gates se ejecuta dentro de test sin otros controles de código concurrentes. Las 273 pruebas pasan: 36 shared, 12 API unitarias, 49 integración SQLite/HTTP, 22 web node:test, 151 componentes/transporte, un gate negativo y dos documentales. Las pruebas negativas comprueban rechazo de entradas/errores y el gate verifica que los controles detectan defectos introducidos en su contexto temporal.
+
+Salidas reproducibles y efímeras en .cache/009-t05-lint.txt, .cache/009-t05-typecheck.txt, .cache/009-t05-format-check.txt, .cache/009-t05-build.txt y .cache/009-t05-test.txt. No se realiza una instalación desde cero; ese ensayo corresponde a 010.
+
+pnpm.cmd test:e2e devuelve código 0: 36 pruebas Chromium passed, sin fallos esperados, omitidos o inestables. Incluye flujo comercial, recuperación API/FX, guardado incierto, contenido persistido y las cuatro regresiones del nombre largo. Salida .cache/009-t05-test-e2e.txt; reporte y capturas en .cache/007-e2e/report.json y results. La suite utiliza API/Vite/SQLite temporales y cierra esos recursos al finalizar.
+
+Inventario SHA-256 de los archivos existentes en apps/api/data antes/después: un archivo de desarrollo, sin diferencias. La primera comparación PowerShell envolvía el array JSON en otro array y notificó diferencias de estructura; se corrigió la lectura y se verificaron ruta/hash iguales. No se conecta a esa base ni se ejecutan migraciones sobre ella. .cache/002-tests queda sin directorios residuales. Resumen en .cache/009-t05-summary.json e inventario inicial en .cache/009-t05-data-before.json, sin contenido de registros. Git no presenta cambios de código, lockfile, schema, migraciones o ai-workspace en T05.
+
+Veredicto global de 009: CUMPLE TÉCNICAMENTE dentro del alcance y límites acordados. 009-QA-01 está resuelto y no quedan defectos bloqueantes identificados durante esta revisión. QA-ALL-009 y QA-REVIEW-009 completados; aceptación humana final pendiente.
+
+Después de actualizar memoria, tareas, matriz y trazabilidad, pnpm.cmd format:check y pnpm.cmd test:docs vuelven a pasar con código 0 y dos pruebas documentales, sin enlaces rotos. Salidas .cache/009-t05-format-final.txt y .cache/009-t05-docs-final.txt. git diff --check sin errores. Las modificaciones de T05 son documentales; no se han realizado commits/pushes ni publicación.
+
+### QA-REVIEW-009 — Matriz final del enunciado
+
+La matriz inicial de T01 se conserva como inventario histórico. Este cierre relaciona los apartados del enunciado aportado con las suites reejecutadas y las revisiones realizadas durante 009:
+
+| Apartado del enunciado                                                      | Código y pruebas concretas                                                                                                                                                                                                                                                                           | Evidencia de 009                                                                                                                        |
+| --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| §2, comunicación frontend/backend/SQLite                                    | [Flujo comercial](../../apps/web/e2e/simulator-flow.spec.mjs), [integración DB](../../apps/api/test/database.test.mjs)                                                                                                                                                                               | Suites globales y E2E de QA-ALL-009                                                                                                     |
+| §2A, alta con cinco datos, DNI/NIF/CIF y duplicados                         | [Contratos](../../apps/api/test/customers-contract.test.mjs), [fiscal](../../apps/api/test/tax-id.test.mjs), [HTTP](../../apps/api/test/customers.test.mjs), [clientes E2E](../../apps/web/e2e/customers.spec.mjs)                                                                                   | Unitarias, integración y flujo real con fixtures independientes                                                                         |
+| §2A, simulaciones persistidas y facturación acumulativa 10/8/5 más impuesto | [Quote](../../packages/shared/test/billing-quote.test.mjs), [impuestos](../../packages/shared/test/billing-tax.test.mjs), [HTTP](../../apps/api/test/simulations.test.mjs), [servicio/transacción](../../apps/api/test/simulations-service.test.mjs)                                                 | Fronteras, dinero entero, impuesto, límites, rollback y recálculo autoritativo                                                          |
+| §2B, búsqueda por empresa/identificador                                     | [Listado](../../apps/web/src/features/customers/pages/CustomersPage.test.tsx), [clientes E2E](../../apps/web/e2e/customers.spec.mjs), [búsqueda literal/markup](../../apps/web/e2e/security.spec.mjs)                                                                                                | Búsqueda, paginación, contexto y contenido persistido seguro                                                                            |
+| §2B, cards/historial responsive y controles dinámicos                       | [Historial](../../apps/web/e2e/simulator-history.spec.mjs), [preview](../../apps/web/e2e/simulator-preview.spec.mjs), [visual 007](../../apps/web/e2e/visual.spec.mjs), [visual 008](../../apps/web/e2e/simulator-visual.spec.mjs), [estados y texto largo](../../apps/web/e2e/a11y-states.spec.mjs) | Cuatro anchos, teclado, foco, ampliación CSS/reflujo y 009-QA-01 corregido                                                              |
+| §2B, divisas mediante API pública                                           | [Cliente FX](../../apps/web/test/currency-client.test.mjs), preview/flujo E2E y [smoke explícito](../../apps/web/e2e/fx-live.mjs)                                                                                                                                                                    | Fixtures en cierre; [HTTP/CORS y USD/GBP reales en T02](#qa-fx-live-009)                                                                |
+| §1/§4, arquitectura, calidad y seguridad                                    | Capas existentes, controles globales y [revisión básica](#qa-security-009)                                                                                                                                                                                                                           | Entradas, SQL parametrizado, errores/logs y privacidad revisados; no auditoría exhaustiva                                               |
+| §3/§4, planificación y trabajo con IA                                       | [Specs y trazabilidad](../../docs/traceability.md), [directrices](../../AGENTS.md), validaciones por tarea                                                                                                                                                                                           | Evidencia técnica canónica disponible. Completar/organizar paquete e índice de auditoría corresponde a 010; ai-workspace sigue excluido |
+| §3/§4, repositorio público e instrucciones reproducibles                    | README definitivo, instalación desde checkout limpio y preparación de publicación                                                                                                                                                                                                                    | Pendiente de 010. No se certifica la entrega completa ni se publica desde 009                                                           |
+
+### Límites y transferencia a 010
+
+La revisión de interfaz se limita a Chromium, anchos CSS 320/390/768/1440, teclado/foco, asociaciones accesibles y contraste representativo. La ampliación usa CSS al 200 % y viewport equivalente; no zoom nativo ni lector de pantalla u otros navegadores. El smoke FX real de T02 fue puntual y no garantiza disponibilidad futura ni CORS en un dominio de producción. En T05 se usan fixtures deterministas y no se repite la consulta externa. La revisión de seguridad no incluye pentest, análisis exhaustivo de secretos/historial ni auditoría de vulnerabilidades de dependencias.
+
+010 conserva README definitivo, índice/organización de evidencias con autorización de registro, ensayo de checkout limpio y preparación revisable de publicación/despliegue. No se ha ejecutado ese trabajo en 009. La aceptación humana de Alex sigue pendiente y no se deduce de las pruebas técnicas.
 
 ## T04 — Corrección y regresiones
 
@@ -198,7 +238,7 @@ La comprobación FX real registrará conversión/CORS observados y limitaciones 
 
 ## Revisión
 
-T01 CUMPLE TÉCNICAMENTE para inventario, matriz y entorno. Veredicto global de 009 pendiente de T02–T05. Aceptación humana final pendiente. Las comprobaciones de preparación siguientes conservan su fecha y alcance propios.
+Revisión histórica de T01: CUMPLE TÉCNICAMENTE para inventario, matriz y entorno; en ese momento el veredicto global estaba pendiente de T02–T05. El resultado vigente está en [cierre T05](#t05--verificación-final-y-cierre-técnico). Aceptación humana final pendiente. Las comprobaciones de preparación siguientes conservan su fecha y alcance propios.
 
 ## Revisión documental de preparación
 

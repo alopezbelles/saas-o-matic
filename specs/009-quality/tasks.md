@@ -1,6 +1,6 @@
 # Tareas 009
 
-T01–T04 completadas técnicamente; T03 identificó 009-QA-01 y T04 corrigió el reflujo del simulador con regresiones en cuatro anchos. T05 y aceptación humana final pendientes. Registro ai-workspace excluido.
+T01–T05 completadas técnicamente. 009-QA-01 resuelto. Cierre con 273 pruebas globales y 36 E2E correctas, controles de código y documentos correctos. Aceptación humana final pendiente. Registro ai-workspace excluido; entrega reproducible y publicación corresponden a 010.
 
 ## T01 — Inventario, entorno y trazabilidad de cobertura
 
@@ -46,14 +46,14 @@ T01–T04 completadas técnicamente; T03 identificó 009-QA-01 y T04 corrigió e
 
 ## T05 — Verificación final y cierre técnico
 
-- [ ] **009-T05**. RF1–RF6. Depende de T04.
+- [x] **009-T05**. RF1–RF6. Depende de T04.
 - Ejecutar los controles globales del plan y test:docs después de actualizar documentos. Gates sin otros controles de código concurrentes.
 - Actualizar validation.md, docs/traceability.md, memoria y documentación afectada con versión, comandos, resultados y límites reales.
 - Preparar el resultado para revisión de Alex y registrar su aceptación únicamente si él la confirma. El cierre técnico puede quedar completado con aceptación humana pendiente.
 - Comprobar cleanup de recursos temporales y que no se han tocado datos existentes.
 - Dejar resultados técnicos y asuntos derivados disponibles para 010, que cerrará README, índice de auditoría, checkout limpio y preparación de publicación.
 - Hecho cuando cada RF tenga evidencia actual y veredicto verificable.
-- Evidencia prevista QA-ALL-009 y QA-REVIEW-009. Resultado actual NO EJECUTADO.
+- QA-ALL-009 y QA-REVIEW-009 completados: 273 pruebas globales y 36 E2E correctas, controles de código/documentos correctos, base existente conservada por hash y limpieza temporal comprobada. [Cierre, matriz y límites](validation.md#t05--verificación-final-y-cierre-técnico). Aceptación humana final pendiente y entregables de 010 separados.
 
 ## Registro
 

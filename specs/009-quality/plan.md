@@ -1,6 +1,6 @@
 # Plan 009 — QA transversal
 
-T01–T04 completadas técnicamente; T03 identificó 009-QA-01 y T04 corrigió el reflujo del simulador con regresiones en cuatro anchos. T05 y aceptación humana final pendientes. Registro ai-workspace excluido.
+T01–T05 completadas técnicamente. 009-QA-01 resuelto. Cierre con 273 pruebas globales y 36 E2E correctas, controles de código y documentos correctos. Aceptación humana final pendiente. Registro ai-workspace excluido; entrega reproducible y publicación corresponden a 010.
 
 ## Partir del estado existente
 
@@ -58,6 +58,8 @@ La suite automatizada mantendrá fixtures FX y ejecución determinista. La compr
 El código ya contiene pruebas de DB ocupada→503/recuperación, inserción fallida→500 sanitizado y 404. El timeout de guardado se prueba en frontend, mientras integración verifica el estado transaccional. Un caso de red no demuestra por sí solo rollback en SQLite.
 
 ## Secuencia
+
+Instrucción previa de T05 (17 de noviembre de 2026): ejecutar desde raíz lint, typecheck, formato, build, test y test:e2e sobre el código de cierre; mantener test:gates sin controles concurrentes. Contrastar los seis RF con casos y resultados, conservar como puntual la comprobación FX real de T02 y distinguir sus límites. Comprobar limpieza de recursos temporales y conservación de datos existentes mediante inventario de archivos antes/después, sin abrir bases de desarrollo. Actualizar matriz final, tareas, memoria y trazabilidad con evidencia real; ejecutar test:docs tras los cambios. Reservar README definitivo, auditoría de entrega, checkout limpio y publicación a 010. No registrar ai-workspace ni atribuir aceptación humana.
 
 Instrucción previa de T04 (17 de noviembre de 2026): corregir 009-QA-01 mediante estilos locales del simulador que permitan ajustar nombres válidos sin espacios, conservando el texto completo y los contratos existentes. Extender la regresión del cliente largo al guardado, confirmación e historial, retirar test.fail y exigir geometría correcta a 320/390/768/1440 px. Ejecutar pruebas afectadas, inspeccionar capturas y comprobar regresiones generales con datos temporales. Mantener exclusión ai-workspace; T05 y aceptación humana siguen pendientes.
 

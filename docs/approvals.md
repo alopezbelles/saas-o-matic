@@ -1,5 +1,9 @@
 # Autorización y alcance
 
+## 009 — T05
+
+Alex autoriza la verificación final y el cierre técnico de 009: controles globales, revisión de requisitos/evidencias, limpieza de recursos temporales y documentación de límites y trabajo derivado a 010. La aceptación humana no se presupone. Se mantienen exclusión ai-workspace, datos existentes y límites sobre commits/pushes, dependencias y publicación.
+
 ## 009 — T04
 
 Alex autoriza resolver los defectos de T03 y comprobar regresiones. Incluye corregir 009-QA-01 y exigir que los cuatro anchos pasen sin expectativas de fallo. T05 requiere indicación posterior. Continúan la exclusión ai-workspace y los límites sobre dependencias, datos existentes y commits/pushes.
