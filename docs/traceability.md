@@ -1,5 +1,9 @@
 # Trazabilidad
 
+## Calidad 009 — T02
+
+RF3 comprobado en escenarios de recuperación/transacciones, RF5 conforme en revisión básica de seguridad y RF6 comprobado mediante proveedor real desde Chromium. RF1/RF4 siguen pendientes de cierre global. 270 pruebas funcionales y 32 E2E correctas. [QA-FLOW-009, QA-RESILIENCE-009, QA-SECURITY-009 y QA-FX-LIVE-009](../specs/009-quality/validation.md#t02--flujos-resiliencia-seguridad-y-fx-real). La validación detalla límites, fuentes, una primera consulta bloqueada por el sandbox y la repetición correcta. Aceptación humana final pendiente.
+
 ## Calidad 009 — T01
 
 RF1/RF4 parciales, inventario de scripts/suites, entorno aislado y matriz del enunciado → implementación → pruebas → resultado. Descubrimiento de 31 Playwright en 8 archivos y un flujo representativo correcto con API/Vite/SQLite temporal. La matriz distingue ejecución actual, cobertura histórica de 008, comprobaciones pendientes y entregables de 010. [QA-ENV-009 y QA-MATRIX-009](../specs/009-quality/validation.md#t01--inventario-entorno-y-matriz). T02–T05 y aceptación humana final pendientes. Registro ai-workspace excluido.

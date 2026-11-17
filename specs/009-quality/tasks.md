@@ -1,6 +1,6 @@
 # Tareas 009
 
-009-T01 completada técnicamente. T02–T05 pendientes de indicación de Alex. La cobertura existente de 007–008 se reutiliza con resultados actuales separados de su evidencia histórica. Sin registro ai-workspace.
+009-T01–T02 completadas técnicamente. T03–T05 pendientes de indicación de Alex. Resultados actuales y evidencias históricas identificados en validation.md. Registro ai-workspace excluido.
 
 ## T01 — Inventario, entorno y trazabilidad de cobertura
 
@@ -15,14 +15,14 @@
 
 ## T02 — Flujos y resiliencia integrada
 
-- [ ] **009-T02**. RF1/RF3/RF5/RF6. Depende de T01.
+- [x] **009-T02**. RF1/RF3/RF5/RF6. Depende de T01.
 - Reejecutar reglas críticas, alta/listado/ficha/simulador/historial y recuperación frente a errores API/DB/FX.
 - Revisar 404/422/409/500/503, lock/rollback, timeout/201 ilegible, doble envío, configuración incompatible, caducidad/carreras FX y persistencia autoritativa.
 - Reutilizar suites API/shared, componentes/FX y E2E existentes. Añadir únicamente casos que cubran huecos concretos.
 - Revisar seguridad básica conforme a 009-C01, con hallazgos verificables.
 - Comprobar puntualmente conversión y CORS desde el simulador en Chromium con proveedor FX real y DB temporal. Registrar el resultado y cualquier limitación externa por separado de los fixtures.
 - Hecho cuando los escenarios revisados tengan resultados observables y los defectos detectados estén descritos con reproducción e impacto.
-- Evidencia prevista QA-FLOW-009, QA-RESILIENCE-009, QA-SECURITY-009 y QA-FX-LIVE-009. Resultado actual NO EJECUTADO.
+- QA-FLOW-009, QA-RESILIENCE-009, QA-SECURITY-009 y QA-FX-LIVE-009 ejecutados. 270 pruebas funcionales y 32 E2E correctas, revisión básica de seguridad y FX real HTTP 200/CORS con conversión USD/GBP comprobados. [Validación T02](validation.md#t02--flujos-resiliencia-seguridad-y-fx-real).
 
 ## T03 — Accesibilidad y responsive
 

@@ -1,5 +1,9 @@
 # Autorización y alcance
 
+## 009 — T02
+
+Alex autoriza T02, reejecución de flujos/resiliencia, revisión básica de seguridad y comprobación puntual del simulador con proveedor FX real en Chromium y datos temporales. C01–C03 confirmadas. T03–T05 requieren indicación posterior. Se mantienen exclusión ai-workspace y límites sobre dependencias, arquitectura, datos existentes y commits/pushes.
+
 ## 009 — T01
 
 Alex autoriza T01, inventario de scripts/suites y cobertura, revisión del entorno aislado y matriz de requisitos del enunciado. Incluye actualizar la spec activa y el gate documental, con comprobaciones pertinentes del entorno existente. T02–T05 requieren indicación posterior. Se mantienen exclusión de ai-workspace, datos existentes, nuevas dependencias y commits/pushes.

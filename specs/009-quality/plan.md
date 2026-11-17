@@ -1,6 +1,6 @@
 # Plan 009 — QA transversal
 
-T01 completada técnicamente. T02–T05 pendientes de indicación por tarea. ai-workspace excluido hasta nueva autorización.
+T01–T02 completadas técnicamente. T03–T05 pendientes de indicación por tarea. ai-workspace excluido hasta nueva autorización.
 
 ## Partir del estado existente
 
@@ -17,6 +17,7 @@ Contrastar los apartados del enunciado Prueba Devs con IA.pdf aportado por Alex.
 - apps/web/playwright.config.mjs y apps/web/e2e/run.mjs configuran Chromium y su caché local.
 - apps/web/e2e/environment.mjs crea API/Vite/SQLite por caso con puertos propios, migraciones, fixtures y limpieza segura.
 - apps/web/e2e/fixtures.mjs contiene utilidades compartidas de formularios y FX.
+- T02 incorpora apps/web/e2e/security.spec.mjs para markup persistido/búsqueda literal y fx-live.mjs para la comprobación de proveedor real mediante ejecución explícita.
 - En apps/web/e2e, customers.spec.mjs, simulator-setup.spec.mjs, simulator-preview.spec.mjs, simulator-save.spec.mjs, simulator-history.spec.mjs y simulator-flow.spec.mjs cubren flujos, persistencia y recuperación.
 - apps/web/e2e/visual.spec.mjs, simulator-visual.spec.mjs y contrast.mjs cubren responsive, teclado, foco y medidas renderizadas.
 - apps/web/src contiene pruebas Vitest/RTL de transporte, componentes, estados y carreras. apps/web/test contiene node:test de FX/transporte.
@@ -34,6 +35,8 @@ Interceptar FX con page.route o transporte inyectado, usando tasas y errores con
 Los artefactos temporales del runner están en .cache/007-e2e/report.json y .cache/007-e2e/results, nombre heredado y vigente. El navegador usa .cache/playwright. Las nuevas salidas de comandos pueden conservarse bajo .cache/009-*. La validación enlazará fuentes canónicas y distinguirá artefactos efímeros de evidencia versionada.
 
 ## Seguridad básica y FX real
+
+Instrucción previa de T02 (17 de noviembre de 2026, antes de cambios): reejecutar suites de dominio, API, transporte/componentes y flujos de navegador, revisar los escenarios negativos inventariados y completar huecos pertinentes de seguridad. Revisar entradas/SQL, límites, errores/logs, secretos en archivos versionados y privacidad de FX. Comprobar el proveedor real desde el simulador con Chromium y DB temporal mediante una ejecución explícita independiente de la suite determinista. Registrar resultados y hallazgos, incluidos límites externos, actualizar memoria/matriz y reservar correcciones de producto encontradas para T04. Mantener exclusión ai-workspace y datos existentes.
 
 En T02 revisar validación de entradas y campos extra, SQL parametrizado, límites de cuerpo/paginación, errores y logs, secretos y datos que salen al proveedor FX. Usar código y pruebas existentes como evidencia y añadir regresiones ante huecos relevantes. Registrar hallazgos con impacto y corregirlos en T04 cuando corresponda al alcance aprobado.
 

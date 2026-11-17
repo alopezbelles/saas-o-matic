@@ -1,5 +1,9 @@
 # Verificación
 
+## 009 — T02
+
+270 pruebas funcionales actuales correctas mediante test:unit, test:integration y test:web. Playwright ejecuta 32 casos correctos, con una nueva regresión de markup persistido y búsqueda literal. La comprobación del proveedor real usa apps/web/e2e/fx-live.mjs y se invoca explícitamente desde raíz con pnpm --filter @saas-o-matic/web exec node e2e/fx-live.mjs después de compilar API/shared. Reporte y captura bajo .cache/009-t02-fx-live. [Seguridad, resiliencia, FX real e incidencia de red](../specs/009-quality/validation.md#t02--flujos-resiliencia-seguridad-y-fx-real). T03–T05 pendientes.
+
 ## 009 — T01
 
 Inventario de suites y matriz inicial en [validación T01](../specs/009-quality/validation.md#t01--inventario-entorno-y-matriz). Playwright descubre 31 casos en 8 archivos. Se ejecuta simulator-flow.spec.mjs como comprobación representativa de entorno/persistencia con FX controlado, conservando el runner y su aislamiento. Reejecución funcional completa, seguridad, FX real y accesibilidad corresponden a tareas posteriores. MEMORY.md y gate documental identifican 009 como spec activa.

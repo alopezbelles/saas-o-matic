@@ -1,6 +1,6 @@
 # Validación 009
 
-Estado de ejecución, T01 completada técnicamente. Inventario y matriz preparados, descubrimiento de pruebas y un flujo representativo del entorno comprobados. T02–T05 y aceptación humana final pendientes. Los registros de preparación conservan su contexto histórico.
+T01–T02 completadas técnicamente. Flujos/resiliencia reejecutados, seguridad básica revisada y FX real comprobado desde Chromium. T03–T05 y aceptación humana final pendientes. Los registros anteriores conservan su fecha y alcance.
 
 ## Referencia histórica
 
@@ -8,14 +8,66 @@ Estado de ejecución, T01 completada técnicamente. Inventario y matriz preparad
 
 ## Matriz de ejecución prevista
 
-| RF      | Tareas          | Evidencia prevista                                     | Resultado de 009                  |
-| ------- | --------------- | ------------------------------------------------------ | --------------------------------- |
-| 009-RF1 | T01/T02/T04/T05 | QA-ENV-009, QA-FLOW-009, QA-REGRESSION-009, QA-ALL-009 | PARCIAL T01, entorno e inventario |
-| 009-RF2 | T03/T04/T05     | QA-A11Y-009, QA-REGRESSION-009, QA-ALL-009             | NO EJECUTADO                      |
-| 009-RF3 | T02/T04/T05     | QA-RESILIENCE-009, QA-REGRESSION-009, QA-ALL-009       | NO EJECUTADO                      |
-| 009-RF4 | T01/T05         | QA-MATRIX-009, QA-REVIEW-009                           | PARCIAL T01, matriz inicial       |
-| 009-RF5 | T02/T04/T05     | QA-SECURITY-009, QA-REGRESSION-009                     | NO EJECUTADO                      |
-| 009-RF6 | T02/T04/T05     | QA-FX-LIVE-009                                         | NO EJECUTADO                      |
+| RF      | Tareas          | Evidencia prevista                                     | Resultado de 009                       |
+| ------- | --------------- | ------------------------------------------------------ | -------------------------------------- |
+| 009-RF1 | T01/T02/T04/T05 | QA-ENV-009, QA-FLOW-009, QA-REGRESSION-009, QA-ALL-009 | PARCIAL T02, suites y flujos correctos |
+| 009-RF2 | T03/T04/T05     | QA-A11Y-009, QA-REGRESSION-009, QA-ALL-009             | NO EJECUTADO                           |
+| 009-RF3 | T02/T04/T05     | QA-RESILIENCE-009, QA-REGRESSION-009, QA-ALL-009       | CONFORME escenarios T02                |
+| 009-RF4 | T01/T05         | QA-MATRIX-009, QA-REVIEW-009                           | PARCIAL T01, matriz inicial            |
+| 009-RF5 | T02/T04/T05     | QA-SECURITY-009, QA-REGRESSION-009                     | CONFORME revisión básica T02           |
+| 009-RF6 | T02/T04/T05     | QA-FX-LIVE-009                                         | CONFORME comprobación real T02         |
+
+## T02 — Flujos, resiliencia, seguridad y FX real
+
+17 de noviembre de 2026, base 2bc6f81, Git inicial limpio. Alex autoriza T02 y las decisiones C01–C03. [Instrucción previa](plan.md#seguridad-básica-y-fx-real). Se mantienen exclusión ai-workspace y datos existentes. T03–T05 y aceptación humana final pendientes.
+
+### QA-FLOW-009 y QA-RESILIENCE-009
+
+| Área de la matriz del enunciado | Comprobación ejecutada                                                                                                   | Resultado                                    |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------- |
+| §2A, clientes y control fiscal  | Contratos y familias fiscales, HTTP de alta, duplicados, búsquedas y límites                                             | Unit/API y clientes E2E correctos            |
+| §2A, tramos/impuestos/consumos  | Fronteras, dinero/overflow, validación, país sin política, recálculo autoritativo                                        | Dominio y consumidores correctos             |
+| §2A, persistencia y fallos      | Locks→503, rollback, inserción fallida→500 sanitizado, recuperación, histórico inmutable y versiones                     | 49 pruebas de integración correctas          |
+| §2B, frontend y flujo comercial | Alta→ficha→simulación→resultado→historial, retorno/contexto, duplicados, 404/422/409/500/503 y formularios conservados   | Componentes/transporte y E2E correctos       |
+| §2B, configuración/FX           | Incompatibilidad, caducidad/datos inválidos, respuestas tardías, reintento, fallback EUR y conversión del total guardado | Fixtures y pruebas de consumidores correctos |
+| §2A/2B, guardado incierto       | Timeout/red/201 ilegible, comprobación del historial en otra pestaña, un commit real y ausencia de reenvío automático    | Componentes y E2E correctos                  |
+
+pnpm.cmd test:unit devuelve código 0, 36 shared y 12 API unitarias. pnpm.cmd test:integration devuelve código 0, 49 correctas. pnpm.cmd test:web devuelve código 0, 22 node web y 151 componentes/transporte. Son 270 pruebas funcionales actuales. Salidas temporales .cache/009-t02-unit.txt, .cache/009-t02-integration.txt y .cache/009-t02-web.txt.
+
+pnpm.cmd test:e2e devuelve código 0, 32 correctas sin retries/omisiones. Incluye un nuevo caso QA-SECURITY-009 y conserva los 31 existentes. Salida .cache/009-t02-e2e.txt. La suite también reejecutó sus casos visuales existentes. La revisión específica de accesibilidad y responsive de 009 se completará en T03.
+
+### QA-SECURITY-009
+
+| Control básico                           | Evidencia revisada/ejecutada                                                         | Resultado y alcance                                                                                                |
+| ---------------------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| Entradas, campos extra, IDs y paginación | Parsers shared, control fiscal y pruebas HTTP antes de conexión DB                   | Rechazos y límites comprobados                                                                                     |
+| Cuerpo/protocolo                         | json-body.ts, límite 32kb, 400/413/415 y pruebas existentes                          | Sin escritura ante payload rechazado                                                                               |
+| SQL parametrizado                        | Repositorios y persistence, fixtures de búsqueda literal                             | Parámetros de consulta separados de SQL. sql.raw del schema usa constantes de planes/límites                       |
+| Contenido persistido en UI               | Nuevo security.spec.mjs guarda markup, recarga ficha y busca SQL/comodines literales | Se muestra texto, no se crea imagen ni se ejecuta onerror, búsqueda con un solo resultado                          |
+| Errores y logs                           | app.ts, errorHandler, IT-LIFECYCLE-01/PRIVACY-01 e IT-SIM-02                         | Mensajes sanitizados, logs limitados a requestId/method/status/code y error 500 sin SQL/stack/datos de cliente     |
+| Navegación                               | Validación de returnTo y pruebas de ubicaciones                                      | Destino de retorno restringido al listado interno                                                                  |
+| Secretos y datos versionados             | Inspección de .gitignore y escaneo de 357 archivos de texto versionados              | Cero coincidencias para patrones de clave privada y tokens seleccionados. Ningún .env real o archivo DB versionado |
+| Privacidad FX                            | Cliente/contratos, pruebas existentes y petición real observada                      | GET al endpoint fijo, sin cuerpo, cookies, Authorization o Referer                                                 |
+
+Escaneo con salida .cache/009-t02-security-scan.json, que registra conteos y nombres de candidatos, sin valores de secretos. El resultado cubre los patrones concretos inspeccionados en archivos versionados. La revisión es básica y no representa un análisis exhaustivo de secretos/historial, vulnerabilidades de dependencias o una auditoría certificada.
+
+### QA-FX-LIVE-009
+
+Se añade apps/web/e2e/fx-live.mjs para una comprobación explícita con red. La suite determinista descubre solo *.spec.mjs. El script reutiliza el entorno API/Vite/SQLite temporal, abre Chromium sin interceptar FX, comprueba USD/GBP contra la tasa recibida y el conversor compartido y registra metadatos de red seleccionados. Conserva reporte y captura en .cache/009-t02-fx-live.
+
+Comando desde apps/web, node e2e/fx-live.mjs, equivalente a pnpm.cmd --filter @saas-o-matic/web exec node e2e/fx-live.mjs desde raíz, después de compilar API/shared. El primer intento recibió net::ERR_NETWORK_ACCESS_DENIED del sandbox, conservó 169,40 EUR y mostró reintento. Salida .cache/009-t02-fx-live.txt. La repetición con red fuera del sandbox, autorizada por la revisión automática, devuelve código 0. Salida .cache/009-t02-fx-live-network.txt.
+
+Consulta correcta el 17 de noviembre de 2026 a las 11:19:40–11:19:43 UTC. Endpoint https://open.er-api.com/v6/latest/EUR, HTTP 200 y Access-Control-Allow-Origin *. Con base de 16940 céntimos EUR, tasas observadas USD 1.100615 y GBP 0.834349. La pantalla mostró 186,44 USD y 141,34 GBP, fecha y atribución del proveedor. Cambio USD→GBP reutilizó la misma consulta. Actualización del proveedor 17 de noviembre a las 00:02:31 UTC y caducidad 18 de noviembre a las 00:19:41 UTC.
+
+La petición observada fue un único GET, sin cuerpo, cookies, Authorization o Referer. Reporte .cache/009-t02-fx-live/report.json y captura simulator-gbp.png inspeccionada. El resultado corresponde a esa consulta puntual y a la validez de las tasas recibidas.
+
+### Revisión y límites de T02
+
+Revisión técnica de T02 conforme en su alcance. No se han observado defectos de aplicación nuevos que requieran corrección de producto. La incidencia inicial de red y su repetición correcta quedan registradas. El escaneo de seguridad y las pruebas conservaron el aislamiento y se observó .cache/002-tests sin directorios residuales después de las ejecuciones.
+
+pnpm.cmd lint, test:docs (2/2), format:check y git diff --check correctos tras actualizar documentación. Las suites ejecutadas compilan sus consumidores. Los comandos separados pnpm typecheck, pnpm build, pnpm test y test:gates no se han ejecutado en T02. Los controles globales de cierre corresponden a T05.
+
+Código de producto, schema, dependencias y datos existentes conservados. Cambios de código limitados al caso de seguridad y la comprobación FX explícita. Registro ai-workspace excluido. Cierre global de controles en T05, revisión específica de accesibilidad en T03 y correcciones que se deriven en T04.
 
 ## T01 — Inventario, entorno y matriz
 
