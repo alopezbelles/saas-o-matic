@@ -170,9 +170,7 @@ for (const width of [320, 390, 768, 1440]) {
         path: info.outputPath('long-detail-empty-history.png'),
         fullPage: true,
       });
-      await page.goto(
-        '/customers/00000000-0000-4000-8000-000000000020/simulations/new',
-      );
+      await page.getByRole('link', { name: 'Nueva simulación' }).click();
       await fillSimulation(page);
       await page.route('https://open.er-api.com/**', (route) => route.abort());
       await page.getByRole('combobox').selectOption('USD');
@@ -220,15 +218,10 @@ for (const width of [320, 390, 768, 1440]) {
         contentType: 'application/json',
       });
       await page.screenshot({
-        path: info.outputPath('known-overflow.png'),
+        path: info.outputPath('long-simulator.png'),
         fullPage: true,
       });
-      // Keep the defect executable until T04 fixes it and removes this expectation.
-      // Earlier assertions must succeed before this expected failure is declared.
-      test.fail(
-        true,
-        '009-QA-01: unbroken company name overflows simulator, pending T04',
-      );
+      await expect(page.getByText(companyName, { exact: false })).toBeVisible();
       expect(overflow.content).toBeLessThanOrEqual(overflow.viewport);
     },
   );

@@ -1,6 +1,6 @@
 # 009 — QA transversal, accesibilidad y resiliencia
 
-T01–T02 completadas técnicamente. T03 revisada el 17 de noviembre de 2026, con 009-QA-01 abierto y RF2 pendiente de corrección. T04–T05 requieren indicación posterior de Alex. Registro ai-workspace excluido. Aceptación humana final pendiente.
+T01–T04 completadas técnicamente; T03 identificó 009-QA-01 y T04 corrigió el reflujo del simulador con regresiones en cuatro anchos. T05 y aceptación humana final pendientes. Registro ai-workspace excluido.
 
 ## Objetivo
 

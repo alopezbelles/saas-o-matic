@@ -1,5 +1,9 @@
 # Verificación
 
+## Calidad 009 — T04
+
+009-QA-01 resuelto técnicamente mediante ajuste local de texto largo en el simulador y su confirmación. Cuatro regresiones con el mismo cliente largo pasan sin fallos esperados; las 14 pruebas visuales existentes también pasan. RF2 conforme dentro del alcance Chromium documentado. [Corrección, resultados y límites](../specs/009-quality/validation.md#t04--corrección-y-regresiones). T05 y aceptación humana final pendientes. Los apartados anteriores de ejecución se conservan como historial.
+
 ## 009 — T03
 
 QA-A11Y-009 reejecuta las suites visuales y añade cuatro casos de carga/error/vacío, referencias accesibles, contenido largo y recuperación por teclado. Resultado, 14 casos correctos y cuatro fallos esperados por 009-QA-01, declarado al final tras pasar las comprobaciones previas. El runner devuelve código 0 con esa expectativa, mientras RF2 queda con cambios necesarios. T04 debe corregir el reflujo y retirar test.fail. [Evidencia, capturas y límites](../specs/009-quality/validation.md#t03--accesibilidad-y-responsive).

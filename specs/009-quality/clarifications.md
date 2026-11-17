@@ -1,6 +1,6 @@
 # Aclaraciones 009
 
-Preparación adaptada al estado posterior a 008. Alex ha autorizado T01–T03 después de confirmar C01–C04. T04–T05 requieren indicación posterior. La ejecución continúa incremental por tarea.
+T01–T04 completadas técnicamente; T03 identificó 009-QA-01 y T04 corrigió el reflujo del simulador con regresiones en cuatro anchos. T05 y aceptación humana final pendientes. Registro ai-workspace excluido.
 
 ## Decisiones heredadas
 

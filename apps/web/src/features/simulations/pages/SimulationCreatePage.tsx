@@ -87,7 +87,10 @@ function SimulationSetup() {
   };
 
   return (
-    <section className={layout.page} aria-labelledby="page-heading">
+    <section
+      className={layout.page + ' ' + page.simulator}
+      aria-labelledby="page-heading"
+    >
       <div className={layout.intro}>
         <h1 id="page-heading" tabIndex={-1}>
           Simular suscripción

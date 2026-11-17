@@ -1,5 +1,9 @@
 # Autorización y alcance
 
+## 009 — T04
+
+Alex autoriza resolver los defectos de T03 y comprobar regresiones. Incluye corregir 009-QA-01 y exigir que los cuatro anchos pasen sin expectativas de fallo. T05 requiere indicación posterior. Continúan la exclusión ai-workspace y los límites sobre dependencias, datos existentes y commits/pushes.
+
 ## 009 — T03
 
 Alex autoriza T03, revisión de accesibilidad/responsive en Chromium con cuatro anchos, teclado/foco, labels/errores, estados, contraste y ampliación. Incluye pruebas pertinentes y evidencia temporal. T04–T05 requieren indicación posterior. Se mantienen exclusión ai-workspace y límites sobre nuevas dependencias, datos existentes y commits/pushes.

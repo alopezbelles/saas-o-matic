@@ -1,6 +1,6 @@
 # Plan 009 — QA transversal
 
-T01–T02 completadas técnicamente. T03 revisada con el defecto 009-QA-01 registrado para T04. T04–T05 pendientes de indicación. ai-workspace excluido hasta nueva autorización.
+T01–T04 completadas técnicamente; T03 identificó 009-QA-01 y T04 corrigió el reflujo del simulador con regresiones en cuatro anchos. T05 y aceptación humana final pendientes. Registro ai-workspace excluido.
 
 ## Partir del estado existente
 
@@ -58,6 +58,8 @@ La suite automatizada mantendrá fixtures FX y ejecución determinista. La compr
 El código ya contiene pruebas de DB ocupada→503/recuperación, inserción fallida→500 sanitizado y 404. El timeout de guardado se prueba en frontend, mientras integración verifica el estado transaccional. Un caso de red no demuestra por sí solo rollback en SQLite.
 
 ## Secuencia
+
+Instrucción previa de T04 (17 de noviembre de 2026): corregir 009-QA-01 mediante estilos locales del simulador que permitan ajustar nombres válidos sin espacios, conservando el texto completo y los contratos existentes. Extender la regresión del cliente largo al guardado, confirmación e historial, retirar test.fail y exigir geometría correcta a 320/390/768/1440 px. Ejecutar pruebas afectadas, inspeccionar capturas y comprobar regresiones generales con datos temporales. Mantener exclusión ai-workspace; T05 y aceptación humana siguen pendientes.
 
 Instrucción previa de T03 (17 de noviembre de 2026, antes de código): revisar las suites visuales existentes y completar los huecos de estados de carga/error/vacío, asociaciones accesibles y contenido largo en los cuatro anchos acordados. Reejecutar teclado/foco, contraste y ampliación/reflujo en Chromium con API/SQLite temporales y FX controlado. Inspeccionar capturas reales, registrar resultados y límites y describir defectos reproducibles para T04 si aparecen. Mantener exclusión ai-workspace y aceptación humana separada.
 

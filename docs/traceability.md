@@ -1,5 +1,9 @@
 # Trazabilidad
 
+## Calidad 009 — T04
+
+009-QA-01 resuelto técnicamente mediante ajuste local de texto largo en el simulador y su confirmación. Cuatro regresiones con el mismo cliente largo pasan sin fallos esperados; las 14 pruebas visuales existentes también pasan. RF2 conforme dentro del alcance Chromium documentado. [Corrección, resultados y límites](../specs/009-quality/validation.md#t04--corrección-y-regresiones). T05 y aceptación humana final pendientes. Los apartados anteriores de ejecución se conservan como historial.
+
 ## Calidad 009 — T03
 
 RF2 revisado mediante QA-A11Y-009 y VISUAL-007/008, con teclado/foco, asociaciones, contraste, cuatro anchos, estados y ampliación. Veredicto CAMBIOS NECESARIOS por 009-QA-01, desbordamiento del simulador con companyName válido de 200 caracteres. Cuatro regresiones esperadas documentan el fallo. [Reproducción y medidas](../specs/009-quality/validation.md#t03--accesibilidad-y-responsive). T03 se cierra como revisión y T04 debe resolver el defecto antes de declarar conforme RF2.

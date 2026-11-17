@@ -1,6 +1,6 @@
 # Validación 009
 
-T01–T02 completadas técnicamente. T03 revisada con un defecto de responsive reproducido, 009-QA-01. RF2 requiere corrección en T04. T04–T05 y aceptación humana final pendientes. Los registros anteriores conservan su fecha y alcance.
+T01–T04 completadas técnicamente; T03 identificó 009-QA-01 y T04 corrigió el reflujo del simulador con regresiones en cuatro anchos. T05 y aceptación humana final pendientes. Registro ai-workspace excluido.
 
 ## Referencia histórica
 
@@ -8,14 +8,28 @@ T01–T02 completadas técnicamente. T03 revisada con un defecto de responsive r
 
 ## Matriz de ejecución prevista
 
-| RF      | Tareas          | Evidencia prevista                                     | Resultado de 009                       |
-| ------- | --------------- | ------------------------------------------------------ | -------------------------------------- |
-| 009-RF1 | T01/T02/T04/T05 | QA-ENV-009, QA-FLOW-009, QA-REGRESSION-009, QA-ALL-009 | PARCIAL T02, suites y flujos correctos |
-| 009-RF2 | T03/T04/T05     | QA-A11Y-009, QA-REGRESSION-009, QA-ALL-009             | CAMBIOS NECESARIOS, 009-QA-01          |
-| 009-RF3 | T02/T04/T05     | QA-RESILIENCE-009, QA-REGRESSION-009, QA-ALL-009       | CONFORME escenarios T02                |
-| 009-RF4 | T01/T05         | QA-MATRIX-009, QA-REVIEW-009                           | PARCIAL T01, matriz inicial            |
-| 009-RF5 | T02/T04/T05     | QA-SECURITY-009, QA-REGRESSION-009                     | CONFORME revisión básica T02           |
-| 009-RF6 | T02/T04/T05     | QA-FX-LIVE-009                                         | CONFORME comprobación real T02         |
+| RF      | Tareas          | Evidencia prevista                                     | Resultado de 009                                  |
+| ------- | --------------- | ------------------------------------------------------ | ------------------------------------------------- |
+| 009-RF1 | T01/T02/T04/T05 | QA-ENV-009, QA-FLOW-009, QA-REGRESSION-009, QA-ALL-009 | PARCIAL T02, suites y flujos correctos            |
+| 009-RF2 | T03/T04/T05     | QA-A11Y-009, QA-REGRESSION-009, QA-ALL-009             | CONFORME alcance Chromium T04, 009-QA-01 resuelto |
+| 009-RF3 | T02/T04/T05     | QA-RESILIENCE-009, QA-REGRESSION-009, QA-ALL-009       | CONFORME escenarios T02                           |
+| 009-RF4 | T01/T05         | QA-MATRIX-009, QA-REVIEW-009                           | PARCIAL T01, matriz inicial                       |
+| 009-RF5 | T02/T04/T05     | QA-SECURITY-009, QA-REGRESSION-009                     | CONFORME revisión básica T02                      |
+| 009-RF6 | T02/T04/T05     | QA-FX-LIVE-009                                         | CONFORME comprobación real T02                    |
+
+## T04 — Corrección y regresiones
+
+17 de noviembre de 2026, base c1e0bae, Git inicial limpio. Alex autoriza T04. [Instrucción previa](plan.md#secuencia). Se corrige 009-QA-01 con una clase CSS local del simulador: overflow-wrap:anywhere permite cortar palabras largas y min-width:0 evita imponer un ancho mínimo de contenido. El estilo se hereda también en la confirmación del guardado. No se trunca el nombre ni se modifican sus límites, contratos, importes o datos existentes.
+
+QA-REGRESSION-009 extiende los cuatro casos de a11y-states.spec.mjs: el mismo cliente con nombre válido de 200 caracteres recorre ficha, simulador, fallo FX con reserva EUR, guardado confirmado e historial. Se retiran las cuatro declaraciones test.fail. La aserción final exige documento de ancho menor o igual al viewport y nombre completo visible. Las comprobaciones de asociaciones accesibles y geometría también pasan durante la confirmación.
+
+Primera comprobación focalizada: pnpm.cmd --filter @saas-o-matic/api... build y pnpm.cmd --filter @saas-o-matic/web test:e2e visual.spec.mjs simulator-visual.spec.mjs a11y-states.spec.mjs. Código 0, 18 casos passed, sin fallos esperados, omitidos o inestables. Salidas .cache/009-t04-build-api.txt y .cache/009-t04-visual.txt. Se inspeccionan capturas reales de la confirmación a 320 px y del simulador a 1440 px: nombre completo ajustado, tarjetas y acciones dentro del ancho. Los cuatro anchos 320/390/768/1440 pasan las aserciones de reflujo.
+
+Controles desde raíz, pnpm.cmd lint, pnpm.cmd typecheck, pnpm.cmd build y pnpm.cmd test, todos con código 0. La suite general pasa 273 pruebas: 36 shared, 12 API unitarias, 49 integración, 22 web node:test, 151 componentes, un gate negativo y dos documentales. test:gates se ejecuta sin otros controles de código concurrentes. Salidas .cache/009-t04-lint.txt, .cache/009-t04-typecheck.txt, .cache/009-t04-build.txt y .cache/009-t04-test.txt.
+
+Regresión completa pnpm.cmd test:e2e, código 0 y 36 casos passed, cero fallos esperados, omitidos o inestables; salida .cache/009-t04-e2e.txt y reporte .cache/007-e2e/report.json. El runner finaliza y .cache/002-tests queda sin directorios residuales. pnpm.cmd format:check y pnpm.cmd test:docs pasan, dos pruebas documentales; git diff --check sin errores. Salidas .cache/009-t04-format.txt y .cache/009-t04-docs.txt. Artefactos de caché efímeros, regenerables con los comandos indicados.
+
+Veredicto T04 CUMPLE TÉCNICAMENTE. No quedan defectos bloqueantes identificados por T02–T03. El registro histórico de T03 conserva la reproducción y las medidas anteriores. La comprobación de FX real de T02 no se repite para este cambio CSS. Chromium y los métodos de ampliación de T03 conservan sus límites; no se acredita zoom nativo, lector de pantalla u otros navegadores. La aceptación humana final y T05 siguen pendientes. Sin registro ai-workspace por indicación de Alex.
 
 ## T03 — Accesibilidad y responsive
 
@@ -33,7 +47,7 @@ Medidas actuales del reporte, texto representativo entre 5,749:1 y 14,102:1, bor
 
 ### 009-QA-01 — Nombre de empresa largo desborda el simulador
 
-Estado ABIERTO, asignado a T04. Entrada válida de 200 caracteres, companyName igual a «Empresa » seguido de 192 letras W. Crear cliente y abrir /customers/:id/simulations/new. El nombre se presenta en el párrafo de contexto de SimulationCreatePage dentro de layout.intro. La palabra sin cortes aumenta el ancho mínimo del grid y desplaza contenido y acciones fuera del viewport.
+Estado RESUELTO técnicamente en [T04](#t04--corrección-y-regresiones). La siguiente reproducción corresponde al estado anterior revisado en T03. Entrada válida de 200 caracteres, companyName igual a «Empresa » seguido de 192 letras W. Crear cliente y abrir /customers/:id/simulations/new. El nombre se presenta en el párrafo de contexto de SimulationCreatePage dentro de layout.intro. La palabra sin cortes aumenta el ancho mínimo del grid y desplaza contenido y acciones fuera del viewport.
 
 | Viewport CSS | Ancho de documento observado |
 | ------------ | ---------------------------- |

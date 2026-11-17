@@ -1,6 +1,6 @@
 # Tareas 009
 
-009-T01–T02 completadas técnicamente. T03 ejecutada como revisión con el defecto 009-QA-01 abierto. RF2 requiere cambios en T04. T04–T05 pendientes de indicación de Alex. Registro ai-workspace excluido.
+T01–T04 completadas técnicamente; T03 identificó 009-QA-01 y T04 corrigió el reflujo del simulador con regresiones en cuatro anchos. T05 y aceptación humana final pendientes. Registro ai-workspace excluido.
 
 ## T01 — Inventario, entorno y trazabilidad de cobertura
 
@@ -35,14 +35,14 @@
 
 ## T04 — Resolver defectos y comprobar regresiones
 
-- [ ] **009-T04**. RF1/RF2/RF3/RF5/RF6. Depende de T03.
+- [x] **009-T04**. RF1/RF2/RF3/RF5/RF6. Depende de T03.
 - Priorizar defectos por impacto en reglas, datos, guardado, recuperación y acceso a acciones.
 - Corregir dentro del alcance aprobado, reutilizando las capas y contratos existentes.
 - Resolver 009-QA-01, nombre largo del cliente en el simulador, y retirar las expectativas de fallo solo cuando los cuatro anchos pasen.
 - Cada corrección tendrá una prueba pertinente o reproducción verificable y comprobación posterior. Registrar también las regresiones ya cubiertas.
 - Si no se detectan defectos, cerrar con evidencia de revisión sin generar cambios artificiales.
 - Hecho cuando los defectos que impidan los RF estén resueltos y cualquier incidencia restante tenga impacto/estado explícitos.
-- Evidencia prevista QA-REGRESSION-009. Resultado actual NO EJECUTADO.
+- QA-REGRESSION-009 ejecutado: 009-QA-01 corregido, cuatro regresiones pasan sin fallos esperados y 14 casos visuales existentes correctos. [Corrección y controles](validation.md#t04--corrección-y-regresiones). T05 y aceptación humana final pendientes.
 
 ## T05 — Verificación final y cierre técnico
 

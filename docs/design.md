@@ -1,5 +1,9 @@
 # Diseño funcional y visual
 
+## Calidad 009 — T04
+
+009-QA-01 resuelto técnicamente mediante ajuste local de texto largo en el simulador y su confirmación. Cuatro regresiones con el mismo cliente largo pasan sin fallos esperados; las 14 pruebas visuales existentes también pasan. RF2 conforme dentro del alcance Chromium documentado. [Corrección, resultados y límites](../specs/009-quality/validation.md#t04--corrección-y-regresiones). T05 y aceptación humana final pendientes. Los apartados anteriores de ejecución se conservan como historial.
+
 ## Calidad 009 — Revisión T03
 
 Revisados estados de carga/error/vacío/confirmación y contenido largo en Chromium a 320/390/768/1440 px. Formulario y ficha ajustan texto largo. El párrafo de contexto del cliente en el simulador desborda con un nombre válido sin espacios y ensancha el grid. Defecto 009-QA-01 pendiente de T04. Teclado/foco, asociaciones y contraste representativos comprobados. [Capturas, resultados y límites](../specs/009-quality/validation.md#t03--accesibilidad-y-responsive).
