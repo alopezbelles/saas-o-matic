@@ -18,6 +18,18 @@ Codex se utilizó para implementación/ejecución; ChatGPT Work con Product para
 
 Estado de CORS: 006 tuvo una comprobación inconclusa; [009-T02](../specs/009-quality/validation.md#qa-fx-live-009) observó después respuesta real/CORS desde Chromium local. No garantiza un dominio de producción. El enunciado y interfaces.pdf fueron aportados y consultados; siguen siendo fuentes externas, sin copiar los PDF privados a este índice.
 
+## 001 — Ejemplo de planificación, arquitectura e iteración
+
+Este recorrido explica la infraestructura y cómo se dirigió/comprobó el trabajo con IA. La inicialización precedió a su spec formal; la documentación posterior concilió lo existente antes de completar el cierre. No se presenta esa secuencia como SDD íntegramente previo al código.
+
+| Dimensión de la prueba     | Qué permite comprender                                                                       | Lectura de 001                                                                                                                                                                                    |
+| -------------------------- | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Planificación y specs      | Necesidades/límites, diagnóstico de cobertura e instrucciones con criterios concretos        | [Spec](../specs/001-foundation/spec.md), [plan](../specs/001-foundation/plan.md), [tareas](../specs/001-foundation/tasks.md), [mensajes originales y contexto técnico](prompts/001-foundation.md) |
+| Definición de arquitectura | Motivos y consecuencias de monorepo/stack, responsabilidades y ausencia de capas anticipadas | [ADR-001](decisions/ADR-001-monorepo.md) y [aclaraciones](../specs/001-foundation/clarifications.md). Modelo de datos fuera de esta entrega                                                       |
+| Iteración con IA y calidad | Restricciones fijadas, correcciones verificadas y evidencia disponible                       | [Evolución](iterations/001-foundation-retrospective.md), [pruebas](testing/001-foundation.md), [revisión](reviews/001-foundation.md) y [validación](../specs/001-foundation/validation.md)        |
+
+Las síntesis se identifican como retrospectivas; los tres mensajes originales de 001 se recuperan literalmente del historial de Codex y se distinguen de su contexto técnico. Se enlaza la autorización conservada, sin reescribir los originales ni atribuir revisiones humanas. Las seis pruebas son resultados históricos de 001; los controles de esta edición documental se registran separados en su validación.
+
 ## Incorporaciones anteriores
 
 ## 007 — Cierre técnico T05
@@ -67,10 +79,10 @@ Registros creados el 15 de noviembre de 2026 por autorización posterior de Alex
 
 ## Procedencia de estos registros
 
-Las retrospectivas y reformulaciones técnicas se redactaron el 14 de noviembre de 2026, después de desarrollar ambas specs.
+Los registros de 001 se elaboraron retrospectivamente después de su desarrollo. Los de 002 se redactaron el 14 de noviembre de 2026, también después de su implementación.
 Se basan en la conversación disponible en la sesión, archivos del repositorio y resultados conservados. No son registros contemporáneos ni una exportación íntegra del chat.
 No se conocen horas individuales de todos los mensajes; no se reconstruyen timestamps ni revisiones personales.
-Los registros de prompts elaboran técnicamente las solicitudes reales. Están identificados como reformulaciones retrospectivas y no como mensajes enviados literalmente.
+001 incorpora mensajes originales recuperados literalmente, acompañados de contexto técnico separado. Los prompts reformulados de 002 siguen identificados como síntesis retrospectivas y no como mensajes enviados literalmente.
 El historial local identifica cbdd562 como entrega foundation y 9c03dc3 como entrega persistence. Estos registros documentales son posteriores a esos commits.
 
 ## Recorrido por spec

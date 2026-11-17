@@ -1,24 +1,29 @@
-# ADR-001 — Monorepo modular
+# ADR-001 — Monorepo y límites de la infraestructura
 
-Estado: decisión adoptada e implementada para 001. Registro actualizado retrospectivamente el 14 de noviembre de 2026.
-Fuente: stack solicitado por Alex; [instrucciones reformuladas](../prompts/001-foundation.md).
-Código de referencia: cbdd562. La aceptación humana final de la entrega es un estado separado.
+Decisión adoptada e implementada en 001. Registro retrospectivo revisado para explicar motivos y consecuencias. Referencia cbdd562. Fuente del alcance: stack definido para el proyecto, [aclaraciones](../../specs/001-foundation/clarifications.md) e [mensajes originales y contexto técnico](../prompts/001-foundation.md).
 
-## Contexto y decisión
+## Contexto y fuerzas de diseño
 
-Dos aplicaciones comparten contratos y guardas técnicas. Se mantiene pnpm workspaces, React/Vite, Express y TypeScript estricto con ESM.
-Organización: apps/web, apps/api y packages/shared. No crear contracts/billing ni capas sin responsabilidad actual.
-Las instrucciones de stack del usuario prevalecen sobre la propuesta importada npm/Node 24.
+Se necesitan frontend y API con instalación, scripts y controles coordinados. La entrega inicial todavía no incluye negocio ni persistencia; debe permitir evolucionar sin generar módulos, capas o dependencias sin responsabilidad actual. El stack inicial y pnpm son restricciones del encargo, no el resultado de un benchmark de herramientas.
 
-## Alternativas documentadas
+## Decisiones y consecuencias
 
-Repos separados complicarían los cambios coordinados; un orquestador adicional no tiene una necesidad demostrada.
-npm workspaces era una propuesta anterior, descartada al conciliarla con pnpm solicitado.
-Son alternativas razonadas en documentación; no se afirma haber construido o medido esas alternativas.
+| Decisión                                           | Motivo                                                                 | Consecuencia o límite                                                                                                                            |
+| -------------------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Un repositorio con pnpm workspaces                 | Coordinar instalación, versiones y comandos de ambas apps              | Lockfile común y ejecución desde raíz; no se certifica escalado a equipos o proyectos mayores                                                    |
+| apps/web con React/Vite y apps/api con Express/tsx | Materializar el stack acordado con ciclos de desarrollo independientes | Cada app conserva su compilación/arranque; la API puede probarse sin el navegador                                                                |
+| packages/shared como punto de extensión            | Preparar una ubicación común para contratos futuros                    | En 001 no se atribuyen contratos o dominio de negocio ya implementados; evitar importar ORM o código exclusivo del servidor cuando se incorporen |
+| TypeScript estricto y ESM                          | Mantener convenciones consistentes en los paquetes                     | Tipos y build son controles explícitos, no garantía suficiente del comportamiento HTTP                                                           |
+| Separar createApp y listen                         | Desacoplar rutas/middleware del proceso que ocupa un puerto            | Tests HTTP con puertos efímeros y cierre de recursos; el arranque mantiene su validación de PORT                                                 |
+| node:test y fetch para la base                     | Cubrir salud, smoke HTTP y controles sin dependencias adicionales      | No acredita interacción React ni inspección visual; esas pruebas se introducirán con flujos reales                                               |
+| No anticipar capas, router/UI o SQLite             | Complejidad proporcional al alcance inicial                            | El modelo de datos, tarifas y contratos de negocio requieren sus propias especificaciones                                                        |
 
-## Consecuencias y verificación
+## Alternativas y procedencia
 
-Shared no debe importar ORM ni código exclusivo del servidor. Calidad y ejecución desde raíz.
-La separación createApp/listen permite pruebas HTTP sin acoplar arranque.
-No hay dependencia UI/router añadida por anticipación. El cálculo compartido será otra decisión cuando exista dominio.
-[Arquitectura canónica](../../docs/architecture.md), [decisiones operativas](../../docs/decisions.md), [evidencia 001](../testing/001-foundation.md).
+La propuesta importada con npm/Node 24 se descartó al conciliarla con pnpm y la infraestructura Node 22 existente. Separar repositorios dificultaría coordinar cambios de esta prueba; añadir un orquestador no tenía una necesidad demostrada. Estas últimas son razones arquitectónicas documentadas retrospectivamente, no alternativas construidas o comparadas mediante mediciones.
+
+## Directrices verificables para la IA
+
+Respetar web/API/shared y las restricciones del encargo; reutilizar la infraestructura válida; no generar contratos/billing o capas vacías para necesidades futuras. Mantener scripts de calidad operativos y separar aplicación/servidor. La decisión se comprueba mediante ENV-01/API-01/WEB-01 y los controles de [validación](../../specs/001-foundation/validation.md), no por la mera existencia de carpetas.
+
+[Plan y responsabilidades](../../specs/001-foundation/plan.md), [arquitectura canónica](../../docs/architecture.md) y [decisiones operativas](../../docs/decisions.md). El ADR describe el alcance histórico de 001; las decisiones de entregas posteriores se consultan en sus propios registros.

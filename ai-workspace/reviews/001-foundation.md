@@ -1,15 +1,21 @@
-# 001 — Revisión técnica documental retrospectiva
+# 001 — Revisión documental de planificación, arquitectura y calidad
 
-Fecha: 14 de noviembre de 2026. Revisor: Codex. Tipo: contraste documental de fuentes conservadas, no nueva auditoría completa de código ni revisión humana.
-Se revisaron la validación de 001, los mensajes disponibles, el historial Git local y las instrucciones del proyecto.
+Revisión documental retrospectiva del alcance, las decisiones y la evidencia conservada. Revisión de Codex sobre fuentes conservadas; no revisión humana ni nueva ejecución de la infraestructura histórica. Referencia de implementación: cbdd562.
 
-Hallazgos:
+## Contraste por dimensión de evaluación
 
-- Infraestructura y seis pruebas están registradas con límites en la validación histórica.
-- La spec de 001 fue conciliada con una base ya existente; se declara esa secuencia.
-- No hay log íntegro de 001 para adjuntar; se evita reconstruir una salida ficticia.
-- La autorización de completar procede del usuario; no hay confirmación de pruebas personales ni aceptación final.
+| Dimensión                  | Qué se revisa                                               | Evidencia y conclusión                                                                                                                                                                                                                                     |
+| -------------------------- | ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Planificación / SDD        | Necesidades, límites, criterios y secuencia real            | [Spec](../../specs/001-foundation/spec.md), [plan](../../specs/001-foundation/plan.md) e [instrucciones](../prompts/001-foundation.md). La inicialización precedió a la spec formal; el análisis posterior concilió cobertura antes de completar controles |
+| Arquitectura               | Motivos, responsabilidades y complejidad proporcional       | [ADR-001](../decisions/ADR-001-monorepo.md). Monorepo y stack fijados, shared preparado sin negocio anticipado y separación aplicación/servidor para HTTP aislado                                                                                          |
+| Iteración con IA y calidad | Dirección del alcance, diagnóstico de fallos y verificación | [Retrospectiva](../iterations/001-foundation-retrospective.md) y [evidencia](../testing/001-foundation.md). Se documenta la corrección del runner hijo y la comprobación de controles negativos, no solo un resultado final                                |
 
-Resultado: **CUMPLE DOCUMENTALMENTE** como retrospectiva con evidencia disponible y límites explícitos.
-El veredicto técnico de implementación corresponde a la [validación histórica](../../specs/001-foundation/validation.md); no se renueva aquí.
-[Retrospectiva](../iterations/001-foundation-retrospective.md), [prompts](../prompts/001-foundation.md), [evidencia](../testing/001-foundation.md).
+## Mejoras de esta revisión editorial
+
+Se sustituyen atribuciones conversacionales por requisitos, restricciones y decisiones con procedencia. Se recuperan tres mensajes originales del historial local de Codex y se conservan literalmente. Las notas de entradas, objetivo, salida y comprobación son contexto técnico separado de esos mensajes. Las razones arquitectónicas documentadas después no se presentan como alternativas ensayadas antes. La matriz vincula instrucciones, RF, tareas y casos, sin cambiar identificadores o resultados.
+
+Los límites de evidencia se concentran en el resumen de pruebas y la validación, evitando repetirlos como introducción de cada apartado. El índice ofrece un recorrido por las tres dimensiones. La comprobación actual se limita a coherencia, enlaces/anclas y formato; resultados en [registro editorial](../../specs/001-foundation/validation.md#revisión-editorial-del-registro).
+
+## Veredicto y pendientes
+
+**CUMPLE DOCUMENTALMENTE** como explicación de la planificación real, las decisiones y el control del trabajo con IA, con las fuentes y límites identificados. El veredicto técnico histórico sigue siendo el de [validación 001](../../specs/001-foundation/validation.md); no se renueva mediante una edición de Markdown. No consta aceptación humana final de la implementación.

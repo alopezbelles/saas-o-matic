@@ -2,7 +2,7 @@
 
 Alcance: infraestructura y controles; autorización en [approvals](../../docs/approvals.md).
 
-## Resultados reales
+## Resultados de la implementación histórica
 
 | RF      | Comprobación                                                         | Resultado |
 | ------- | -------------------------------------------------------------------- | --------- |
@@ -10,6 +10,17 @@ Alcance: infraestructura y controles; autorización en [approvals](../../docs/ap
 | 001-RF2 | Integración, web, controles negativos, lint, tipos y build           | CUMPLE    |
 | 001-RF3 | Contexto activo y límites en MEMORY/AGENTS/approvals                 | CUMPLE    |
 | 001-RF4 | Índice canónico y enlaces locales; validación con límites explícitos | CUMPLE    |
+
+## Trazabilidad del cierre
+
+| RF  | Tareas      | Casos registrados                   | Relación con la dirección del trabajo                         |
+| --- | ----------- | ----------------------------------- | ------------------------------------------------------------- |
+| RF1 | T01/T02/T05 | ENV-01 y API-01                     | Instalar/arrancar y observar health, sin ampliar a producto   |
+| RF2 | T03/T05     | API-01, WEB-01 y GATE-01            | Verificar comportamiento y que los controles detecten errores |
+| RF3 | T01/T04/T05 | DOC-01 y restricciones del contexto | Mantener stack/alcance y conciliar antes de modificar         |
+| RF4 | T04/T05     | DOC-01 y registro de límites        | Permitir comprobar lo ejecutado y distinguir lo no probado    |
+
+[Mensajes originales y contexto técnico](../../ai-workspace/prompts/001-foundation.md), [decisiones](../../ai-workspace/decisions/ADR-001-monorepo.md) y [evolución](../../ai-workspace/iterations/001-foundation-retrospective.md) explican los criterios técnicos. Las síntesis son retrospectivas y no añaden resultados. Los bloques identificados como mensajes originales en prompts/001-foundation.md se recuperan literalmente del historial local de Codex; el contexto técnico añadido se mantiene separado.
 
 ### Comandos ejecutados
 
@@ -52,7 +63,7 @@ El rechazo de Node se comprobó mediante la configuración node-version de pnpm;
 - No se ha ejecutado una copia del proyecto en una ruta con espacios.
 - No hay E2E ni inspección visual de navegador; el smoke web es HTTP.
 - No hay pruebas SQLite, de negocio ni de UI avanzada porque están fuera de 001.
-- Fuentes oficiales S1/S2/S3 e interfaces.pdf no disponibles; no se certifica contraste con ellas.
+- En el cierre original no estaban disponibles las fuentes oficiales S1/S2/S3 e interfaces.pdf; no se certifica un contraste en aquella ejecución. Las consultas de entregas posteriores se registran por separado.
 - No se han añadido dependencias ni cambiado pnpm-lock.yaml.
 - No se han realizado commits, pushes ni cambios de remoto.
 - Los procesos de arranque manual se detuvieron tras las consultas; su interrupción no se presenta como una salida espontánea de código cero.
@@ -62,5 +73,17 @@ La aceptación humana de la entrega no está registrada.
 
 ## Registro retrospectivo del proceso
 
-Añadido el 14 de noviembre de 2026, después del desarrollo: [iteración](../../ai-workspace/iterations/001-foundation-retrospective.md), [instrucciones técnicas reformuladas](../../ai-workspace/prompts/001-foundation.md), [resumen de evidencia](../../ai-workspace/testing/001-foundation.md) y [revisión documental](../../ai-workspace/reviews/001-foundation.md).
+Registro incorporado después del desarrollo: [iteración](../../ai-workspace/iterations/001-foundation-retrospective.md), [mensajes originales y contexto técnico](../../ai-workspace/prompts/001-foundation.md), [resumen de evidencia](../../ai-workspace/testing/001-foundation.md) y [revisión documental](../../ai-workspace/reviews/001-foundation.md).
 Esta incorporación no reejecuta pruebas ni cambia los resultados históricos; no hay log íntegro de 001 conservado ni aceptación humana final registrada.
+
+## Revisión editorial del registro
+
+Base documental de referencia: 3f3265a. Revisión de once documentos existentes: instrucciones con entradas/objetivos/restricciones/entregables, decisiones con motivos/consecuencias, iteración problema→diagnóstico→corrección→comprobación e índice por las tres dimensiones del enunciado. Se conserva la cronología real de 001, sin cambiar requisitos, estado de tareas o resultados de la ejecución histórica.
+
+No se modifica código ni se vuelven a ejecutar las seis pruebas de infraestructura como parte de esta revisión. Comprobaciones actuales: pnpm.cmd test:docs devuelve código 0 con dos pruebas correctas; Prettier sobre los once documentos cumple y git diff --check no presenta errores. La comprobación adicional de anclas Markdown locales recorre 159 documentos y 219 referencias sin fallos. Se compara la sección histórica de comandos con HEAD y permanece intacta. Salidas temporales .cache/001-review-docs.txt, -format-check.txt y -anchors.json. Estos controles no renuevan el veredicto técnico histórico. Aceptación humana separada.
+
+## Recuperación de mensajes originales
+
+Se localizan en el historial local de Codex los tres mensajes de usuario que corresponden a P001-01/P001-02/P001-03. Se incorporan literalmente a prompts/001-foundation.md, sin corregir su redacción ni atribuirles las explicaciones técnicas añadidas. No se exportan conversaciones completas, rutas personales o archivos de configuración. La literalidad de los tres bloques se contrasta con el texto recuperado; las síntesis de iteración/arquitectura siguen siendo registros posteriores.
+
+Verificación de recuperación: los tres bloques coinciden con el texto extraído del historial, normalizando únicamente saltos de línea del soporte. Se protegen del formateador con prettier-ignore para conservar su contenido, incluidos dos espacios finales presentes en los originales. La comprobación estándar git diff --check los señala como whitespace; se mantienen deliberadamente como parte de la transcripción. Las dos pruebas documentales pasan y las anclas locales no presentan fallos. Salidas temporales .cache/001-original-prompts-docs.txt y .cache/001-review-anchors.json; no se adjuntan logs completos de sesión.

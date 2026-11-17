@@ -1,15 +1,13 @@
 # Tareas 001
 
-Alcance autorizado: completar la infraestructura existente. Estado técnico y evidencia en [validation.md](validation.md).
-T01–T05 completadas técnicamente con los controles registrados. La aceptación humana de la entrega se mantiene separada.
+Cierre histórico de la infraestructura existente: T01–T05 completadas técnicamente según [validación](validation.md). La revisión editorial posterior no reabre implementación ni acredita nuevas ejecuciones funcionales. Los estados técnicos no sustituyen aceptación humana.
 
-- [x] **T01 — Conciliar versiones, stack y autorización** (001-RF1, 001-RF3).
-      Mantener pnpm/Node 22; documentar decisiones y autorización sin migraciones ni nuevas dependencias.
-- [x] **T02 — Reutilizar workspaces y verificar arranque** (001-RF1).
-      Web y API existentes; separar createApp/listen, documentar .env opcional y verificar health.
-- [x] **T03 — Completar pruebas y controles** (001-RF2).
-      API-01, WEB-01 y GATE-01 automatizados; lint, tipos, formato y build reales.
-- [x] **T04 — Integrar contexto e índice** (001-RF3, 001-RF4).
-      MEMORY.md, AGENTS.md, documentación canónica e índice ai-workspace; DOC-01.
-- [x] **T05 — Registrar revisión de base** (todos los RF).
-      Registrar comandos, resultados, límites y veredicto técnico. Aceptación humana separada.
+| Estado / tarea                                       | Objetivo y decisión de ejecución                                                                                                    | RF      | Evidencia de cierre                                          |
+| ---------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------- | ------------------------------------------------------------ |
+| [x] T01 — Conciliar versiones y alcance              | Contrastar documentación con la base existente, mantener pnpm/Node 22 y delimitar el trabajo; sin migraciones o dependencias nuevas | RF1/RF3 | Herramientas/instalación ENV-01 y decisiones de aclaraciones |
+| [x] T02 — Reutilizar workspaces y verificar arranque | Conservar web/API/shared; separar createApp/listen, documentar entorno y consultar health                                           | RF1     | ENV-01, API-01 y arranque de API compilada                   |
+| [x] T03 — Completar pruebas y controles              | Verificar contrato HTTP, artefactos web y rechazo de errores deliberados, junto con lint/tipos/build/formato                        | RF2     | API-01, WEB-01, GATE-01 y comandos de validación             |
+| [x] T04 — Integrar contexto e índice                 | Mantener spec activa, directrices y recorrido documental con enlaces verificables                                                   | RF3/RF4 | DOC-01 y ai-workspace                                        |
+| [x] T05 — Registrar revisión de base                 | Consolidar resultados, incidencias, límites y veredicto técnico                                                                     | RF1–RF4 | Validación histórica y revisión documental                   |
+
+Los tres [mensajes originales recuperados](../../ai-workspace/prompts/001-foundation.md) no corresponden uno a uno con estas cinco tareas; sus notas técnicas explican la relación sin modificar la transcripción. P001-01 describe la inicialización anterior a la spec formal; P001-02 dirige el diagnóstico y P001-03 el trabajo de cierre. La [retrospectiva](../../ai-workspace/iterations/001-foundation-retrospective.md) conserva esa secuencia sin reconstruir interacciones o autorías adicionales.
