@@ -1,6 +1,6 @@
 # 009 — QA transversal, accesibilidad y resiliencia
 
-T01–T02 completadas técnicamente el 17 de noviembre de 2026, inventario, flujos/resiliencia, revisión básica de seguridad y FX real. T03–T05 requieren indicación posterior de Alex. Registro ai-workspace excluido. Aceptación humana final pendiente.
+T01–T02 completadas técnicamente. T03 revisada el 17 de noviembre de 2026, con 009-QA-01 abierto y RF2 pendiente de corrección. T04–T05 requieren indicación posterior de Alex. Registro ai-workspace excluido. Aceptación humana final pendiente.
 
 ## Objetivo
 

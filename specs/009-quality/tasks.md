@@ -1,6 +1,6 @@
 # Tareas 009
 
-009-T01–T02 completadas técnicamente. T03–T05 pendientes de indicación de Alex. Resultados actuales y evidencias históricas identificados en validation.md. Registro ai-workspace excluido.
+009-T01–T02 completadas técnicamente. T03 ejecutada como revisión con el defecto 009-QA-01 abierto. RF2 requiere cambios en T04. T04–T05 pendientes de indicación de Alex. Registro ai-workspace excluido.
 
 ## T01 — Inventario, entorno y trazabilidad de cobertura
 
@@ -26,18 +26,19 @@
 
 ## T03 — Accesibilidad y responsive
 
-- [ ] **009-T03**. RF2. Depende de T02.
+- [x] **009-T03**. Revisión de RF2 ejecutada, con cambios necesarios por 009-QA-01. Depende de T02.
 - Revisar VISUAL-007/008, cuatro anchos, teclado, foco, labels/errores, contraste, carga/error/vacío/confirmación y contenido ampliado.
 - Mantener Chromium según 009-C02 y declarar el método de ampliación utilizado.
 - Reutilizar visual.spec.mjs, simulator-visual.spec.mjs y contrast.mjs. Completar casos o realizar comprobaciones manuales cuando el hueco lo justifique.
-- Hecho cuando datos y acciones relevantes sean accesibles en los escenarios revisados y las limitaciones de navegador/zoom/lector estén declaradas.
-- Evidencia prevista QA-A11Y-009, con capturas reales cuando aporten información. Resultado actual NO EJECUTADO.
+- Revisión completada cuando los escenarios y sus límites estén comprobados y los defectos reproducibles identificados para T04. La conformidad de RF2 requiere resolver los defectos que impidan acceso/reflujo.
+- QA-A11Y-009 ejecutado con 14 casos visuales correctos y cuatro regresiones que reproducen el desbordamiento conocido con fallo esperado. [Revisión T03 y 009-QA-01](validation.md#t03--accesibilidad-y-responsive).
 
 ## T04 — Resolver defectos y comprobar regresiones
 
 - [ ] **009-T04**. RF1/RF2/RF3/RF5/RF6. Depende de T03.
 - Priorizar defectos por impacto en reglas, datos, guardado, recuperación y acceso a acciones.
 - Corregir dentro del alcance aprobado, reutilizando las capas y contratos existentes.
+- Resolver 009-QA-01, nombre largo del cliente en el simulador, y retirar las expectativas de fallo solo cuando los cuatro anchos pasen.
 - Cada corrección tendrá una prueba pertinente o reproducción verificable y comprobación posterior. Registrar también las regresiones ya cubiertas.
 - Si no se detectan defectos, cerrar con evidencia de revisión sin generar cambios artificiales.
 - Hecho cuando los defectos que impidan los RF estén resueltos y cualquier incidencia restante tenga impacto/estado explícitos.

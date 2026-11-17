@@ -1,5 +1,9 @@
 # Verificación
 
+## 009 — T03
+
+QA-A11Y-009 reejecuta las suites visuales y añade cuatro casos de carga/error/vacío, referencias accesibles, contenido largo y recuperación por teclado. Resultado, 14 casos correctos y cuatro fallos esperados por 009-QA-01, declarado al final tras pasar las comprobaciones previas. El runner devuelve código 0 con esa expectativa, mientras RF2 queda con cambios necesarios. T04 debe corregir el reflujo y retirar test.fail. [Evidencia, capturas y límites](../specs/009-quality/validation.md#t03--accesibilidad-y-responsive).
+
 ## 009 — T02
 
 270 pruebas funcionales actuales correctas mediante test:unit, test:integration y test:web. Playwright ejecuta 32 casos correctos, con una nueva regresión de markup persistido y búsqueda literal. La comprobación del proveedor real usa apps/web/e2e/fx-live.mjs y se invoca explícitamente desde raíz con pnpm --filter @saas-o-matic/web exec node e2e/fx-live.mjs después de compilar API/shared. Reporte y captura bajo .cache/009-t02-fx-live. [Seguridad, resiliencia, FX real e incidencia de red](../specs/009-quality/validation.md#t02--flujos-resiliencia-seguridad-y-fx-real). T03–T05 pendientes.

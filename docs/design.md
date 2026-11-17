@@ -1,5 +1,9 @@
 # Diseño funcional y visual
 
+## Calidad 009 — Revisión T03
+
+Revisados estados de carga/error/vacío/confirmación y contenido largo en Chromium a 320/390/768/1440 px. Formulario y ficha ajustan texto largo. El párrafo de contexto del cliente en el simulador desborda con un nombre válido sin espacios y ensancha el grid. Defecto 009-QA-01 pendiente de T04. Teclado/foco, asociaciones y contraste representativos comprobados. [Capturas, resultados y límites](../specs/009-quality/validation.md#t03--accesibilidad-y-responsive).
+
 ## Simulador 008 — Revisión T05
 
 Preview, errores, confirmación con discrepancia y ficha/historial comprobados a 320/390/768/1440 px. Layout CSS al 200 % y reflujo equivalente permiten completar el guardado. Teclado cubre slider, campos, divisa, acciones, confirmación y actualización de historial. Contraste representativo medido en texto, errores, bordes y foco. [Resultados y límites](../specs/008-simulator-ui/validation.md#t05--flujo-comercial-revisión-visual-y-cierre-global). Capturas reales temporales en .cache/007-e2e. Aceptación humana final pendiente.

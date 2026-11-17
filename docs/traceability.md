@@ -1,5 +1,9 @@
 # Trazabilidad
 
+## Calidad 009 — T03
+
+RF2 revisado mediante QA-A11Y-009 y VISUAL-007/008, con teclado/foco, asociaciones, contraste, cuatro anchos, estados y ampliación. Veredicto CAMBIOS NECESARIOS por 009-QA-01, desbordamiento del simulador con companyName válido de 200 caracteres. Cuatro regresiones esperadas documentan el fallo. [Reproducción y medidas](../specs/009-quality/validation.md#t03--accesibilidad-y-responsive). T03 se cierra como revisión y T04 debe resolver el defecto antes de declarar conforme RF2.
+
 ## Calidad 009 — T02
 
 RF3 comprobado en escenarios de recuperación/transacciones, RF5 conforme en revisión básica de seguridad y RF6 comprobado mediante proveedor real desde Chromium. RF1/RF4 siguen pendientes de cierre global. 270 pruebas funcionales y 32 E2E correctas. [QA-FLOW-009, QA-RESILIENCE-009, QA-SECURITY-009 y QA-FX-LIVE-009](../specs/009-quality/validation.md#t02--flujos-resiliencia-seguridad-y-fx-real). La validación detalla límites, fuentes, una primera consulta bloqueada por el sandbox y la repetición correcta. Aceptación humana final pendiente.

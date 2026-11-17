@@ -1,6 +1,6 @@
 # Validación 009
 
-T01–T02 completadas técnicamente. Flujos/resiliencia reejecutados, seguridad básica revisada y FX real comprobado desde Chromium. T03–T05 y aceptación humana final pendientes. Los registros anteriores conservan su fecha y alcance.
+T01–T02 completadas técnicamente. T03 revisada con un defecto de responsive reproducido, 009-QA-01. RF2 requiere corrección en T04. T04–T05 y aceptación humana final pendientes. Los registros anteriores conservan su fecha y alcance.
 
 ## Referencia histórica
 
@@ -11,11 +11,56 @@ T01–T02 completadas técnicamente. Flujos/resiliencia reejecutados, seguridad 
 | RF      | Tareas          | Evidencia prevista                                     | Resultado de 009                       |
 | ------- | --------------- | ------------------------------------------------------ | -------------------------------------- |
 | 009-RF1 | T01/T02/T04/T05 | QA-ENV-009, QA-FLOW-009, QA-REGRESSION-009, QA-ALL-009 | PARCIAL T02, suites y flujos correctos |
-| 009-RF2 | T03/T04/T05     | QA-A11Y-009, QA-REGRESSION-009, QA-ALL-009             | NO EJECUTADO                           |
+| 009-RF2 | T03/T04/T05     | QA-A11Y-009, QA-REGRESSION-009, QA-ALL-009             | CAMBIOS NECESARIOS, 009-QA-01          |
 | 009-RF3 | T02/T04/T05     | QA-RESILIENCE-009, QA-REGRESSION-009, QA-ALL-009       | CONFORME escenarios T02                |
 | 009-RF4 | T01/T05         | QA-MATRIX-009, QA-REVIEW-009                           | PARCIAL T01, matriz inicial            |
 | 009-RF5 | T02/T04/T05     | QA-SECURITY-009, QA-REGRESSION-009                     | CONFORME revisión básica T02           |
 | 009-RF6 | T02/T04/T05     | QA-FX-LIVE-009                                         | CONFORME comprobación real T02         |
+
+## T03 — Accesibilidad y responsive
+
+17 de noviembre de 2026, base 06f8dda, Git inicial limpio. Alex autoriza T03. [Instrucción previa](plan.md#secuencia). Se reutilizan VISUAL-007/008 y se añaden cuatro casos QA-A11Y-009 en a11y-states.spec.mjs, uno por ancho. Revisión de T03 ejecutada, RF2 con CAMBIOS NECESARIOS y corrección asignada a T04.
+
+### QA-A11Y-009 — Cobertura ejecutada
+
+Los 14 casos visuales existentes pasan. Comprueban listado/alta/ficha, preview/error/resultado/historial, anchos 320/390/768/1440, teclado, foco, labels/errores, contraste renderizado, layout CSS al 200 % y reflujo equivalente. Los cuatro casos nuevos recorren carga retenida y error 503 del listado, reintento con Enter, resultados con nombre largo, búsqueda vacía, resumen de errores de alta y enlace al campo con teclado, ficha con nombre de 200 caracteres/email largo e historial vacío, fallo FX, confirmación y retorno a historial. El tramo FX/confirmación usa el cliente corto de fixture para revisar esos estados sin quedar bloqueado por 009-QA-01. Después se comprueba el simulador del cliente largo y se reproduce el defecto.
+
+En los estados previos al fallo conocido se verificaron IDs únicos, referencias aria-labelledby/aria-describedby existentes, etiquetas asociadas a campos, descripción de controles inválidos y una sola región main/h1. Las snapshots de estructura accesible del resumen y del historial se adjuntan al reporte. Esto revisa asociaciones y semántica observables en Chromium.
+
+Capturas representativas inspeccionadas de alta con errores y ficha larga a 320 px, simulador largo a 1440 px y estados del simulador existentes. Los formularios y cards largos conservan reflujo. El contexto largo del simulador produce desbordamiento. Los controles habituales y la recuperación de foco de las rutas revisadas se verificaron mediante teclado.
+
+Medidas actuales del reporte, texto representativo entre 5,749:1 y 14,102:1, bordes de campos/select 3,628:1 y foco de acción 9,357:1. El total destaca con 6,084:1 y los errores inline con 6,574:1. Se reutiliza contrast.mjs.
+
+### 009-QA-01 — Nombre de empresa largo desborda el simulador
+
+Estado ABIERTO, asignado a T04. Entrada válida de 200 caracteres, companyName igual a «Empresa » seguido de 192 letras W. Crear cliente y abrir /customers/:id/simulations/new. El nombre se presenta en el párrafo de contexto de SimulationCreatePage dentro de layout.intro. La palabra sin cortes aumenta el ancho mínimo del grid y desplaza contenido y acciones fuera del viewport.
+
+| Viewport CSS | Ancho de documento observado |
+| ------------ | ---------------------------- |
+| 320          | 2886                         |
+| 390          | 2886                         |
+| 768          | 2894                         |
+| 1440         | 3038                         |
+
+Resultado esperado, el nombre completo debe poder ajustarse al espacio disponible y todas las acciones mantenerse accesibles sin desplazamiento horizontal. T04 deberá corregir el reflujo del contexto del simulador conservando la entrada válida y comprobar estos cuatro anchos.
+
+Las cuatro pruebas nuevas declaran test.fail exclusivamente antes de su última aserción geométrica del defecto conocido. Las comprobaciones anteriores deben pasar antes de activar esa expectativa. El reporte contiene cuatro resultados failed con expectedStatus failed. Tras corregirlo en T04, retirar esa expectativa y exigir que la geometría pase. El código 0 del runner con fallos esperados no acredita conformidad de RF2.
+
+### Ejecuciones e incidencias
+
+La primera ejecución devolvió código 1, con 14 correctas y cuatro fallos del interceptor del test, que dejaba pasar la segunda petición de React StrictMode. Se corrigió el control de carga/error para abarcar las peticiones iniciales hasta su liberación explícita. Salida .cache/009-t03-a11y.txt.
+
+La segunda ejecución devolvió código 1, con 14 correctas y cuatro fallos reales por 009-QA-01. Salida .cache/009-t03-a11y-final.txt. La revisión posterior continúa los estados del cliente corto y conserva el fallo del cliente largo como regresión esperada.
+
+Comando de revisión final, pnpm.cmd --filter @saas-o-matic/web test:e2e visual.spec.mjs simulator-visual.spec.mjs a11y-states.spec.mjs. Devuelve código 0, con 14 casos passed y cuatro fallos esperados del defecto conocido, cero fallos inesperados. El resumen textual de Playwright agrupa los 18 como esperados. El desglose de estado se conserva en .cache/009-t03-summary.json, generado desde .cache/007-e2e/report.json. Salida .cache/009-t03-a11y-reviewed.txt. Capturas y anexos bajo .cache/007-e2e/results/a11y-states-*. Recursos temporales cerrados y .cache/002-tests observado sin directorios residuales.
+
+### Límites y veredicto
+
+Revisión específica en Chromium de escritorio con los cuatro viewports. Ampliación mediante CSS zoom y viewport equivalente. No se ejecutó zoom del menú nativo, lector de pantalla, otros navegadores o hardware móvil. La inspección DOM y las medidas de contraste son representativas. Las imágenes y snapshots de estructura son evidencia de revisión y no certificación exhaustiva.
+
+T03 completada como revisión y detección de defectos. Veredicto de RF2 CAMBIOS NECESARIOS, pendiente de resolver 009-QA-01 en T04 y comprobar el cierre en T05. Aceptación humana final pendiente. Registro ai-workspace excluido.
+
+pnpm.cmd lint, test:docs (2/2), format:check y git diff --check correctos tras la actualización. API/shared compilados para las pruebas. Suites unitarias/integración/componentes, typecheck y build globales, test:gates, suite E2E completa y proveedor FX real no se han reejecutado en T03.
 
 ## T02 — Flujos, resiliencia, seguridad y FX real
 
