@@ -1,6 +1,6 @@
 # Validación 010
 
-T01–T03 completadas técnicamente. T04–T05 NO EJECUTADAS. El cierre técnico de 009 es evidencia previa, no prueba de instalación limpia de 010. Aceptación humana pendiente.
+T01–T04 completadas técnicamente. T05 NO EJECUTADA. El cierre técnico de 009 es evidencia previa, no prueba de instalación limpia de 010. Aceptación humana pendiente.
 
 ## Matriz prevista
 
@@ -9,7 +9,21 @@ T01–T03 completadas técnicamente. T04–T05 NO EJECUTADAS. El cierre técnico
 | 010-RF1 | T01/T03/T05, DOC-README-010, DELIVERY-01, QA-ALL-010       | CONFORME T03, ensayo desde exportación limpia en Windows       |
 | 010-RF2 | T01/T02/T05, DOC-README-010, DOC-AUDIT-010                 | CONFORME alcance documental T02, índice/procedencia/evidencias |
 | 010-RF3 | T01–T05, procedencia/versión/límites y revisión documental | CONFORME alcance T03, resultados/versión/incidencias y límites |
-| 010-RF4 | T04/T05, DELIVERY-02                                       | NO EJECUTADO; sin publicación/despliegue autorizado            |
+| 010-RF4 | T04/T05, DELIVERY-02                                       | CONFORME preparación T04, acciones externas sin autorizar      |
+
+## T04 — Preparación externa revisable
+
+Organización revisada después por indicación de Alex: README y ai-workspace concentran la presentación y evidencia. El archivo de entrega separado fue eliminado por Alex y no se recrea. Se trasladan las condiciones relevantes a README y la revisión interna a ai-workspace; enlaces y tareas se ajustan a ese recorrido. Esto modifica la organización documental, no los resultados del escaneo ni el estado de publicación.
+
+17 de noviembre de 2026, base cca1373 y Git inicial limpio. Alex autoriza T04, preparación de contenido/destino/riesgos sin publicación. [Instrucción previa de elaboración](plan.md#t04--preparación-externa-revisable), [presentación de entrega vigente](../../README.md#limitaciones-y-entrega), [revisión](../../ai-workspace/testing/010-delivery-t04.md) y [escaneo](../../ai-workspace/testing/010-delivery-t04-scan.json).
+
+DELIVERY-02 prepara contenido incluido/excluido y condiciones reales de SPA, /api, API ligada a 127.0.0.1, PORT, rutas/volumen SQLite y backup/recuperación. Origin se lee localmente como destino conocido; visibilidad, acceso del evaluador y sincronización no verificados. No se ejecuta red, publicación, cambio de remoto/visibilidad, despliegue o backup/restore de datos existentes.
+
+Escaneo base: 407 archivos versionados, 378 texto y 29 binarios, cero coincidencias de los patrones seleccionados de credenciales, cero archivos excluidos versionados o cabeceras SQLite. Hallazgos: rutas locales en 22 documentos/evidencias, cuyo tratamiento debe decidirse antes de publicar; candidato de email en test clasificado como fixture inválido esperado. No se retocan logs originales ni se declara ausencia absoluta de secretos. Historial Git completo y binarios mediante OCR sin auditar exhaustivamente. Los documentos nuevos se revisan para no introducir datos reales/secretos.
+
+pnpm.cmd test:docs pasa con código 0, dos pruebas correctas. Salida .cache/010-t04-docs.txt. No se repiten suites de producto ni verificaciones de instalación por este cambio documental. Veredicto T04 CUMPLE TÉCNICAMENTE como preparación revisable, con hallazgos y límites explícitos. T05 y aceptación humana pendientes. La preparación técnica no autoriza ni acredita una entrega pública.
+
+Tras actualizar índices/memoria, pnpm.cmd format:check pasa (salida .cache/010-t04-format-final.txt) y git diff --check no presenta errores. Los nuevos documentos y el reporte no contienen valores de credenciales ni datos de clientes reales; los hallazgos registran nombres de archivo y clasificación. Los 22 archivos con rutas locales se conservan para decisión explícita antes de una eventual publicación.
 
 ## T03 — Ensayo de instalación limpia
 

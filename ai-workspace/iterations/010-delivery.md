@@ -25,3 +25,9 @@ La demo nueva y pnpm dev funcionaron; navegador comprobó tres clientes iniciale
 [Evidencia y límites de T03](../testing/010-delivery-t03.md). No se presenta esta exportación como clon remoto, máquina limpia o validación de otro SO.
 
 Cierre técnico T03: instalación y flujo comprobados; 276 pruebas generales y 36 E2E correctas sobre la copia. Base original sin diferencias por hash, fixtures temporales vacíos y puertos propios cerrados. Se conserva el primer fallo del harness y su recuperación verificable en el resumen de resultados. T04/T05 y aceptación humana final pendientes.
+
+## T04 — Preparación externa durante ejecución
+
+Base cca1373 inicialmente limpia. Revisión local del contenido, exclusiones y patrones seleccionados de credenciales; fuente y límites en [registro](../testing/010-delivery-t04.md). No se encontraron coincidencias de credenciales seleccionadas o DB/archivos excluidos versionados. Se identificaron rutas locales en 22 evidencias/specs y un candidato de email que resultó ser fixture inválido esperado. No se reescriben los originales ni se afirma una auditoría de todo el historial.
+
+T04 preparó inicialmente un archivo de entrega separado. Alex lo eliminó después y decidió concentrar la presentación en README y la evidencia en ai-workspace. El contenido vigente se organiza en [README](../../README.md#limitaciones-y-entrega) y [registro de revisión](../testing/010-delivery-t04.md): remoto configurado sin comprobar visibilidad, decisiones antes de publicar y requisitos condicionales del destino. Revisión de código confirma escucha API en loopback, proxy Vite solo de desarrollo y restricciones de rutas SQLite; documentarlos evita dar por válido cualquier hosting. Sin publicación, código de despliegue o datos existentes modificados. T05 y aceptación humana pendientes.

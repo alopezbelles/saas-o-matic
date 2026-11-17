@@ -1,6 +1,6 @@
 # Aclaraciones 010
 
-T01–T03 completadas técnicamente, con demo/capturas, auditoría y ensayo limpio en Windows; T04–T05 pendientes. Las decisiones siguientes distinguen instrucciones recibidas de propuestas pendientes y conservan la procedencia de su confirmación.
+T01–T04 completadas técnicamente, incluida preparación externa revisable; T05 pendiente. Publicación/hosting y tratamiento de rutas históricas mantienen decisiones separadas. Las decisiones siguientes distinguen instrucciones recibidas de propuestas pendientes y conservan la procedencia de su confirmación.
 
 | ID      | Tema                     | Resolución y estado                                                                                                                                                                                                                                                              |
 | ------- | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -13,6 +13,8 @@ T01–T03 completadas técnicamente, con demo/capturas, auditoría y ensayo limp
 | 010-C07 | Ensayo limpio            | Método aplicado en T03 autorizada por Alex: git archive del commit 33774eb a copia nueva bajo .cache, dependencias y Chromium propios; Node/npm y Windows del host compartidos. Instalación/flujo/controles correctos; no se afirma otro SO/máquina. Sin modificación de .git.   |
 
 ## Referencias antiguas resueltas
+
+Organización de lectura confirmada posteriormente por Alex: README como presentación completa para evaluadores y ai-workspace para evidencias/proceso. Alex eliminó la guía de entrega separada; no debe recrearse. La revisión T04 se conserva dentro de esos documentos y sus referencias canónicas.
 
 D12 ya no es una duda por ausencia del enunciado: Alex aportó los PDF y 009 los contrastó. No existe un entregable Word identificado que comparar. Los archivos externos consultados y los contenidos permitidos para publicar se distinguen.
 

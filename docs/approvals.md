@@ -1,5 +1,9 @@
 # Autorización y alcance
 
+## 010 — T04
+
+Alex autoriza preparar la entrega externa revisable: contenido/exclusiones, revisión local de datos/secretos, destino configurado y riesgos de publicación o despliegue. No autoriza publicar, cambiar remotos/visibilidad, contratar hosting, desplegar, modificar datos existentes o hacer commits/pushes. Registro ai-workspace autorizado; T05 requiere indicación posterior.
+
 ## 010 — T03
 
 Alex autoriza el ensayo de instalación limpia en copia aislada, comandos del README, DB demo nueva, navegador y controles globales. Método C07 concretado como exportación local del commit 33774eb bajo .cache, sin modificar .git, usar datos existentes o publicar. Node/npm del equipo; pnpm/dependencias/cachés/Chromium propios de la copia. Registro ai-workspace autorizado; T04–T05 requieren indicación posterior.

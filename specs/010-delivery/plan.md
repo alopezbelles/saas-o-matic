@@ -1,6 +1,6 @@
 # Plan 010 — Documentación, auditoría y entrega
 
-T01–T03 completadas técnicamente por indicación de Alex; T04–T05 pendientes. La instrucción de preparación siguiente conserva su alcance histórico. T02 autoriza actualizar ai-workspace sin reproducir mensajes excluidos. Usar [aclaraciones](clarifications.md) para decisiones pendientes.
+T01–T04 completadas técnicamente por indicación de Alex; T05 pendiente. La instrucción de preparación siguiente conserva su alcance histórico. T02 autoriza actualizar ai-workspace sin reproducir mensajes excluidos. Usar [aclaraciones](clarifications.md) para decisiones pendientes.
 
 ## Instrucción de preparación
 
@@ -38,7 +38,11 @@ Seguir exclusivamente el README con dependencias nuevas en la copia, pnpm instal
 
 ## T04 — Preparación externa revisable
 
+Instrucción previa de elaboración T04 (17 de noviembre de 2026): usar inventario y revisión de solo lectura del árbol versionado base cca1373; clasificar contenido previsto, exclusiones y hallazgos sin emitir valores de posibles secretos. Preparar docs/delivery.md con destino remoto configurado solo como dato local, visibilidad sin verificar, límites del escaneo y requisitos condicionales SPA/API/SQLite. Distinguir historial no auditado, datos sintéticos y rutas locales de evidencias históricas; no reescribir salidas originales silenciosamente. Registrar fuente, patrones/resultados, riesgos y decisiones externas pendientes en ai-workspace; comprobar documentos/formato sin nuevas suites de código ni publicación.
+
 Preparar docs/delivery.md con contenido incluido/excluido, modalidad/destino conocido o sin seleccionar, revisión de datos/secretos y riesgos. Revisar archivos versionados y contenido que se pretende entregar; declarar si el historial Git no se ha auditado exhaustivamente. No declarar ausencia absoluta de secretos por un escaneo parcial. Preparar requisitos de despliegue condicionales: servir SPA/rutas directas y /api, configuración de puerto y SQLite persistente/backup. Sin elegir proveedor, contratar servicios ni publicar por defecto. Una guía no acredita despliegue, restore o CORS de producción.
+
+Cambio de organización posterior solicitado por Alex: se elimina el documento de entrega separado. El resultado vigente se concentra en README.md para evaluadores y ai-workspace/testing/010-delivery-t04.md para revisión/evidencia. La instrucción anterior se conserva como antecedente, no debe recrearse el archivo eliminado. Corregir enlaces y conservar los hallazgos sin duplicar guías.
 
 ## T05 — Cierre
 

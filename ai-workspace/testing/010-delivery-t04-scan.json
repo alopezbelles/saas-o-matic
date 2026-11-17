@@ -1,0 +1,60 @@
+{
+  "baseCommit": "cca1373",
+  "trackedFiles": 407,
+  "textFiles": 378,
+  "binaryFiles": 29,
+  "findings": [],
+  "excludedTracked": [],
+  "sqliteHeaders": [],
+  "localPathReferences": [
+    "ai-workspace/testing/002-tests.txt",
+    "ai-workspace/testing/003-tests.txt",
+    "ai-workspace/testing/004-billing-format-fix.txt",
+    "ai-workspace/testing/004-billing-t01.txt",
+    "ai-workspace/testing/004-billing-t03.txt",
+    "ai-workspace/testing/004-billing-t05.txt",
+    "ai-workspace/testing/005-simulations-api-t02.txt",
+    "ai-workspace/testing/005-simulations-api-t03.txt",
+    "ai-workspace/testing/005-simulations-api-t04.txt",
+    "ai-workspace/testing/005-simulations-api-t05.txt",
+    "ai-workspace/testing/006-currency-t05.txt",
+    "ai-workspace/testing/007-customers-ui-t01-web.txt",
+    "ai-workspace/testing/007-customers-ui-t01.txt",
+    "ai-workspace/testing/007-customers-ui-t02.txt",
+    "ai-workspace/testing/007-customers-ui-t05-e2e.json",
+    "ai-workspace/testing/007-customers-ui-t05-focus-initial.json",
+    "ai-workspace/testing/007-customers-ui-t05-review-initial.json",
+    "specs/007-customers-ui/clarifications.md",
+    "specs/007-customers-ui/spec.md",
+    "specs/008-simulator-ui/spec.md",
+    "specs/009-quality/clarifications.md",
+    "specs/009-quality/spec.md"
+  ],
+  "nonFixtureEmailFiles": ["apps/api/test/customers-contract.test.mjs"],
+  "groups": {
+    ".agents": 3,
+    "root": 14,
+    "ai-workspace": 136,
+    "apps": 157,
+    "docs": 17,
+    "packages": 27,
+    "specs": 51,
+    "test": 2
+  },
+  "historyScanned": false,
+  "patterns": [
+    "private-key",
+    "github-token",
+    "aws-access-key",
+    "slack-token",
+    "openai-style-token",
+    "authenticated-url"
+  ],
+  "inventorySha256": "ef4c1bb7941d8f1e7dbc34c8a9e9b416a2814650719f087467dc8ee4a2a4b297",
+  "remote": "https://github.com/alopezbelles/saas-o-matic.git",
+  "remoteVisibilityChecked": false,
+  "manualTriage": [
+    "nonFixtureEmailFiles: rejected malformed email fixture, not a client contact",
+    "localPathReferences: publication review pending; historical outputs retained"
+  ]
+}

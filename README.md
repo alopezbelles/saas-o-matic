@@ -235,12 +235,16 @@ pnpm test:e2e
 
 ## Limitaciones y entrega
 
+Para evaluar el proyecto, este README reúne contexto, decisiones, pantallas e instrucciones. [ai-workspace](ai-workspace/README.md) permite profundizar en planificación, arquitectura, interacción con IA y verificaciones; no hace falta consultar una guía de entrega separada.
+
+Si más adelante se despliega, el servidor deberá servir apps/web/dist con fallback de rutas SPA y resolver /api hacia Express retirando el prefijo. La API actual escucha en 127.0.0.1, con PORT configurable y sin variable HOST; un entorno que requiera 0.0.0.0 necesita una adaptación explícita. SQLite requiere almacenamiento persistente dentro de las rutas admitidas, como apps/api/data, y un procedimiento de backup/recuperación. Estas condiciones están documentadas, pero no se ha validado un destino de producción. La revisión de contenido y sus pendientes se conservan en [ai-workspace](ai-workspace/testing/010-delivery-t04.md).
+
 - Política de simulación simplificada: ES 21 %, FR 20 %, DE 19 %, GB 20 %. No fiscalidad completa, exenciones o asesoramiento tributario.
 - Usuarios 0–1.000, almacenamiento 0–10.000 GB y llamadas API 0–10.000.000, enteros. Son guardas acordadas, no cuotas comerciales oficiales.
 - Sin autenticación/autorización, catálogo comercial real, idempotencia avanzada o despliegue de producción. Dos guardados deliberados pueden crear dos simulaciones.
 - Conversión dependiente de disponibilidad/CORS del proveedor. La comprobación local puntual no garantiza el funcionamiento en un futuro dominio público. Importes guardados siempre EUR.
 - Validación de interfaz en Chromium a cuatro anchos y ampliación CSS/reflujo; no certificación completa de accesibilidad, otros navegadores, lectores de pantalla o zoom nativo.
-- El ensayo de 010-T03 se completó desde una exportación limpia en este Windows: 276 pruebas generales y 36 E2E correctas; no acredita otro SO o máquina. La preparación externa de T04 sigue pendiente. Entrega local y repositorio son el alcance obligatorio; demo desplegada opcional, sin hosting elegido.
+- El ensayo de 010-T03 se completó desde una exportación limpia en este Windows: 276 pruebas generales y 36 E2E correctas; no acredita otro SO o máquina. La evidencia de entrega está en [ai-workspace](ai-workspace/README.md); no se ha publicado una demo ni elegido hosting. Entrega local y repositorio son el alcance obligatorio; demo desplegada opcional, sin hosting elegido.
 - Se excluyen secretos, .env reales, DB/backups, node_modules y cachés. Los PDF aportados se consultaron como fuentes externas y no se incorporan automáticamente. No se publica ni se hace commit/push desde estas instrucciones.
 
 La conformidad técnica y la aceptación humana final se registran por separado. El objetivo es que el evaluador pueda comprobar el comportamiento y recorrer las decisiones con evidencia, incluidos los límites que quedan fuera de esta prueba.

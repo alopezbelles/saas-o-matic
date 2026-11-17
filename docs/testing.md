@@ -1,5 +1,9 @@
 # Verificación
 
+## Entrega 010 — T04
+
+DELIVERY-02 completa preparación revisable con inventario, exclusiones, escaneo acotado y condiciones SPA/API/SQLite. Sin coincidencias de credenciales seleccionadas o DB excluidas en 407 archivos base; 22 archivos con rutas locales quedan como decisión de publicación. Historial completo/visibilidad sin verificar. Dos pruebas documentales pasan, sin suites funcionales nuevas. [Presentación y entrega](../README.md#limitaciones-y-entrega) y [evidencia/límites](../specs/010-delivery/validation.md#t04--preparación-externa-revisable). Sin publicación o despliegue; T05 y aceptación humana pendientes.
+
 ## Entrega 010 — T03
 
 DELIVERY-01 y QA-ALL-010 ejecutados desde exportación limpia del commit 33774eb, con pnpm/dependencias/Chromium propios y DB demo nueva. Arranque raíz y flujo alta→simulación→historial correctos, 276 pruebas generales y 36 E2E pasan. Se recuperaron restricciones de red y cleanup del harness; el fallo inicial queda documentado. Base original sin cambios por hash y fixtures/puertos cerrados. [Método, resultados e incidencias](../specs/010-delivery/validation.md#t03--ensayo-de-instalación-limpia). Mismo Windows/Node/npm, sin acreditar otro SO o máquina. T04/T05 y aceptación humana pendientes.

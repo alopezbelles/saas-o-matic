@@ -1,6 +1,6 @@
 # Tareas 010
 
-T01–T03 completadas técnicamente; T04–T05 pendientes de indicación de Alex. IDs 010-T01–T05. Registro ai-workspace autorizado en T02, respetando mensajes excluidos.
+T01–T04 completadas técnicamente; T05 pendiente de indicación de Alex. IDs 010-T01–T05. Registro ai-workspace autorizado en T02, respetando mensajes excluidos.
 
 ## T01 — README técnico y demo reproducible
 
@@ -35,12 +35,12 @@ T01–T03 completadas técnicamente; T04–T05 pendientes de indicación de Alex
 
 ## T04 — Preparación de entrega externa
 
-- [ ] **010-T04** — RF3/RF4. Depende de T03.
+- [x] **010-T04** — RF3/RF4. T03 completada.
 - Preparar lista de contenido incluido/excluido, modalidad/destino y riesgos; revisar secretos/datos de archivos previstos y declarar alcance del historial revisado.
 - Documentar condiciones de SPA, /api, variables y SQLite persistente/backup si se plantea hosting, sin elegir proveedor o implantar infraestructura por defecto.
-- Archivos: docs/delivery.md; docs/approvals.md solo para alcance realmente autorizado. No subir archivos ni publicar/desplegar.
+- Archivos vigentes por indicación de Alex: README.md y ai-workspace/testing/010-delivery-t04.md; docs/approvals.md solo para alcance realmente autorizado. Sin documento de entrega separado, publicación o despliegue.
 - Control: DELIVERY-02. No exigir auditoría absoluta o pruebas de restore/producción que no se hayan ejecutado.
-- Hecho cuando la propuesta sea revisable, con acciones externas separadas y destino sin seleccionar si sigue pendiente. Estado/evidencia: NO EJECUTADO.
+- Presentación en README y evidencia técnica en ai-workspace, con contenido/exclusiones, inventario/escaneo acotado, rutas locales pendientes de decisión y condiciones SPA/API/SQLite. Dos pruebas documentales pasan. [Evidencia T04](validation.md#t04--preparación-externa-revisable). Sin publicar ni desplegar; T05 y aceptación humana pendientes.
 
 ## T05 — Cierre técnico de la entrega
 

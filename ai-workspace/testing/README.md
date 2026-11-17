@@ -1,5 +1,7 @@
 # Evidencias de pruebas
 
+[010-T04 — Contenido y preparación externa](010-delivery-t04.md): inventario, escaneo acotado y límites de publicación, con [resultado estructurado](010-delivery-t04-scan.json). No es una nueva suite funcional ni una publicación.
+
 [010-T03 — Ensayo limpio](010-delivery-t03.md): instalación congelada desde exportación 33774eb, demo/flujo real, 276 pruebas generales y 36 E2E; incidencias de entorno y cleanup conservadas en el [resumen](010-delivery-t03-results.json).
 
 [008–010 — Índice de resultados y artefactos](008-010-evidence-index.md): ejecuciones históricas separadas, versiones/límites y verificación documental actual de 010-T02. No son nuevas suites funcionales.
