@@ -11,11 +11,12 @@
     "test": "pnpm test:unit && pnpm test:integration",
     "db:generate": "tsc -p tsconfig.config.json && drizzle-kit generate && node scripts/finalize-migrations.mjs",
     "db:migrate": "node dist/db/cli.js migrate",
+    "db:demo:setup": "node dist/db/cli.js demo:setup",
     "db:demo:init": "node dist/db/cli.js demo:init",
     "db:seed": "node dist/db/cli.js seed",
     "db:backup": "node dist/db/cli.js backup",
     "test:unit": "node --test test/tax-id.test.mjs test/customers-contract.test.mjs test/tax-policy.test.mjs test/simulations-contract.test.mjs",
-    "test:integration": "node --test test/health.test.mjs test/database.test.mjs test/database-operations.test.mjs test/customers.test.mjs test/server-lifecycle.test.mjs test/simulations-service.test.mjs test/simulations.test.mjs test/simulations-history.test.mjs test/billing-config.test.mjs"
+    "test:integration": "node --test test/health.test.mjs test/database.test.mjs test/database-operations.test.mjs test/customers.test.mjs test/server-lifecycle.test.mjs test/simulations-service.test.mjs test/simulations.test.mjs test/simulations-history.test.mjs test/billing-config.test.mjs test/demo-setup.test.mjs"
   },
   "dependencies": {
     "@saas-o-matic/shared": "workspace:*",

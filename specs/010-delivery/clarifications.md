@@ -1,6 +1,6 @@
 # Aclaraciones 010
 
-Adaptación documental autorizada; tareas sin ejecutar. Las decisiones siguientes distinguen instrucciones recibidas de propuestas pendientes.
+T01 completada técnicamente, con demo y capturas implementadas; T02–T05 pendientes. Las decisiones siguientes distinguen instrucciones recibidas de propuestas pendientes y conservan la procedencia de su confirmación.
 
 | ID      | Tema                     | Resolución y estado                                                                                                                                                                                                                                                 |
 | ------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

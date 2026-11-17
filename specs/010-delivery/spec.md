@@ -1,6 +1,6 @@
 # 010 — Documentación, auditoría y entrega
 
-Preparación documental autorizada por Alex. T01–T05 sin ejecutar; cada tarea requerirá su indicación. No escribir en ai-workspace hasta nueva autorización. Aceptación humana separada del cierre técnico.
+T01 completada técnicamente: README, demo segura y capturas. T02–T05 pendientes de indicación; ai-workspace excluido hasta nueva autorización. Aceptación humana separada del cierre técnico. [Evidencia T01](validation.md#t01--readme-técnico-y-demo-reproducible).
 
 ## Contexto y fuentes
 

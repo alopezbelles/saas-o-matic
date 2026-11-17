@@ -1,5 +1,9 @@
 # Verificación
 
+## Entrega 010 — T01
+
+RF1/RF2/RF3 parciales: README técnico con necesidades/decisiones/SDD/IA, cuatro capturas reales y comando db:demo:setup para DB nueva. IT-DEMO-010 añade tres casos de persistencia/importes/snapshots, CLI y protección de destinos/rutas. 276 pruebas globales correctas; lint/typecheck/formato/build pasan. [Comandos, incidencias, capturas y límites](../specs/010-delivery/validation.md#t01--readme-técnico-y-demo-reproducible). T02–T05 y aceptación humana pendientes; ai-workspace excluido. No se acredita todavía instalación limpia.
+
 ## Calidad 009 — Cierre T05
 
 RF1–RF6 conformes técnicamente dentro del alcance acordado. 273 pruebas globales y 36 E2E Chromium correctas, sin fallos esperados. Lint, TypeScript, formato, compilación y documentos pasan. 009-QA-01 resuelto; base de desarrollo sin cambios y recursos temporales cerrados/limpiados. FX real conserva la evidencia puntual de T02; el cierre usa fixtures. [Matriz final, comandos, resultados y límites](../specs/009-quality/validation.md#t05--verificación-final-y-cierre-técnico). Aceptación humana final pendiente. README definitivo, auditoría de entrega, checkout limpio y publicación corresponden a 010. Los registros siguientes conservan su alcance histórico.

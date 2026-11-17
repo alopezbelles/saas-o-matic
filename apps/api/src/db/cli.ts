@@ -3,17 +3,26 @@ import { openDatabase, type DatabaseKind } from './connection.js';
 import { migrateDatabase } from './migrate.js';
 import { seedDemo } from './seed.js';
 import { backupDatabase } from './backup.js';
+import { setupDemo } from './demo-setup.js';
 
 async function main() {
   const [command, ...args] = process.argv.slice(2);
-  if (!['migrate', 'demo:init', 'seed', 'backup'].includes(command ?? ''))
+  if (
+    !['migrate', 'demo:init', 'demo:setup', 'seed', 'backup'].includes(
+      command ?? '',
+    )
+  )
     throw new Error('DB_COMMAND_INVALID');
   const kind = process.env.DATABASE_KIND ?? 'development';
   if (kind !== 'development' && kind !== 'demo')
     throw new Error('DB_KIND_INVALID');
   const file = process.env.DATABASE_PATH ?? defaultDatabasePath;
   const target = resolveDatabasePath(file);
-  if (command === 'demo:init' || command === 'seed') {
+  if (
+    command === 'demo:init' ||
+    command === 'demo:setup' ||
+    command === 'seed'
+  ) {
     if (
       kind !== 'demo' ||
       !process.env.DATABASE_PATH ||
@@ -29,7 +38,9 @@ async function main() {
     (args.length !== 2 || args[0] !== '--out' || !args[1])
   )
     throw new Error('DB_ARGUMENT_INVALID');
-  if (command === 'migrate' || command === 'demo:init') {
+  if (command === 'demo:setup') {
+    setupDemo(options);
+  } else if (command === 'migrate' || command === 'demo:init') {
     migrateDatabase(options, command === 'demo:init');
   } else {
     const db = openDatabase(options);

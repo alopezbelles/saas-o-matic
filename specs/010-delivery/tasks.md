@@ -1,10 +1,10 @@
 # Tareas 010
 
-Preparación documental adaptada. Ninguna tarea ejecutada; IDs 010-T01–T05. Cada tarea requiere indicación de Alex. ai-workspace excluido hasta autorización explícita.
+T01 completada técnicamente; T02–T05 pendientes de indicación de Alex. IDs 010-T01–T05. ai-workspace excluido hasta autorización explícita.
 
 ## T01 — README técnico y demo reproducible
 
-- [ ] **010-T01** — RF1/RF2/RF3.
+- [x] **010-T01** — RF1/RF2/RF3 parciales hasta sus tareas posteriores.
 - Reestructurar README existente con título/contexto de la prueba, necesidades, recorrido, decisiones de arquitectura/tecnología y consecuencias, evolución specs/tasks y proceso de IA.
 - Explicar Codex para ejecución del código y ChatGPT Work con Product para diseño general, según declaración de Alex. Vincular evidencia real y etiquetar retrospectivas sin inventar interacciones.
 - Incluir inicio rápido, requisitos, variables/API/DB, migraciones, comandos de pruebas, límites de demo/FX/producción y enlaces canónicos. Capturas reales de pantallas principales con datos ficticios y texto alternativo.
@@ -12,7 +12,7 @@ Preparación documental adaptada. Ninguna tarea ejecutada; IDs 010-T01–T05. Ca
 - Al iniciar 010, actualizar MEMORY.md y el contexto del gate test/docs.test.mjs de forma coherente. No alterar el cierre histórico de 009.
 - Implementar el comando demo completo acordado en C04 según plan.md: DB nueva, tres clientes ficticios válidos y una simulación por cliente, sin sobrescribir bases existentes ni modificar el seed histórico. Reutilizar servicios/cálculo/migraciones; incluir pruebas de aislamiento, datos y rechazo de destino existente. Dependencia: autorización para ejecutar T01.
 - Controles: DOC-README-010, test:docs, formato y comprobación de contenido/imágenes; para el comando demo, lint/typecheck y pruebas de integración pertinentes en DB temporal. No exige haber ensayado todavía otra instalación.
-- Hecho cuando el README cubra spec.md y deje pasos completos verificables en T03. Estado/evidencia: NO EJECUTADO.
+- README y demo preparados con cuatro capturas reales. Tres pruebas nuevas IT-DEMO-010, comando raíz y controles correctos; 276 pruebas globales pasan. [Evidencia, incidencias y límites](validation.md#t01--readme-técnico-y-demo-reproducible). Ensayo limpio reservado a T03; aceptación humana pendiente.
 
 ## T02 — Índice y evidencia del desarrollo asistido
 

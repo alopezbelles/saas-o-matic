@@ -1,5 +1,9 @@
 # Autorización y alcance
 
+## 010 — T01
+
+Alex autoriza T01: README técnico con necesidades/arquitectura/SDD/IA, comando seguro de demo completa en DB nueva, capturas reales y controles pertinentes. C04/C05 confirmadas: demo local completa y entrega local/repositorio; hosting opcional sin elegir. Sin datos existentes, nuevas dependencias, commits/pushes o publicación. ai-workspace sigue excluido; T02–T05 requieren indicación posterior.
+
 ## 009 — T05
 
 Alex autoriza la verificación final y el cierre técnico de 009: controles globales, revisión de requisitos/evidencias, limpieza de recursos temporales y documentación de límites y trabajo derivado a 010. La aceptación humana no se presupone. Se mantienen exclusión ai-workspace, datos existentes y límites sobre commits/pushes, dependencias y publicación.

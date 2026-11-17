@@ -1,12 +1,14 @@
 # Plan 010 — Documentación, auditoría y entrega
 
-Preparación documental autorizada. No ejecutar tareas ni escribir ai-workspace durante esta adaptación. Usar [aclaraciones](clarifications.md) para decisiones pendientes.
+T01 completada técnicamente por indicación de Alex; T02–T05 pendientes. La instrucción de preparación siguiente conserva su alcance histórico. ai-workspace excluido hasta nueva autorización. Usar [aclaraciones](clarifications.md) para decisiones pendientes.
 
 ## Instrucción de preparación
 
 17 de noviembre de 2026, antes de implementar: adaptar los cinco documentos a 001–009 y al README solicitado por Alex. Definir contenido arquitectónico, necesidades, proceso SDD, procedencia Codex/ChatGPT Work con Product, capturas reales y criterios de entrega reproducible. Eliminar referencias de plantilla sin fuente. Conservar decisiones demo/hosting pendientes, exclusión ai-workspace y controles sin resultados anticipados.
 
 ## T01 — README como entrada a la entrega
+
+Instrucción previa de ejecución T01 (17 de noviembre de 2026): implementar demo:setup con destino explícito/kind demo y creación exclusiva mediante withNewDatabase; aplicar migraciones y poblar tres clientes/simulaciones por servicios y parsers existentes. Probar resultado persistido y rechazo de archivos existentes/rutas inseguras en contextos temporales, sin tocar dev.sqlite. Reestructurar README según spec, corregir .env.example, sincronizar memoria/gate a 010 y capturar cuatro pantallas con entorno Playwright temporal. Ejecutar controles de código e integración afectados y comprobaciones documentales. Mantener T02–T05, ensayo limpio y ai-workspace pendientes.
 
 Actualización posterior a la instrucción inicial: Alex confirma C04/C05, demo local completa y entrega mediante instalación local/repositorio. La referencia anterior a decisiones pendientes conserva la secuencia de preparación; ambas están ahora resueltas.
 
