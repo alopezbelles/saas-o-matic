@@ -1,107 +1,199 @@
-# Arquitectura
+# Arquitectura técnica de SaaS-O-Matic
 
-## Simulador 008 — Cierre T05
+## 1. Visión general
 
-La revisión final verifica la composición web/dominio/API/persistencia con el recorrido completo y fallos controlados. El cálculo compartido, guardado autoritativo y proyección histórica mantienen sus responsabilidades. Las medidas de contraste de 007 y 008 reutilizan el helper e2e/contrast.mjs. Fixtures comunes permiten completar consumos y responder FX controlado. [Verificación final](../specs/008-simulator-ui/validation.md#t05--flujo-comercial-revisión-visual-y-cierre-global).
+SaaS-O-Matic es una aplicación Full-Stack organizada como monorepo pnpm: una SPA React, una API Express y un paquete compartido de contratos y dominio. El backend es un monolito modular con persistencia SQLite local; no hay microservicios ni servidor de bases de datos separado.
 
-## Simulador 008 — T04
+El stack implementado utiliza TypeScript estricto y módulos ESM, React con Vite y React Router, Node.js con Express, Drizzle ORM y better-sqlite3. La conversión orientativa consulta un proveedor externo desde el navegador, fuera del circuito de persistencia.
 
-SimulationHistory conserva su recurso GET y paginación de 007, con actualización explícita mediante useApiResource y recuperación de foco existente. Volver a la ficha monta una consulta nueva. El simulador transmite solo los importes comparados y el cliente en el estado de navegación cuando existe discrepancia. simulationComparison valida identidad y enteros seguros antes de presentar el aviso compartido SimulationDiscrepancy. Las filas siempre proceden del DTO de la API. La consulta en otra pestaña conserva el formulario incierto en su pestaña original.
+```mermaid
+flowchart LR
+  U[Usuario] --> W[Web React]
+  W -->|HTTP /api| A[API Express]
+  W -->|GET tasas EUR| FX[ExchangeRate-API]
+  W --> S[Shared: contratos y dominio puro]
+  A --> S
+  A --> R[Repositorios y operaciones DB]
+  R --> DB[(SQLite)]
+```
 
-## Simulador 008 — T03
+Las flechas hacia shared representan dependencias de código, no un servicio desplegado. En desarrollo Vite reenvía `/api` a Express retirando el prefijo. Una publicación estática necesita resolver esa comunicación por separado.
 
-create-simulation reutiliza postJson, parser compartido de entrada y parseSimulationDto del historial; exige 201, identidad del cliente y consumos coincidentes. useSimulationSave congela payload/preview y coordina envío único, cancelación y estados. saved-result proyecta el DTO persistido sin motor y compara versiones/importes/tasa/desglose. SimulationSaveFeedback presenta confirmación enfocada, snapshot, discrepancias y errores asociados; incertidumbre ofrece consultar historial sin reenvío automático. El resultado confirmado permanece bloqueado hasta preparar explícitamente otro borrador cero/EUR con nueva consulta de configuración/cliente. Conversión solo del total guardado mediante 006. Sin cambios de backend/shared/DB/dependencias; fixture E2E permite cambiar política únicamente en su API temporal.
+Principios vigentes: dominio sin React/HTTP/SQL, contratos públicos sin tipos ORM, validación en fronteras, cálculo autoritativo en servidor y conservación del resultado histórico. Las responsabilidades se separan donde existen, sin imponer todas las capas a operaciones simples.
 
-## Simulador 008 — T02
+## 2. Estructura del repositorio
 
-useSimulationQuote coordina borrador validado y calculateQuote de shared con TaxPolicy del servidor; devuelve estados explícitos para evitar presupuesto anterior ante inputs inválidos/overflow. PricingBreakdown presenta exclusivamente EUR; SimulationSummary coordina total y conversión mediante convertCurrency. El formato monetario exacto con Intl/BigInt se comparte para EUR/USD/GBP, manteniendo formatEuro para historial.
+```text
+apps/
+  web/src/
+    app/                  Rutas, layout y navegación
+    features/customers/   Clientes e historial
+    features/simulations/ Simulador, preview y guardado
+    features/currency/    Contrato externo y cliente FX
+    styles/               Tokens y estilos globales
+  api/src/
+    app.ts                Composición Express
+    index.ts              Arranque y cierre
+    features/             Clientes, simulaciones y configuración
+    config/               Política fiscal del servidor
+    http/                 Protocolo JSON y errores
+    db/                   Conexión, esquema y operaciones
+packages/
+  shared/src/             Contratos, validadores y dominio puro
+```
 
-useExchangeRates adapta cliente 006 a React sin otra caché ni cancelación de peticiones compartidas. La consulta depende de divisa/configuración disponible y reintento, no del importe o validez temporal del borrador; esto evita reintentos implícitos al editar. Timer/cambio de visibilidad/foco retiran tasas caducadas. Respuestas anteriores ignoradas y reintento explícito; resultado inválido/fallido vuelve a EUR. Sin cambios de motor/backend/persistencia o POST en T02.
+Web y API declaran `@saas-o-matic/shared` mediante `workspace:*`. Shared exporta JavaScript compilado y declaraciones desde `dist/index`; los consumidores usan su entrada pública, sin importar fuentes internas de otro paquete. Los scripts preparan ese build antes de los consumidores cuando es necesario.
 
-## Simulador 008 — T01
+No hay dependencia del paquete compartido hacia Express, Drizzle o React. La web no importa configuración privada ni repositorios de la API. Algunos adaptadores de clientes son reutilizados por simulaciones porque ya validan los mismos DTO y transporte; no existe una segunda infraestructura HTTP paralela.
 
-SimulationCreatePage monta un borrador nuevo por cliente y reutiliza recursos GET cancelables de 007 para cliente/configuración. ConsumptionInputs presenta campos/slider; parsers reutilizan assertConsumption expuesto desde shared, sin copiar límites/reglas. El contrato completo de configuración reside en customers/api/billing-configuration.ts, junto a la proyección de países existente, y distingue formato de compatibilidad contra getPricingConfiguration/CONSUMPTION_LIMITS. Tasas fiscales del servidor, sin catálogo web paralelo.
+La configuración base de TypeScript activa strict, comprobación de accesos indexados y propiedades opcionales exactas. El monorepo mantiene lockfile y workspaces como parte de la instalación reproducible.
 
-Navigation/return valida contexto de listado e historyOffset; acceso desde ficha y breadcrumbs reales. API/persistencia/lockfile sin cambios. No hay cálculo/FX/POST o nuevas dependencias en T01. [Verificación y límites](../specs/008-simulator-ui/validation.md#t01--pantalla-clienteconfiguración-e-inputs).
+## 3. Arquitectura frontend
 
-## Web 007 — Cierre T05
+La SPA utiliza BrowserRouter y [rutas declarativas](../apps/web/src/app/AppRoutes.tsx). Un layout común concentra cabecera, breadcrumbs, salto al contenido y foco de navegación. Los destinos funcionales son listado, alta, ficha e historial y simulador contextual del cliente; no existe una sección global de simulaciones ni detalle individual de simulación.
 
-Playwright tiene configuración y fixtures en apps/web/e2e, con descubrimiento independiente de src/test y test/*.test.mjs. Cada caso crea DB marcada/contexto temporal, API Express y Vite con puertos propios; valida la configuración real del proxy y sustituye solo target para aislarlo. La limpieza comprueba ruta/propiedad tras cerrar recursos. Runner fija caché local de Chromium; no usa perfil o servidores personales. Scripts root/web permiten ejecutar E2E y preparar navegador aparte de pnpm test.
+Cada feature distingue tres responsabilidades:
 
-useQueryFocus comparte recuperación de foco tras paginación/reintento de listado e historial; solo enfoca el encabezado si el control se retiró y el usuario no eligió otro foco durante la espera. Token --color-control-border separa el contraste de inputs/selects/búsqueda de bordes decorativos. No hay cambios de contratos/backend/DB ni nuevas dependencias.
+- **Adaptadores:** peticiones HTTP y validación runtime de respuestas desconocidas, incluidas identidad y coherencia del resultado.
+- **Estado:** hooks para recursos asíncronos, borradores, preview, divisas y envío; coordinación de cancelación, vigencia y reintento.
+- **Presentación:** páginas y componentes con CSS Modules y tokens comunes. La referencia visual está en [diseño](design.md).
 
-## Web 007 — T04
+El estado es local de React y del router; no se utiliza un gestor global adicional. Búsqueda y paginación se representan en URL, mientras el contexto de retorno se transporta como estado de navegación validado. El listado aplica debounce y descarta respuestas obsoletas.
 
-CustomerDetailPage obtiene el cliente y CustomerCards presenta datos corporativos/contacto. SimulationHistory consulta su recurso por separado y conserva la ficha durante carga/fallo/reintento. historyOffset vive en URL; el contexto de retorno se conserva al paginar. ID inválido no provoca requests; 404 se distingue de error temporal.
+`useApiResource` comparte carga, aborto y recuperación explícita de GET. Ficha e historial mantienen recursos independientes: un fallo del historial no invalida los datos del cliente. Los adaptadores de lectura validan la estructura almacenada sin aplicar de nuevo las reglas de alta a filas históricas.
 
-useApiResource centraliza vigencia, aborto y reintento explícito de GET; se reutiliza en listado/ficha/historial. parsePage comparte validación de envoltura y unicidad; los adaptadores validan identidad del cliente y DTO histórico completo antes de exponerlo. No se consulta configuración actual, motor ni FX para mostrar historial; formatEuro presenta céntimos mediante BigInt/Intl sin perder precisión. Backend, contratos, esquema y dependencias conservados.
+El transporte común de web aplica timeout de 10 segundos, cancelación y clasificación de errores HTTP, red y protocolo. Los envíos no se disparan desde efectos ni se repiten automáticamente. Los formularios conservan entradas ante errores y bloquean doble envío.
 
-## Web 007 — T03
+El simulador separa borrador textual, consumos válidos, presupuesto previo y resultado confirmado. Configuración y cliente se cargan sin consultas por cada cambio de consumo. Se comprueba la compatibilidad de precios, tramos y límites con shared antes de habilitar un preview fiable.
 
-CustomerCreatePage conserva contexto de retorno y navega al ID persistido. CustomerForm presenta campos, errores asociados y acciones; useCustomerCreation gestiona borrador, validación compartida, envío único y resultado incierto. useCustomerCountries carga/reintenta configuración con cancelación; el adaptador valida la proyección EUR/política consumida y deriva las opciones del servidor. PLAN_CODES y etiquetas compartidas con el listado evitan catálogos duplicados.
+Tras guardar, la pantalla proyecta el DTO confirmado sin recalcularlo y compara con el preview congelado. La conversión usa el total confirmado. Preparar otra simulación reinicia explícitamente el borrador y consulta de nuevo el contexto.
 
-El transporte GET/POST comparte timeout, cancelación y errores. El alta exige 201 y DTO válido; red/timeout/respuesta de éxito ilegible conserva valores y ofrece buscar por identificador en otra pestaña, sin reenvío automático. La validación fiscal sigue en el backend. No hay cambios de endpoints, esquema, dominio o dependencias.
+## 4. Arquitectura backend
 
-## Web 007 — T02
+[createApp](../apps/api/src/app.ts) compone Express sin abrir un puerto. [index.ts](../apps/api/src/index.ts) aporta el proveedor de datos, inicia listen y coordina cierre de servidor/conexión ante señales. Esta separación permite componer la aplicación con dependencias controladas.
 
-features/customers separa transporte GET con timeout/abort y envelope, validación de DTO/página, reglas de URL, estado de consultas y presentación. La respuesta se valida estructuralmente conservando campos históricos, sin aplicar validación de alta a filas antiguas. useCustomers protege vigencia y aborta al cambiar consulta/desmontar; estado URL y debounce residen en la página. CustomerList presenta tabla/cards con datos reales.
+Las features de clientes y simulaciones separan:
 
-Vite reenvía /api a 127.0.0.1:3000 retirando prefijo. El proxy es desarrollo; producción debe configurar su ruta /api aparte. Dev/build web compilan shared, y dev raíz lo compila antes de arrancar aplicaciones en paralelo para evitar falta de dist en instalación limpia. Sin cambios de endpoints o esquema. El contexto de retorno solo acepta URL local de listado validada.
+| Capa          | Responsabilidad                                           |
+| ------------- | --------------------------------------------------------- |
+| Rutas         | Montaje de endpoints y middleware de protocolo.           |
+| Controladores | Parse de body, parámetros y query; respuesta HTTP.        |
+| Servicios     | Orquestación de casos de uso y dominio.                   |
+| Repositorios  | Consultas, transacciones y proyección desde persistencia. |
 
-## Web 007 — T01
+La configuración de facturación se publica directamente desde fuentes reales de dominio y política del servidor, sin repositorio o conexión DB innecesarios. Health tampoco requiere base de datos.
 
-BrowserRouter en App y rutas declarativas en app/AppRoutes separan shell y destinos. AppLayout comparte cabecera, breadcrumbs y contenido; las páginas base informan de su disponibilidad hasta T02–T04. Tokens/global y CSS Modules concentran estilos sin dependencias UI. Shared queda enlazado mediante workspace para contratos posteriores.
+Los parsers compartidos rechazan coerciones, campos extra y valores fuera de contrato antes de solicitar una conexión. En clientes, el servicio aplica el control fiscal español mediante dominio puro específico de API; persistencia protege además unicidad por país e identificador normalizado.
 
-Vitest/RTL ejecutan pruebas src/**/_.test.tsx en jsdom; node:test conserva test/_.test.mjs con FX y smoke. Scripts separados se componen en el test de web. Playwright está instalado y Chromium se guarda en caché del proyecto para smoke visual del shell; los E2E de alta reales corresponden a T05.
+El proveedor DB abre la conexión de forma lazy, verifica propietario y esquema vigente y reutiliza la conexión abierta. Si falla la apertura, cierra cualquier conexión parcial y permite una solicitud posterior; no crea ni migra la base implícitamente.
 
-## Conversión 006
+La composición acepta proveedor de conexión, logger y política fiscal internos. La inyección permite aislamiento y variaciones controladas; no permite al consumidor HTTP elegir tarifas o políticas. Los [contratos API](api-contracts.md) detallan rutas, DTO y errores.
 
-shared/src/currency contiene conversión pura y reutiliza utilidades monetarias, sin red/reloj/SQL. web/src/features/currency separa contrato/validación externa de HTTP/caché. createExchangeClient inyecta fetch/reloj; exchangeClient comparte instancia por pestaña sin petición al importar. EUR devuelve null identidad; USD/GBP comparten petición y caché inmutable hasta expiresAt. Timeout 5 s cubre fetch/cuerpo; sin reintentos ni datos caducados. Sin proxy, persistencia FX, UI o librerías nuevas. El test web compila shared para pruebas de composición, sin dependencia runtime nueva en la web.
+## 5. Dominio y lógica de negocio
 
-## Simulaciones 005 — T02
+El motor de `packages/shared/src/billing` calcula base acumulativa por tramos, impuesto y desglose mediante funciones puras. Recibe consumos, país y una política fiscal explícita; precios y versión de tramos proceden del propio dominio. No consulta DB, red o reloj ni conoce Express o React.
 
-T04 añade histórico con existencia/total/página en transacción de lectura SQL y mapper de snapshots, sin motor. Configuración GET sin DB en billing/routes proyecta getter puro getPricingConfiguration desde shared, política del servidor y límites existentes; solo copias y no-store. Un servicio de simulaciones comparte proveedor lazy/política con ambos routers; config no depende del proveedor. Sin cambios de schema ni duplicación de reglas.
+La política fiscal versionada se define en API. La web la obtiene de la configuración pública y usa el mismo motor para el preview; al guardar, el servidor obtiene el país del cliente persistido y vuelve a calcular. Planes y consumos secundarios no introducen cargos inventados. Las reglas detalladas pertenecen a [reglas de negocio](business-rules.md).
 
-T03 añade controlador/ruta POST y montaje en createApp, preservando proveedor lazy. http/json-body.ts centraliza protocolo 32kb/application-json de clientes/simulaciones. Handler traduce BillingError a HTTP y mantiene fallos técnicos solo en logs sanitizados; no cambia motor, SQL ni snapshots. Política de tests inyectable solo en composición de app.
+Dinero se representa en céntimos enteros seguros; operaciones intermedias usan BigInt, redondeo half-up explícito y conversión segura antes de serializar. El redondeo fiscal se realiza sobre la base completa. Las funciones rechazan importes inseguros o políticas inválidas, sin devolver presupuestos parciales.
 
-simulationService recibe proveedor de conexión y política interna explícita; calcula mediante shared sin SQL. createCalculatedSimulation en repositorio obtiene cliente bajo transacción inmediata, invoca callback síncrono con su país y reutiliza insertSimulation (savepoint anidado) para snapshots/inserción. toSimulationDto valida y proyecta datos guardados antes del commit; no recalcula históricos. Sin nueva tabla/migración ni rutas HTTP.
+La conversión pura reside en `shared/src/currency`: transforma una tasa decimal validada y acotada en una razón exacta y redondea una sola vez al final. EUR es identidad; USD/GBP afectan solo al total. No se convierten líneas ni se persisten tasas FX.
 
-Monorepo pnpm 10.33.4: apps/web, apps/api y packages/shared; Node 22, TypeScript estricto y ESM.
-React/Vite para web y Express/tsx para API. ESLint, Prettier y node:test para calidad.
+En web, `features/currency` separa validación del payload externo y transporte. El cliente consulta ExchangeRate-API con base EUR, valida tasas y fechas, conserva atribución y comparte petición/caché inmutable por instancia de pestaña hasta caducidad. Su timeout de 5 segundos cubre fetch y lectura del cuerpo.
 
-## Persistencia 002
+La adaptación React reutiliza ese cliente sin una segunda caché ni abortar peticiones compartidas al desmontar. La consulta depende de divisa y reintento, no del importe. Temporizador, foco y visibilidad retiran tasas vencidas; fallos conservan EUR con recuperación explícita.
 
-- apps/api/src/db/schema.ts: definición Drizzle, índices y CHECK.
-- apps/api/drizzle: SQL versionado e historial de generación; tablas STRICT y triggers.
-- db/connection.ts y paths.ts: apertura explícita, propietario, rutas y aislamiento.
-- db/migrate.ts: runner transaccional con hashes de SQL; no confía solo en la fecha de una migración.
-- db/persistence.ts: escritura/lectura mínima, snapshots autoritativos y transacciones; no calcula precios/impuestos.
-- db/validation.ts: validaciones estructurales y aritmética exacta de integridad.
-- db/seed.ts, backup.ts y cli.ts: operaciones explícitas con guardas.
-- packages/shared: planes y límites sin importar Drizzle.
+## 6. Datos y persistencia
 
-Se usa drizzle-orm 0.45.4 y better-sqlite3 12.11.1; drizzle-kit 0.31.11 genera SQL. Un finalizador idempotente añade STRICT/triggers a SQL nuevo porque el generador no expresa esas garantías.
-El script de generación no abre bases y no reescribe SQL ya finalizado. Revisar cualquier SQL nuevo antes de aplicarlo.
-Más detalle en [modelo](data-model.md), [decisiones](decisions.md) y [spec 002](../specs/002-persistence/spec.md).
+SQLite usa better-sqlite3 como driver síncrono y Drizzle para esquema y consultas. El modelo relaciona clientes con simulaciones; tablas de metadatos y migraciones identifican propietario, tipo de base y estado del esquema. El [modelo de datos](data-model.md) es la referencia de entidades, restricciones y recuperación.
 
-## Arranque
+Las tablas STRICT, claves foráneas, índices, CHECK y triggers refuerzan integridad y protección del histórico. La validación de aplicación sigue siendo necesaria: las garantías de SQLite no sustituyen el contrato JSON.
 
-createApp está separado de listen. pnpm dev arranca web en 127.0.0.1:5173 y API en 127.0.0.1:3000.
-El arranque y /health no requieren DB ni .env. Las rutas de clientes usan proveedor lazy; sin DB inicializada responden 503. No se migra al arrancar.
-Los comandos DB compilan shared/API antes de ejecutar el CLI; las rutas relativas se resuelven contra raíz del repo.
+El SQL versionado reside en `apps/api/drizzle`. El runner registra hashes y rechaza deriva; aplica el lote de migraciones dentro de una transacción. Drizzle Kit genera SQL y un finalizador añade garantías STRICT/triggers al SQL nuevo. Generar y aplicar son operaciones distintas; ninguna forma parte del arranque HTTP.
 
-## Evolución
+La simulación guarda consumos, importes EUR, impuesto, desglose, versiones y snapshots de empresa, identificador fiscal, país y plan. Las lecturas históricas proyectan lo persistido sin consultar la política actual o sustituir snapshots por datos actuales del cliente.
 
-003 añade endpoints de clientes, validación pura, contratos shared y conexión lazy. No hay endpoint de simulaciones, motor monetario, políticas fiscales ni FX.
-El futuro dominio permanecerá puro, separado de HTTP/SQL/React; los contratos no expondrán tipos ORM.
-Router, Zod y librerías UI no están instalados por anticipación.
-No se han configurado servicios externos ni despliegue.
+El repositorio de alta controla una transacción inmediata: lee cliente, ejecuta el callback de cálculo síncrono del servicio y reutiliza la inserción existente. La operación interior usa un savepoint; el mapping se valida antes del commit. No se realiza red ni trabajo asíncrono dentro de esa transacción.
 
-## Diseño acordado 004 — implementación parcial
+El historial comprueba existencia de cliente, total y página bajo transacción de lectura, con paginación SQL y orden estable por fecha/id descendentes. Un cliente ausente se distingue de uno sin simulaciones.
 
-Motor puro previsto en packages/shared/src/billing/; configuración fiscal explícita en API, sin HTTP/SQL/React en el dominio. Sin paquetes ni dependencias nuevas. Reutiliza límites de 002 y expone desglose/versiones para futura integración en 005. FX e integración de preview no pertenecen a 004.
-Contratos, errores y pruebas en [plan 004](../specs/004-billing/plan.md); razones en [ADR-005](../ai-workspace/decisions/ADR-005-billing-engine.md). T03 implementa la política demo como configuración versionada congelada en API.
+Conexión y CLI restringen destinos, reconocen archivos propios y separan desarrollo, demo y test. Migraciones, seed, demo completa y backup son comandos explícitos. La demo completa exige destino nuevo; el backup usa el driver sobre un archivo nuevo. No hay reset o restauración automática destructiva.
 
-T02 implementa tipos básicos, BillingError y calculateTieredBase en shared/src/billing, exportados desde shared. T03 añade money/tax y TaxPolicy, centralizando guardas y conversión segura con BigInt. Composición pendiente de T04; sin HTTP ni persistencia.
+## 7. Recorrido completo de una simulación
 
-T04 implementa calculateQuote y BillingInput/BillingQuote; validation.ts centraliza consumos para tramos y composición. Valida entrada antes de política y cálculo, suma con BigInt y devuelve datos JSON seguros con versiones. Sin integración HTTP/DB ni FX; T05 pendiente de cierre.
+1. React obtiene cliente y configuración, valida formato/compatibilidad y mantiene los consumos como borradores editables.
+2. Con consumos válidos, shared calcula el preview y su impuesto con la política recibida. Una entrada inválida retira el resultado anterior como presupuesto vigente.
+3. Si se solicita USD/GBP, web obtiene tasas y convierte solo el total EUR, sin cambiar el preview base o persistir la conversión.
+4. Al guardar, se congelan consumos y preview y se envían únicamente customerId, users, storageGb y apiCalls.
+5. API valida la entrada. El repositorio lee al cliente bajo transacción y el servicio calcula con la política interna del servidor.
+6. Se guardan resultado y snapshots, se valida el DTO y se confirma el commit antes de responder 201.
+7. Web presenta el resultado autoritativo y cualquier discrepancia. Al volver a la ficha, el historial consulta los datos guardados en EUR, sin motor o FX.
+
+```mermaid
+sequenceDiagram
+  participant W as Web
+  participant S as Shared
+  participant A as API
+  participant R as Repositorio
+  participant D as SQLite
+  W->>A: GET cliente y configuración
+  A-->>W: DTO y reglas vigentes
+  W->>S: Calcular preview
+  S-->>W: Presupuesto EUR
+  W->>A: POST consumos y cliente
+  A->>R: Crear simulación
+  R->>D: BEGIN IMMEDIATE y leer cliente
+  R->>S: Callback del servicio calcula con política del servidor
+  S-->>R: Resultado EUR
+  R->>D: Insertar resultado y snapshots
+  R->>R: Validar DTO
+  R->>D: COMMIT
+  R-->>A: DTO persistido
+  A-->>W: 201 confirmado
+  W->>A: GET historial al volver
+  A->>R: Consultar página guardada
+  R->>D: Lectura transaccional
+  D-->>R: Filas y total
+  R-->>A: Página de DTO
+  A-->>W: Histórico EUR
+```
+
+El diagrama omite la consulta FX opcional, independiente del guardado. Si el transporte falla después del commit, el navegador puede desconocer el resultado: cancelar o agotar un timeout no acredita rollback. La interfaz ofrece comprobar el historial sin reenviar automáticamente.
+
+## 8. Aspectos transversales
+
+- **Errores y observabilidad:** middleware central con códigos estables, mensajes públicos sanitizados y requestId generado por petición. Logs registran método, estado y código, sin cuerpos, identificadores fiscales, SQL o stacks. La cabecera x-powered-by está deshabilitada.
+- **Validación:** contratos compartidos y validación runtime de respuestas en web; repositorios y DB refuerzan estructura e integridad. No se confía en un cast TypeScript como control de datos externos.
+- **Protocolo:** POST requiere application/json y limita cuerpo a 32 KB. Query y paginación tienen claves y rangos admitidos; consultas parametrizadas tratan entradas como datos.
+- **Configuración:** GET de facturación proyecta precios/versiones, tasas y límites desde fuentes reales, mediante copias y Cache-Control no-store, sin abrir DB.
+- **Concurrencia:** recursos GET cancelables y protección de vigencia en web; una petición FX compartida; envío único mientras está pendiente. SQLite usa transacciones cortas y busy_timeout de 1000 ms; ocupación se traduce a 503.
+- **Recuperación:** no hay reintentos automáticos de POST ni deduplicación de guardados deliberados. Un segundo guardado deliberado puede crear otra simulación; no existe idempotency-key.
+- **Seguridad y límites:** no hay autenticación, autorización o aislamiento multi-tenant. FX recibe una consulta de tasas sin importes o datos privados. El protocolo y las validaciones no equivalen a un perímetro de producción completo.
+
+## 9. Decisiones arquitectónicas
+
+| Decisión vigente                   | Motivo y consecuencia                                                                                                                         |
+| ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| Monorepo y shared                  | Reutilizar contratos y reglas entre web/API con herramientas comunes; requiere preparar exports compilados.                                   |
+| Dominio puro                       | Probar cálculo de forma determinista y evitar una segunda implementación en UI; persistencia y transporte permanecen separados.               |
+| SQLite y Drizzle                   | Persistencia local sin servidor adicional, SQL inspeccionable y transacciones; driver nativo y síncrono, sin promesa de escalado distribuido. |
+| Snapshots e histórico EUR          | Conservar el hecho guardado ante cambios de cliente o política; la consulta no reproduce reglas actuales.                                     |
+| FX desacoplado                     | Conversión orientativa sin alterar facturación o DB; depende de disponibilidad/CORS y solo admite el catálogo acordado.                       |
+| Estado local y módulos por feature | Mantener complejidad proporcional, compartir adaptadores y hooks con uso real y separar presentación de orquestación.                         |
+| Estilos locales y tokens           | Consistencia visual sin UI kit o sistema de temas adicional; detalles en la referencia de diseño.                                             |
+
+Estas razones describen elecciones documentadas, no decisiones humanas inventadas ni una arquitectura universalmente óptima. Fuentes: aclaraciones de [persistencia](../specs/002-persistence/clarifications.md), [dominio](../specs/004-billing/clarifications.md), [API de simulaciones](../specs/005-simulations-api/clarifications.md), [divisas](../specs/006-currency/clarifications.md) e [interfaces](../specs/007-customers-ui/clarifications.md). El proceso de colaboración está en [ai-workspace/features](../ai-workspace/features/).
+
+## 10. Ejecución y despliegue
+
+El repositorio declara Node >=22.13.0 y <23 y pnpm 10.33.4. better-sqlite3 necesita binario compatible o compilación nativa. Instalación y operación detalladas en el [README](../README.md); aquí se describen sus límites arquitectónicos.
+
+`pnpm dev` compila shared antes de iniciar web y API en paralelo. Web usa Vite en 127.0.0.1:5173; API usa tsx watch en desarrollo y escucha 127.0.0.1:3000 por defecto. Build genera artefactos de ambos paquetes; el arranque compilado de API ejecuta dist/index.js.
+
+PORT configura el puerto API. DATABASE_PATH y DATABASE_KIND seleccionan archivo y tipo de base; sus rutas relativas se resuelven contra la raíz del repositorio. El runtime admite development/demo, sin cargar automáticamente un archivo .env. Health puede responder sin DB inicializada; las operaciones dependientes de ella devuelven indisponibilidad si no puede abrirse con esquema vigente.
+
+El proxy /api de Vite solo está configurado para desarrollo. El build web no incorpora Express y vite preview no sustituye un servidor de aplicación. Un despliegue debe servir la SPA con fallback para rutas directas y resolver /api hacia la API retirando el prefijo. No hay variable HOST para cambiar la escucha de loopback sin adaptación de código.
+
+SQLite requiere almacenamiento persistente dentro de las rutas admitidas, backup explícito y restauración manual controlada. El cierre de API espera conexiones HTTP y cierra el proveedor DB; no se define un orquestador de producción o alta disponibilidad.
+
+No hay hosting, CI o despliegue productivo acreditados. La integración externa de divisas depende del proveedor y del origen del navegador. Los límites de seguridad, concurrencia local y operación deben revisarse antes de exponer una demo pública; la entrega documentada es local y con repositorio, con despliegue opcional.
