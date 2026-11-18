@@ -43,4 +43,4 @@ git diff --check
 
 No motor, configuración fiscal productiva, DB, HTTP ni FX. Los oráculos son valores escritos independientemente; el test solo verifica coherencia, casos presentes y límites contra shared.
 No pnpm build completo ni pnpm test completo, integración/web/gates: reservados al cierre T05. test:unit sí compila shared/API y typecheck verifica los workspaces.
-[Validación](../../specs/004-billing/validation.md) y [revisión T01](../reviews/004-billing-t01.md).
+[Validación](../../specs/004-billing/validation.md) y [revisión T01](../reviews/004-billing-t05.md).

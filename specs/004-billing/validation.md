@@ -40,26 +40,30 @@ T05 ejecutada; mantener cierre global pendiente mientras format:check falle. Ace
 calculateQuote valida tres consumos y compone base/impuesto/total con suma BigInt segura. Devuelve EUR, versiones reales y desglose; sin dependencia HTTP/DB/FX. validation.ts evita duplicación de guardas con tiers.
 Test:docs pasa (2 tests); formato acotado y git diff --check pasan tras actualizar registros.
 Lint/typecheck y 30 unitarios pasan: 25 shared (5 fixtures + 20 productivos) y 5 API. Nueve tests nuevos cubren contrato, entrada/orden de errores, secundarios sin tarifa, cero, overflow de impuesto/total, redondeo sobre base completa, invariantes en 4004 combinaciones y determinismo/no mutación.
-Formato global sigue fallando en 41 archivos ajenos. [Evidencia](../../ai-workspace/testing/004-billing-t04.md) y [revisión](../../ai-workspace/reviews/004-billing-t04.md). RF1..4 conformes en pruebas del motor; pendiente regresión global T05 y aceptación humana.
+Formato global sigue fallando en 41 archivos ajenos. [Evidencia](../../ai-workspace/testing/004-billing-t04.md) y [revisión](../../ai-workspace/reviews/004-billing-t05.md). RF1..4 conformes en pruebas del motor; pendiente regresión global T05 y aceptación humana.
 
 ### T01 — 15 de noviembre de 2026
 
 Lint y typecheck pasan. test:unit pasa: 5 tests de coherencia de fixtures shared y 3 de API; test:docs pasa con 2 tests. Ningún RF monetario se marca implementado por estos resultados.
-format:check global falla en 43 archivos ajenos a T01; diagnóstico comprobado CRLF/LF, sin corrección masiva. Tres archivos de los 46 originales se formatearon al modificarlos dentro de T01. Ver [evidencia y comandos](../../ai-workspace/testing/004-billing-t01.md), [salida](../../ai-workspace/testing/004-billing-t01.txt) y [revisión](../../ai-workspace/reviews/004-billing-t01.md).
+format:check global falla en 43 archivos ajenos a T01; diagnóstico comprobado CRLF/LF, sin corrección masiva. Tres archivos de los 46 originales se formatearon al modificarlos dentro de T01. Ver [evidencia y comandos](../../ai-workspace/testing/004-billing-t01.md), [salida](../../ai-workspace/testing/004-billing-t01.txt) y [revisión](../../ai-workspace/reviews/004-billing-t05.md).
 
 ### T02 — 15 de noviembre de 2026
 
 calculateTieredBase, TierBreakdown/TieredBase y BillingError exportados desde shared. Cero usuarios, fronteras, desglose compatible con 002, rango completo, errores y aislamiento de resultados probados.
 Lint/typecheck y 13 tests unitarios pasan. format:check global falla en 42 archivos ajenos: index.ts de shared se formateó al modificar sus exports, reduciendo el número anterior en uno.
-[Evidencia y límites](../../ai-workspace/testing/004-billing-t02.md) y [revisión](../../ai-workspace/reviews/004-billing-t02.md). RF1 conforme técnicamente; no aceptación humana registrada.
+[Evidencia y límites](../../ai-workspace/testing/004-billing-t02.md) y [revisión](../../ai-workspace/reviews/004-billing-t05.md). RF1 conforme técnicamente; no aceptación humana registrada.
 
 ### T03 — 15 de noviembre de 2026
 
 Implementados helpers monetarios, calculateTax, TaxPolicy, validación/resolución fiscal y demo-standard-v1 congelada en API. tiers.ts reutiliza toSafeCents. Sin quote ni endpoint.
 Test:docs pasa (2 tests); formato acotado y git diff --check pasan tras actualizar los registros.
 Lint/typecheck y 21 unitarios pasan (16 shared, 5 API). Half-up, límites seguros, overflow, cero frente a ausencia, políticas inválidas y configuración real probados. Formato global falla en 41 archivos ajenos; apps/api/package.json se normalizó al conectar su test.
-[Evidencia](../../ai-workspace/testing/004-billing-t03.md), [salida](../../ai-workspace/testing/004-billing-t03.txt) y [revisión](../../ai-workspace/reviews/004-billing-t03.md). RF2 parcial hasta composición/suma en T04; RF3 pendiente de consumos completos.
+[Evidencia](../../ai-workspace/testing/004-billing-t03.md), [salida](../../ai-workspace/testing/004-billing-t03.txt) y [revisión](../../ai-workspace/reviews/004-billing-t05.md). RF2 parcial hasta composición/suma en T04; RF3 pendiente de consumos completos.
 
 Por tarea: fecha, versión identificable, comandos exactos, códigos de salida, pruebas, incidencias y limitaciones. Enlazar ai-workspace sin duplicar salidas.
 En T05 ejecutar controles completos y presentar casos ES 15/51 usuarios con bases 14000/42500, impuestos 2940/8925 y totales 16940/51425.
 No rellenar evidencias anticipadamente. Aceptación humana de la entrega: no registrada.
+
+## Mantenimiento editorial de referencias
+
+Las revisiones intermedias de esta feature se han consolidado posteriormente en la review final, que identifica esa consolidación. Los enlaces actuales no convierten dicha síntesis en una revisión contemporánea de cada tarea. Resultados, versiones y salidas originales anteriores se mantienen; no se ejecutan nuevas pruebas funcionales por esta limpieza.

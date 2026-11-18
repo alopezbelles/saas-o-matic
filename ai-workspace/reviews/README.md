@@ -1,24 +1,24 @@
-# Revisiones
+# Revisiones técnicas
 
-[010-T05 — Cierre técnico de entrega](010-delivery-t05.md): cuatro RF con evidencia/versiones, controles documentales actuales y aceptación/publicación separadas.
+Esta carpeta conserva evaluaciones que aportan criterio sobre decisiones, riesgos o límites. No contiene nuevas ejecuciones por el hecho de resumir resultados y sus conclusiones no equivalen a aceptación humana.
 
-[010-T02 — Revisión del índice y evidencia](010-delivery-t02.md): coherencia/procedencia documental, con aceptación humana separada y límites explícitos.
+## Lectura recomendada
 
-- [007-T05 — Revisión final](007-customers-ui-t05.md): RF1–RF5 comprobados, foco/contraste corregidos y aceptación humana pendiente.
+| Revisión                                          | Aportación                                                                                          |
+| ------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| [001 Foundation](001-foundation.md)               | Secuencia real de planificación y límites de la retrospectiva documental.                           |
+| [003 Customers API](003-customers-api.md)         | Contrato, validación fiscal, migración compatible y cohesión.                                       |
+| [004 Billing](004-billing-t05.md)                 | Evaluación del dominio y cierre condicionado por formato, con criterios intermedios consolidados.   |
+| [005 Simulations API](005-simulations-api-t05.md) | Responsabilidades, transacción, histórico y configuración, con criterios intermedios consolidados.  |
+| [006 Currency](006-currency.md)                   | Precisión e integración externa dentro de su alcance histórico; sin garantía de CORS de producción. |
+| [007 Customers UI](007-customers-ui-t05.md)       | Evaluación final de flujos, accesibilidad y límites del navegador.                                  |
+| [010 Delivery](010-delivery-t05.md)               | Evidencia por versión, pendientes externos y separación entre preparación y publicación.            |
 
-- [007-T04 — Ficha e historial](007-customers-ui-t04.md): identidad/contratos, histórico EUR, estados/carreras y cierre incremental.
+## Evaluaciones específicas conservadas
 
-- [007-T03 — Alta integrada](007-customers-ui-t03.md): formulario, contratos, recuperación segura y límites de ficha/E2E posteriores.
+- [Preparación del dominio 004](004-billing-planning.md): revisión que detectó referencias de plantilla y límites documentales antes del motor.
+- Revisiones de clientes UI: [base](007-customers-ui-t01.md), [listado](007-customers-ui-t02.md), [alta](007-customers-ui-t03.md) y [ficha](007-customers-ui-t04.md). Conservan evaluación específica de contratos, interacción y cohesión que complementa el cierre.
 
-- [007-T02 — Listado integrado](007-customers-ui-t02.md): contratos/estados/carreras y evidencia en navegador real.
+Los resultados de ejecución se consultan en [testing](../testing/README.md) y en la validación de cada spec. No hace falta un archivo de review por tarea; se debe registrar cuando exista una evaluación o conclusión significativa.
 
-- [007-T01 — Base visual y rutas](007-customers-ui-t01.md): revisión técnica y límites de pantallas pendientes.
-
-- [006 — Revisión técnica final](006-currency.md): infraestructura conforme con límite CORS documentado; sin UI ni aceptación humana final.
-
-- [005-T01 — Revisión técnica](005-simulations-api-t01.md): contratos conformes, servicio/API pendientes; sin aceptación humana final.
-
-- [001](001-foundation.md) y [002](002-persistence.md): revisiones documentales retrospectivas de Codex, sin nueva ejecución de la aplicación.
-- [Antecedente importado](planning-document-review.md): informe sobre otro paquete, no verificado de nuevo en este repo.
-
-- [003 — Revisión técnica de implementación](003-customers-api.md), sin aceptación humana final.
+Las revisiones intermedias de 004/005 se han consolidado editorialmente en las finales, sin atribuir una nueva evaluación de código. Las referencias a síntesis actuales no acreditan conservación de antiguos prompts o ADR eliminados. Los originales retirados pueden consultarse en el historial Git, no se presentan como archivos todavía disponibles.

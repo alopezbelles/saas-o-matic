@@ -1,6 +1,6 @@
 # 007-T05 — E2E mantenido y cierre global
 
-16 de noviembre de 2026, base 8a947eb y Git inicial limpio. [Instrucción previa](../prompts/007-customers-ui.md#t05--instrucción-previa-de-implementación), [validación canónica](../../specs/007-customers-ui/validation.md#t05--e2e-real-revisión-visual-y-cierre-global).
+16 de noviembre de 2026, base 8a947eb y Git inicial limpio. [Instrucción previa](../features/007-customers-ui/prompts.md), [validación canónica](../../specs/007-customers-ui/validation.md#t05--e2e-real-revisión-visual-y-cierre-global).
 
 ## Ejecuciones finales
 
@@ -20,7 +20,7 @@ Node 22.19.0, pnpm 10.33.4 y Playwright 1.65.1/Chromium instalado en caché del 
 
 Cuatro E2E funcionales en customers.spec.mjs: fiscal 422→corrección→201/persistencia/ficha/recarga/duplicado, listado/búsqueda/páginas/atrás/adelante/retorno/cancelación, histórico EUR/503 independiente/reintento/recarga, y vacíos/ID inválido/404/query inválida/restablecimiento. API y Vite reales con SQLite exclusiva por prueba; no mocks de datos como sustituto del flujo.
 
-Siete casos VISUAL-007: tres pantallas a cuatro anchos, zoom de layout 200 % y reflujo equivalente, teclado/foco y contraste. Cada prueba comprueba ausencia de errores de página; reflujo mide scrollWidth. Capturas reales conservadas y revisadas en [evidencia visual](../visuals/007-customers-ui-t05.md).
+Siete casos VISUAL-007: tres pantallas a cuatro anchos, zoom de layout 200 % y reflujo equivalente, teclado/foco y contraste. Cada prueba comprueba ausencia de errores de página; reflujo mide scrollWidth. Capturas reales conservadas y revisadas en [evidencia visual](../../specs/007-customers-ui/validation.md).
 
 Contraste obtenido de getComputedStyle y fórmula de luminancia: descripción 5,749:1; ayuda 6,279:1; texto de campo 14,102:1; borde de campo/select 3,628:1; acción principal/cancelar 6,020:1; error inline 6,574:1. Foco ≥3:1 verificado. Valores de medición completos adjuntos al reporte original. No es auditoría exhaustiva de todos los estados/elementos.
 
@@ -39,3 +39,5 @@ Cierre documental: pnpm.cmd test:docs (2 pruebas), pnpm.cmd format:check y git d
 Fixture crea contexto/DB de pruebas marcada, migra e inserta fixtures mediante repositorios existentes; API/Vite en puertos efímeros. Comprueba proxy real 3000/rewrite y sustituye solo target para aislamiento. finally cierra recursos y verifica raíz/prefijo del directorio antes de limpiar. .cache/002-tests vacío tras ejecuciones. git diff --exit-code -- apps/api packages/shared/src pnpm-lock.yaml devuelve 0; sin datos existentes ni instalaciones nuevas.
 
 Solo Chromium local, sin lector de pantalla real, Safari/Firefox, menú nativo de zoom ni despliegue. Zoom probado con CSS layout 2× a 1280 px y reflujo equivalente de 640 px; no se atribuye una interacción nativa. No certificación global WCAG ni aceptación humana final. Sin commits/pushes.
+
+Nota editorial: las capturas y el índice visual históricos enlazados anteriormente ya no están disponibles en el árbol actual. Los enlaces de contexto apuntan ahora a la validación escrita, que no sustituye esos artefactos originales. Las afirmaciones anteriores describen su disponibilidad durante la ejecución histórica.

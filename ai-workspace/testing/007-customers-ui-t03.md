@@ -1,6 +1,6 @@
 # 007-T03 — Alta integrada y recuperación segura
 
-16 de noviembre de 2026. Base 83b9432. Alcance autorizado: T03; [instrucción previa](../prompts/007-customers-ui.md#t03--instrucción-previa-de-implementación), [validación canónica](../../specs/007-customers-ui/validation.md#t03--alta-integrada-y-recuperación-segura).
+16 de noviembre de 2026. Base 83b9432. Alcance autorizado: T03; [instrucción previa](../features/007-customers-ui/prompts.md), [validación canónica](../../specs/007-customers-ui/validation.md#t03--alta-integrada-y-recuperación-segura).
 
 ## Controles ejecutados
 
@@ -26,10 +26,12 @@ Dos regresiones de navegación verifican cancelación contextual y éxito→ID p
 
 Diagnóstico temporal .cache/007-t03-browser.mjs ejecutado con PLAYWRIGHT_BROWSERS_PATH apuntando a .cache/playwright. Chromium, Vite y API usan puertos propios; SQLite se crea mediante createTestContext y se limpia tras cerrar recursos, verificando la ruta. No utiliza DB existente.
 
-Flujo: formulario con configuración real → DNI de control inválido/422 y foco en resumen → corrección/201 → URL del ID persistido y anuncio → listado muestra cliente → duplicado/409, total permanece uno. Se consulta GET del ID para confirmar datos guardados. Cuatro anchos 320/390/768/1440, scrollWidth igual al viewport, cero errores de página. [Salida real](007-customers-ui-t03-browser.txt), [capturas revisadas](../visuals/007-customers-ui-t03.md).
+Flujo: formulario con configuración real → DNI de control inválido/422 y foco en resumen → corrección/201 → URL del ID persistido y anuncio → listado muestra cliente → duplicado/409, total permanece uno. Se consulta GET del ID para confirmar datos guardados. Cuatro anchos 320/390/768/1440, scrollWidth igual al viewport, cero errores de página. [Salida real](007-customers-ui-t03-browser.txt), [capturas revisadas](../../specs/007-customers-ui/validation.md).
 
 ## Límites
 
 Cierre documental: pnpm.cmd test:docs (2 pruebas), pnpm.cmd format:check y git diff --check correctos, código 0. Auditoría git diff --exit-code -- apps/api packages/shared/src pnpm-lock.yaml devuelve 0; .cache/002-tests vacío tras cerrar las pruebas.
 
 Ficha completa e historial son T04. Runner E2E mantenido, zoom 200%, auditoría exhaustiva de contraste/teclado y aceptación humana final pertenecen a T05; este diagnóstico no los sustituye. No se cambia dominio/backend/persistencia/dependencias. Sin commits/pushes.
+
+Nota editorial: las capturas y el índice visual históricos enlazados anteriormente ya no están disponibles en el árbol actual. Los enlaces de contexto apuntan ahora a la validación escrita, que no sustituye esos artefactos originales. Las afirmaciones anteriores describen su disponibilidad durante la ejecución histórica.

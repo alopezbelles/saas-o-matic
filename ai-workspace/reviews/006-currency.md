@@ -19,7 +19,7 @@ Caché congelada, instancia compartida sin petición al importar, timeout cubre 
 
 ## Calidad y limitaciones
 
-[Pruebas y salida real](../testing/006-currency.md): 122 pruebas correctas y controles globales conformes. Incidencias de helper T03 y lint T05 conservadas en [iteración](../iterations/006-currency.md). No se inventa evidencia contemporánea: estos registros son retrospectivos.
+[Pruebas y salida real](../testing/006-currency.md): 122 pruebas correctas y controles globales conformes. Incidencias de helper T03 y lint T05 conservadas en [iteración](../features/006-currency/iterations.md). No se inventa evidencia contemporánea: estos registros son retrospectivos.
 
 CORS no acreditado por fallo del navegador del entorno. Antes de integrar UI, verificar acceso real; si falla por CORS, consultar alternativa antes de proxy. Pendientes visuales: hook, selector, formato, mensajes/carga/reintento, fecha/atribución y E2E de usuario.
 

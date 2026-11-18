@@ -32,4 +32,4 @@ DTO y contratos compilan con TypeScript strict sin tipos ORM. Esto no equivale a
 No se ejecutaron build completo, integración/web/gates ni test completo durante T01; se reservan para el cierre T05. typecheck sí verificó workspaces y test:unit compiló shared/API.
 Sin DB, instalación, migración ni commits. RF completos de 005 todavía pendientes; solo contratos/parsers conformes.
 Comprobación real después de crear estos registros: pnpm.cmd format:check devuelve 0; pnpm.cmd test:docs devuelve 0 (2 tests pasan) y git diff --check devuelve 0. No se repitieron controles funcionales para una modificación solo documental; los 37 unitarios siguen siendo evidencia de T01, no una ejecución nueva atribuida al registro.
-[Revisión](../reviews/005-simulations-api-t01.md) e [iteración](../iterations/005-simulations-api.md).
+[Revisión](../reviews/005-simulations-api-t05.md) e [iteración](../features/005-simulations-api/iterations.md).

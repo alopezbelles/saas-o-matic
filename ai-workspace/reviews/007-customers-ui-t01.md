@@ -1,6 +1,6 @@
 # 007-T01 — Revisión técnica
 
-16 de noviembre de 2026. Alcance autorizado T01, decisiones de [clarifications](../../specs/007-customers-ui/clarifications.md) e [instrucción previa](../prompts/007-customers-ui.md#t01--instrucción-previa-de-implementación).
+16 de noviembre de 2026. Alcance autorizado T01, decisiones de [clarifications](../../specs/007-customers-ui/clarifications.md) e [instrucción previa](../features/007-customers-ui/prompts.md).
 
 Shell con navegación superior, breadcrumbs y rutas directas /customers, /customers/new, /customers/:id y 404. El contenido provisional informa de disponibilidad futura; no presenta altas o clientes simulados. Tokens/global y CSS Modules comparten estilo; fuente del sistema y HTML semántico. Salto al contenido y foco de navegación comprobados en Chromium.
 

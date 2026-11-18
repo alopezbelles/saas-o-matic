@@ -53,14 +53,14 @@ Al actualizar registros/README, formato global y test:docs se repiten con códig
 15 de noviembre de 2026, base 7d968a2. Histórico paginado con total/orden/snapshots bajo transacción de lectura, sin motor. Configuración completa no-store desde reglas/versiones/tasas/límites reales y sin DB. Getter de precios devuelve copias del dominio, sin referencias mutables.
 Lint/typecheck correctos; primer focalizado 14/15 por fixture genérico que esperaba 503. Se corrige solo fixture a HttpError(503), repetición 15/15 correcta. Regresiones finales: 37 unitarios y 49 integración, sin omitidos. Sin cambios de schema, DB real, dependencias ni commits.
 Al cierre, formato global, test:docs (2 pruebas) y git diff --check pasan, todos con código 0.
-[Comandos y límites](../../ai-workspace/testing/005-simulations-api-t04.md), [salida inicial/final](../../ai-workspace/testing/005-simulations-api-t04.txt) y [revisión](../../ai-workspace/reviews/005-simulations-api-t04.md). T05 pendiente; sin aceptación humana final.
+[Comandos y límites](../../ai-workspace/testing/005-simulations-api-t04.md), [salida inicial/final](../../ai-workspace/testing/005-simulations-api-t04.txt) y [revisión](../../ai-workspace/reviews/005-simulations-api-t05.md). T05 pendiente; sin aceptación humana final.
 
 ## T03 — Alta HTTP y errores
 
 15 de noviembre de 2026, base d9b887a. POST /simulations usa parser antes de DB, servicio T02 y respuesta 201 después del commit. Protocolo JSON compartido con clientes; BillingError traducido y mensajes/logs sanitizados.
 Lint/typecheck correctos. Siete pruebas HTTP focalizadas pasan y se integran en suite: regresiones de 37 unitarios y 41 integración correctas. Incluyen 201/400/404/413/415/422/503/500, cero con país no soportado, DB ausente/busy y recuperación, fallo AFTER INSERT con rollback y no filtración de PII/SQL/stack.
 Al cierre, formato global, test:docs (2 pruebas) y git diff --check pasan, todos con código 0.
-[Comandos/límites](../../ai-workspace/testing/005-simulations-api-t03.md), [salida](../../ai-workspace/testing/005-simulations-api-t03.txt) y [revisión](../../ai-workspace/reviews/005-simulations-api-t03.md). Sin schema, dependencias, DB real ni commits. Endpoints GET reservados a T04.
+[Comandos/límites](../../ai-workspace/testing/005-simulations-api-t03.md), [salida](../../ai-workspace/testing/005-simulations-api-t03.txt) y [revisión](../../ai-workspace/reviews/005-simulations-api-t05.md). Sin schema, dependencias, DB real ni commits. Endpoints GET reservados a T04.
 
 ## T02 — Servicio y guardado transaccional
 
@@ -68,7 +68,7 @@ Al cierre, formato global, test:docs (2 pruebas) y git diff --check pasan, todos
 Lint/typecheck pasan; 9 pruebas focalizadas pasan y se añaden al runner de integración. Regresión: 37 unitarios y 34 integración pasan, sin omitidos. No duplicar el recuento de pruebas focalizadas ya incluidas en integración.
 Tras actualizar documentos, formato global, test:docs (2 pruebas) y git diff --check pasan con código 0.
 IT-SIM-01/02: ES 15/51, consumos/cero/máximos, cuatro países, snapshots, repetidos, reapertura y rollback real AFTER INSERT/exterior. IT-SNAPSHOT-005: bloqueo de cambio de cliente desde otra conexión y conservación histórica frente a cambios de cliente/política fixture. Mapper rechaza datos incoherentes sin recalcular.
-[Comandos y límites](../../ai-workspace/testing/005-simulations-api-t02.md), [salida real](../../ai-workspace/testing/005-simulations-api-t02.txt) y [revisión](../../ai-workspace/reviews/005-simulations-api-t02.md). Sin DB real, dependencias, migraciones, commits ni aceptación humana final.
+[Comandos y límites](../../ai-workspace/testing/005-simulations-api-t02.md), [salida real](../../ai-workspace/testing/005-simulations-api-t02.txt) y [revisión](../../ai-workspace/reviews/005-simulations-api-t05.md). Sin DB real, dependencias, migraciones, commits ni aceptación humana final.
 
 ## T01 — Contratos y parsers
 
@@ -94,7 +94,7 @@ Revisión técnica: CUMPLE TÉCNICAMENTE T01; ninguna ruta ni servicio/SQL de 00
 
 ### Registro posterior autorizado en ai-workspace
 
-Después de T01, Alex autoriza documentar preparación, prompts, decisiones y verificaciones. Se añaden [prompts con procedencia](../../ai-workspace/prompts/005-simulations-api.md), [iteración](../../ai-workspace/iterations/005-simulations-api.md), [pruebas](../../ai-workspace/testing/005-simulations-api-t01.md) y [revisión](../../ai-workspace/reviews/005-simulations-api-t01.md).
+Después de T01, Alex autoriza documentar preparación, prompts, decisiones y verificaciones. Se añaden [prompts con procedencia](../../ai-workspace/prompts/005-simulations-api.md), [iteración](../../ai-workspace/iterations/005-simulations-api.md), [pruebas](../../ai-workspace/testing/005-simulations-api-t01.md) y [revisión](../../ai-workspace/reviews/005-simulations-api-t05.md).
 Son retrospectivos, salvo la instrucción real conservada en el plan. No se reconstruye salida cruda ni se atribuye aceptación humana. La exclusión anterior corresponde a la fase inicial; este registro posterior está autorizado.
 Verificación de este bloque documental: format:check global, test:docs (2 pruebas) y git diff --check pasan, todos con código 0. Sin nueva ejecución funcional ni cambios de código por el registro.
 
@@ -102,3 +102,7 @@ Verificación de este bloque documental: format:check global, test:docs (2 prueb
 
 Por tarea: fecha, versión identificable, comandos exactos, códigos/salidas, casos, fallos, límites y revisión técnica. Evidencia real, sin marcar PASS por inspección o planificación.
 Mantener registros pertinentes siguiendo la autorización posterior de Alex y el harness; la exclusión inicial no impide el registro ahora autorizado. La aceptación humana de la entrega requiere confirmación posterior y se distingue del cierre técnico.
+
+## Mantenimiento editorial de referencias
+
+Las revisiones intermedias de esta feature se han consolidado posteriormente en la review final, que identifica esa consolidación. Los enlaces actuales no convierten dicha síntesis en una revisión contemporánea de cada tarea. Resultados, versiones y salidas originales anteriores se mantienen; no se ejecutan nuevas pruebas funcionales por esta limpieza.

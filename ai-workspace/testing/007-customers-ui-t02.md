@@ -1,6 +1,6 @@
 # 007-T02 — Verificación del listado y adaptador
 
-16 de noviembre de 2026. Base Git 0436e20 y cambios de T02. Windows PowerShell, Node 22.19.0 y pnpm 10.33.4 existentes. [Instrucción previa](../prompts/007-customers-ui.md#t02--instrucción-previa-de-implementación).
+16 de noviembre de 2026. Base Git 0436e20 y cambios de T02. Windows PowerShell, Node 22.19.0 y pnpm 10.33.4 existentes. [Instrucción previa](../features/007-customers-ui/prompts.md).
 
 ## Ejecución real
 
@@ -31,7 +31,7 @@ No instalación ni dependencias nuevas. Dev/build web compilan shared antes de V
 
 Smoke ejecutado mediante node .cache/007-t02-browser.mjs con PLAYWRIGHT_BROWSERS_PATH bajo .cache/playwright. Crea DB exclusiva mediante createTestContext/migraciones existentes e inserta 21 clientes ficticios deterministas. API Express y Vite usan puertos temporales; se comprueba que la configuración de desarrollo apunta a 3000 y retira /api, sustituyendo solo el target del backend para el smoke aislado.
 
-Chromium obtiene datos atravesando proxy real y SQLite. Valida cuatro anchos (320/390/768/1440), búsqueda/paginación, vuelta desde ficha, recarga con q, 503 conservando búsqueda y recuperación, vacío e invalid URL. ScrollWidth igual al viewport en todos los tamaños. Cero errores de página. [Salida](007-customers-ui-t02-browser.txt), [capturas revisadas](../visuals/007-customers-ui-t02.md).
+Chromium obtiene datos atravesando proxy real y SQLite. Valida cuatro anchos (320/390/768/1440), búsqueda/paginación, vuelta desde ficha, recarga con q, 503 conservando búsqueda y recuperación, vacío e invalid URL. ScrollWidth igual al viewport en todos los tamaños. Cero errores de página. [Salida](007-customers-ui-t02-browser.txt), [capturas revisadas](../../specs/007-customers-ui/validation.md).
 
 No se usan bases existentes ni se añade script E2E incompleto. El diagnóstico temporal inicia/cierra sus procesos y verifica el directorio propio antes de limpiarlo. .cache/002-tests quedó vacío tras pruebas. La validación completa de alta/E2E/zoom de 007 queda para T03–T05.
 
@@ -40,3 +40,5 @@ No se usan bases existentes ni se añade script E2E incompleto. El diagnóstico 
 git diff --exit-code -- apps/api packages/shared/src pnpm-lock.yaml devolvió 0. Contratos y persistencia conservados. Formularios y ficha/historial siguen pendientes. Aceptación humana final no registrada; sin commits/pushes del agente.
 
 Cierre documental real: pnpm.cmd test:docs (2 pruebas), pnpm.cmd format:check y git diff --check correctos, código 0. [Validación canónica](../../specs/007-customers-ui/validation.md#t02--adaptador-api-listado-y-búsqueda).
+
+Nota editorial: las capturas y el índice visual históricos enlazados anteriormente ya no están disponibles en el árbol actual. Los enlaces de contexto apuntan ahora a la validación escrita, que no sustituye esos artefactos originales. Las afirmaciones anteriores describen su disponibilidad durante la ejecución histórica.

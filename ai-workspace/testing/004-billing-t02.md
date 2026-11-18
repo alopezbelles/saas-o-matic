@@ -43,4 +43,4 @@ git diff --check
 ```
 
 No se ejecutaron pnpm build completo, pnpm test completo ni suites integración/web/gates, reservados a T05. test:unit compila shared/API. Sin DB ni HTTP, nuevas dependencias o commits.
-[Validación](../../specs/004-billing/validation.md), [revisión](../reviews/004-billing-t02.md).
+[Validación](../../specs/004-billing/validation.md), [revisión](../reviews/004-billing-t05.md).

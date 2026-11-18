@@ -32,4 +32,4 @@ Regresiones finales: 37 unitarios y 49 integración (41 anteriores + 5 históric
 ## Límites
 
 Sin migración, esquema, dependencias, DB real, UI, FX ni commits. SQLite solo temporal. No altera listSimulations de 002 ni consulta el motor al listar histórico.
-Tras actualizar registros: pnpm.cmd format:check devuelve 0, pnpm.cmd test:docs devuelve 0 (2 pruebas correctas) y git diff --check devuelve 0. [Validación](../../specs/005-simulations-api/validation.md), [revisión](../reviews/005-simulations-api-t04.md).
+Tras actualizar registros: pnpm.cmd format:check devuelve 0, pnpm.cmd test:docs devuelve 0 (2 pruebas correctas) y git diff --check devuelve 0. [Validación](../../specs/005-simulations-api/validation.md), [revisión](../reviews/005-simulations-api-t05.md).

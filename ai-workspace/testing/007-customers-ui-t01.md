@@ -26,7 +26,7 @@ Descubrimiento aislado: node:test test/_.test.mjs; Vitest src/\**/_.test.{ts,tsx
 
 ## Navegador real
 
-Smoke de shell ejecutado con Chromium Playwright desde Vite en puerto temporal, reloj/red reales solo para recursos locales. Verificó rutas directas, recarga de alta, retorno de 404, foco, salto al contenido y anchos 320/390/768/1440. ScrollWidth igual al ancho en los cuatro. Cero errores de página. [Salida conservada](007-customers-ui-t01-browser.txt) y [capturas](../visuals/007-customers-ui-t01.md).
+Smoke de shell ejecutado con Chromium Playwright desde Vite en puerto temporal, reloj/red reales solo para recursos locales. Verificó rutas directas, recarga de alta, retorno de 404, foco, salto al contenido y anchos 320/390/768/1440. ScrollWidth igual al ancho en los cuatro. Cero errores de página. [Salida conservada](007-customers-ui-t01-browser.txt) y [capturas](../../specs/007-customers-ui/validation.md).
 
 El script diagnóstico inicial usó import nombrado de un entry CJS de Playwright y falló antes de lanzar navegador; se corrigió lectura del export default y el smoke pasó. Script local bajo .cache, no runner de alta E2E.
 
@@ -37,3 +37,5 @@ No se verificaron formularios, datos de clientes, zoom 200% o estados finales de
 Diff de apps/api y packages/shared/src vacío. Solo dependencias web/lockfile, shell, tests y documentación cambiados. Integración usa SQLite temporal del runner; .cache/002-tests vacío después de suite, sin datos reales o commits.
 
 RF5 parcial, T01 conforme técnicamente. T02–T05 pendientes y aceptación humana final no registrada. Tras dos regresiones de barra final, pnpm.cmd lint/typecheck/test:web pasan con 22 node + 10 componentes. La suite global inicial conserva 130 resultados; la web final se verificó por separado. [Log global inicial](007-customers-ui-t01.txt), [log web final](007-customers-ui-t01-web.txt) y [validación canónica](../../specs/007-customers-ui/validation.md). Cierre documental: pnpm.cmd test:docs (2), pnpm.cmd format:check y git diff --check correctos, código 0.
+
+Nota editorial: las capturas y el índice visual históricos enlazados anteriormente ya no están disponibles en el árbol actual. Los enlaces de contexto apuntan ahora a la validación escrita, que no sustituye esos artefactos originales. Las afirmaciones anteriores describen su disponibilidad durante la ejecución histórica.

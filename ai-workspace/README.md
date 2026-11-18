@@ -71,7 +71,7 @@ Merece la pena crear un registro cuando se verifica un comportamiento crítico, 
 
 Una review debe indicar qué se revisó, con qué requisitos o criterios y qué evidencias se consultaron. Puede recoger hallazgos, problemas, conformidad dentro del alcance comprobado, riesgos, límites y acciones pendientes. No sustituye la ejecución de una prueba por una opinión.
 
-La **revisión técnica de Codex** es la evaluación del agente sobre código, documentos y evidencias disponibles. La **revisión humana** recoge comprobaciones o decisiones confirmadas por el responsable del proyecto. Una conclusión de Codex no equivale a aceptación humana y no debe registrarse como tal. La [revisión de facturación](reviews/004-billing-t04.md) ilustra esa separación.
+La **revisión técnica de Codex** es la evaluación del agente sobre código, documentos y evidencias disponibles. La **revisión humana** recoge comprobaciones o decisiones confirmadas por el responsable del proyecto. Una conclusión de Codex no equivale a aceptación humana y no debe registrarse como tal. La [revisión de facturación](reviews/004-billing-t05.md) ilustra esa separación.
 
 Una review aporta valor cuando existe evaluación significativa de requisitos, riesgos o defectos, una conclusión técnica que preservar o un cierre de feature que requiere revisión. No se exige un archivo de testing y otro de review por cada tarea.
 
@@ -79,6 +79,6 @@ Una review aporta valor cuando existe evaluación significativa de requisitos, r
 
 La [validación de la feature](../specs/004-billing/validation.md) debe enlazar los registros complementarios pertinentes; estos deben remitir a ella sin copiar matrices o resultados completos. Las [reglas de testing](../docs/testing.md) y el [protocolo SDD](../docs/sdd-harness.md) desarrollan el procedimiento.
 
-Los nombres deben identificar feature y tarea cuando resulte útil, como `testing/004-billing-t04.md` y `reviews/004-billing-t04.md`, o la feature completa, como `testing/002-persistence.md`. Deben respetarse los nombres históricos: no se renombrarán archivos ni se trasladarán a features/ solo para uniformar su organización.
+Los nombres deben identificar feature y tarea cuando resulte útil, como `testing/004-billing-t04.md` para una ejecución concreta y `reviews/004-billing-t05.md` para una revisión consolidada, o la feature completa, como `testing/006-currency.md`. Deben respetarse los nombres históricos: no se renombrarán archivos ni se trasladarán a features/ solo para uniformar su organización.
 
 Los registros deben distinguir hechos observados e interpretaciones, ejecuciones nuevas y evidencia histórica. Las retrospectivas deben identificarse y conservar procedencia. No se deben inventar resultados, modificar silenciosamente los anteriores, presentar revisiones documentales como nuevas pruebas de código o atribuir aprobaciones humanas no confirmadas. Si faltan artefactos o quedan verificaciones pendientes, debe indicarse y enlazarse la fuente original disponible.

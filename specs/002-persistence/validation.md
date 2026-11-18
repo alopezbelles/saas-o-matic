@@ -76,5 +76,5 @@ Fuentes: [releases del driver](https://github.com/WiseLibs/better-sqlite3/releas
 
 ## Registro retrospectivo del proceso
 
-Añadido el 14 de noviembre de 2026, después del desarrollo: [iteración](../../ai-workspace/iterations/002-persistence-retrospective.md), [instrucciones técnicas reformuladas](../../ai-workspace/prompts/002-persistence.md), [resumen de evidencia](../../ai-workspace/testing/002-persistence.md) y [revisión documental](../../ai-workspace/reviews/002-persistence.md).
+Añadido el 14 de noviembre de 2026, después del desarrollo: [iteración](../../ai-workspace/iterations/002-persistence-retrospective.md), [instrucciones técnicas reformuladas](../../ai-workspace/prompts/002-persistence.md), resumen y revisión documental retrospectivos (retirados posteriormente por duplicación; se conserva la [salida original](../../ai-workspace/testing/002-tests.txt)).
 No se reejecutan tests de aplicación por añadir esta documentación. Se conserva la salida original 002-tests.txt sin modificarla; la aceptación humana sigue siendo un estado separado.

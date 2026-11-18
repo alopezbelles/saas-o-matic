@@ -14,6 +14,8 @@ Tabla desktop y reflujo móvil reutilizan tokens y acción «+ Nuevo cliente»; 
 
 ## Verificación y límites
 
-152 pruebas globales correctas. Smoke con proxy real/API/SQLite temporal verifica listado y recuperación a cuatro tamaños; capturas inspeccionadas. Incidencia inicial del selector status corregida y conservada. [Capturas](../visuals/007-customers-ui-t02.md).
+152 pruebas globales correctas. Smoke con proxy real/API/SQLite temporal verifica listado y recuperación a cuatro tamaños; capturas inspeccionadas. Incidencia inicial del selector status corregida y conservada. [Capturas](../../specs/007-customers-ui/validation.md).
 
 Archivos revisados mantienen responsabilidades cohesionadas y menos de 300 líneas cada uno. No se desarrolla alta/ficha completa ni se afirma aceptación humana final. Documentación de cierre/enlaces se verifica aparte; no se equipara este smoke con el flujo de alta E2E de T05.
+
+Nota editorial: las capturas y el índice visual históricos enlazados anteriormente ya no están disponibles en el árbol actual. Los enlaces de contexto apuntan ahora a la validación escrita, que no sustituye esos artefactos originales. Las afirmaciones anteriores describen su disponibilidad durante la ejecución histórica.

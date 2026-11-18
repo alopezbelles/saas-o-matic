@@ -34,4 +34,4 @@ Todos devuelven 0. Prueba focalizada: 9 casos nuevos pasan. Regresión: 37 unita
 Solo SQLite bajo contextos temporales de fixture existente, con cierre y limpieza comprobados por suite. No DB real/demo, SQL de migración ni schema modificado.
 Sin endpoints nuevos; traducción HTTP de BillingError y validación de body antes de DB pertenecen a T03. El servicio recibe CreateSimulation ya parseado; no repite el parser de transporte.
 Tras actualizar registros se ejecutaron pnpm.cmd format:check (0), pnpm.cmd test:docs (0, 2 pruebas correctas) y git diff --check (0). Sin repetir pruebas funcionales por los cambios exclusivamente documentales posteriores.
-[Validación canónica](../../specs/005-simulations-api/validation.md) y [revisión](../reviews/005-simulations-api-t02.md).
+[Validación canónica](../../specs/005-simulations-api/validation.md) y [revisión](../reviews/005-simulations-api-t05.md).

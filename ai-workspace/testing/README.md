@@ -1,29 +1,26 @@
-# Evidencias de pruebas
+# Evidencias de ejecución
 
-[010-T04 — Contenido y preparación externa](010-delivery-t04.md): inventario, escaneo acotado y límites de publicación, con [resultado estructurado](010-delivery-t04-scan.json). No es una nueva suite funcional ni una publicación.
+La referencia de cumplimiento de cada feature es su `specs/<feature>/validation.md`. Esta carpeta conserva resúmenes con contexto y artefactos originales que permiten profundizar, sin sumar resultados de versiones distintas ni convertir una revisión documental en nueva ejecución.
 
-[010-T03 — Ensayo limpio](010-delivery-t03.md): instalación congelada desde exportación 33774eb, demo/flujo real, 276 pruebas generales y 36 E2E; incidencias de entorno y cleanup conservadas en el [resumen](010-delivery-t03-results.json).
+## Recorrido recomendado
 
-[008–010 — Índice de resultados y artefactos](008-010-evidence-index.md): ejecuciones históricas separadas, versiones/límites y verificación documental actual de 010-T02. No son nuevas suites funcionales.
+| Área                | Evidencia y valor para la revisión                                                                                                                                    |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Infraestructura     | [001](001-foundation.md): alcance y límites de la evidencia histórica; no se conserva un log íntegro.                                                                 |
+| Persistencia        | [Validación 002](../../specs/002-persistence/validation.md) y [salida original](002-tests.txt): integridad, migraciones, snapshots y recuperación.                    |
+| Clientes API        | [Validación 003](../../specs/003-customers-api/validation.md) y [salida original](003-tests.txt): fiscal, contratos, datos y lifecycle.                               |
+| Facturación         | [Cierre](004-billing-t05.md) y [corrección de formato](004-billing-format-fix.md): distingue lógica correcta del control global inicialmente fallido y su resolución. |
+| Simulaciones API    | [Cierre](005-simulations-api-t05.md) y [fallo/corrección del fixture](005-simulations-api-t04.md): cálculo, transacción e histórico con salidas conservadas.          |
+| Divisas             | [006](006-currency.md): pruebas deterministas, incidencias y límites del intento externo original; comprobación real posterior en la validación de 009.               |
+| Clientes UI         | [Cierre 007](007-customers-ui-t05.md): flujos y correcciones de contraste/foco, con reportes originales iniciales y finales.                                          |
+| Simulador y calidad | [Índice 008–010](008-010-evidence-index.md): fuentes canónicas y límites de artefactos efímeros.                                                                      |
+| Instalación limpia  | [Ensayo 010](010-delivery-t03.md) y [resumen estructurado](010-delivery-t03-results.json): método, incidencias y recuperación en copia aislada.                       |
+| Preparación externa | [Revisión de contenido](010-delivery-t04.md) y [escaneo acotado](010-delivery-t04-scan.json): hallazgos y límites, sin publicación acreditada.                        |
 
-- [007-T05 — Cierre global/E2E](007-customers-ui-t05.md): 209 pruebas globales y 11 Playwright, reportes originales, fallos corregidos y límites explícitos.
+## Registros y artefactos
 
-- [007-T04 — Ficha e historial](007-customers-ui-t04.md): 208 pruebas globales y smoke con importes históricos, páginas 20/1 y errores independientes.
+Los informes intermedios de 004, 005 y 007 se conservan cuando contextualizan alcance, fallos o salidas originales; se localizan desde las validaciones y los cierres anteriores. Los `.txt` y `.json` originales se mantienen sin alterar. Un resumen Markdown no sustituye una salida literal.
 
-- [007-T03 — Alta integrada](007-customers-ui-t03.md): 171 pruebas globales y flujo real 422→201→listado/409 sobre SQLite temporal.
+Las capturas históricas retiradas del árbol no se reconstruyen ni se consideran conservadas porque exista una descripción escrita. Los informes afectados identifican esa ausencia. Las referencias editoriales a features apuntan a síntesis actuales, no a los mensajes originales antes enlazados.
 
-- [007-T02 — Adaptador/listado/búsqueda](007-customers-ui-t02.md): 152 pruebas globales y smoke con proxy/API/SQLite temporal, con logs conservados.
-
-- [007-T01 — Shell y herramientas](007-customers-ui-t01.md), con suite global inicial, web final y smoke Chromium conservados.
-
-- [006 — Resultados por tarea y cierre](006-currency.md), con [salida real T05](006-currency-t05.txt): 122 pruebas correctas en su ejecución original; registro posterior y CORS inconcluso.
-
-- [005-T01 — Contratos y parsers](005-simulations-api-t01.md): resumen retrospectivo autorizado, 37 unitarios y 2 documentales; no suite completa ni endpoints.
-
-- [001 — Resumen histórico](001-foundation.md): referencia a validación; sin log íntegro conservado.
-- [002 — Resumen histórico](002-persistence.md): referencia a validación y [salida real](002-tests.txt).
-
-Los resúmenes son retrospectivos y no representan ejecuciones nuevas. No sumar resultados históricos como cobertura actual.
-Las plantillas vacías no son resultados.
-
-- [003 — Pruebas durante ejecución](003-customers-api.md), con evidencia en su validación.
+Crear registros solo cuando aporten evidencia relevante o expliquen una incidencia; una tarea pequeña puede quedar suficientemente documentada en su validación. Criterios de registro y revisión en el [README de ai-workspace](../README.md).

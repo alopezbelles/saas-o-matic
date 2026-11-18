@@ -46,4 +46,4 @@ pnpm.cmd test:docs
 git diff --check
 ```
 
-[Validación](../../specs/004-billing/validation.md) y [revisión](../reviews/004-billing-t04.md). Sin aceptación humana final ni commits del agente.
+[Validación](../../specs/004-billing/validation.md) y [revisión](../reviews/004-billing-t05.md). Sin aceptación humana final ni commits del agente.

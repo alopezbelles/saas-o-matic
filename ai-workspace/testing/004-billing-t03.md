@@ -45,4 +45,4 @@ git diff --check
 ```
 
 No pnpm build completo ni pnpm test completo, integración/web/gates (previstos para T05). test:unit sí compila shared/API; sin DB/HTTP, instalación ni commits.
-[Validación](../../specs/004-billing/validation.md) y [revisión](../reviews/004-billing-t03.md).
+[Validación](../../specs/004-billing/validation.md) y [revisión](../reviews/004-billing-t05.md).

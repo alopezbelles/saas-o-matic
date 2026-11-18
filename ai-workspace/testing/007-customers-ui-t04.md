@@ -1,6 +1,6 @@
 # 007-T04 — Ficha e historial persistido
 
-16 de noviembre de 2026. Base 010a716; Git inicial limpio. [Instrucción previa](../prompts/007-customers-ui.md#t04--instrucción-previa-de-implementación), [validación canónica](../../specs/007-customers-ui/validation.md#t04--ficha-e-historial-persistido).
+16 de noviembre de 2026. Base 010a716; Git inicial limpio. [Instrucción previa](../features/007-customers-ui/prompts.md), [validación canónica](../../specs/007-customers-ui/validation.md#t04--ficha-e-historial-persistido).
 
 ## Controles ejecutados
 
@@ -26,7 +26,7 @@ WEB-DETAIL-01/WEB-STATE-01: tarjetas y país fuera de selector, ID inválido sin
 
 Diagnóstico .cache/007-t04-browser.mjs con Chromium en .cache/playwright. API/Vite en puertos efímeros, DB de createTestContext con migración explícita y fixtures mediante repositorios existentes. Se comprueba ficha de cliente PT y 21 simulaciones históricas EUR, páginas 20/1, orden/recarga, fallo 503 independiente/reintento conservando tarjetas, retorno contextual, query inválida/restablecimiento, ID inválido/404 y creación→ficha completa/historial vacío.
 
-Cuatro anchos 320/390/768/1440: scrollWidth igual al viewport y cero errores de página. [Salida real](007-customers-ui-t04-browser.txt), [capturas inspeccionadas](../visuals/007-customers-ui-t04.md). Temporales cerrados/limpiados con comprobación previa de ruta; no se abrió DB existente.
+Cuatro anchos 320/390/768/1440: scrollWidth igual al viewport y cero errores de página. [Salida real](007-customers-ui-t04-browser.txt), [capturas inspeccionadas](../../specs/007-customers-ui/validation.md). Temporales cerrados/limpiados con comprobación previa de ruta; no se abrió DB existente.
 
 ## Auditoría y límites
 
@@ -35,3 +35,5 @@ Cierre documental real: pnpm.cmd test:docs (2 pruebas), pnpm.cmd format:check y 
 git diff --exit-code -- apps/api packages/shared/src pnpm-lock.yaml devuelve 0. .cache/002-tests vacío tras pruebas. Sin instalaciones, cambios de esquema, SQL nuevo, datos existentes o commits/pushes.
 
 T05 conserva runner E2E mantenido, zoom 200%, contraste/teclado exhaustivos y revisión global. No afirmar aceptación humana, lector de pantalla o despliegue verificados por este smoke.
+
+Nota editorial: las capturas y el índice visual históricos enlazados anteriormente ya no están disponibles en el árbol actual. Los enlaces de contexto apuntan ahora a la validación escrita, que no sustituye esos artefactos originales. Las afirmaciones anteriores describen su disponibilidad durante la ejecución histórica.

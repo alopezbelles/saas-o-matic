@@ -31,4 +31,4 @@ Ninguna prueba del motor ejecutada; no hay implementación ni tareas completadas
 El gate documental actual comprueba enlaces de docs/specs/ai-workspace y presencia de 003 en memoria, pero no acredita semánticamente que la spec activa sea correcta. Se revisó manualmente el contexto 004; T01 corregirá esa limitación del test.
 No se ejecutan lint, typecheck, build ni suites funcionales por esta modificación exclusivamente documental. T01 y siguientes tendrán sus propios controles.
 
-[Spec](../../specs/004-billing/spec.md), [validación](../../specs/004-billing/validation.md), [prompts reformulados](../prompts/004-billing.md) y [iteración](../iterations/004-billing.md).
+[Spec](../../specs/004-billing/spec.md), [validación](../../specs/004-billing/validation.md), [prompts reformulados](../features/004-billing/prompts.md) y [iteración](../features/004-billing/iterations.md).
