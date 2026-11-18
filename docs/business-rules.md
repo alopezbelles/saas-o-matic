@@ -1,61 +1,160 @@
 # Reglas de negocio
 
-Solo BR01 y los datos exigidos proceden directamente de S1; las políticas complementarias se relacionan con las decisiones indicadas.
+## Alcance y autoridad
 
-## BR01 — tramos oficiales
+Este documento establece las reglas funcionales vigentes que deben respetarse al especificar, diseñar e implementar SaaS-O-Matic. Las specs concretan contratos y casos de aceptación; el código no puede redefinir estas reglas para justificar un comportamiento distinto.
 
-n entero no negativo. Céntimos:
-a=min(n,10); b=min(max(n-10,0),40); c=max(n-50,0).
-base=a*1000+b*800+c*500.
-No aplicar el precio del último tramo a todos los usuarios.
+Se distinguen las siguientes fuentes de autoridad:
 
-| n   | Base EUR | Céntimos |
-| --- | -------- | -------- |
-| 0   | 0,00     | 0        |
-| 10  | 100,00   | 10000    |
-| 11  | 108,00   | 10800    |
-| 15  | 140,00   | 14000    |
-| 50  | 420,00   | 42000    |
-| 51  | 425,00   | 42500    |
+- **Requisitos del enunciado de Roams:** alta de cliente con empresa, identificador fiscal, email, país y plan; control algorítmico del identificador español; simulaciones de consumos persistidas; precios acumulativos por usuarios más impuesto; consulta de clientes y conversión mediante API pública. El cotejo del enunciado se conserva en la [matriz de requisitos](../specs/009-quality/validation.md#qa-review-009--matriz-final-del-enunciado).
+- **Políticas complementarias vigentes del MVP:** límites de consumo, catálogo de planes demo, tasas fiscales de simulación, precisión, catálogo de divisas e inmutabilidad histórica. Concretan aspectos no definidos por el enunciado y no deben presentarse como exigencias oficiales de Roams.
+- **Fuera de alcance:** cobros, facturas legales, suscripciones recurrentes, fiscalidad completa, catálogo comercial real, descuentos, cargos adicionales no definidos y comprobación censal. No se deben deducir estas capacidades del nombre del producto.
 
-## BR02 — consumo y plan
+Si existe contradicción, el enunciado prevalece sobre políticas complementarias y propuestas técnicas. Una discrepancia con una spec o con el código deberá señalarse y resolverse expresamente antes de cambiar comportamiento; no autoriza a alterar silenciosamente el contrato.
 
-Guardar usuarios, storageGb y apiCalls. Almacenamiento/API no tienen precio definido: son metadatos, no cero tarifado por un plan inventado. Plan identifica selección comercial sin alterar base. D02/D04 definidos para persistencia en spec 002: DEMO_BASIC/DEMO_PRO; users 0..1000, storageGb 0..10000 y apiCalls 0..10000000, enteros sin cargos adicionales. No convertir “0 usuarios” en “mínimo 1”.
+## BR01 — Modelo de precios por tramos
 
-## BR03 — impuesto
+**Origen:** tarifas acumulativas del enunciado; cero usuarios y representación monetaria se concretan como política del MVP.
 
-Aplicar después de base, antes de FX. Configuración versionada por país soportado; tasa en puntos básicos (2100 = 21%). Para 004 se acordó demo-standard-v1: ES 2100, FR 2000, DE 1900 y GB 2000 bps. Política de simulación simplificada, sin exenciones, inversión del sujeto pasivo ni particularidades territoriales; no fiscalidad completa de operaciones reales. Configuración/helper de impuesto implementados en T03; presupuesto completo pendiente. [Decisiones 004](../specs/004-billing/clarifications.md).
-taxCents=roundHalfUp(baseCents*rateBps/10000); total=base+tax.
-Usar intermediarios BigInt para evitar overflow; serializar importes como enteros JSON dentro de Number.MAX_SAFE_INTEGER. Valores no negativos: half-up = (numerador + divisor/2) div divisor cuando divisor par.
-País sin política: error TAX_COUNTRY_UNSUPPORTED, no 0% por defecto. No confundir país con jurisdicción completa real. D01/D10 implementadas en T03 y compuestas mediante calculateQuote en T04, incluyendo suma segura de base e impuesto. Cierre global pendiente de T05.
+El cálculo se realizará sobre el número entero no negativo de usuarios activos. Cada usuario deberá contabilizarse en un único tramo:
 
-## BR04 — identificadores fiscales
+| Tramo   | Usuarios incluidos | Precio unitario |
+| ------- | ------------------ | --------------- |
+| Primero | Del 1 al 10        | 10 EUR          |
+| Segundo | Del 11 al 50       | 8 EUR           |
+| Tercero | Desde el 51        | 5 EUR           |
 
-La especificación ejecutable de control para clientes está en [003 fiscal-rules](../specs/003-customers-api/fiscal-rules.md). Se prioriza nota AEAT para K/L/M y tipos de control. La descripción inicial siguiente es contexto histórico y no prevalece sobre esa tabla contrastada.
+Para `n` usuarios, la base en céntimos será:
 
-Normalizar trim y mayúsculas; preservar ceros iniciales. Propuesta rechazar separadores internos, no eliminar caracteres arbitrariamente. País ISO alpha-2 normalizado antes de seleccionar algoritmo.
+```text
+a = min(n, 10)
+b = min(max(n - 10, 0), 40)
+c = max(n - 50, 0)
+baseCents = a × 1000 + b × 800 + c × 500
+```
 
-- DNI: ocho dígitos y letra según resto 23 de TRWAGMYFPDXBNJZSQVHLCKE.
-- NIE X/Y/Z: sustituir prefijo por 0/1/2 y aplicar mismo control. Su inclusión se propone por alcance NIF; D03.
-- Entidades (“CIF” coloquial): prefijo legal + siete dígitos + control. Sumar posiciones pares de los siete dígitos; duplicar impares y sumar cifras; d=(10-(suma mod 10)) mod 10; letra de control JABCDEFGHI[d].
-- Tipo de control por prefijo: propuesta números A/B/E/H, letras P/Q/S, otros admitidos según clasificación verificada. **La tabla completa de entidades, incluidos N/R/W, debe contrastarse con especificación oficial antes de implementar su validación; no aceptar ambos por defecto sin comprobarla.**
-- K/L/M son NIF especiales de persona física, no CIF. Diseñar rama separada; ampliar fixtures y fuente de control antes de cerrar D03. No excluirlos silenciosamente.
-- No españoles: presencia y límites, sin algoritmo español ni promesa de validez fiscal internacional.
+No se permitirá aplicar retroactivamente el precio del último tramo a todos los usuarios. Cero usuarios deberá producir base cero, sin mínimo de uno ni cuota fija añadida. El desglose deberá conservar cantidades, precio unitario y subtotal de cada tramo aplicado.
 
-Checksum correcto no prueba existencia, titularidad ni alta censal. Texto UI: “Formato y carácter de control válidos”, no “empresa verificada”.
-Fuente DNI/NIE: [Interior](https://www.interior.gob.es/opencms/ca/servicios-al-ciudadano/tramites-y-gestiones/dni/calculo-del-digito-de-control-del-nif-nie/).
-Estructura NIF entidades: [BOE EHA/451/2008](https://www.boe.es/buscar/act.php?id=BOE-A-2008-3580). Esta norma fija estructura/prefijos, no se atribuye a ella una tabla completa de checksum no verificada.
+| Usuarios | Base EUR | Base en céntimos |
+| -------- | -------- | ---------------- |
+| 0        | 0,00     | 0                |
+| 10       | 100,00   | 10000            |
+| 11       | 108,00   | 10800            |
+| 15       | 140,00   | 14000            |
+| 50       | 420,00   | 42000            |
+| 51       | 425,00   | 42500            |
 
-## BR05 — monedas
+## BR02 — Consumos y planes
 
-Base e histórico EUR. Conversión de visualización usa tasa EUR→destino validada >0 y fecha del proveedor. No invertirla ni volver a convertir desde una moneda ya convertida.
-006 implementa convertCurrency en packages/shared/src/currency, sin decimal.js ni paquetes nuevos. Tasa decimal transformada en razón BigInt y half-up una sola vez sobre total. Catálogo cerrado EUR/USD/GBP con exponente 2 explícito; otras monedas requieren nueva decisión. Límites de tasa en [plan 006](../specs/006-currency/plan.md).
-Fuente JSON da números: convertir representación recibida a decimal sin realizar operaciones binarias intermedias.
-Convertir únicamente total final EUR; sin líneas convertidas ni importes/tasas FX persistidos. UI y formato visual quedan para próximas specs.
-D05 establece no persistir FX: indicar “Conversión orientativa al tipo de [fecha]”. Tasa actual jamás modifica cents históricos.
-[Proveedor](https://www.exchangerate-api.com/docs/free): endpoint abierto sin clave, actualización diaria, atribución obligatoria, límite de peticiones. “Tiempo real” en UI significa respuesta inmediata al consumo/divisa, no cotización bursátil en directo.
+**Origen:** los tres consumos y la elección de plan proceden del enunciado. Catálogo, límites y ausencia de cargos adicionales son políticas del MVP, recogidas en las [aclaraciones de persistencia](../specs/002-persistence/clarifications.md) y [facturación](../specs/004-billing/clarifications.md).
 
-## BR06 — histórico
+Cada simulación deberá registrar:
 
-Backend obtiene país y plan del cliente; conserva snapshots y versiones, importes y desglose. GET devuelve lo guardado, no llama al motor con política actual. Simulaciones append-only; no API de editar/borrar. Fechas de creación UTC ISO-8601 (instantes, no fechas contables).
-Un guardado fallido no aparece en historial. Un segundo guardado deliberado sí puede crear otra simulación. Doble clic bloqueado en UI; idempotencia de red avanzada fuera del MVP, riesgo documentado.
+| Consumo                   | Unidad   | Rango admitido, inclusivo |
+| ------------------------- | -------- | ------------------------- |
+| Usuarios activos          | Usuarios | 0–1.000                   |
+| Almacenamiento contratado | GB       | 0–10.000                  |
+| Llamadas API estimadas    | Llamadas | 0–10.000.000              |
+
+Los valores deberán ser enteros no negativos. No se admitirán fracciones, valores no numéricos o consumos fuera de rango ni se convertirán entradas inválidas silenciosamente en cero. Los tres consumos deberán validarse aunque solo uno genere coste.
+
+Los únicos planes admitidos serán DEMO_BASIC y DEMO_PRO, identificados como Básico (demo) y Profesional (demo). El plan deberá conservar la elección del cliente, pero no cambiará el precio, añadirá cuotas ni multiplicará importes.
+
+Solo los usuarios activos contribuirán a la base. Almacenamiento y llamadas API se conservarán como consumos informativos: no existe una tarifa definida para ellos. No se permitirá inventar cargos, prestaciones o diferencias comerciales entre planes. Los máximos son límites acordados del MVP, no cuotas comerciales oficiales.
+
+## BR03 — Política de impuestos
+
+**Origen:** sumar impuesto a la base es requisito del enunciado. Tasas, países y redondeo constituyen la política complementaria [demo-standard-v1](../specs/004-billing/clarifications.md).
+
+| País de cálculo | Código | Tasa demo | Puntos básicos |
+| --------------- | ------ | --------- | -------------- |
+| España          | ES     | 21 %      | 2100           |
+| Francia         | FR     | 20 %      | 2000           |
+| Alemania        | DE     | 19 %      | 1900           |
+| Reino Unido     | GB     | 20 %      | 2000           |
+
+El sistema deberá obtener el país del cliente al simular y aplicar el impuesto después de acumular la base completa y antes de convertir divisas:
+
+```text
+taxCents = roundHalfUp(baseCents × rateBps / 10000)
+totalCents = baseCents + taxCents
+```
+
+El impuesto se redondeará una sola vez sobre la base completa, no por tramo. Para valores no negativos, half-up aproxima al entero más cercano y resuelve la mitad exacta hacia arriba. Los importes EUR deberán expresarse en céntimos enteros; se exigirá exactitud en operaciones intermedias y se rechazarán resultados que no puedan representarse como enteros seguros, sin entregar importes parciales.
+
+Ejemplo: 15 usuarios en España producirán base de 140,00 EUR, impuesto de 29,40 EUR y total de 169,40 EUR.
+
+Un país sin tasa configurada deberá impedir el cálculo con error explícito; no equivale a una tasa del 0 %. La presencia y validez de la política deberán comprobarse incluso con cero usuarios. Un fallo de configuración no deberá presentarse como un dato incorrecto introducido por el usuario.
+
+Registrar un cliente de otro país no implica que pueda simularse con esta política. Las tasas deberán quedar identificadas por versión y no cambiar de significado bajo la misma versión. Las tasas sintéticas usadas para comprobar casos límite no constituyen políticas de producto.
+
+Esta política simplifica la simulación: no contempla exenciones, inversión del sujeto pasivo, territorialidad ni todas las circunstancias tributarias de una operación real. No se presentará como liquidación fiscal legal o asesoramiento tributario.
+
+## BR04 — Identificación fiscal
+
+**Origen:** el control algorítmico obligatorio para España procede del enunciado. La normalización, categorías admitidas, unicidad y límites de soporte se concretan en la [especificación fiscal](../specs/003-customers-api/fiscal-rules.md), el [contrato de clientes](../specs/003-customers-api/spec.md) y sus [aclaraciones](../specs/003-customers-api/clarifications.md).
+
+El sistema deberá recortar espacios exteriores y convertir a mayúsculas el identificador normalizado, conservando ceros iniciales. No eliminará separadores o caracteres interiores arbitrariamente. El país deberá normalizarse antes de elegir la regla aplicable.
+
+Para España se exigirá forma canónica de nueve caracteres, sin prefijo VAT ES ni separadores internos:
+
+| Categoría                                       | Formato y control requerido                                                                                 |
+| ----------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| DNI                                             | Ocho dígitos y letra según resto módulo 23 y tabla TRWAGMYFPDXBNJZSQVHLCKE.                                 |
+| NIE                                             | X/Y/Z, siete dígitos y letra; sustituir prefijo por 0/1/2 y aplicar el control módulo 23.                   |
+| NIF especiales K/L/M                            | Prefijo, siete dígitos y letra; módulo 23 sobre los siete dígitos, sin convertir el prefijo.                |
+| NIF de entidades, denominado coloquialmente CIF | Prefijo, siete dígitos y carácter de control de entidad; tipo de carácter según la clasificación siguiente. |
+
+En entidades, los prefijos ABCDEFGHJUV exigirán dígito y NPQRSW exigirán letra. No se aceptarán ambos tipos por defecto. El control se obtendrá sumando los dígitos en posiciones pares de los siete dígitos y las cifras de los dígitos impares duplicados; su complemento módulo 10 determinará el dígito o la letra correspondiente de JABCDEFGHI. La referencia fiscal enlazada detalla fuentes y el criterio adoptado ante discrepancias documentales.
+
+El alcance admitido para K/L/M utiliza la parte numérica verificable de siete dígitos; no promete cubrir formatos alfanuméricos más amplios sin una regla documentada. No se admitirán NIE antiguos de diez caracteres.
+
+Para países distintos de ES se exigirán presencia, longitud y formato estructural del contrato de alta, pero no se aplicará el checksum español ni se prometerá validez fiscal internacional. Los identificadores inválidos deberán rechazarse sin crear el cliente y con indicación del campo afectado.
+
+No se permitirá registrar dos clientes con el mismo país e identificador normalizado. Nombre y email no serán únicos por esta regla. La validación de nuevas altas no autoriza a modificar o eliminar registros históricos preexistentes.
+
+Un formato y checksum correctos no acreditan existencia, titularidad o alta censal. No se deberá describir un cliente como «empresa verificada» basándose únicamente en este control.
+
+## BR05 — Divisas
+
+**Origen:** visualización mediante tipos de cambio de API pública según el enunciado; catálogo y precisión concretados en las [aclaraciones de divisas](../specs/006-currency/clarifications.md).
+
+La moneda base del cálculo y del histórico deberá ser EUR. Las únicas monedas de visualización admitidas serán EUR, USD y GBP, todas con dos decimales. EUR será identidad y no necesitará tasa externa.
+
+La conversión se realizará únicamente sobre el total final EUR, después del impuesto:
+
+```text
+totalDestinoMinor = roundHalfUp(totalEurCents × tasaEURaDestino)
+```
+
+La fórmula expresa unidades menores porque las monedas admitidas comparten exponente dos. La tasa deberá ser positiva, finita, válida y referida explícitamente a EUR→destino. Se deberá preservar su precisión decimal y redondear una sola vez al final; no convertir desde una cantidad ya convertida, invertir la tasa o redondear resultados intermedios.
+
+El desglose, la base y el impuesto permanecerán en EUR. No se convertirán líneas por separado ni se modificarán los céntimos originales. La moneda seleccionada y la tasa de visualización no se almacenarán como parte de la simulación.
+
+La conversión deberá identificarse como orientativa, con fecha de referencia y atribución de la fuente. No deberá presentarse una tasa caducada como vigente ni una cantidad EUR bajo etiqueta USD/GBP. La tasa actual aplicada a un histórico no reproduce necesariamente el cambio existente cuando se guardó.
+
+Si no existe una tasa válida o falla su obtención, el total EUR deberá seguir disponible y se comunicará la limitación, permitiendo una nueva consulta explícita. El fallo de conversión no impedirá guardar una simulación EUR válida ni provocará un nuevo guardado. «Tiempo real» no deberá interpretarse como garantía de cotización bursátil continua.
+
+## BR06 — Histórico de simulaciones
+
+**Origen:** persistir la simulación es requisito del enunciado; conservación inmutable y contexto histórico son políticas de [persistencia](../specs/002-persistence/clarifications.md) y [simulaciones](../specs/005-simulations-api/spec.md).
+
+Cada simulación guardada deberá conservar cliente, tres consumos, moneda EUR, base, impuesto, total, tasa aplicada, desglose, versiones de precios e impuestos, identificador y fecha de creación. Deberá incluir una instantánea de nombre de empresa, identificador fiscal normalizado, país y plan coherentes con el cliente utilizado al calcular.
+
+La fecha deberá representar un instante UTC, no una fecha contable. El sistema deberá calcular el resultado autoritativo a partir de los consumos y del cliente existente; no confiará en precios, tasas o snapshots aportados por el consumidor.
+
+Las simulaciones serán inmutables: no se permitirá editar, eliminar o recalcular automáticamente las guardadas con tarifas, impuestos o datos actuales del cliente. Los cambios posteriores afectarán únicamente a nuevas simulaciones. La consulta deberá devolver importes y contexto originales, con orden de fecha descendente y desempate estable por identificador.
+
+Un fallo antes de confirmar el guardado no deberá dejar una simulación parcial en el histórico. Si la comunicación falla después de que el guardado pudiera haberse confirmado, el resultado se considerará incierto: no se afirmará que no existe ni se reenviará automáticamente; deberá ofrecerse comprobar el histórico.
+
+Se impedirá repetir la misma acción mientras su envío está pendiente. Dos guardados deliberados podrán crear dos registros diferentes: el MVP no garantiza deduplicación avanzada de solicitudes. Una confirmación deberá mostrar el resultado guardado aunque difiera de la previsualización y comunicar la discrepancia sin alterar el registro.
+
+## Invariantes de negocio
+
+- Cada usuario se contabilizará una sola vez en el tramo correspondiente.
+- Los consumos sin tarifa definida y la elección de plan no generarán cargos añadidos.
+- Las cantidades monetarias deberán ser exactas dentro de su rango admitido; el desglose sumará la base y base más impuesto será igual al total.
+- El impuesto se aplicará antes de cualquier conversión orientativa.
+- La ausencia de una regla fiscal o tasa válida no se sustituirá silenciosamente por un valor de reserva inventado.
+- El servidor determinará el resultado persistido y las simulaciones conservarán sus hechos originales.
+- Un estado de guardado incierto no se presentará como éxito o fracaso confirmado sin evidencia.
