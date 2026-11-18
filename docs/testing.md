@@ -1,190 +1,150 @@
-# Verificación
+# Estrategia de testing y aseguramiento de calidad
 
-## Entrega 010 — Cierre T05
+## 1. Propósito y estrategia
 
-RF1–RF4 conformes dentro del alcance acordado. README/ai-workspace concentran la lectura y evidencia. T03 ensayó 33774eb con 276 pruebas generales y 36 E2E; no hubo cambios ejecutables posteriores ni reejecución funcional en T05. Pasan controles actuales de documentos, anclas locales y formato. [Cierre, versiones y pendientes](../specs/010-delivery/validation.md#t05--cierre-técnico-de-la-entrega) y [revisión final](../ai-workspace/reviews/010-delivery-t05.md). Publicación, revisión de rutas locales/historial/visibilidad, hosting y aceptación humana mantienen estados separados. Los apartados siguientes son históricos.
+Las pruebas deben verificar requisitos y reglas, detectar regresiones, comprobar integraciones y proteger datos y resultados históricos. La estrategia debe ofrecer evidencia de comportamientos previsibles ante entradas inválidas, fallos internos y servicios externos no disponibles, y permitir evaluar una entrega reproducible.
 
-## Entrega 010 — T04
+La selección será proporcional al riesgo y alcance: una edición documental no exige las mismas suites que una modificación monetaria o transaccional. No se añadirán pruebas redundantes solo para aumentar recuentos ni porcentajes de cobertura no aprobados. Esta estrategia es normativa; no afirma que cada práctica se aplicara desde el inicio ni presenta resultados históricos como comprobaciones actuales.
 
-DELIVERY-02 completa preparación revisable con inventario, exclusiones, escaneo acotado y condiciones SPA/API/SQLite. Sin coincidencias de credenciales seleccionadas o DB excluidas en 407 archivos base; 22 archivos con rutas locales quedan como decisión de publicación. Historial completo/visibilidad sin verificar. Dos pruebas documentales pasan, sin suites funcionales nuevas. [Presentación y entrega](../README.md#limitaciones-y-entrega) y [evidencia/límites](../specs/010-delivery/validation.md#t04--preparación-externa-revisable). Sin publicación o despliegue; T05 y aceptación humana pendientes.
+Fuentes: [requisitos](requirements.md), [reglas](business-rules.md), [contratos](api-contracts.md), [protocolo SDD](sdd-harness.md) y [trazabilidad](traceability.md). Los resultados pertenecen a `specs/<feature>/validation.md`, no a este documento.
 
-## Entrega 010 — T03
+## 2. Niveles de prueba
 
-DELIVERY-01 y QA-ALL-010 ejecutados desde exportación limpia del commit 33774eb, con pnpm/dependencias/Chromium propios y DB demo nueva. Arranque raíz y flujo alta→simulación→historial correctos, 276 pruebas generales y 36 E2E pasan. Se recuperaron restricciones de red y cleanup del harness; el fallo inicial queda documentado. Base original sin cambios por hash y fixtures/puertos cerrados. [Método, resultados e incidencias](../specs/010-delivery/validation.md#t03--ensayo-de-instalación-limpia). Mismo Windows/Node/npm, sin acreditar otro SO o máquina. T04/T05 y aceptación humana pendientes.
+### Unitarias
 
-## Entrega 010 — T02
+Deberán comprobar funciones y validadores aislados: tramos, impuestos, redondeos, límites monetarios, control fiscal, conversión y parsing de entradas. Se utilizarán esperados independientes de la función productiva, fronteras y casos negativos; comprobar fixtures por sí solo no acredita una regla implementada.
 
-DOC-AUDIT-010: índice y registros pertinentes actualizados por autorización de Alex, con instrucciones canónicas enlazadas, retrospectivas identificadas, evidencia histórica/actual separada y prompts excluidos respetados. Dos pruebas documentales correctas; sin reejecución funcional. [Verificación, procedencia y límites](../specs/010-delivery/validation.md#t02--índice-y-evidencia-del-desarrollo-asistido). T03–T05 y aceptación humana final pendientes.
+El proyecto utiliza Node Test Runner para shared y unitarias API, con pruebas JavaScript sobre módulos compilados. No se deberá confundir ausencia de HTTP/DB con ausencia de validación runtime: los contratos también deben rechazar tipos y valores inválidos.
 
-## Entrega 010 — T01
+### Integración
 
-RF1/RF2/RF3 parciales: README técnico con necesidades/decisiones/SDD/IA, cuatro capturas reales y comando db:demo:setup para DB nueva. IT-DEMO-010 añade tres casos de persistencia/importes/snapshots, CLI y protección de destinos/rutas. 276 pruebas globales correctas; lint/typecheck/formato/build pasan. [Comandos, incidencias, capturas y límites](../specs/010-delivery/validation.md#t01--readme-técnico-y-demo-reproducible). T02–T05 y aceptación humana pendientes; ai-workspace excluido. No se acredita todavía instalación limpia.
+Deberán comprobar colaboraciones reales entre API, operaciones de datos, SQLite y CLI cuando afecten al alcance. Incluyen migraciones, claves foráneas, unicidad, snapshots, rollback, reapertura, bloqueo y recuperación, además de respuestas HTTP y privacidad de errores.
 
-## Calidad 009 — Cierre T05
+Se deberá distinguir una prueba del servicio/repositorio de una prueba de endpoint. Los fallos de inserción deben comprobarse contra la operación real cuando se pretenda acreditar atomicidad, no solo simulando un rechazo frontend. El cierre de proceso mediante evento simulado no deberá presentarse como entrega de una señal nativa del sistema operativo.
 
-RF1–RF6 conformes técnicamente dentro del alcance acordado. 273 pruebas globales y 36 E2E Chromium correctas, sin fallos esperados. Lint, TypeScript, formato, compilación y documentos pasan. 009-QA-01 resuelto; base de desarrollo sin cambios y recursos temporales cerrados/limpiados. FX real conserva la evidencia puntual de T02; el cierre usa fixtures. [Matriz final, comandos, resultados y límites](../specs/009-quality/validation.md#t05--verificación-final-y-cierre-técnico). Aceptación humana final pendiente. README definitivo, auditoría de entrega, checkout limpio y publicación corresponden a 010. Los registros siguientes conservan su alcance histórico.
+### Frontend y componentes
 
-## Calidad 009 — T04
+Vitest con React Testing Library y jsdom deberá comprobar renderizado e interacción, formularios, estados, navegación contextual, respuesta al error y coordinación asíncrona. Los adaptadores deben probar payload, status, DTO y envelope, sin asumir que un cast garantiza datos válidos.
 
-009-QA-01 resuelto técnicamente mediante ajuste local de texto largo en el simulador y su confirmación. Cuatro regresiones con el mismo cliente largo pasan sin fallos esperados; las 14 pruebas visuales existentes también pasan. RF2 conforme dentro del alcance Chromium documentado. [Corrección, resultados y límites](../specs/009-quality/validation.md#t04--corrección-y-regresiones). T05 y aceptación humana final pendientes. Los apartados anteriores de ejecución se conservan como historial.
+Las pruebas deberán cubrir respuestas fuera de orden, aborto, timeout, cambios de parámetros y conservación de campos, además del camino satisfactorio. Mocks de transporte y reloj son apropiados para controlar estas condiciones, pero no acreditan conectividad real.
 
-## 009 — T03
+Web mantiene además Node Test Runner para contrato/cliente FX, composición y smoke de la aplicación compilada. El smoke HTTP de HTML/bundle no sustituye componentes, un recorrido E2E o revisión de accesibilidad.
 
-QA-A11Y-009 reejecuta las suites visuales y añade cuatro casos de carga/error/vacío, referencias accesibles, contenido largo y recuperación por teclado. Resultado, 14 casos correctos y cuatro fallos esperados por 009-QA-01, declarado al final tras pasar las comprobaciones previas. El runner devuelve código 0 con esa expectativa, mientras RF2 queda con cambios necesarios. T04 debe corregir el reflujo y retirar test.fail. [Evidencia, capturas y límites](../specs/009-quality/validation.md#t03--accesibilidad-y-responsive).
+### End-to-end
 
-## 009 — T02
+Playwright con Chromium deberá verificar recorridos completos con API Express, Vite y SQLite temporales reales, por ejemplo alta → ficha → simulación → confirmación → historial y recarga. Los escenarios deben comprobar resultado persistido y recuperación, no solo que una página pueda abrirse.
 
-270 pruebas funcionales actuales correctas mediante test:unit, test:integration y test:web. Playwright ejecuta 32 casos correctos, con una nueva regresión de markup persistido y búsqueda literal. La comprobación del proveedor real usa apps/web/e2e/fx-live.mjs y se invoca explícitamente desde raíz con pnpm --filter @saas-o-matic/web exec node e2e/fx-live.mjs después de compilar API/shared. Reporte y captura bajo .cache/009-t02-fx-live. [Seguridad, resiliencia, FX real e incidencia de red](../specs/009-quality/validation.md#t02--flujos-resiliencia-seguridad-y-fx-real). T03–T05 pendientes.
+La suite de navegador utiliza FX controlado para ser determinista. Esto no convierte el recorrido interno en un mock de API/DB, pero tampoco demuestra una petición al proveedor real. El smoke externo se ejecutará separadamente cuando esté justificado.
 
-## 009 — T01
+## 3. Áreas prioritarias de cobertura
 
-Inventario de suites y matriz inicial en [validación T01](../specs/009-quality/validation.md#t01--inventario-entorno-y-matriz). Playwright descubre 31 casos en 8 archivos. Se ejecuta simulator-flow.spec.mjs como comprobación representativa de entorno/persistencia con FX controlado, conservando el runner y su aislamiento. Reejecución funcional completa, seguridad, FX real y accesibilidad corresponden a tareas posteriores. MEMORY.md y gate documental identifican 009 como spec activa.
+| Área                     | Comprobaciones que deben considerarse                                                                                                                            |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Clientes                 | Cinco datos, normalización, control fiscal por familia, ceros iniciales, duplicados por país/fiscal, búsqueda literal, paginación y detalle.                     |
+| Persistencia             | Esquema y migraciones, referencias, restricciones, destinos seguros, operaciones atómicas, reapertura, snapshots y conservación de datos previos.                |
+| Precios e impuestos      | Fronteras 0/10/11/15/50/51/1000, acumulación, ausencia de cargos secundarios, desglose coherente, redondeo único, política inválida, país sin tarifa y overflow. |
+| Divisas                  | EUR identidad, oráculos USD/GBP, mitad exacta y adyacentes, notación científica, payload/fechas inválidos, vigencia y recuperación.                              |
+| Simulaciones e histórico | Configuración compatible, resultado autoritativo, discrepancias, commit/201, historial sin recálculo, orden y persistencia tras recarga.                         |
+| Errores y privacidad     | Rechazo controlado, errores DB/API/FX, logs y respuestas sanitizados, markup persistido como texto y consultas tratadas como datos.                              |
+| Interfaz                 | Estados independientes, búsqueda/URL/retorno, envío único, guardado incierto, campos retenidos, teclado, foco, reflujo y contenido largo.                        |
 
-## 008 — Cierre T05
+Los casos concretos e identificadores deberán consultarse en las specs y la matriz de trazabilidad. Las pruebas no deberán introducir precios, impuestos, países o reglas de reserva distintos de los aprobados. Las políticas sintéticas de prueba deberán identificarse como tales.
 
-E2E-SIMULATIONS-008 recorre alta→ficha→simulación→resultado→historial con fallo/reintento FX y precio del servidor distinto del preview. VISUAL-008 verifica cuatro anchos, estados, teclado/foco, layout ampliado/reflujo y contraste renderizado. Playwright ejecuta 31 casos, ocho nuevos de T05, conservando regresiones de 007 y 008. Helper de contraste compartido por ambas specs. [Evidencia y límites](../specs/008-simulator-ui/validation.md#t05--flujo-comercial-revisión-visual-y-cierre-global). Bases/puertos temporales por caso y proveedor FX controlado.
+## 4. Entorno y aislamiento
 
-## 008 — T04
+Las pruebas deberán usar datos sintéticos deterministas y contextos propios. Integración y E2E utilizarán bases SQLite temporales bajo `.cache/002-tests`, con marcas de contexto y guardas de acceso; no deberán abrir bases de desarrollo o demo del usuario. Una prueba de demo debe utilizar una demo temporal propia.
 
-WEB-HISTORY-008 verifica retorno/paginación/contexto, comprobación incierta en otra pestaña, actualización/reintento y aviso de discrepancia conservado con importes EUR persistidos. Tres E2E nuevas con API/Vite/SQLite temporal y 12 pruebas de estado de navegación añadidas. El runner existente ejecuta 23 casos de navegador. [Resultados e incidencias](../specs/008-simulator-ui/validation.md#t04--integración-con-historial-y-recuperación). Revisión global de T05 pendiente.
+El entorno E2E crea API/Vite con puertos propios y comprueba el proxy real, sustituyendo únicamente el destino necesario para aislarlo. No requiere servidores personales ya arrancados. Los fixtures deben preparar explícitamente datos y cerrar recursos aunque falle una aserción.
 
-## 008 — T02
+Antes de limpiar se deberán verificar destino absoluto, pertenencia al área temporal y propiedad del recurso. La limpieza solo afectará a conexiones, procesos, archivos y puertos propios; no se usarán borrados amplios o reset de bases reales para facilitar una prueba.
 
-WEB-SIM-01/02 y WEB-FX-008 verifican oráculos EUR, plan/metadata sin cargos, borrador inválido/overflow, conversión solo total, fechas/atribución, caché, errores/reintento, caducidad/foco y respuestas antiguas. Regresiones específicas impiden reintento por vaciar/corregir y mostrar tasa caducada al volver desde EUR. 247 pruebas globales correctas (125 componentes/transporte) y 16 E2E, con tres nuevas de T02: API/SQLite temporal y proveedor FX controlado. Cuatro anchos/geometría/capturas comprobados. [Evidencia y límites](../specs/008-simulator-ui/validation.md#t02--preview-desglose-y-conversión). Sin prueba externa nueva de CORS ni guardado de simulación.
+El descubrimiento de suites debe permanecer separado:
 
-## 008 — T01
+- Shared/API: Node Test Runner sobre los archivos declarados por sus scripts.
+- Node web: `test/*.test.mjs`, con compilación de módulos de prueba currency mediante tsconfig.test.
+- Vitest: `src/**/*.test.{ts,tsx}`, jsdom y setup propio; no recoge E2E o pruebas Node.
+- Playwright: `e2e/**/*.spec.mjs`, un worker, sin paralelismo completo ni retries configurados y con forbidOnly.
 
-WEB-SIM-01/02 comprueban borrador entero, fronteras, vacío/fracción/exceso y sincronización; WEB-CONFIG-008 distingue formato/compatibilidad, política fiscal del servidor y estados/reintentos/carreras/retorno. 235 pruebas globales correctas, incluidas 113 componentes/transporte. Dos E2E añadidas al runner existente: nueva pantalla con API/Vite/SQLite temporal, límites/teclado/retorno/ausencia FX y POST, y país fuera de política. Total 13 Playwright correctas; cuatro anchos sin desbordamiento. [Evidencia canónica y fallos corregidos](../specs/008-simulator-ui/validation.md#t01--pantalla-clienteconfiguración-e-inputs). Precio, FX y guardado no acreditados por T01.
+El runner de navegador usa `.cache/playwright`; resultados, capturas y trazas se generan bajo `.cache/007-e2e`, nombre técnico compartido que no identifica por sí solo una versión o feature. Los artefactos pueden sobrescribirse. La instalación del navegador es explícita mediante el script existente de web y no forma parte de cada ejecución de pruebas.
 
-## 007 — Cierre T05
+Reloj y transporte deben controlarse para debounce, caducidad y timeouts cuando proceda. Una ejecución con almacén o herramientas del host no acredita otra máquina limpia o compatibilidad con todos los sistemas operativos.
 
-pnpm test:e2e desde raíz compila API/shared y ejecuta 11 casos Playwright/Chromium: cuatro funcionales y siete visuales/teclado/contraste. DB/contexto propio por caso, puertos efímeros, migraciones/fixtures explícitos y limpieza de recursos. No requiere API/web personales arrancadas. Preparar navegador en instalación nueva con pnpm --filter @saas-o-matic/web test:e2e:install; caché local .cache/playwright. Resultados JSON/capturas/trazas bajo .cache/007-e2e. Vitest y node:test mantienen descubrimiento separado; pnpm test no incluye E2E.
+## 5. Controles técnicos
 
-209 pruebas globales y 11 E2E correctas; gates secuencial sin otros controles concurrentes. Revisados 320/390/768/1440, layout 200 %/reflujo equivalente, teclado/foco y contraste representativo; corregidos borde de controles y foco al paginar. [Resultados reales, fallos iniciales y límites](../ai-workspace/testing/007-customers-ui-t05.md). Solo Chromium local, sin certificación exhaustiva ni aceptación humana final.
+Los comandos siguientes están declarados en los scripts del monorepo. En PowerShell podrá emplearse pnpm.cmd. Se debe revisar su definición vigente antes de ejecutarlos.
 
-## 007 — T04
+| Comando                 | Responsabilidad                                                                                                                                                            |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pnpm lint`             | ESLint del repositorio, con warnings tratados como fallo.                                                                                                                  |
+| `pnpm typecheck`        | Preparar shared y comprobar tipos de los workspaces y configuración API correspondiente.                                                                                   |
+| `pnpm format:check`     | Comprobar formato con Prettier sin corregirlo.                                                                                                                             |
+| `pnpm build`            | Compilar los paquetes del workspace, incluida la web Vite.                                                                                                                 |
+| `pnpm test:unit`        | Compilar shared/API y ejecutar unitarias de shared y contratos/fiscal/política API.                                                                                        |
+| `pnpm test:integration` | Compilar shared/API y ejecutar integración HTTP/SQLite/CLI, incluida demo temporal.                                                                                        |
+| `pnpm test:web`         | Compilar web y ejecutar su suite Node y sus pruebas de componentes Vitest.                                                                                                 |
+| `pnpm test:e2e`         | Preparar shared/API y ejecutar Playwright/Chromium contra el entorno temporal.                                                                                             |
+| `pnpm test:gates`       | Verificar que tipos, lint y tests rechazan errores deliberados introducidos en archivos propios temporales.                                                                |
+| `pnpm test:docs`        | Comprobar destinos locales de enlaces inline, contexto de spec activa y expectativas documentales/scripts codificadas. No es un validador completo de Markdown o anclas.   |
+| `pnpm test`             | Ejecutar secuencialmente unitarias, integración, web, gates y documentos. No incluye E2E ni equivale a ejecutar lint, typecheck, formato y build como controles separados. |
 
-WEB-DETAIL-API-01 valida identidad/DTO/snapshots/paginación y coherencia de importes guardados sin aplicar tarifas vigentes. WEB-DETAIL-01/WEB-STATE-01 cubren ficha/404/ID inválido, estados independientes, reintento, historial vacío/fuera de rango/query inválida, historyOffset/atrás/retorno y carreras/abortos. Formato EUR probado en cero y máximo entero seguro. Suite global 208 correcta; smoke Chromium con 21 registros temporales acredita historial 20/1/recarga, 503 independiente, retorno y alta→ficha. [Evidencia y límites](../ai-workspace/testing/007-customers-ui-t04.md). T05 conserva E2E mantenido y revisión exhaustiva pendientes.
+**No se deberá ejecutar test:gates en paralelo con lint, tipos, build u otros controles de código.** Sus errores temporales podrían interferir con ejecuciones ajenas. Debe comprobarse la retirada de sus recursos; un fallo del gate no deberá atribuirse automáticamente al producto.
 
-## 007 — T03
+Para una corrección se deberán ejecutar primero las pruebas afectadas y las regresiones de consumidores pertinentes. El cierre integrado requerirá los controles del plan y E2E cuando se afirme un recorrido real. No se deberán repetir indiscriminadamente todas las suites después de una edición de texto sin motivo técnico.
 
-WEB-API-02 y WEB-FORM-01 cubren POST de cinco campos/201/DTO, países del servidor, planes compartidos, validación local, errores asociados/foco, 422/409/503, envío único, red/timeout/201 ilegible, reintento explícito de configuración y aborto al desmontar. Pruebas de ruta verifican creación→ID persistido y cancelación/retorno conservando búsqueda y página. 49 pruebas de componentes/transporte y 171 globales correctas. Smoke Chromium con proxy/API/SQLite temporal comprueba 422 fiscal→corrección→201 persistido→listado y 409, a cuatro anchos sin desbordamiento. [Evidencia y límites](../ai-workspace/testing/007-customers-ui-t03.md). E2E mantenido y revisión exhaustiva corresponden a T05.
+Los controles documentales deberán contemplar también enlaces de referencia y anclas cuando se utilicen: el test existente solo inspecciona determinados patrones. Los acoplamientos del gate a texto o spec concreta deben revisarse al cambiar la documentación, sin modificar la prueba automáticamente para ocultar una carencia real.
 
-## 007 — T02
+## 6. UI, responsive y accesibilidad
 
-WEB-API-01 prueba URL/DTO/envelope, red, JSON/Content-Type, timeout de cuerpo, aborto y compatibilidad de campos históricos. WEB-SEARCH-01/WEB-STATE-01 cubren debounce 249/250 ms, URL/páginas, retorno/atrás/adelante, vacíos diferenciados, 503/reintento y respuesta antigua ignorada. Primera ejecución: 29 correctas/1 fallo por selección de role status del harness; corregido selector y repetición 30/30.
+La revisión deberá seguir [diseño](design.md) y los alcances aprobados de interfaz/calidad: anchos CSS 320, 390, 768 y 1440, estados relevantes y contenido largo válido. No bastará capturar la pantalla con datos cortos y sin errores.
 
-Smoke Chromium con API real/SQLite temporal de 21 clientes y proxy Vite en puertos aislados. Se comprueba configuración de destino 3000 y se sustituye solo el puerto del backend de pruebas. Cuatro anchos, búsqueda, paginación, retorno, recarga y recuperación 503 correctos. [Evidencia T02](../ai-workspace/testing/007-customers-ui-t02.md).
+Se deberán considerar reflujo y desbordamiento, controles y acciones visibles, etiquetas, IDs y referencias accesibles, errores asociados, teclado, foco de navegación/confirmación/paginación y recuperación sin desplazar una elección posterior del usuario.
 
-## 007 — T01
+Las mediciones de geometría, asociaciones y contraste podrán automatizarse; las capturas deberán inspeccionarse para valorar jerarquía y legibilidad. Una captura por sí sola no acredita interacción y un test automatizado no equivale a revisión humana. Si la comprobación visual la realiza el agente, no se atribuirá al responsable del proyecto.
 
-test:web conserva las 22 pruebas node:test de 006/smoke y añade componentes con Vitest/RTL en jsdom. test:node y test:components separan descubrimiento y limpieza. WEB-SHELL-01 cubre rutas, raíz/404, retorno, teclado, breadcrumbs y foco. Smoke Chromium independiente comprueba cuatro viewports y navegación/recarga; [evidencia T01](../ai-workspace/testing/007-customers-ui-t01.md).
+Se debe distinguir ampliación CSS, viewport equivalente y uso del zoom nativo. Debe declararse si no se comprobaron lector de pantalla u otros navegadores. Contraste representativo y controles parciales no constituyen certificación exhaustiva WCAG.
 
-## 006 — T05: cierre global
+Un defecto reproducible debe permanecer visible hasta resolverlo. Los fallos esperados pueden conservar una reproducción conocida, pero un código cero del runner con esa expectativa no permite declarar conforme el requisito afectado. La regresión deberá exigir éxito ordinario después de la corrección.
 
-Actualización posterior: Alex autorizó registrar ai-workspace tras T05; [resumen retrospectivo y salida real](../ai-workspace/testing/006-currency.md). La exclusión mencionada en el relato de ejecución describe el estado histórico, no la autorización vigente.
+## 7. Integraciones externas y resiliencia
 
-Lint/typecheck/build/test correctos: 122 pruebas (36 shared, 12 unitarios API, 49 integración, 22 web, 1 gates y 2 docs). Gates ejecutados secuencialmente. Dos pruebas nuevas componen cliente y conversión con fixtures, importes variables sin refetch y recuperación EUR. Primer lint detectó JS generado en apps/web/.cache; corregida exclusión ESLint a **/.cache/** y repetición correcta. MockTimers mantiene aviso experimental de Node 22.
+Las ejecuciones ordinarias deberán mantener FX determinista con fixtures o fetch/reloj inyectados. Se deberán cubrir HTTP no satisfactorio, error lógico con HTTP 200, fallo de red, JSON inválido, base/tasas incorrectas, fechas incoherentes o vencidas, timeout de respuesta y cuerpo, concurrencia y respuesta tardía.
 
-Smoke CORS inconcluso: Edge headless falla por GPU del entorno, sin evidencia del proveedor. Sin E2E visual ni aceptación humana. [Resultados y límites](../specs/006-currency/validation.md#t05--revisión-y-regresión-global); sin registros ai-workspace por instrucción vigente.
+Se deberán comprobar petición compartida, reutilización mientras haya vigencia y recuperación explícita tras fallo sin publicar tasas viejas. Modificar importe no deberá causar una nueva consulta o reintento implícito. El resultado EUR y los datos originales deberán conservarse.
 
-## 006 — T04
+Una comprobación real del proveedor deberá ejecutarse explícitamente, con datos temporales y sin interceptar FX, cuando el alcance lo requiera. El script existente `apps/web/e2e/fx-live.mjs` está separado del patrón de descubrimiento de specs Playwright y no forma parte de la suite ordinaria. Su ejecución requiere preparar API/shared y permisos efectivos de navegador/red; no es un requisito para cada test.
 
-test:web ejecuta 20 pruebas: nueve nuevas del cliente, ocho del parser, dos fixtures y smoke web. Transporte/reloj inyectados y MockTimers de node:test (aviso experimental en Node 22) verifican timeout sin esperar. Concurrencia, caducidad durante descarga, recuperación y respuestas tardías probadas. Sin proveedor real/CORS. [Evidencia T04](../specs/006-currency/validation.md#t04--cliente-http-y-caché).
+La comprobación real debe registrar origen, respuesta, vigencia, CORS observado, conversión y atribución sin datos privados. Un fetch de Node no demuestra CORS de navegador. Un bloqueo de sandbox o fallo del navegador no demuestra un defecto del proveedor. Una consulta correcta tampoco garantiza otro dominio o disponibilidad futura.
 
-## 006 — T03
+En API/DB se deberán verificar indisponibilidad, ocupación, errores de inserción y recuperación sin datos parciales. En web, timeout o respuesta ilegible después de un posible commit deberán tratarse como incertidumbre, no como evidencia de rollback. La resiliencia no debe basarse en reenvíos automáticos de POST.
 
-test:web compila los módulos currency mediante apps/web/tsconfig.test.json en apps/web/.cache/currency-tests, ignorado por Git, y prueba el JavaScript real con node:test. Conserva el smoke Vite. Total 11 pruebas: 8 del parser, 2 fixtures y 1 smoke. Sin nuevas librerías ni comprobación de CORS. Primera ejecución falló por el default de reloj del helper de pruebas ante undefined; corregido el helper/caso explícito y repetición 11/11 correcta. [Evidencia T03](../specs/006-currency/validation.md#t03--validación-del-proveedor).
+## 8. Evidencias e informes
 
-## 006 — T02
+La fuente principal de cada validación será `specs/<feature>/validation.md`. Deberá registrar, cuando corresponda:
 
-Ocho pruebas productivas nuevas de convertCurrency: oráculos USD/GBP, identidad EUR, half-up exacto, notación científica, entradas inválidas, límites de tasa, overflow e independencia. test:unit suma 36 shared y 12 API. [Evidencia T02](../specs/006-currency/validation.md#t02--conversión-pura). Sin validación de proveedor, transporte ni CORS en este alcance.
+- Requisito/caso y alcance comprobado, entorno y versión o contexto identificable.
+- Comandos efectivamente ejecutados, códigos de salida y resultados observados.
+- Fallos iniciales, hipótesis, causa verificada, corrección y repetición posterior.
+- Controles omitidos o bloqueados, límites, artefactos disponibles y cuestiones pendientes.
 
-## 006 — T01
+Se deberán distinguir pruebas previstas, implementadas, ejecutadas y superadas. No se fabricarán logs ausentes ni se presentarán fixtures coherentes como prueba de código productivo. Los resultados de ejecuciones distintas no deberán sumarse como cobertura nueva.
 
-test:unit incorpora 3 pruebas de contratos/fixtures FX en shared (28 shared + 12 API). test:web incorpora 2 pruebas de fixtures del proveedor y conserva el smoke HTTP (3 en total). Verifican catálogo, errores y datos de prueba; no acreditan todavía conversión, validación externa, cliente HTTP o CORS. El gate documental identifica 006 como spec activa. [Evidencia T01](../specs/006-currency/validation.md#t01--contratos-catálogo-y-fixtures). Sin registro ai-workspace por indicación de Alex.
+[ai-workspace/features](../ai-workspace/features/) explicará instrucciones, colaboración e iteraciones significativas, enlazando la validación canónica. Los registros adicionales que existan en testing/reviews podrán conservar salidas o informes específicos; no es obligatorio crear archivos en todas las carpetas. Capturas y reportes temporales deberán identificar su contexto y limitación de conservación.
 
-## 005 — T05: cierre global
+Las evidencias históricas enlazadas desde versiones anteriores de este documento se consultan en las validaciones de [001](../specs/001-foundation/validation.md), [002](../specs/002-persistence/validation.md), [003](../specs/003-customers-api/validation.md), [004](../specs/004-billing/validation.md), [005](../specs/005-simulations-api/validation.md), [006](../specs/006-currency/validation.md), [007](../specs/007-customers-ui/validation.md), [008](../specs/008-simulator-ui/validation.md), [009](../specs/009-quality/validation.md) y [010](../specs/010-delivery/validation.md). Este enlace no convierte un estado parcial en el resultado actual.
 
-Lint/typecheck/format:check/build/test pasan (código 0) con 90 pruebas: 25 shared, 12 unitarios API, 49 integración, 1 smoke web, 1 gates, 2 docs. Secuencia sin concurrencia de gates con otros controles de código.
-Regresiones 001–004 conservadas, sin datos reales ni cambios de schema/dependencias. Smoke web no equivale a E2E de navegador o accesibilidad. [Evidencia global](../ai-workspace/testing/005-simulations-api-t05.md). Aceptación humana final pendiente; resultados parciales siguientes son históricos.
+El [índice de artefactos](../ai-workspace/testing/008-010-evidence-index.md) detalla límites de evidencia efímera; el [ensayo de entrega](../ai-workspace/testing/010-delivery-t03.md) conserva el método de instalación aislada. Esta estrategia no sustituye sus resultados ni acredita una nueva ejecución.
 
-## 005 — T04
+## 9. Criterios de validación y cierre
 
-test:integration incorpora cinco pruebas de simulations-history.test.mjs y tres de billing-config.test.mjs; total 49 integración. test:unit conserva 37. Histórico paginado, total, orden con empates, vacío/404, validación previa, snapshots sin motor y DB busy/recovery probados; config sin DB/no-store y concordancia con motor/copia de reglas probadas.
-Fallo inicial de fixture en test de DB ausente (Error genérico frente a 503 esperado) corregido a HttpError(503), sin alterar handler; focalizado repetido 15/15 y regresión 49/49. [Evidencia T04](../ai-workspace/testing/005-simulations-api-t04.md). Web/gates y suite completa reservados a T05.
+Una tarea podrá considerarse técnicamente validada cuando sus requisitos y criterios estén revisados, las comprobaciones pertinentes hayan pasado y exista evidencia suficiente del alcance declarado, sin regresiones o defectos conocidos que impidan la conformidad. Cualquier comprobación no ejecutada deberá quedar visible con motivo e impacto; no se marcará como superada por inspección.
 
-## 005 — T03
+Los defectos deben contar con reproducción y verificación posterior proporcionadas. La documentación afectada debe ser coherente y enlazar resultados reales. Si falta una aprobación imprescindible o existe una decisión fuera del alcance, se deberá solicitar revisión del resultado concreto antes del cierre dependiente.
 
-test:integration incorpora simulations.test.mjs, siete pruebas HTTP nuevas; total 41 integración. test:unit mantiene 37. POST 201 después de commit; 400/413/415/422 antes de conexión, cliente ausente/país sin regla, DB lazy/busy y recuperación, rollback de fallo AFTER INSERT y privacidad de error/log.
-La configuración/histórico HTTP siguen en 404 hasta T04; su implementación deberá actualizar esas expectativas explícitas del test de T03. [Evidencia T03](../ai-workspace/testing/005-simulations-api-t03.md).
+Se mantendrán separados:
 
-## 005 — T02
+- **Implementación completada:** los cambios previstos están realizados.
+- **Validación técnica:** los controles pertinentes respaldan el comportamiento dentro de sus límites.
+- **Aceptación humana:** el responsable confirma expresamente su revisión o aceptación.
+- **Preparación de entrega o despliegue:** requiere su propio alcance y verificaciones; no autoriza publicar.
 
-test:integration incorpora simulations-service.test.mjs; 9 pruebas nuevas y 25 anteriores, total 34, sobre contextos temporales de SQLite. Comprueban cálculo/DTO, cero/máximos/países, repetición, fallos transaccionales, savepoints, bloqueo de segundo escritor, reapertura y conservación histórica. test:unit mantiene 37 pruebas. Sin endpoint de simulaciones todavía. [Evidencia T02](../ai-workspace/testing/005-simulations-api-t02.md).
-
-## 005 — T01
-
-test:unit incorpora apps/api/test/simulations-contract.test.mjs sin retirar pruebas anteriores. Siete tests UT-SIM-CONTRACT-005 prueban petición estricta, ausencia/extras, tres límites, rechazo sin coerción, UUID, paginación y regresión compartida de clientes.
-InputError conserva reexport compatible al separarse; query.ts centraliza paginación sin cambiar defaults/rangos ni ceros iniciales. Contratos sin ORM, DB ni HTTP.
-El gate documental exige 005 en la línea activa y un destino existente. Resultados reales en [validación 005](../specs/005-simulations-api/validation.md); [resumen en ai-workspace](../ai-workspace/testing/005-simulations-api-t01.md) añadido después por autorización de Alex.
-
-Desde raíz con pnpm 10.33.4 y Node 22 compatible. En PowerShell usar pnpm.cmd si es necesario.
-
-| Comando               | Control                                                                      |
-| --------------------- | ---------------------------------------------------------------------------- |
-| pnpm test:unit        | Compila shared/API; fixtures, tramos, dinero, impuestos y contratos/fiscal   |
-| pnpm lint             | ESLint sin warnings                                                          |
-| pnpm typecheck        | Compila shared y verifica tipos de todo el workspace y configuración Drizzle |
-| pnpm format:check     | Prettier                                                                     |
-| pnpm build            | Compila shared, API y web en orden workspace                                 |
-| pnpm test:integration | Compila shared/API, prueba HTTP y SQLite real                                |
-| pnpm test:web         | Compila web y prueba HTML/bundle HTTP                                        |
-| pnpm test:gates       | Errores deliberados de tipos/lint/test devuelven no cero                     |
-| pnpm test:docs        | Enlaces documentales, spec activa 004 y scripts                              |
-| pnpm test             | Todas las suites anteriores, secuencialmente                                 |
-
-No ejecutar test:gates en paralelo con lint/typecheck/build. No se usa passWithNoTests.
-La integración crea contextos únicos en .cache/002-tests, cierra conexiones y retira únicamente esos directorios.
-Nunca abre datos reales de desarrollo/demo. Los casos demo se ejecutan dentro de la misma área temporal.
-Prueba límites contra shared, SQL directo, concurrencia, snapshots, migración fallida, seed, guardas y backup.
-El CLI se prueba también desde raíz con un destino con espacios.
-Los fixtures monetarios son técnicos; no son políticas fiscales ni pruebas de un motor de cálculo.
-
-test:unit cubre fiscal/contratos de clientes, fixtures y motor completo de 004. No hay E2E de navegador ni integración HTTP de presupuestos. El smoke HTTP web no acredita accesibilidad.
-Instalación con caché no equivale a otra máquina limpia.
-Evidencias: [001](../specs/001-foundation/validation.md), [002](../specs/002-persistence/validation.md).
-
-003 incorpora test:unit con tres casos agrupados de contrato/fiscal; integración incluye customers y lifecycle además de regresión 002.
-El cierre SIGTERM se simula emitiendo el evento en proceso hijo e instrumentando el cierre real del driver; no equivale a probar entrega de una señal OS en Windows.
-La migración de contacto se prueba partiendo del esquema 0000 con cliente referenciado por una simulación. También se verifica rollback si el grafo final es inválido.
-[Resultados 003](../specs/003-customers-api/validation.md).
-
-## 004 — T01
-
-Desde raíz, pnpm test:unit compila shared/API, ejecuta pnpm --filter @saas-o-matic/shared test:unit y conserva pnpm --filter @saas-o-matic/api test:unit.
-El runner de shared es node --test test/*.test.mjs; puede ejecutarse aisladamente tras pnpm --filter @saas-o-matic/shared build.
-UT-FIX-004 verifica coherencia de datos esperados: fronteras, desglose, totales, países, casos sintéticos de redondeo/overflow, límites contra CONSUMPTION_LIMITS y vocabulario de errores. No importa un motor de facturación ni acredita RF implementados. Las pruebas productivas se añadirán con T02–T04.
-El gate de contexto comprueba la línea de spec activa 004 y la existencia del destino, sin dar por válida una mención histórica de 003.
-
-## 004 — T02
-
-billing.test.mjs añade cinco tests productivos: oráculos independientes, desglose/JSON para 0..1000, marginales para 1..1000, rechazo runtime sin coerción y determinismo/aislamiento entre llamadas. Usa exports del build de shared; sin DB ni red.
-Con los cinco tests de fixtures y tres de API, test:unit ejecuta 13 pruebas. RF1 queda probado; RF3/RF4 solo en su parte de tramos. No acredita impuestos ni quote. [Evidencia T02](../ai-workspace/testing/004-billing-t02.md).
-
-## 004 — T03
-
-billing-tax.test.mjs añade seis pruebas de dinero/política y API incorpora dos de configuración real. test:unit conserva las anteriores: 16 shared y 5 API, 21 en total.
-UT-MONEY-01 cubre half-up, tipos/rangos, intermediarios BigInt y overflow. UT-TAX-01 cubre cuatro países, versión, tasa cero, ausentes, política inválida y congelación. Sin DB ni HTTP. RF2/RF3 siguen parciales hasta T04. [Evidencia T03](../ai-workspace/testing/004-billing-t03.md).
-
-## 004 — T05: verificación global
-
-Estado posterior: normalización CRLF/LF autorizada y completada; todos los controles globales pasan con 59 pruebas. T05 cerrada técnicamente, sin aceptación humana final. [Corrección y evidencia](../ai-workspace/testing/004-billing-format-fix.md). El fallo descrito a continuación corresponde a la primera ejecución.
-
-Lint/typecheck/build pasan y pnpm test completa 59 pruebas (30 unitarias, 25 integración, 1 web, 1 gates, 2 docs). Compatibilidad adicional: 4004 desgloses aceptados por validador de 002 sin DB.
-format:check falla en 41 archivos ajenos por CRLF/LF confirmado; cierre global pendiente de normalización. [Evidencia global](../ai-workspace/testing/004-billing-t05.md). No confundir regresión correcta con todos los gates verdes ni aceptación humana.
-
-## 004 — T04: detalle histórico
-
-billing-quote.test.mjs añade nueve pruebas productivas. Total unitario: 25 shared (5 fixtures y 20 productivos) y 5 API; 30 pasan.
-UT-INPUT-004 valida los tres consumos; UT-QUOTE-004 cubre salida, versiones, errores, suma segura, ausencia de cargos secundarios y redondeo único; UT-PROP-01 recorre 0..1000 en cuatro países (4004 combinaciones), con invariantes/JSON y aislamiento de llamadas. Sin DB ni HTTP. RF1..4 implementados y probados; regresión global reservada a T05. [Evidencia T04](../ai-workspace/testing/004-billing-t04.md).
+Una suite correcta no acredita aceptación humana, ausencia absoluta de defectos o seguridad certificada. Tampoco autoriza commits, push, publicación o despliegue. La revisión debe informar qué se comprobó, qué permanece pendiente y qué limitaciones condicionan sus conclusiones.
