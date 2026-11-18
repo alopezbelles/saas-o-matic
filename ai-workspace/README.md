@@ -48,3 +48,37 @@ Consulta [docs/](../docs/) para comprender el producto y su contexto técnico, [
 Los prompts consolidados o reconstruidos se identifican como síntesis técnicas, no como mensajes literales. Los extractos identificados como originales conservan su redacción. Las retrospectivas explican trabajo anterior sin presentarse como instrucciones contemporáneas. Las comprobaciones históricas describen la versión probada y los informes temporales pueden haber dejado de estar disponibles.
 
 El [registro de entrega](features/010-delivery/README.md) documenta un ensayo local de instalación satisfactorio en el mismo entorno Windows. No acredita portabilidad a todas las plataformas, publicación o despliegue de producción.
+
+## Verificación, evidencias y revisiones técnicas
+
+Las carpetas [testing/](testing/) y [reviews/](reviews/) son ubicaciones transversales que complementan las validaciones de las specs. Se conservan separadas de features/: una explica el proceso de colaboración y las otras permiten consultar evidencia de ejecución y evaluación técnica sin repetirla íntegramente.
+
+| Ubicación                       | Responsabilidad                                                                                                    |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `specs/<feature>/validation.md` | Referencia del estado de verificación de requisitos y criterios de aceptación, con contexto, resultados y límites. |
+| `ai-workspace/testing/`         | Evidencias de comprobaciones ejecutadas: resúmenes, salidas originales y referencias a artefactos disponibles.     |
+| `ai-workspace/reviews/`         | Evaluación técnica de esas fuentes: alcance, hallazgos, conclusión, riesgos y decisiones pendientes.               |
+
+### Testing: evidencia de ejecución
+
+Un registro de testing puede conservar qué se comprobó, comandos ejecutados, entorno y versión identificable, resultados observados, incidencias, correcciones y limitaciones. Puede enlazar logs originales, capturas o reportes cuando existan, sin exigir una salida completa para cada tarea.
+
+Un **resumen de pruebas** explica una ejecución desde sus fuentes; una **salida original** conserva lo emitido por la herramienta. No son intercambiables: no se deben reconstruir logs ausentes ni presentar una síntesis como salida literal. Por ejemplo, el [registro de facturación](testing/004-billing-t04.md) describe alcance y resultados y remite a la validación canónica.
+
+Merece la pena crear un registro cuando se verifica un comportamiento crítico, ocurre una incidencia significativa, se necesita preservar evidencia reproducible o se cierra un bloque importante. Si una tarea pequeña queda suficientemente explicada en validation.md, no hace falta añadir otro archivo.
+
+### Reviews: evaluación técnica
+
+Una review debe indicar qué se revisó, con qué requisitos o criterios y qué evidencias se consultaron. Puede recoger hallazgos, problemas, conformidad dentro del alcance comprobado, riesgos, límites y acciones pendientes. No sustituye la ejecución de una prueba por una opinión.
+
+La **revisión técnica de Codex** es la evaluación del agente sobre código, documentos y evidencias disponibles. La **revisión humana** recoge comprobaciones o decisiones confirmadas por el responsable del proyecto. Una conclusión de Codex no equivale a aceptación humana y no debe registrarse como tal. La [revisión de facturación](reviews/004-billing-t04.md) ilustra esa separación.
+
+Una review aporta valor cuando existe evaluación significativa de requisitos, riesgos o defectos, una conclusión técnica que preservar o un cierre de feature que requiere revisión. No se exige un archivo de testing y otro de review por cada tarea.
+
+### Enlaces, nomenclatura e integridad
+
+La [validación de la feature](../specs/004-billing/validation.md) debe enlazar los registros complementarios pertinentes; estos deben remitir a ella sin copiar matrices o resultados completos. Las [reglas de testing](../docs/testing.md) y el [protocolo SDD](../docs/sdd-harness.md) desarrollan el procedimiento.
+
+Los nombres deben identificar feature y tarea cuando resulte útil, como `testing/004-billing-t04.md` y `reviews/004-billing-t04.md`, o la feature completa, como `testing/002-persistence.md`. Deben respetarse los nombres históricos: no se renombrarán archivos ni se trasladarán a features/ solo para uniformar su organización.
+
+Los registros deben distinguir hechos observados e interpretaciones, ejecuciones nuevas y evidencia histórica. Las retrospectivas deben identificarse y conservar procedencia. No se deben inventar resultados, modificar silenciosamente los anteriores, presentar revisiones documentales como nuevas pruebas de código o atribuir aprobaciones humanas no confirmadas. Si faltan artefactos o quedan verificaciones pendientes, debe indicarse y enlazarse la fuente original disponible.
