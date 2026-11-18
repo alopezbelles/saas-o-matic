@@ -1,16 +1,18 @@
 # SaaS-O-Matic — Prueba técnica de desarrollo con IA para Roams
 
-Aplicación Full-Stack para registrar clientes corporativos y simular su coste mensual mediante facturación acumulativa por tramos, impuesto y conversión orientativa de divisas. El proyecto combina implementación incremental guiada por especificaciones con validación automatizada y documentación del desarrollo asistido por IA.
+Aplicación Full-Stack para Roams que permite registrar y buscar clientes corporativos, simular su coste mensual por tramos e impuestos y consultar presupuestos guardados. Utiliza React, TypeScript, Express y SQLite, con conversión orientativa EUR/USD/GBP. El desarrollo se organiza mediante especificaciones, tareas incrementales, supervisión humana y verificaciones con Codex.
 
 ## Índice
 
 - [Inicio rápido](#inicio-rápido)
+- [Cómo probar la aplicación](#cómo-probar-la-aplicación)
 - [Necesidades y alcance](#necesidades-y-alcance)
 - [Pantallas principales](#pantallas-principales)
 - [Arquitectura y decisiones de software](#arquitectura-y-decisiones-de-software)
 - [Proceso de especificación y uso de IA](#proceso-de-especificación-y-uso-de-ia)
 - [Configuración y operación](#configuración-y-operación)
 - [Pruebas y evidencia](#pruebas-y-evidencia)
+- [Documentación del proyecto](#documentación-del-proyecto)
 - [Limitaciones y entrega](#limitaciones-y-entrega)
 
 ## Inicio rápido
@@ -21,25 +23,19 @@ Aplicación Full-Stack para registrar clientes corporativos y simular su coste m
 - pnpm **10.33.4**, fijado en `packageManager`, y Git para obtener el código.
 - Acceso a red para dependencias y, opcionalmente, tasas FX. No hace falta instalar un servidor SQLite.
 
-Desde la raíz de una copia del repositorio:
+### 1. Clonar e instalar
+
+Clonar el repositorio accesible al evaluador y entrar en su raíz:
 
 ```sh
+git clone https://github.com/alopezbelles/saas-o-matic.git
+cd saas-o-matic
 pnpm install --frozen-lockfile
 ```
 
-`better-sqlite3` es una dependencia nativa. La instalación necesita su binario compatible o un entorno de compilación nativa si no está disponible para la plataforma. El lockfile y la configuración de pnpm forman parte de la entrega; no se deben regenerar para resolver un fallo de entorno sin diagnosticarlo.
+Estos pasos requieren pnpm 10.33.4 disponible. Si falta o aparece un problema de instalación, consulta [Problemas de entorno](#problemas-de-entorno).
 
-Si pnpm no está disponible, esta alternativa PowerShell lo instala dentro del proyecto, sin cambiar la configuración global:
-
-```powershell
-npm.cmd install --prefix .tools --no-package-lock --no-audit --no-fund --cache .cache/npm pnpm@10.33.4
-$env:Path = "$PWD\.tools\node_modules\.bin;$env:Path"
-pnpm.cmd install --frozen-lockfile
-```
-
-En PowerShell puede usarse `pnpm.cmd` para evitar el bloqueo de `pnpm.ps1`. La modificación del PATH dura únicamente esa terminal. `.tools` y `.cache` están ignorados por Git.
-
-### Crear la demo y arrancar
+### 2. Crear la demo y arrancar
 
 La demo completa crea **una base nueva con tres clientes ficticios y una simulación por cliente**. Usa el mismo control fiscal, servicios y motor que la aplicación. Los identificadores tienen formato/control válido como fixture; no acreditan identidad real o alta censal. Correos bajo `example.invalid`.
 
@@ -52,7 +48,7 @@ pnpm.cmd db:demo:setup
 pnpm.cmd dev
 ```
 
-POSIX:
+Bash / POSIX:
 
 ```sh
 export DATABASE_KIND=demo
@@ -61,7 +57,7 @@ pnpm db:demo:setup
 pnpm dev
 ```
 
-- Web: <http://127.0.0.1:5173/customers>.
+- **Abrir la aplicación:** <http://127.0.0.1:5173/customers>.
 - API: <http://127.0.0.1:3000>.
 - Salud: `GET /health` devuelve `{"status":"ok"}`.
 - Detener web/API con `Ctrl+C`. Las variables deben conservarse al arrancar la API en otra terminal.
@@ -83,7 +79,41 @@ Remove-Item Env:DATABASE_KIND
 Remove-Item Env:DATABASE_PATH
 ```
 
-En POSIX: `unset DATABASE_KIND DATABASE_PATH`. Si se desea trabajar con una base de desarrollo vacía, ejecutar `pnpm db:migrate` y después `pnpm dev` sin esas variables. No hay creación/migración automática al arrancar.
+En Bash / POSIX: `unset DATABASE_KIND DATABASE_PATH`. Si se desea trabajar con una base de desarrollo vacía, ejecutar `pnpm db:migrate` y después `pnpm dev` sin esas variables. No hay creación/migración automática al arrancar.
+
+### Volver a arrancar la misma demo
+
+Los datos permanecen al detener la aplicación. En una terminal nueva, vuelve a establecer DATABASE_KIND y DATABASE_PATH como en el bloque anterior y ejecuta únicamente `pnpm dev`. No repitas `db:demo:setup` sobre el archivo existente. No hace falta crear un archivo .env: la aplicación no lo carga automáticamente.
+
+### Problemas de entorno
+
+- **pnpm no disponible:** en PowerShell puede instalarse dentro del proyecto, sin cambiar la configuración global:
+
+  ```powershell
+  npm.cmd install --prefix .tools --no-package-lock --no-audit --no-fund --cache .cache/npm pnpm@10.33.4
+  $env:Path = "$PWD\.tools\node_modules\.bin;$env:Path"
+  pnpm.cmd install --frozen-lockfile
+  ```
+
+- **PowerShell bloquea pnpm.ps1:** utiliza `pnpm.cmd`. El PATH del ejemplo solo afecta a esa terminal; `.tools` y `.cache` están ignorados por Git.
+- **Dependencia nativa:** `better-sqlite3` necesita un binario compatible o un entorno de compilación nativa si no está disponible para la plataforma. Comprueba primero la versión de Node requerida. No regeneres el lockfile para ocultar un fallo de entorno.
+- **DB_ALREADY_EXISTS:** la protección conserva la base. Para continuar, usa su misma selección y `pnpm dev`; para otra demo nueva, elige un nombre distinto bajo `apps/api/data`.
+- **Frontend sin datos o error del proxy:** comprueba que `pnpm dev` mantiene también la API arrancada y que `/health` responde en el puerto 3000. Las variables de selección DB deben estar en la terminal de la API.
+
+## Cómo probar la aplicación
+
+Con la demo y ambos servidores arrancados:
+
+1. Abre Clientes y busca `DEMO` o selecciona **DEMO Lumen Digital**.
+2. Entra en **Ver cliente** y consulta sus datos corporativos y su historial inicial.
+3. Pulsa **Nueva simulación**. El borrador empieza con los tres consumos a cero y EUR.
+4. Introduce **15 usuarios** mediante el campo o slider. El desglose debe separar los primeros 10 y los 5 siguientes: base **140,00 EUR**, impuesto demo español **29,40 EUR** y total **169,40 EUR**. Puedes probar 10, 11, 50 y 51 para observar las fronteras.
+5. Modifica almacenamiento y llamadas API: se conservan como consumos, sin añadir cargos a la tarifa por usuarios.
+6. Cambia entre **EUR, USD y GBP**. La conversión afecta únicamente al total y depende del proveedor externo; si falla, permanece EUR con opción de reintentar.
+7. Pulsa **Guardar simulación** y comprueba la confirmación y el **Resultado guardado**. El servidor recalcula el importe; cualquier diferencia con el presupuesto previo se comunica.
+8. Pulsa **Volver al cliente** y localiza la nueva simulación. Recarga la ficha para comprobar que persiste. El histórico conserva EUR, aunque hayas visualizado el total en otra divisa.
+
+También puedes probar **Nuevo cliente** desde el listado. Usa datos ficticios y un identificador con control válido, distinto de los ya presentes; reutilizar país e identificador de un cliente demo debe producir un aviso de duplicidad. Un checksum válido no acredita una identidad real.
 
 ## Necesidades y alcance
 
@@ -164,7 +194,7 @@ flowchart LR
 
 No se añadieron Prisma, servidor de bases de datos, microservicios, UI kit o librerías monetarias. Algunas decisiones fueron delegadas; otras fueron confirmadas explícitamente. La tabla resume el estado y sus consecuencias, no pretende reconstruir alternativas debatidas que no estén registradas.
 
-Detalles: [arquitectura](docs/architecture.md), [modelo y recuperación](docs/data-model.md), [decisiones](docs/decisions.md), [constitución](docs/constitution.md) y [contratos](docs/api-contracts.md). Los documentos por tarea conservan estados históricos; las validaciones de cierre indican el resultado posterior.
+Detalles: [arquitectura](docs/architecture.md), [modelo de datos](docs/data-model.md), [decisiones arquitectónicas](docs/architecture.md#9-decisiones-arquitectónicas), [constitución](docs/constitution.md) y [contratos](docs/api-contracts.md). Los documentos por tarea conservan estados históricos; las validaciones de cierre indican el resultado posterior.
 
 ## Proceso de especificación y uso de IA
 
@@ -177,17 +207,17 @@ El trabajo se dividió en entregas pequeñas, con requisitos, aclaraciones, plan
 | [003 Customers API](specs/003-customers-api/spec.md)     | Alta, control fiscal, búsqueda y detalle sobre la persistencia existente.                                                           |
 | [004 Billing](specs/004-billing/spec.md)                 | Dominio puro de tramos, dinero e impuesto, reutilizable por API/web.                                                                |
 | [005 Simulations API](specs/005-simulations-api/spec.md) | Cálculo autoritativo y guardado, histórico y configuración.                                                                         |
-| [006 Currency](specs/006-currency/spec.md)               | Conversión exacta y cliente FX sin interfaz todavía.                                                                                |
+| [006 Currency](specs/006-currency/spec.md)               | Conversión exacta y cliente FX reutilizado por la interfaz del simulador.                                                           |
 | [007 Customers UI](specs/007-customers-ui/spec.md)       | Diseño compartido, listado, alta operativa, ficha e historial.                                                                      |
 | [008 Simulator UI](specs/008-simulator-ui/spec.md)       | Preview/FX, guardado confirmado, discrepancias y navegación al historial.                                                           |
 | [009 Quality](specs/009-quality/spec.md)                 | Revisión integrada, accesibilidad/responsive, seguridad básica y corrección de defectos.                                            |
-| [010 Delivery](specs/010-delivery/spec.md)               | README, demo, auditoría y ensayo de entrega. T01 no equivale al ensayo limpio de T03.                                               |
+| [010 Delivery](specs/010-delivery/spec.md)               | README, demo, evidencias y ensayo de instalación aislada con límites documentados.                                                  |
 
 **Codex** se ha utilizado para ejecutar código, implementar tareas y realizar controles bajo las directrices del proyecto. **ChatGPT Work con el complemento Product** se ha utilizado para el diseño general de interfaces. Las referencias visuales se adaptaron al alcance y contratos reales antes de implementar las pantallas.
 
 La intervención humana definió alcance, resolvió decisiones, autorizó tareas y revisó resultados. Las instrucciones para la IA están en [AGENTS.md](AGENTS.md), [constitución](docs/constitution.md) y [procedimiento SDD](docs/sdd-harness.md): dominio puro, backend autoritativo, dinero exacto, datos preservados y pruebas observables.
 
-El [índice de auditoría](ai-workspace/README.md) reúne planificación, arquitectura, instrucciones, iteraciones y evidencias. Los prompts reformulados y registros retrospectivos deben identificarse como tales; no son transcripciones originales. La incorporación de 008/009/010 se realiza en T02 por autorización de Alex, con retrospectivas identificadas y enlaces a sus specs/validaciones canónicas. No se atribuyen sesiones, versiones de herramientas o prompts de diseño que no estén conservados.
+El [índice de auditoría](ai-workspace/README.md) reúne planificación, arquitectura, instrucciones, iteraciones y evidencias. Los prompts reformulados y registros retrospectivos deben identificarse como tales; no son transcripciones originales. Los registros por funcionalidad enlazan sus specs y validaciones y distinguen instrucciones previas de síntesis posteriores. No se atribuyen sesiones, versiones de herramientas o prompts de diseño que no estén conservados.
 
 ## Configuración y operación
 
@@ -233,6 +263,17 @@ pnpm test:e2e
 
 [009 cerró técnicamente](specs/009-quality/validation.md#t05--verificación-final-y-cierre-técnico) con 273 pruebas generales y 36 E2E. Son resultados de esa versión, no prueba automática de una instalación limpia de 010. Los resultados de esta entrega se registran en [validación 010](specs/010-delivery/validation.md). La consulta real FX/CORS de 009-T02 tiene evidencia separada de los fixtures.
 
+## Documentación del proyecto
+
+| Punto de entrada                         | Qué consultar                                                                                      |
+| ---------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| Este README                              | Presentación, instalación, recorrido demo, decisiones generales y límites.                         |
+| [Guía de docs](docs/README.md)           | Producto, requisitos, reglas, diseño, datos, contratos, arquitectura y metodología.                |
+| [Specs](specs/)                          | Requisitos de cada feature, aclaraciones, planes, tareas y validaciones.                           |
+| [AI workspace](ai-workspace/README.md)   | Dirección del trabajo con IA, prompts con procedencia, iteraciones, testing y revisiones técnicas. |
+| [Estrategia de pruebas](docs/testing.md) | Suites, aislamiento, comandos y criterios de calidad.                                              |
+| [Trazabilidad](docs/traceability.md)     | Relaciones entre requisitos, reglas, specs y evidencia.                                            |
+
 ## Limitaciones y entrega
 
 Este README reúne contexto, decisiones, pantallas e instrucciones. [ai-workspace](ai-workspace/README.md) permite profundizar en planificación, arquitectura, interacción con IA y verificaciones; no hace falta consultar una guía de entrega separada.
@@ -244,8 +285,7 @@ Si más adelante se despliega, el servidor deberá servir apps/web/dist con fall
 - Sin autenticación/autorización, catálogo comercial real, idempotencia avanzada o despliegue de producción. Dos guardados deliberados pueden crear dos simulaciones.
 - Conversión dependiente de disponibilidad/CORS del proveedor. La comprobación local puntual no garantiza el funcionamiento en un futuro dominio público. Importes guardados siempre EUR.
 - Validación de interfaz en Chromium a cuatro anchos y ampliación CSS/reflujo; no certificación completa de accesibilidad, otros navegadores, lectores de pantalla o zoom nativo.
-- El ensayo de 010-T03 se completó desde una exportación limpia en este Windows: 276 pruebas generales y 36 E2E correctas; no acredita otro SO o máquina. La evidencia de entrega está en [ai-workspace](ai-workspace/README.md); no se ha publicado una demo ni elegido hosting. Entrega local y repositorio son el alcance obligatorio; demo desplegada opcional, sin hosting elegido.
+- El ensayo de instalación documentado se completó desde una exportación limpia en este Windows: 276 pruebas generales y 36 E2E correctas; no acredita otro SO o máquina. La evidencia de entrega está en [ai-workspace](ai-workspace/README.md); no se ha publicado una demo ni elegido hosting. Entrega local y repositorio son el alcance confirmado; la demo desplegada es opcional.
 - Se excluyen secretos, .env reales, DB/backups, node_modules y cachés. Los PDF aportados se consultaron como fuentes externas y no se incorporan automáticamente. No se publica ni se hace commit/push desde estas instrucciones.
-
 
 El [cierre técnico de 010](specs/010-delivery/validation.md#t05--cierre-técnico-de-la-entrega) consolida documentación, auditoría y ensayo local, con resultados y límites identificados. La [revisión final](ai-workspace/reviews/010-delivery-t05.md) mantiene separadas la aceptación humana y las acciones externas pendientes; el cierre no equivale a una publicación o despliegue.
