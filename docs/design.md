@@ -1,97 +1,157 @@
-# Diseño funcional y visual
+# Referencia de diseño UX/UI — SaaS-O-Matic
 
-## Calidad 009 — T04
+## 1. Visión general
 
-009-QA-01 resuelto técnicamente mediante ajuste local de texto largo en el simulador y su confirmación. Cuatro regresiones con el mismo cliente largo pasan sin fallos esperados; las 14 pruebas visuales existentes también pasan. RF2 conforme dentro del alcance Chromium documentado. [Corrección, resultados y límites](../specs/009-quality/validation.md#t04--corrección-y-regresiones). T05 y aceptación humana final pendientes. Los apartados anteriores de ejecución se conservan como historial.
+SaaS-O-Matic está orientado al comercial que registra empresas y prepara estimaciones mensuales de suscripción. La interfaz conecta clientes, presupuesto e historial en un recorrido continuo, con textos en español y acciones explícitas.
 
-## Calidad 009 — Revisión T03
+La experiencia se apoya en cuatro principios:
 
-Revisados estados de carga/error/vacío/confirmación y contenido largo en Chromium a 320/390/768/1440 px. Formulario y ficha ajustan texto largo. El párrafo de contexto del cliente en el simulador desborda con un nombre válido sin espacios y ensancha el grid. Defecto 009-QA-01 pendiente de T04. Teclado/foco, asociaciones y contraste representativos comprobados. [Capturas, resultados y límites](../specs/009-quality/validation.md#t03--accesibilidad-y-responsive).
+- **Claridad:** priorizar el cliente, los consumos y el importe mensual; explicar los límites y las condiciones de cálculo junto a los controles.
+- **Confianza:** distinguir presupuesto previo de resultado guardado, señalar discrepancias y no presentar como confirmado un guardado incierto.
+- **Eficiencia:** buscar, navegar y volver conservando el contexto; sincronizar controles de consumo y actualizar el presupuesto sin guardar automáticamente.
+- **Trazabilidad:** consultar importes históricos persistidos y reconocer el cliente y los datos asociados a cada confirmación.
 
-## Simulador 008 — Revisión T05
+Esta referencia describe el producto implementado. Los requisitos y decisiones de alcance se conservan en las specs de [clientes](../specs/007-customers-ui/spec.md) y [simulador](../specs/008-simulator-ui/spec.md); las ejecuciones y resultados de QA pertenecen a sus documentos de validación.
 
-Preview, errores, confirmación con discrepancia y ficha/historial comprobados a 320/390/768/1440 px. Layout CSS al 200 % y reflujo equivalente permiten completar el guardado. Teclado cubre slider, campos, divisa, acciones, confirmación y actualización de historial. Contraste representativo medido en texto, errores, bordes y foco. [Resultados y límites](../specs/008-simulator-ui/validation.md#t05--flujo-comercial-revisión-visual-y-cierre-global). Capturas reales temporales en .cache/007-e2e. Aceptación humana final pendiente.
+## 2. Lenguaje visual
 
-## Simulador 008 — T04
+Tema claro con fondo suave, superficies blancas y azul para acciones. La fuente ejecutable de valores compartidos es [tokens.css](../apps/web/src/styles/tokens.css); [global.css](../apps/web/src/styles/global.css) define la base transversal y los estilos locales se organizan mediante CSS Modules. No se utiliza Tailwind, una librería UI ni una tipografía descargada.
 
-La ficha mantiene el aviso de discrepancia al regresar desde el resultado guardado. «Actualizar historial» permite comprobar nuevos registros con la página actual conservada. Carga, error y «Reintentar historial» reutilizan los estados independientes de la ficha. Comprobar un guardado incierto abre el historial en otra pestaña y permite conservar los consumos originales durante la comprobación.
+### Color semántico
 
-## Simulador 008 — T03
+| Token                     | Valor     | Función                               |
+| ------------------------- | --------- | ------------------------------------- |
+| `--color-text`            | `#172b4d` | Texto principal y títulos.            |
+| `--color-text-muted`      | `#526179` | Descripciones, ayudas y metadatos.    |
+| `--color-background`      | `#f2f5fb` | Fondo general.                        |
+| `--color-surface`         | `#ffffff` | Paneles y controles.                  |
+| `--color-border`          | `#d6deea` | Divisores y bordes decorativos.       |
+| `--color-control-border`  | `#7b879c` | Delimitación de inputs y selectores.  |
+| `--color-action`          | `#1759db` | Enlaces y acciones principales.       |
+| `--color-action-hover`    | `#1044ad` | Acción principal al pasar el puntero. |
+| `--color-on-action`       | `#ffffff` | Texto sobre acción principal.         |
+| `--color-focus`           | `#123fa0` | Indicador de foco de teclado.         |
+| `--color-danger`          | `#b42318` | Errores y campos inválidos.           |
+| `--color-success`         | `#16664b` | Énfasis del total mensual.            |
+| `--color-success-surface` | `#e4f4ee` | Fondo del total destacado.            |
 
-«Guardar simulación» acompaña a «Volver al cliente». Durante el envío se bloquean consumos/divisa y se anuncia progreso. Tras confirmar, el resumen se titula «Resultado guardado», mantiene los importes del servidor y ofrece «Preparar otra simulación»; la divisa puede cambiar sin alterar el registro. Confirmación y errores reciben foco; los errores de consumo enlazan los campos. Aviso de discrepancia muestra total previo y guardado en EUR. Red/timeout/201 ilegible conservan el formulario y ofrecen comprobar historial en otra pestaña. Integración contextual completa con historial pendiente de T04; revisión global de T05 pendiente.
+El color acompaña a texto y semántica; no sustituye la explicación de un error, progreso o confirmación. El total destacado no implica que el presupuesto ya se haya guardado.
 
-## Simulador 008 — T02
+### Tipografía, ritmo y superficies
 
-Composición de dos tarjetas alineadas en escritorio, «Consumo estimado» y «Resumen mensual», con cabeceras separadas, slider/campo en fila, selector de divisa y total destacado en verde mediante token semántico. Reflujo en una columna móvil, manteniendo fuente del sistema y límites acordados. Desglose EUR; solo total convertido con fecha/atribución, carga/error/reintento y equivalente EUR. No botón de guardado hasta T03. [Validación T02](../specs/008-simulator-ui/validation.md#t02--preview-desglose-y-conversión). Capturas temporales, sin registros ai-workspace por indicación vigente.
+La familia es `system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`. El cuerpo utiliza `1rem`, texto secundario `0.875rem` e interlineado `1.5`. El título principal escala con `clamp(1.75rem, 4vw, 2.25rem)` e interlineado `1.2`. Las cabeceras de sección usan jerarquía y peso propios de cada panel; el total mensual utiliza `1.5rem`, con cifras tabulares para facilitar la comparación.
 
-## Simulador 008 — T01
+La escala de espacios compartida es `0.25`, `0.5`, `0.75`, `1`, `1.5`, `2` y `3rem`. Los radios son `0.375rem` para controles y `0.75rem` para paneles. Las superficies combinan borde fino y sombra `0 1px 3px rgb(23 43 77 / 6%)`.
 
-Base visual con título/contexto del cliente, tarjeta de consumos, slider/campo de usuarios, almacenamiento/llamadas y retorno a ficha. CSS Modules y tokens de 007, bordes accesibles y estados con errores asociados. Campos cero y EUR; ningún importe, selector FX o acción de guardado antes de sus tareas. Cuatro anchos sin desbordamiento y capturas de escritorio/móvil inspeccionadas en entorno temporal. La columna de resumen del PDF llega en T02. [Validación](../specs/008-simulator-ui/validation.md#t01--pantalla-clienteconfiguración-e-inputs). Sin registros ai-workspace por indicación vigente.
+El contenido tiene ancho máximo de `72rem`; el alta se limita a `42rem`. Los controles emplean una altura mínima de `2.75rem`. El foco visible usa un contorno de `3px` y separación de `3px`.
 
-## Revisión final 007-T05
+## 3. Estructura y navegación
 
-Listar/crear/consultar cliente e historial revisados a 320/390/768/1440 px, con capturas reales; layout al 200 % y reflujo equivalente sin desbordamiento. Teclado cubre salto al contenido, navegación/alta, resumen fiscal y foco al paginar. Contraste medido en colores renderizados representativos: borde de campos corregido a 3,628:1, textos medidos ≥4,5:1 y foco ≥3:1. [Evidencia visual y límites](../ai-workspace/visuals/007-customers-ui-t05.md). No certificación global WCAG, prueba de lector de pantalla o zoom mediante menú nativo. Aceptación humana final no registrada.
+La aplicación utiliza cabecera superior con marca y acceso a Clientes, sin sidebar ni dashboard global. El contenido está centrado y comienza con breadcrumbs, título y descripción. Las acciones principales se sitúan junto al encabezado cuando corresponde; en espacios estrechos pasan a otra línea.
 
-## Ficha implementada en 007-T04
+| Ruta                             | Destino                            |
+| -------------------------------- | ---------------------------------- |
+| `/`                              | Redirección a Clientes.            |
+| `/customers`                     | Listado y búsqueda.                |
+| `/customers/new`                 | Alta de cliente.                   |
+| `/customers/:id`                 | Ficha e historial.                 |
+| `/customers/:id/simulations/new` | Simulación contextual del cliente. |
 
-Nombre de empresa como título y país/plan como descripción. Tarjetas «Datos corporativos» y «Contacto» en dos columnas de escritorio y una en móvil, según referencia del PDF. Historial con fecha, usuarios, almacenamiento, llamadas API, EUR y total guardado; páginas de 20 y estados independientes. No se añaden acciones de simulación sin flujo disponible. [Capturas reales y límites](../ai-workspace/visuals/007-customers-ui-t04.md).
+Las rutas desconocidas ofrecen un estado de página no encontrada con retorno a clientes. Los breadcrumbs enlazan niveles reales. La búsqueda y la página del listado se reflejan en la URL; al regresar desde alta o ficha se conserva el contexto. El historial mantiene su propia página. Un acceso directo dispone de un retorno seguro aunque no exista navegación previa.
 
-## Alta implementada en 007-T03
+El simulador muestra la empresa, país y plan como contexto; no exige seleccionar de nuevo un cliente ni ofrece modificar su país para alterar el precio.
 
-Tarjeta de cinco campos en secciones «Datos de empresa» y «Suscripción», con ancho central definido por el token --form-width. Países obtenidos de configuración y planes demo compartidos. Errores junto al campo y resumen enfocado con enlaces, controles bloqueados durante envío y cancelación contextual. El resultado incierto conserva el formulario y abre la comprobación en otra pestaña. [Capturas y límites de revisión](../ai-workspace/visuals/007-customers-ui-t03.md). Ficha completa e historial corresponden a T04.
+## 4. Patrones de componentes
 
-## Base implementada en 007-T01
+**Acciones.** La acción principal utiliza fondo azul, texto blanco y etiqueta explícita. Las secundarias emplean superficie blanca o enlaces según su jerarquía. «+ Nuevo cliente» y «+ Nueva simulación» incorporan un signo decorativo, sin cambiar su nombre accesible. Las acciones pueden reorganizarse en varias líneas.
 
-Navegación superior, breadcrumbs y contenido centrado basados en interfaces.pdf, revisado en cuatro páginas. Tipografía del sistema, tema claro y estilos por CSS Modules. [tokens.css](../apps/web/src/styles/tokens.css) es la fuente ejecutable de colores/espacios/tamaños y [global.css](../apps/web/src/styles/global.css) contiene la base transversal. Las tablas siguientes conservan propuestas iniciales; la fuente Inter y componentes de fases futuras siguen pendientes de su alcance correspondiente.
+**Formularios.** Etiquetas persistentes, campos de ancho disponible, ayudas junto al control y errores asociados. Los obligatorios están identificados. El alta agrupa Datos de empresa y Suscripción en una sola página; no utiliza un asistente de pasos. Los errores de envío se presentan en un resumen enlazado a los campos y junto al dato afectado.
 
-El shell ofrece salto al contenido, foco en encabezado tras cambiar ruta y layout comprobable desde 320 px. Las páginas de T01 presentan disponibilidad futura de listado/alta/ficha. T02–T04 aportarán sus datos y formularios. [Capturas reales](../ai-workspace/visuals/007-customers-ui-t01.md).
+**Tarjetas y paneles.** Superficies blancas delimitan grupos de información y separan cabecera y contenido cuando procede. La ficha distingue Datos corporativos, Contacto e Historial. El simulador separa Consumo estimado y Resumen mensual.
 
-## Tokens
+**Listados.** Tablas con cabeceras, nombre de empresa destacado, acciones textuales y paginación Anterior/Siguiente. En móvil las filas se presentan como bloques con etiquetas, conservando los datos. El historial muestra consumos e importe EUR guardado; no ofrece una acción de detalle individual inexistente.
 
-| Token                                                                                                                                                                                                                                                                                                                                                           | Valor propuesto | Uso                              |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | -------------------------------- |
-| color.text.strong                                                                                                                                                                                                                                                                                                                                               | #172B4D         | Títulos                          |
-| color.primary                                                                                                                                                                                                                                                                                                                                                   | #2463EB         | CTA, foco                        |
-| color.canvas                                                                                                                                                                                                                                                                                                                                                    | #F5F7FA         | Fondo                            |
-| color.surface                                                                                                                                                                                                                                                                                                                                                   | #FFFFFF         | Panel                            |
-| color.success                                                                                                                                                                                                                                                                                                                                                   | #16856A         | Confirmación acompañada de texto |
-| color.border                                                                                                                                                                                                                                                                                                                                                    | #DDE3EC         | Divisores                        |
-| color.danger                                                                                                                                                                                                                                                                                                                                                    | #B42318         | Propuesta añadida para errores   |
-| Inter 400/500/600/700; fallback system-ui. Verificar licencia/distribución de fuente antes de incorporarla; autoalojar al incorporarla. Tamaños 14–16 cuerpo, 28–32 título, 32–40 precio, cifras tabulares. Espaciado 4/8/12/16/24/32; radio panel 12, controles 8; altura controles 44. Contraste comprobar en pares reales, no asumir que token garantiza AA. |
+**Consumos y desglose.** Usuarios combina slider nativo y campo numérico sincronizados; almacenamiento y llamadas usan campos con unidades y límites visibles. El resumen alinea conceptos e importes, separa subtotal e impuesto y destaca el total. Las líneas se expresan en EUR, incluso cuando se convierte el total.
 
-## Análisis de referencias y decisiones
+**Feedback.** Mensajes de carga, vacío, error y confirmación describen el estado y ofrecen la siguiente acción cuando existe. No se presupone un sistema de skeletons o toasts: la implementación emplea mensajes y paneles de estado.
 
-| Vista     | Estructura/contenido observado en extracción                        | Aplicación y corrección                                           |
-| --------- | ------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| Panel     | Clientes, buscador, contador, empresa/fiscal/país/plan/fecha/acción | Tabla desktop y cards móvil; CTA alta. No estadísticas inventadas |
-| Alta      | Datos empresa, fiscal con error, email, país, plan, cancelar/crear  | Una página con secciones; errores junto a campos, no wizard       |
-| Detalle   | Empresa, país/plan, cards corporativo/contacto e historial          | Cards responsive y tabla/lista; corregir datos inconsistentes     |
-| Simulador | Slider, storage/API, moneda, desglose/resumen, volver/guardar       | Dos columnas desktop, una móvil; explicación metadatos sin coste  |
+## 5. Pantallas y recorridos
 
-## Rutas propuestas
+### Listado y búsqueda
 
-/customers; /customers/new; /customers/:id; /customers/:id/simulations/new. / redirige a /customers. 404 de frontend con enlace a clientes. Detalle de simulación individual y dashboard global de simulaciones no son necesarios; expandir fila de desglose es mejora opcional.
+El título Clientes y «+ Nuevo cliente» encabezan la página. Debajo aparecen búsqueda por empresa o identificador fiscal, total de resultados, listado y paginación de 20 registros. La búsqueda se confirma tras 250 ms sin introducir una entrada de historial por cada tecla y vuelve a la primera página.
 
-## Componentes
+Se distinguen ausencia de clientes, búsqueda sin coincidencias y página fuera de resultados. La tabla muestra empresa, identificador fiscal, país, plan y Ver cliente; no incluye Última simulación ni estadísticas sin soporte.
 
-AppHeader, Breadcrumbs, PageContainer; Button, Field, Select, Alert, EmptyState, LoadingState; CustomerSearch, CustomerList, CustomerCard, CustomerForm; CustomerSummary, SimulationHistory, ConsumptionInputs, UserSlider, PricingBreakdown, CurrencySelector, SimulationSummary.
-Crear abstracción solo al reutilizar; no “Design System” publicable. Semántica HTML nativa, input type=range accesible, label persistente e input numérico sincronizado.
+### Alta de cliente
 
-## Estados y flujo
+Formulario central de cinco campos: empresa, identificador fiscal, email, país y plan. El país procede de la configuración disponible; los planes se presentan como Básico (demo) y Profesional (demo), aclarando que aplican la misma tarifa. No se inventan prestaciones comerciales.
 
-| Elemento        | Loading                                       | Empty                                                | Error                                 | Success                            |
-| --------------- | --------------------------------------------- | ---------------------------------------------------- | ------------------------------------- | ---------------------------------- |
-| Lista           | Esqueleto/aria-busy                           | Sin clientes o sin coincidencias, mensajes distintos | Reintentar sin perder q               | Resultados y contador              |
-| Formulario      | Desactivar solo envío, “Creando…”             | Campos con etiquetas, no errores prematuros          | Inline + resumen enfocado             | Redirigir ficha y anuncio          |
-| Ficha/historial | Cards de carga                                | Primera simulación CTA                               | 404 distinto de fallo red             | Historial por fecha/id descendente |
-| Simulador       | Esperar cliente/config; EUR disponible sin FX | 0 usuarios válido                                    | Preservar inputs, explicar bloqueador | Guardado + nueva fila              |
-| FX              | “Cargando cambio…”                            | Moneda no soportada explícita                        | EUR + aviso + reintentar              | Fecha/tasa y atribución            |
+Cancelar recupera el listado contextual. Crear cliente valida el formato y solicita el control fiscal al backend. Durante el envío se bloquean campos y acciones y se anuncia progreso. Tras confirmación válida se abre la ficha y se comunica el éxito.
 
-Debounce buscador 250ms propuesto con AbortController; ignorar respuestas anteriores. Preview local inmediato; aria-live polite solo resumen con moderación, no anuncio por cada tick de slider. Si backend devuelve precio distinto del preview, mostrar valor guardado y mensaje, no ocultarlo.
-Doble clic no dispara otro POST mientras pending. Tras fallo de red incierto, no reintentar a ciegas; consultar historial antes de nuevo guardado.
+### Ficha e historial
 
-## Responsive y accesibilidad
+La empresa es el título; país y plan aportan contexto. «Nueva simulación» conduce al simulador del cliente. Dos tarjetas presentan datos corporativos y contacto; debajo se consulta el historial paginado con fecha, usuarios, almacenamiento, llamadas, divisa y total mensual.
 
-1440: dos columnas simulador, cards horizontales, contenido centrado. 768: reorganizar grid, tabla con scroll acotado y cabeceras. 390 y 320: una columna, cards/lista y CTA en flujo normal, sin desbordar página. No ocultar impuestos para ahorrar espacio.
-Objetivo WCAG 2.2 AA: foco visible/no oculto, labels, errores con aria-describedby, teclado completo, zoom 200%, contraste 4.5:1 texto normal, 3:1 elementos no textuales relevantes. No depender de color ni hover. Iconos decorativos ocultos al lector; botones icon-only con nombre accesible. Sin modal innecesario.
-Verificación prevista mediante teclado, RTL y Playwright, capturas reales cuando exista frontend; no hay capturas generadas ahora.
+Datos del cliente e historial tienen estados independientes: un fallo del historial no oculta la ficha. Actualizar historial permite comprobar nuevos registros conservando la página; el retorno mantiene la búsqueda previa. Los importes históricos no se recalculan ni se convierten.
+
+### Simulador de presupuestos
+
+Dos paneles en escritorio y una columna en espacios menores: controles a la izquierda y resumen a la derecha. Una simulación nueva comienza con tres consumos a cero y EUR. Usuarios admite de 0 a 1.000, almacenamiento hasta 10.000 GB y llamadas hasta 10.000.000, sin decimales. La interfaz explica que almacenamiento y llamadas se registran, pero no añaden cargos.
+
+El presupuesto cambia con consumos válidos sin peticiones de guardado por cada movimiento. Una entrada inválida retira el presupuesto vigente y bloquea guardar. Cliente, país o configuración incompatibles muestran un bloqueo comprensible con recuperación, sin presentar precios de reserva inventados.
+
+### Resultado y confirmación
+
+Guardar simulación permanece junto a Volver al cliente. Durante el envío se bloquean consumos y divisa. Tras confirmar se permanece en la pantalla: el resumen pasa a Resultado guardado y se presenta información del cliente y fecha guardados.
+
+Los consumos quedan bloqueados para distinguir el registro confirmado de un nuevo borrador. Es posible cambiar la divisa de visualización. Preparar otra simulación inicia explícitamente un borrador cero/EUR y vuelve a consultar cliente y configuración. Volver al cliente permite consultar el historial actualizado.
+
+## 6. Patrones de interacción
+
+- **Carga:** anunciar qué se está obteniendo o enviando. Si la configuración necesaria no está disponible, explicar el bloqueo y permitir reintentar conservando lo introducido.
+- **Vacío:** explicar la ausencia de datos sin confundirla con error o falta de coincidencias. Cero usuarios es una entrada válida, no un formulario vacío.
+- **Error:** conservar datos recuperables, asociar errores de campo y ofrecer reintentos explícitos. Diferenciar cliente inexistente de indisponibilidad temporal.
+- **Éxito:** navegar a la ficha tras crear cliente; permanecer en el resultado confirmado tras guardar simulación. No insertar filas ficticias como si estuvieran confirmadas.
+
+El envío pendiente impide duplicar la misma acción. Un fallo de red, timeout o respuesta de éxito ilegible puede dejar el guardado incierto: se explica la posibilidad y se ofrece comprobar clientes o historial en otra pestaña, manteniendo el formulario original. No se reenvía automáticamente.
+
+La previsualización es orientativa; el resultado del servidor es definitivo para ese registro. Una discrepancia muestra el importe previo y el guardado en EUR y conserva el aviso al volver a la ficha dentro del contexto de navegación. El registro no se modifica para hacerlo coincidir con el preview.
+
+EUR/USD/GBP afecta únicamente al total del simulador o del resultado confirmado. La conversión muestra carácter orientativo, fecha y atribución del proveedor. Si falla o caduca, se retira la conversión, se identifica el total EUR y se ofrece Reintentar conversión. Ese fallo no impide un guardado EUR válido y reintentar FX no repite el guardado.
+
+## 7. Responsive y accesibilidad
+
+Los layouts usan anchos fluidos y permiten ajustar textos largos sin truncar la identidad del cliente ni ensanchar la página. No existe una composición de tablet independiente: el espacio disponible determina el reflujo.
+
+- Hasta `48rem`, el simulador pasa de dos columnas a una.
+- Hasta `40rem`, se reducen márgenes y rellenos, las tarjetas de ficha se apilan y las tablas se presentan como bloques etiquetados. Los controles del slider conservan su campo numérico junto a él.
+- Hasta `25rem`, las filas del desglose permiten separar concepto e importe en varias líneas. Las acciones admiten salto de línea y los datos importantes permanecen visibles.
+
+La navegación incluye salto al contenido, landmarks y encabezados jerárquicos. Enlaces, botones, campos, selectores y slider son operables por teclado. Al cambiar de ruta se enfoca el encabezado principal sin dibujar un contorno sobre el título; los controles interactivos conservan foco visible. Los resúmenes de error y confirmaciones reciben foco cuando corresponde. Al paginar se recupera una posición útil si desaparece el control, sin desplazar una selección posterior del usuario.
+
+Las etiquetas, ayudas y errores se asocian mediante semántica HTML y atributos accesibles. Los estados se anuncian sin convertir cada cambio de precio del slider en una interrupción. Se respeta la preferencia de movimiento reducido en el comportamiento transversal.
+
+El criterio de diseño es WCAG 2.2 AA: contraste mínimo de 4,5:1 para texto normal y 3:1 para controles e indicadores relevantes, foco perceptible y contenido utilizable al ampliar. Estos objetivos no constituyen certificación. Alcance y métodos realmente comprobados —incluidos los límites de ampliación, navegador y tecnologías de apoyo— permanecen en la [validación de calidad](../specs/009-quality/validation.md).
+
+## 8. Referencias visuales
+
+Las siguientes imágenes son **capturas de la implementación con datos ficticios**, conservadas en el repositorio. Ilustran estados concretos de escritorio; sus valores y nombres no son datos obligatorios, estados iniciales ni una especificación de todos los errores o tamaños.
+
+### Listado de clientes
+
+![Listado de clientes con búsqueda, resultados y acción de alta](images/customers.png)
+
+### Alta de cliente
+
+![Formulario de alta con datos de empresa y suscripción](images/customer-create.png)
+
+### Ficha e historial
+
+![Ficha corporativa con tarjetas e historial de simulaciones EUR](images/customer-detail.png)
+
+### Simulador
+
+![Simulador con controles de consumo y resumen mensual en dos paneles](images/simulator.png)
+
+interfaces.pdf fue la referencia de composición aportada durante la definición de interfaces. No está incluido en el repositorio y no se presenta como un recurso disponible para otro entorno. Sus ejemplos se adaptaron al producto: planes demo existentes, ausencia de Última simulación y de detalle individual de simulación.
