@@ -235,7 +235,7 @@ pnpm test:e2e
 
 ## Limitaciones y entrega
 
-Para evaluar el proyecto, este README reúne contexto, decisiones, pantallas e instrucciones. [ai-workspace](ai-workspace/README.md) permite profundizar en planificación, arquitectura, interacción con IA y verificaciones; no hace falta consultar una guía de entrega separada.
+Este README reúne contexto, decisiones, pantallas e instrucciones. [ai-workspace](ai-workspace/README.md) permite profundizar en planificación, arquitectura, interacción con IA y verificaciones; no hace falta consultar una guía de entrega separada.
 
 Si más adelante se despliega, el servidor deberá servir apps/web/dist con fallback de rutas SPA y resolver /api hacia Express retirando el prefijo. La API actual escucha en 127.0.0.1, con PORT configurable y sin variable HOST; un entorno que requiera 0.0.0.0 necesita una adaptación explícita. SQLite requiere almacenamiento persistente dentro de las rutas admitidas, como apps/api/data, y un procedimiento de backup/recuperación. Estas condiciones están documentadas, pero no se ha validado un destino de producción. La revisión de contenido y sus pendientes se conservan en [ai-workspace](ai-workspace/testing/010-delivery-t04.md).
 
@@ -247,6 +247,5 @@ Si más adelante se despliega, el servidor deberá servir apps/web/dist con fall
 - El ensayo de 010-T03 se completó desde una exportación limpia en este Windows: 276 pruebas generales y 36 E2E correctas; no acredita otro SO o máquina. La evidencia de entrega está en [ai-workspace](ai-workspace/README.md); no se ha publicado una demo ni elegido hosting. Entrega local y repositorio son el alcance obligatorio; demo desplegada opcional, sin hosting elegido.
 - Se excluyen secretos, .env reales, DB/backups, node_modules y cachés. Los PDF aportados se consultaron como fuentes externas y no se incorporan automáticamente. No se publica ni se hace commit/push desde estas instrucciones.
 
-La conformidad técnica y la aceptación humana final se registran por separado. El objetivo es que el evaluador pueda comprobar el comportamiento y recorrer las decisiones con evidencia, incluidos los límites que quedan fuera de esta prueba.
 
 El [cierre técnico de 010](specs/010-delivery/validation.md#t05--cierre-técnico-de-la-entrega) consolida documentación, auditoría y ensayo local, con resultados y límites identificados. La [revisión final](ai-workspace/reviews/010-delivery-t05.md) mantiene separadas la aceptación humana y las acciones externas pendientes; el cierre no equivale a una publicación o despliegue.
